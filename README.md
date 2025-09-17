@@ -1,3 +1,60 @@
+## Ortam Değişkenleri
+
+Proje köküne `.env.local` dosyası oluşturun ve aşağıdakileri ekleyin:
+
+```
+MONGODB_URI=YOUR_ATLAS_CONNECTION_STRING
+MONGODB_DB=hipnodil
+```
+
+`YOUR_ATLAS_CONNECTION_STRING` değerini Atlas'tan alacaksınız (aşağıda adımlar var).
+
+## MongoDB Atlas Kurulum Adımları
+
+1. Atlas hesabı oluşturun ve giriş yapın: https://www.mongodb.com/atlas/database
+2. "Create" ile ücretsiz bir Shared Cluster (M0) oluşturun.
+3. Region seçin, cluster ismi verin ve oluşturun.
+4. Database Access menüsünden bir kullanıcı oluşturun (ör. `app_user`) ve güçlü bir parola belirleyin. Role: Read and write to any database.
+5. Network Access menüsünde IP erişimine `0.0.0.0/0` (development için) ekleyin veya kendi IP'nizi yetkilendirin.
+6. Clustera girip "Connect" > "Drivers" seçin. Node.js için verilen bağlantı URI'sını kopyalayın. Şuna benzer olacaktır:
+
+```
+mongodb+srv://app_user:<PASSWORD>@<CLUSTER_NAME>.mongodb.net/?retryWrites=true&w=majority&appName=<APP_NAME>
+```
+
+7. Bu URI'yı `.env.local` dosyasında `MONGODB_URI` değişkenine yapıştırın ve `<PASSWORD>` kısmını belirlediğiniz parola ile değiştirin.
+8. İsteğe bağlı olarak `MONGODB_DB` adını belirleyin (örn. `hipnodil`).
+9. Geliştirme sunucusunu yeniden başlatın: `npm run dev`.
+
+## API Uçları
+
+- `POST /api/auth/signup` — Kullanıcı oluşturur. Gövde JSON:
+
+```json
+{
+  "firstName": "...",
+  "lastName": "...",
+  "birthDate": "YYYY-MM-DD",
+  "tcNumber": "...",
+  "phone": "5xxxxxxxxx",
+  "email": "...",
+  "education": "...",
+  "password": "..."
+}
+```
+
+Yanıt: `{ message, userId }`
+
+- `POST /api/auth/login` — E-posta ve şifre doğrular. Gövde JSON:
+
+```json
+{ "email": "...", "password": "..." }
+```
+
+Yanıt: `{ message, userId }`
+
+Not: Bu örnekte session/JWT dahil edilmemiştir; ihtiyaç halinde NextAuth veya JWT ekleyin.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
