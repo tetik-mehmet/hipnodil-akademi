@@ -49,7 +49,7 @@ export default function Header() {
     }
   };
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/10 supports-[backdrop-filter]:bg-white/10 backdrop-blur-xl backdrop-saturate-150 border-b border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+    <header className="sticky top-0 z-50 w-full bg-white md:bg-white/10 md:supports-[backdrop-filter]:bg-white/10 md:backdrop-blur-xl md:backdrop-saturate-150 border-b border-gray-200 md:border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
         {/* Dekoratif yumuşak parıltı */}
         <div className="pointer-events-none absolute inset-x-0 -top-8 mx-auto h-16 max-w-5xl scale-100 bg-gradient-to-r from-[#F28B82]/30 via-[#F9D162]/20 to-[#F28B82]/30 blur-2xl md:h-20 md:scale-105" />
@@ -161,7 +161,7 @@ export default function Header() {
         {/* Mobil menü paneli */}
         {isOpen && (
           <div
-            className="md:hidden absolute inset-x-0 top-full mt-2 origin-top rounded-xl border border-white/25 bg-white/20 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out data-[state=closed]:scale-95 data-[state=closed]:opacity-0"
+            className="md:hidden absolute inset-x-0 top-full mt-2 origin-top rounded-xl border border-gray-200 md:border-white/25 bg-white md:bg-white/20 md:backdrop-blur-xl md:backdrop-saturate-150 shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out data-[state=closed]:scale-95 data-[state=closed]:opacity-0"
             data-state={isOpen ? "open" : "closed"}
           >
             <nav className="flex flex-col gap-1 p-3">

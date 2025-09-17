@@ -197,8 +197,8 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="rounded-3xl border border-white/20 bg-white/10 backdrop-blur-md p-8 sm:p-12 shadow-[0_8px_32px_rgba(31,38,135,0.37)]">
-          <div className="grid grid-cols-4 gap-10">
+        <div className="rounded-3xl border border-gray-200 md:border-white/20 bg-white md:bg-white/10 md:backdrop-blur-md p-6 sm:p-12 shadow-[0_8px_32px_rgba(31,38,135,0.37)]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
             {[
               { src: "/referanslar/cz1.png", name: "Referans 1" },
               { src: "/referanslar/cz2.png", name: "Referans 2" },
@@ -207,9 +207,9 @@ export default function Home() {
             ].map((r) => (
               <div
                 key={r.src}
-                className="group rounded-2xl border border-white/30 bg-white/20 backdrop-blur-sm p-4 sm:p-5 shadow-[0_4px_16px_rgba(31,38,135,0.2)] hover:shadow-[0_8px_24px_rgba(31,38,135,0.3)] hover:bg-white/25 transition-all duration-300"
+                className="group rounded-2xl border border-gray-200 md:border-white/30 bg-white md:bg-white/20 md:backdrop-blur-sm p-4 sm:p-5 shadow-[0_4px_16px_rgba(31,38,135,0.2)] hover:shadow-[0_8px_24px_rgba(31,38,135,0.3)] md:hover:bg-white/25 transition-all duration-300"
               >
-                <div className="relative mx-auto h-28 sm:h-36 w-full">
+                <div className="relative mx-auto h-24 sm:h-28 md:h-36 w-full">
                   <Image
                     src={r.src}
                     alt={r.name}
