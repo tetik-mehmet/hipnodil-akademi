@@ -90,7 +90,7 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-0 -z-10 blur-2xl opacity-70 [background-image:radial-gradient(1000px_600px_at_0%_0%,rgba(187,220,229,0.35),transparent_60%),radial-gradient(800px_500px_at_100%_100%,rgba(168,213,186,0.35),transparent_60%)]" />
 
       <div
-        className="relative w-full h-[60vh] sm:h-[70vh] overflow-hidden"
+        className="relative w-full h-[70vh] sm:h-[75vh] md:h-[75vh] overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -115,7 +115,7 @@ export default function Home() {
         <button
           aria-label="Önceki"
           onClick={prev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/20 hover:bg-white/30 text-slate-800 backdrop-blur-md border border-white/30 px-3 py-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-[0_4px_16px_rgba(31,38,135,0.2)] hover:shadow-[0_8px_24px_rgba(31,38,135,0.3)]"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/20 hover:bg-white/30 text-slate-800 backdrop-blur-md border border-white/30 px-4 py-4 sm:px-3 sm:py-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-[0_4px_16px_rgba(31,38,135,0.2)] hover:shadow-[0_8px_24px_rgba(31,38,135,0.3)]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +133,7 @@ export default function Home() {
         <button
           aria-label="Sonraki"
           onClick={next}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/20 hover:bg-white/30 text-slate-800 backdrop-blur-md border border-white/30 px-3 py-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-[0_4px_16px_rgba(31,38,135,0.2)] hover:shadow-[0_8px_24px_rgba(31,38,135,0.3)]"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/20 hover:bg-white/30 text-slate-800 backdrop-blur-md border border-white/30 px-4 py-4 sm:px-3 sm:py-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-[0_4px_16px_rgba(31,38,135,0.2)] hover:shadow-[0_8px_24px_rgba(31,38,135,0.3)]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -149,16 +149,16 @@ export default function Home() {
           </svg>
         </button>
 
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 backdrop-blur-md bg-white/10 border border-white/20 rounded-full px-3 py-2">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 backdrop-blur-md bg-white/10 border border-white/20 rounded-full px-4 py-3 sm:px-3 sm:py-2">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => goTo(i)}
               aria-label={`Slide ${i + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
+              className={`h-3 sm:h-2.5 rounded-full transition-all duration-300 ${
                 currentIndex === i
-                  ? "w-7 bg-white/80 shadow-[0_2px_8px_rgba(31,38,135,0.3)]"
-                  : "w-2.5 bg-white/40 hover:bg-white/60 hover:shadow-[0_2px_6px_rgba(31,38,135,0.2)]"
+                  ? "w-8 sm:w-7 bg-white/80 shadow-[0_2px_8px_rgba(31,38,135,0.3)]"
+                  : "w-3 sm:w-2.5 bg-white/40 hover:bg-white/60 hover:shadow-[0_2px_6px_rgba(31,38,135,0.2)]"
               }`}
             />
           ))}

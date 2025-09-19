@@ -75,6 +75,13 @@ export default function Paketler() {
     "MEGAVERSE.COACH 1 yıllık Uzman Abonelik Hediyesi",
   ];
 
+  const silverFeatures = [
+    "60 saat Yaşam Koçluğu Eğitimi",
+    "10 saat canlı ders",
+    "Eğitmenler ile birebir iletişim",
+    "Uluslararası geçerli sertifika",
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-16 px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -113,15 +120,105 @@ export default function Paketler() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Koç Seviye 6 Paketlerimiz
+            MYK Koç Seviye 6 Paketlerimiz
           </motion.h2>
         </motion.div>
 
         {/* Packages Section */}
         <motion.div
-          className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto"
           variants={containerVariants}
         >
+          {/* Silver Package */}
+          <motion.div
+            className="relative"
+            variants={cardVariants}
+            whileHover="hover"
+          >
+            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-300 hover:shadow-3xl">
+              {/* Header with gradient */}
+              <div className="bg-gradient-to-r from-gray-400 to-gray-600 h-2"></div>
+
+              <div className="p-8">
+                <motion.h3
+                  className="text-3xl font-bold text-gray-800 mb-2"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 1.0 }}
+                >
+                  SILVER
+                </motion.h3>
+
+                <motion.p
+                  className="text-gray-600 mb-6"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 1.1 }}
+                >
+                  Temel eğitim ve destek paketi
+                </motion.p>
+
+                <motion.div
+                  className="mb-8"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
+                >
+                  <div className="flex items-baseline">
+                    <span className="text-5xl font-bold text-gray-800">
+                      22.950
+                    </span>
+                    <span className="text-gray-600 ml-2">/ Tek Seferlik</span>
+                  </div>
+                  <p className="text-sm text-gray-500 mt-1">KDV Dahil</p>
+                </motion.div>
+
+                <motion.div
+                  className="space-y-4 mb-8"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 1.3 }}
+                >
+                  {silverFeatures.map((feature, index) => (
+                    <motion.div
+                      key={index}
+                      className="flex items-center space-x-3"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: 1.4 + index * 0.1 }}
+                    >
+                      <div className="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg
+                          className="w-4 h-4 text-white"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700">{feature}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+                <motion.button
+                  className="w-full bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 2.0 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Hemen Başvur
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Platinum Package */}
           <motion.div
             className="relative"
@@ -259,7 +356,7 @@ export default function Paketler() {
                 >
                   <div className="flex items-baseline">
                     <span className="text-5xl font-bold text-gray-800">
-                      33.950
+                      37.950
                     </span>
                     <span className="text-gray-600 ml-2">/ Tek Seferlik</span>
                   </div>

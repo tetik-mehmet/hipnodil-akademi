@@ -8,6 +8,7 @@ import { useRouter, usePathname } from "next/navigation";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const [isConsultingOpen, setIsConsultingOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const isOnEgitimIcerik = pathname?.startsWith("/egitim_icerik");
@@ -94,7 +95,7 @@ export default function Header() {
           </svg>
         </button>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-8 md:flex ml-4 md:ml-8">
           <Link
             href="/"
             className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
@@ -111,7 +112,7 @@ export default function Header() {
             href="/paketler"
             className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
           >
-            Paketler
+            Koçluk Paketleri
           </Link>
           <Link
             href="/egitmenler"
@@ -119,6 +120,36 @@ export default function Header() {
           >
             Eğitmenlerimiz
           </Link>
+          <Link
+            href="/egitimlerimiz"
+            className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
+          >
+            Eğitimlerimiz
+          </Link>
+          <div className="relative group">
+            <button
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
+            >
+              Danışmanlık Hizmetleri
+            </button>
+            <div className="invisible absolute left-0 top-full z-40 mt-3 w-64 rounded-xl border border-gray-200 bg-white p-2 opacity-0 shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
+              <Link
+                href="/danismanlik"
+                className="block rounded-lg px-3 py-2 text-sm font-medium text-[#1F2937] hover:bg-[#1F2937]/5"
+              >
+                Bireysel Danışmanlık Hizmetleri
+              </Link>
+              <Link
+                href="/grup_danismanlik"
+                className="mt-1 block rounded-lg px-3 py-2 text-sm font-medium text-[#1F2937] hover:bg-[#1F2937]/5"
+              >
+                Grup Danışmanlık Hizmetleri
+              </Link>
+            </div>
+          </div>
           <Link
             href="/iletisim"
             className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
@@ -143,7 +174,7 @@ export default function Header() {
           )}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 md:flex ml-auto">
           <Link
             href="/login"
             className="rounded-xl border border-[#F28B82]/40 bg-white px-5 py-2 text-[#F28B82] shadow-sm transition-all duration-300 ease-out hover:border-[#F28B82] hover:bg-[#F28B82] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(242,139,130,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-[0.98]"
@@ -184,7 +215,7 @@ export default function Header() {
                 className="rounded-lg px-3 py-2 font-semibold text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
                 onClick={() => setIsOpen(false)}
               >
-                Paketler
+                Koçluk Paketleri
               </Link>
               <Link
                 href="/egitmenler"
@@ -193,6 +224,55 @@ export default function Header() {
               >
                 Eğitmenlerimiz
               </Link>
+              <Link
+                href="/egitimlerimiz"
+                className="rounded-lg px-3 py-2 font-semibold text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                onClick={() => setIsOpen(false)}
+              >
+                Eğitimlerimiz
+              </Link>
+              <Link
+                href="/danismanlik"
+                className="flex items-center justify-between rounded-lg px-3 py-2 font-semibold text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsConsultingOpen((v) => !v);
+                }}
+              >
+                <span>Danışmanlık Hizmetleri</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className={`h-5 w-5 transition-transform ${
+                    isConsultingOpen ? "rotate-180" : "rotate-0"
+                  }`}
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12 14.25a.75.75 0 0 1-.53-.22l-4.5-4.5a.75.75 0 1 1 1.06-1.06L12 12.44l3.97-3.97a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-.53.22Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </Link>
+              {isConsultingOpen && (
+                <div className="ml-2 flex flex-col gap-1 pb-1">
+                  <Link
+                    href="/danismanlik"
+                    className="rounded-lg px-3 py-2 text-sm font-medium text-[#1F2937] hover:bg-[#1F2937]/10"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Bireysel Danışmanlık Hizmetleri
+                  </Link>
+                  <Link
+                    href="/grup_danismanlik"
+                    className="rounded-lg px-3 py-2 text-sm font-medium text-[#1F2937] hover:bg-[#1F2937]/10"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Grup Danışmanlık Hizmetleri
+                  </Link>
+                </div>
+              )}
               <Link
                 href="/iletisim"
                 className="rounded-lg px-3 py-2 font-semibold text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
