@@ -74,13 +74,13 @@ export default function EgitimIcerikPage() {
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="relative aspect-video w-full">
               <iframe
-                src="https://player.vimeo.com/video/1109959757?h=ee385d21e5&badge=0&autopause=0&player_id=0&app_id=58479"
+                src="https://player.vimeo.com/video/1108439414?h=4c5782ec09&badge=0&autopause=0&player_id=0&app_id=58479"
                 width="100%"
                 height="100%"
                 frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
-                title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4. GRUP 3. CANLI YAYIN"
+                title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4. GRUP 2. CANLI YAYIN"
                 className="absolute inset-0 w-full h-full"
                 style={{
                   position: "absolute",
@@ -91,7 +91,7 @@ export default function EgitimIcerikPage() {
             </div>
             <div className="p-6">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
-                ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4. GRUP 3. CANLI YAYIN
+                ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4. GRUP 2. CANLI YAYIN
               </h2>
               <p className="text-gray-600 text-sm sm:text-base">
                 Bu video Vimeo platformundan gömülü olarak yüklenmektedir. Video
