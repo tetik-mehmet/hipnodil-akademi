@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import ReactPlayer from "react-player";
 
 export default function EgitimIcerikPage() {
   const router = useRouter();
@@ -74,34 +73,25 @@ export default function EgitimIcerikPage() {
         <div className="mb-8">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="relative aspect-video w-full">
-              <ReactPlayer
-                url="https://player.vimeo.com/video/1079774040?h=4218d79fbf"
+              <iframe
+                src="https://player.vimeo.com/video/1109959757?h=ee385d21e5&badge=0&autopause=0&player_id=0&app_id=58479"
                 width="100%"
                 height="100%"
-                controls={true}
-                config={{
-                  vimeo: {
-                    playerOptions: {
-                      responsive: true,
-                      autoplay: false,
-                      muted: false,
-                      loop: false,
-                    },
-                  },
-                }}
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4. GRUP 3. CANLI YAYIN"
+                className="absolute inset-0 w-full h-full"
                 style={{
                   position: "absolute",
                   top: 0,
                   left: 0,
                 }}
-                onError={(e) => {
-                  console.error("Vimeo player yüklenemedi:", e);
-                }}
               />
             </div>
             <div className="p-6">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
-                Eğitim Videosu
+                ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4. GRUP 3. CANLI YAYIN
               </h2>
               <p className="text-gray-600 text-sm sm:text-base">
                 Bu video Vimeo platformundan gömülü olarak yüklenmektedir. Video
