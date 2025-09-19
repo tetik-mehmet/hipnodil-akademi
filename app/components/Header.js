@@ -174,16 +174,16 @@ export default function Header() {
           )}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex ml-auto">
+        <div className="hidden items-center gap-3 md:flex ml-auto bg-[#94B4C1] backdrop-blur-sm rounded-2xl border border-gray-200/50 px-4 py-2 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
           <Link
             href="/login"
-            className="rounded-xl border border-[#F28B82]/40 bg-white px-5 py-2 text-[#F28B82] shadow-sm transition-all duration-300 ease-out hover:border-[#F28B82] hover:bg-[#F28B82] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(242,139,130,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-[0.98]"
+            className="rounded-xl border border-[#F28B82]/40 bg-white px-5 py-2 font-bold text-[#F28B82] shadow-sm transition-all duration-300 ease-out hover:border-[#F28B82] hover:bg-[#F28B82] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(242,139,130,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-[0.98]"
           >
             Giriş
           </Link>
           <Link
             href="/signup"
-            className="rounded-xl bg-gradient-to-r from-[#F28B82] to-[#F9D162] px-5 py-2 text-white shadow-[0_10px_30px_-10px_rgba(242,139,130,0.45)] transition-all duration-300 ease-out hover:shadow-[0_18px_40px_-12px_rgba(242,139,130,0.55)] hover:-translate-y-0.5 hover:from-[#F28B82] hover:to-[#F9D162] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:translate-y-0 active:scale-[0.98]"
+            className="whitespace-nowrap rounded-xl bg-[#FFA07A] px-5 py-2 font-bold text-[#1E3A8A] shadow-[0_10px_30px_-10px_rgba(255,160,122,0.45)] transition-all duration-300 ease-out hover:shadow-[0_18px_40px_-12px_rgba(255,160,122,0.55)] hover:-translate-y-0.5 hover:bg-[#FF8C69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFA07A]/60 active:translate-y-0 active:scale-[0.98]"
           >
             Üye Ol
           </Link>
@@ -304,14 +304,14 @@ export default function Header() {
                   <>
                     <Link
                       href="/login"
-                      className="flex-1 rounded-xl border border-[#F28B82]/40 bg-white px-4 py-2 text-center text-[#F28B82] shadow-sm transition-all duration-300 ease-out hover:border-[#F28B82] hover:bg-[#F28B82] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(242,139,130,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-[0.98]"
+                      className="flex-1 rounded-xl border border-[#F28B82]/40 bg-white px-4 py-2 text-center font-bold text-[#F28B82] shadow-sm transition-all duration-300 ease-out hover:border-[#F28B82] hover:bg-[#F28B82] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(242,139,130,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-[0.98]"
                       onClick={() => setIsOpen(false)}
                     >
                       Giriş
                     </Link>
                     <Link
                       href="/signup"
-                      className="flex-1 rounded-xl bg-gradient-to-r from-[#F28B82] to-[#F9D162] px-4 py-2 text-center text-white shadow-[0_10px_30px_-10px_rgba(242,139,130,0.45)] transition-all duration-300 ease-out hover:shadow-[0_18px_40px_-12px_rgba(242,139,130,0.55)] hover:-translate-y-0.5 hover:from-[#F28B82] hover:to-[#F9D162] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:translate-y-0 active:scale-[0.98]"
+                      className="flex-1 whitespace-nowrap rounded-xl bg-[#FFA07A] px-4 py-2 text-center font-bold text-[#1E3A8A] shadow-[0_10px_30px_-10px_rgba(255,160,122,0.45)] transition-all duration-300 ease-out hover:shadow-[0_18px_40px_-12px_rgba(255,160,122,0.55)] hover:-translate-y-0.5 hover:bg-[#FF8C69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFA07A]/60 active:translate-y-0 active:scale-[0.98]"
                       onClick={() => setIsOpen(false)}
                     >
                       Üye Ol

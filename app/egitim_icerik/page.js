@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import ReactPlayer from "react-player";
 
 export default function EgitimIcerikPage() {
   const router = useRouter();
@@ -57,8 +58,6 @@ export default function EgitimIcerikPage() {
   if (!isAuthenticated) {
     return null;
   }
-  const placeholders = Array.from({ length: 6 });
-
   return (
     <div className="min-h-[calc(100vh-6rem)] w-full bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6 lg:px-8 py-10">
       <div className="max-w-7xl mx-auto">
@@ -67,53 +66,161 @@ export default function EgitimIcerikPage() {
             Eğitim İçerikleri
           </h1>
           <p className="mt-2 text-gray-600 text-sm sm:text-base">
-            Videolar yakında eklenecek. Şimdilik örnek bir yerleşim
-            görüyorsunuz.
+            Vimeo üzerinden eğitim videolarınızı izleyebilirsiniz.
           </p>
         </header>
 
+        {/* Ana Video Bölümü */}
+        <div className="mb-8">
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div className="relative aspect-video w-full">
+              <ReactPlayer
+                url="https://player.vimeo.com/video/1079774040?h=4218d79fbf"
+                width="100%"
+                height="100%"
+                controls={true}
+                config={{
+                  vimeo: {
+                    playerOptions: {
+                      responsive: true,
+                      autoplay: false,
+                      muted: false,
+                      loop: false,
+                    },
+                  },
+                }}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                }}
+                onError={(e) => {
+                  console.error("Vimeo player yüklenemedi:", e);
+                }}
+              />
+            </div>
+            <div className="p-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+                Eğitim Videosu
+              </h2>
+              <p className="text-gray-600 text-sm sm:text-base">
+                Bu video Vimeo platformundan gömülü olarak yüklenmektedir. Video
+                kontrollerini kullanarak oynatabilir, duraklatabilir ve ses
+                seviyesini ayarlayabilirsiniz.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Ek Video Kartları (İsteğe bağlı) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {placeholders.map((_, index) => (
-            <div
-              key={index}
-              className="group rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden"
-            >
-              <div className="relative aspect-video bg-gray-100 flex items-center justify-center">
-                <div className="h-14 w-14 rounded-full bg-gray-200 flex items-center justify-center ring-1 ring-gray-300">
-                  <svg
-                    className="h-6 w-6 text-gray-500"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M8 5v14l11-7L8 5z" />
-                  </svg>
-                </div>
-                <span className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded-full bg-gray-900/80 text-white">
-                  Yakında
-                </span>
+          <div className="group rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
+            <div className="relative aspect-video bg-gray-100 flex items-center justify-center">
+              <div className="h-14 w-14 rounded-full bg-gray-200 flex items-center justify-center ring-1 ring-gray-300">
+                <svg
+                  className="h-6 w-6 text-gray-500"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M8 5v14l11-7L8 5z" />
+                </svg>
               </div>
-              <div className="p-4">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-900">
-                  Örnek Video {index + 1}
-                </h3>
-                <p className="mt-1 text-sm text-gray-600 line-clamp-2">
-                  Bu bir yer tutucu açıklamadır. Gerçek video yüklendiğinde bu
-                  alan güncellenecek.
-                </p>
-                <div className="mt-3 flex items-center justify-between">
-                  <span className="text-xs text-gray-500">Süre: -</span>
-                  <button
-                    type="button"
-                    className="text-sm font-medium text-blue-600 hover:text-blue-700"
-                    disabled
-                  >
-                    İzle
-                  </button>
-                </div>
+              <span className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded-full bg-gray-900/80 text-white">
+                Yakında
+              </span>
+            </div>
+            <div className="p-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">
+                Ek Video 1
+              </h3>
+              <p className="mt-1 text-sm text-gray-600 line-clamp-2">
+                Bu alana başka videolar eklenebilir.
+              </p>
+              <div className="mt-3 flex items-center justify-between">
+                <span className="text-xs text-gray-500">Süre: -</span>
+                <button
+                  type="button"
+                  className="text-sm font-medium text-blue-600 hover:text-blue-700"
+                  disabled
+                >
+                  İzle
+                </button>
               </div>
             </div>
-          ))}
+          </div>
+
+          <div className="group rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
+            <div className="relative aspect-video bg-gray-100 flex items-center justify-center">
+              <div className="h-14 w-14 rounded-full bg-gray-200 flex items-center justify-center ring-1 ring-gray-300">
+                <svg
+                  className="h-6 w-6 text-gray-500"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M8 5v14l11-7L8 5z" />
+                </svg>
+              </div>
+              <span className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded-full bg-gray-900/80 text-white">
+                Yakında
+              </span>
+            </div>
+            <div className="p-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">
+                Ek Video 2
+              </h3>
+              <p className="mt-1 text-sm text-gray-600 line-clamp-2">
+                Bu alana başka videolar eklenebilir.
+              </p>
+              <div className="mt-3 flex items-center justify-between">
+                <span className="text-xs text-gray-500">Süre: -</span>
+                <button
+                  type="button"
+                  className="text-sm font-medium text-blue-600 hover:text-blue-700"
+                  disabled
+                >
+                  İzle
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="group rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
+            <div className="relative aspect-video bg-gray-100 flex items-center justify-center">
+              <div className="h-14 w-14 rounded-full bg-gray-200 flex items-center justify-center ring-1 ring-gray-300">
+                <svg
+                  className="h-6 w-6 text-gray-500"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M8 5v14l11-7L8 5z" />
+                </svg>
+              </div>
+              <span className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded-full bg-gray-900/80 text-white">
+                Yakında
+              </span>
+            </div>
+            <div className="p-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">
+                Ek Video 3
+              </h3>
+              <p className="mt-1 text-sm text-gray-600 line-clamp-2">
+                Bu alana başka videolar eklenebilir.
+              </p>
+              <div className="mt-3 flex items-center justify-between">
+                <span className="text-xs text-gray-500">Süre: -</span>
+                <button
+                  type="button"
+                  className="text-sm font-medium text-blue-600 hover:text-blue-700"
+                  disabled
+                >
+                  İzle
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
