@@ -81,7 +81,7 @@ export default function DanismanlikPage() {
                     tamamlamıştır. Ergen ve yetişkinlerle bireysel danışmanlık
                     yürütmektedir. Ayrıca drama alanında aldığı eğitimlerle hem
                     çocuklara hem de yetişkinlere yönelik psikolojik atölye
-                    çalışmaları düzenlemiştir. TEGV'de drama temelli
+                    çalışmaları düzenlemiştir. TEGV&apos;de drama temelli
                     koordinasyon çalışmalarında aktif olarak yer almıştır. Bir
                     akademide Yaşam Koçluğu eğitimi vermektedir. Bunun yanı
                     sıra, Yaşam Koçluğu ve Öğrenci Koçluğu alanlarında
