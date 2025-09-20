@@ -103,7 +103,7 @@ export default function Header() {
             Ana Sayfa
           </Link>
           <Link
-            href="#"
+            href="/hakkimizda"
             className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
           >
             Hakkımızda
@@ -204,7 +204,7 @@ export default function Header() {
                 Ana Sayfa
               </Link>
               <Link
-                href="#"
+                href="/hakkimizda"
                 className="rounded-lg px-3 py-2 font-semibold text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
                 onClick={() => setIsOpen(false)}
               >

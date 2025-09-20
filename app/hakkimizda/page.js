@@ -41,7 +41,7 @@ export default function Hakkimizda() {
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Hakkımızda</h1>
             <p className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed">
-              Hipnodila Akademi olarak, bireylerin kişisel gelişimlerini
+              Hipnodil Akademi olarak, bireylerin kişisel gelişimlerini
               desteklemek ve topluma değer katmak için buradayız.
             </p>
           </div>
@@ -54,7 +54,7 @@ export default function Hakkimizda() {
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              <strong className="text-blue-600">Hipnodila Akademi</strong>,
+              <strong className="text-blue-600">Hipnodil Akademi</strong>,
               bireylerin kişisel gelişimlerini desteklemek, mesleki yeterlilik
               süreçlerinde yanlarında olmak ve danışmanlık hizmetleri ile
               topluma değer katmak amacıyla kurulmuş bir eğitim ve danışmanlık
