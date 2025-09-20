@@ -161,11 +161,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     4. Grup 1. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -192,11 +187,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     4. Grup 2. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -223,11 +213,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     4. Grup 3. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -254,11 +239,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     2. Grup 2. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -285,11 +265,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     3. Grup 1. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -316,11 +291,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     3. Grup 2. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -347,11 +317,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     3. Grup 3. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -378,11 +343,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     3. Grup 4. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -409,11 +369,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     2. Grup 7. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -440,11 +395,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     2. Grup 3. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -471,11 +421,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     2. Grup 4. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -502,11 +447,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     2. Grup 5. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -533,11 +473,32 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     2. Grup 6. Canlı Yayın
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
+                </div>
+              </div>
+
+              {/* 2. Grup Tanışma Toplantısı Canlı Yayın */}
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div className="relative aspect-video w-full">
+                  <iframe
+                    src="https://player.vimeo.com/video/1028719873?h=3f28a58f27&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 2. GRUP TANIŞMA TOPLANTISI CANLI YAYIN"
+                    className="absolute inset-0 w-full h-full"
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                    }}
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                    2. Grup Tanışma Toplantısı Canlı Yayın
+                  </h3>
                 </div>
               </div>
             </div>
@@ -598,11 +559,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     İlk Görüşme ve Görüşme İpuçları
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -629,11 +585,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     Koçluk Modelleri
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -660,11 +611,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     Koçluk Süreci ve Koçluk Modelleri
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -691,11 +637,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     Etkin Geri Bildirim ve Güçlü Ricalar
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -722,11 +663,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     GROW Model
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -753,11 +689,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     Güçlü Sorular SMART Model ve GROW Model
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -784,11 +715,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     Yargılarımız ve Güçlü Sorular
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -816,11 +742,6 @@ export default function EgitimIcerikPage() {
                     Hareket Geçirme ve Koçluk Görüşmelerinde Dikkat Etmemiz
                     Gerekenler
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -847,11 +768,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     Koçluk Teknikleri
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -878,11 +794,6 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     Meta Programlar 2
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
                 </div>
               </div>
 
@@ -909,14 +820,351 @@ export default function EgitimIcerikPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                     Meta Programlar 1
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">
-                    Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
-                    Video kontrollerini kullanarak oynatabilir, duraklatabilir
-                    ve ses seviyesini ayarlayabilirsiniz.
-                  </p>
+                </div>
+              </div>
+
+              {/* Stres ve Zaman Yönetimi */}
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div className="relative aspect-video w-full">
+                  <iframe
+                    src="https://player.vimeo.com/video/1066315053?h=23133ff69b&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    title="STRES VE ZAMAN YÖNETİMİ"
+                    className="absolute inset-0 w-full h-full"
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                    }}
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                    Stres ve Zaman Yönetimi
+                  </h3>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* MYK Koç Seviye 6 Mentörlük Kategorisi */}
+      <div className="mb-8">
+        <div className="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-6 sm:p-8 mb-6 border border-teal-100">
+          <div className="flex items-center mb-4">
+            <div className="h-12 w-12 bg-teal-600 rounded-xl flex items-center justify-center mr-4">
+              <svg
+                className="h-6 w-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">
+                MYK Koç Seviye 6 Mentörlük
+              </h2>
+              <p className="text-teal-700 text-sm sm:text-base font-medium">
+                MYK Koç Seviye 6 sınavına hazırlık mentörlük eğitimleri
+              </p>
+            </div>
+          </div>
+          <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 border border-white/50">
+            <p className="text-gray-700 text-sm">
+              🎓 Bu kategoride MYK Koç Seviye 6 sınavına hazırlık mentörlük
+              eğitimleri bulunmaktadır. Canlı yayınlar ve konu modülleri olmak
+              üzere iki alt kategoride düzenlenmiştir.
+            </p>
+          </div>
+        </div>
+
+        {/* Canlı Yayınlar Alt Kategorisi */}
+        <div className="mb-8">
+          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4 sm:p-6 mb-6 border border-indigo-100">
+            <div className="flex items-center mb-3">
+              <div className="h-8 w-8 bg-indigo-600 rounded-lg flex items-center justify-center mr-3">
+                <svg
+                  className="h-4 w-4 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">
+                  Canlı Yayınlar
+                </h3>
+                <p className="text-indigo-700 text-sm font-medium">
+                  Mentörlük canlı yayın kayıtları
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Canlı Yayın Video Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* 3. Grup 1. Canlı Yayın */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src="https://player.vimeo.com/video/1074962620?h=5b82794e4b&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="MYK KOÇ SEVİYE 6 SINAVINA HAZIRLIK (MENTÖRLÜK) 3. GRUP 1. CANLI YAYIN"
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  3. Grup 1. Canlı Yayın
+                </h3>
+              </div>
+            </div>
+
+            {/* 3. Grup 2. Canlı Yayın */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src="https://player.vimeo.com/video/1077226974?h=dc5820387a&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="MYK KOÇ SEVİYE 6 SINAVINA HAZIRLIK (MENTÖRLÜK) 3. GRUP 2. CANLI YAYIN"
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  3. Grup 2. Canlı Yayın
+                </h3>
+              </div>
+            </div>
+
+            {/* 3. Grup 3. Canlı Yayın */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src="https://player.vimeo.com/video/1078073738?h=8db7b19f98&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="MYK KOÇ SEVİYE 6 SINAVINA HAZIRLIK (MENTÖRLÜK) 3. GRUP 3. CANLI YAYIN"
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  3. Grup 3. Canlı Yayın
+                </h3>
+              </div>
+            </div>
+
+            {/* 3. Grup 4. Canlı Yayın */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src="https://player.vimeo.com/video/1078294669?h=ce025ba24c&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="MYK KOÇ SEVİYE 6 SINAVINA HAZIRLIK (MENTÖRLÜK) 3. GRUP 4. CANLI YAYIN"
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  3. Grup 4. Canlı Yayın
+                </h3>
+              </div>
+            </div>
+
+            {/* 3. Grup 5. Canlı Yayın */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src="https://player.vimeo.com/video/1079774040?h=4218d79fbf&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="MYK KOÇ SEVİYE 6 SINAVINA HAZIRLIK (MENTÖRLÜK) 3. GRUP 5. CANLI YAYIN"
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  3. Grup 5. Canlı Yayın
+                </h3>
+              </div>
+            </div>
+
+            {/* 2. Grup 3. Canlı Yayın */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src="https://player.vimeo.com/video/1051894685?h=955590a4bd&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="MYK KOÇ SEVİYE 6 SINAVINA HAZIRLIK (MENTÖRLÜK) 2. GRUP 3. CANLI YAYIN"
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  2. Grup 3. Canlı Yayın
+                </h3>
+              </div>
+            </div>
+
+            {/* 2. Grup 2. Canlı Yayın */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src="https://player.vimeo.com/video/1050053220?h=7233d65586&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="MYK KOÇ SEVİYE 6 SINAVINA HAZIRLIK (MENTÖRLÜK) 2. GRUP 2. CANLI YAYIN"
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  2. Grup 2. Canlı Yayın
+                </h3>
+              </div>
+            </div>
+
+            {/* 2. Grup 1. Canlı Yayın */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src="https://player.vimeo.com/video/1048934916?h=0af232a866&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="MYK KOÇ SEVİYE 6 SINAVINA HAZIRLIK (MENTÖRLÜK) 2. GRUP 1. CANLI YAYIN"
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  2. Grup 1. Canlı Yayın
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Konu Modülleri Alt Kategorisi */}
+        <div className="mb-8">
+          <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-xl p-4 sm:p-6 mb-6 border border-emerald-100">
+            <div className="flex items-center mb-3">
+              <div className="h-8 w-8 bg-emerald-600 rounded-lg flex items-center justify-center mr-3">
+                <svg
+                  className="h-4 w-4 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">
+                  Konu Modülleri
+                </h3>
+                <p className="text-emerald-700 text-sm font-medium">
+                  Spesifik mentörlük konuları ve teknikleri
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Konu Modülleri Grid - Şu anda boş, gelecekte videolar eklenecek */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Bu alan gelecekte konu modülü videoları için ayrıldı */}
           </div>
         </div>
       </div>
@@ -983,11 +1231,6 @@ export default function EgitimIcerikPage() {
               <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                 Koçluk Pratikleri 1. Canlı
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                Bu video Vimeo platformundan gömülü olarak yüklenmektedir. Video
-                kontrollerini kullanarak oynatabilir, duraklatabilir ve ses
-                seviyesini ayarlayabilirsiniz.
-              </p>
             </div>
           </div>
 
@@ -1014,11 +1257,6 @@ export default function EgitimIcerikPage() {
               <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                 Koçluk Pratikleri 2. Canlı
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                Bu video Vimeo platformundan gömülü olarak yüklenmektedir. Video
-                kontrollerini kullanarak oynatabilir, duraklatabilir ve ses
-                seviyesini ayarlayabilirsiniz.
-              </p>
             </div>
           </div>
 
@@ -1045,11 +1283,6 @@ export default function EgitimIcerikPage() {
               <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                 Koçluk Pratikleri 3. Canlı
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                Bu video Vimeo platformundan gömülü olarak yüklenmektedir. Video
-                kontrollerini kullanarak oynatabilir, duraklatabilir ve ses
-                seviyesini ayarlayabilirsiniz.
-              </p>
             </div>
           </div>
 
@@ -1076,11 +1309,6 @@ export default function EgitimIcerikPage() {
               <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                 Koçluk Pratikleri 4. Canlı
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                Bu video Vimeo platformundan gömülü olarak yüklenmektedir. Video
-                kontrollerini kullanarak oynatabilir, duraklatabilir ve ses
-                seviyesini ayarlayabilirsiniz.
-              </p>
             </div>
           </div>
         </div>
