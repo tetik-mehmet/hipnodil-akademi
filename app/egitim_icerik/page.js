@@ -69,145 +69,109 @@ export default function EgitimIcerikPage() {
           </p>
         </header>
 
-        {/* Ana Video Bölümü */}
+        {/* Özlem İsa Hocayla MYK Temel Koçluk Kategorisi */}
         <div className="mb-8">
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className="relative aspect-video w-full">
-              <iframe
-                src="https://player.vimeo.com/video/1108439414?h=4c5782ec09&badge=0&autopause=0&player_id=0&app_id=58479"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4. GRUP 2. CANLI YAYIN"
-                className="absolute inset-0 w-full h-full"
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                }}
-              />
-            </div>
-            <div className="p-6">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
-                ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4. GRUP 2. CANLI YAYIN
-              </h2>
-              <p className="text-gray-600 text-sm sm:text-base">
-                Bu video Vimeo platformundan gömülü olarak yüklenmektedir. Video
-                kontrollerini kullanarak oynatabilir, duraklatabilir ve ses
-                seviyesini ayarlayabilirsiniz.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Ek Video Kartları (İsteğe bağlı) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="group rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
-            <div className="relative aspect-video bg-gray-100 flex items-center justify-center">
-              <div className="h-14 w-14 rounded-full bg-gray-200 flex items-center justify-center ring-1 ring-gray-300">
-                <svg
-                  className="h-6 w-6 text-gray-500"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M8 5v14l11-7L8 5z" />
-                </svg>
-              </div>
-              <span className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded-full bg-gray-900/80 text-white">
-                Yakında
-              </span>
-            </div>
-            <div className="p-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900">
-                Ek Video 1
-              </h3>
-              <p className="mt-1 text-sm text-gray-600 line-clamp-2">
-                Bu alana başka videolar eklenebilir.
-              </p>
-              <div className="mt-3 flex items-center justify-between">
-                <span className="text-xs text-gray-500">Süre: -</span>
-                <button
-                  type="button"
-                  className="text-sm font-medium text-blue-600 hover:text-blue-700"
-                  disabled
-                >
-                  İzle
-                </button>
-              </div>
-            </div>
+          <div className="mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+              Özlem İsa Hocayla MYK Temel Koçluk
+            </h2>
+            <p className="text-gray-600 text-sm sm:text-base">
+              MYK (Mesleki Yeterlilik Kurumu) Temel Koçluk eğitimleri
+            </p>
           </div>
 
-          <div className="group rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
-            <div className="relative aspect-video bg-gray-100 flex items-center justify-center">
-              <div className="h-14 w-14 rounded-full bg-gray-200 flex items-center justify-center ring-1 ring-gray-300">
-                <svg
-                  className="h-6 w-6 text-gray-500"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M8 5v14l11-7L8 5z" />
-                </svg>
+          {/* Video Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* 4. Grup 2. Canlı Yayın */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src="https://player.vimeo.com/video/1108439414?h=4c5782ec09&badge=0&autopause=0&player_id=0&app_id=58479"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4. GRUP 2. CANLI YAYIN"
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
+                />
               </div>
-              <span className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded-full bg-gray-900/80 text-white">
-                Yakında
-              </span>
-            </div>
-            <div className="p-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900">
-                Ek Video 2
-              </h3>
-              <p className="mt-1 text-sm text-gray-600 line-clamp-2">
-                Bu alana başka videolar eklenebilir.
-              </p>
-              <div className="mt-3 flex items-center justify-between">
-                <span className="text-xs text-gray-500">Süre: -</span>
-                <button
-                  type="button"
-                  className="text-sm font-medium text-blue-600 hover:text-blue-700"
-                  disabled
-                >
-                  İzle
-                </button>
+              <div className="p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  4. Grup 2. Canlı Yayın
+                </h3>
+                <p className="text-gray-600 text-sm sm:text-base">
+                  Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
+                  Video kontrollerini kullanarak oynatabilir, duraklatabilir ve
+                  ses seviyesini ayarlayabilirsiniz.
+                </p>
               </div>
             </div>
-          </div>
 
-          <div className="group rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
-            <div className="relative aspect-video bg-gray-100 flex items-center justify-center">
-              <div className="h-14 w-14 rounded-full bg-gray-200 flex items-center justify-center ring-1 ring-gray-300">
-                <svg
-                  className="h-6 w-6 text-gray-500"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M8 5v14l11-7L8 5z" />
-                </svg>
+            {/* 4. Grup 1. Canlı Yayın */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src="https://player.vimeo.com/video/1107088158?h=12dadfe3be&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4. GRUP 1. CANLI YAYIN"
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
+                />
               </div>
-              <span className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded-full bg-gray-900/80 text-white">
-                Yakında
-              </span>
+              <div className="p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  4. Grup 1. Canlı Yayın
+                </h3>
+                <p className="text-gray-600 text-sm sm:text-base">
+                  Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
+                  Video kontrollerini kullanarak oynatabilir, duraklatabilir ve
+                  ses seviyesini ayarlayabilirsiniz.
+                </p>
+              </div>
             </div>
-            <div className="p-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900">
-                Ek Video 3
-              </h3>
-              <p className="mt-1 text-sm text-gray-600 line-clamp-2">
-                Bu alana başka videolar eklenebilir.
-              </p>
-              <div className="mt-3 flex items-center justify-between">
-                <span className="text-xs text-gray-500">Süre: -</span>
-                <button
-                  type="button"
-                  className="text-sm font-medium text-blue-600 hover:text-blue-700"
-                  disabled
-                >
-                  İzle
-                </button>
+
+            {/* 4. Grup 3. Canlı Yayın */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src="https://player.vimeo.com/video/1109959757?h=ee385d21e5&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4. GRUP 3. CANLI YAYIN"
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  4. Grup 3. Canlı Yayın
+                </h3>
+                <p className="text-gray-600 text-sm sm:text-base">
+                  Bu video Vimeo platformundan gömülü olarak yüklenmektedir.
+                  Video kontrollerini kullanarak oynatabilir, duraklatabilir ve
+                  ses seviyesini ayarlayabilirsiniz.
+                </p>
               </div>
             </div>
           </div>
