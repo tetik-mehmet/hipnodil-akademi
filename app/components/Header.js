@@ -9,6 +9,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [isConsultingOpen, setIsConsultingOpen] = useState(false);
+  const [showError, setShowError] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const isOnEgitimIcerik = pathname?.startsWith("/egitim_icerik");
@@ -48,6 +49,38 @@ export default function Header() {
     } finally {
       setIsLoggingOut(false);
     }
+  };
+
+  const checkAuthAndRedirect = async () => {
+    try {
+      const response = await fetch("/api/auth/verify", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      if (response.ok) {
+        // Kullanıcı giriş yapmış, eğitim içeriği sayfasına yönlendir
+        router.push("/egitim_icerik");
+      } else {
+        // Kullanıcı giriş yapmamış, hata mesajı göster
+        setShowError(true);
+        setTimeout(() => {
+          setShowError(false);
+        }, 3000);
+      }
+    } catch (error) {
+      console.error("Auth kontrol hatası:", error);
+      // Hata durumunda da hata mesajı göster
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 3000);
+    }
+  };
+
+  const handleEgitimIcerikClick = (e) => {
+    e.preventDefault();
+    checkAuthAndRedirect();
   };
   return (
     <header className="sticky top-0 z-50 w-full bg-white md:bg-white/10 md:supports-[backdrop-filter]:bg-white/10 md:backdrop-blur-xl md:backdrop-saturate-150 border-b border-gray-200 md:border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
@@ -156,13 +189,17 @@ export default function Header() {
           >
             İletişim
           </Link>
-          <Link
-            href="/egitim_icerik"
+          <button
+            type="button"
+            onClick={handleEgitimIcerikClick}
             className="relative font-semibold text-[#F28B82]/70 transition-colors hover:text-[#059669] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#059669] after:transition-transform after:duration-300 hover:after:scale-x-100"
           >
             Eğitim İçeriğim
-          </Link>
-          {isOnEgitimIcerik && (
+          </button>
+        </nav>
+
+        <div className="hidden items-center gap-3 md:flex ml-auto bg-[#94B4C1] backdrop-blur-sm rounded-2xl border border-gray-200/50 px-4 py-2 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+          {isOnEgitimIcerik ? (
             <button
               type="button"
               onClick={handleLogout}
@@ -171,22 +208,22 @@ export default function Header() {
             >
               {isLoggingOut ? "Çıkış Yapılıyor..." : "Çıkış Yap"}
             </button>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="rounded-xl border border-[#F28B82]/40 bg-white px-5 py-2 font-bold text-[#F28B82] shadow-sm transition-all duration-300 ease-out hover:border-[#F28B82] hover:bg-[#F28B82] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(242,139,130,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-[0.98]"
+              >
+                Giriş
+              </Link>
+              <Link
+                href="/signup"
+                className="whitespace-nowrap rounded-xl bg-[#FFA07A] px-5 py-2 font-bold text-[#1E3A8A] shadow-[0_10px_30px_-10px_rgba(255,160,122,0.45)] transition-all duration-300 ease-out hover:shadow-[0_18px_40px_-12px_rgba(255,160,122,0.55)] hover:-translate-y-0.5 hover:bg-[#FF8C69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFA07A]/60 active:translate-y-0 active:scale-[0.98]"
+              >
+                Üye Ol
+              </Link>
+            </>
           )}
-        </nav>
-
-        <div className="hidden items-center gap-3 md:flex ml-auto bg-[#94B4C1] backdrop-blur-sm rounded-2xl border border-gray-200/50 px-4 py-2 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
-          <Link
-            href="/login"
-            className="rounded-xl border border-[#F28B82]/40 bg-white px-5 py-2 font-bold text-[#F28B82] shadow-sm transition-all duration-300 ease-out hover:border-[#F28B82] hover:bg-[#F28B82] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(242,139,130,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-[0.98]"
-          >
-            Giriş
-          </Link>
-          <Link
-            href="/signup"
-            className="whitespace-nowrap rounded-xl bg-[#FFA07A] px-5 py-2 font-bold text-[#1E3A8A] shadow-[0_10px_30px_-10px_rgba(255,160,122,0.45)] transition-all duration-300 ease-out hover:shadow-[0_18px_40px_-12px_rgba(255,160,122,0.55)] hover:-translate-y-0.5 hover:bg-[#FF8C69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFA07A]/60 active:translate-y-0 active:scale-[0.98]"
-          >
-            Üye Ol
-          </Link>
         </div>
 
         {/* Mobil menü paneli */}
@@ -280,13 +317,16 @@ export default function Header() {
               >
                 İletişim
               </Link>
-              <Link
-                href="/egitim_icerik"
+              <button
+                type="button"
+                onClick={(e) => {
+                  handleEgitimIcerikClick(e);
+                  setIsOpen(false);
+                }}
                 className="rounded-lg px-3 py-2 font-semibold text-[#F28B82]/70 hover:bg-[#059669]/10 hover:text-[#059669]"
-                onClick={() => setIsOpen(false)}
               >
                 Eğitim İçeriğim
-              </Link>
+              </button>
               <div className="mt-2 flex items-center gap-2 pt-2">
                 {isOnEgitimIcerik ? (
                   <button
@@ -326,6 +366,29 @@ export default function Header() {
         {/* İnce gradient alt çizgi */}
         <div className="pointer-events-none absolute inset-x-0 -bottom-[1px] h-px bg-gradient-to-r from-transparent via-[#F28B82]/60 to-transparent" />
       </div>
+
+      {/* Hata mesajı */}
+      {showError && (
+        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg animate-pulse">
+          <div className="flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="h-5 w-5"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <span className="font-medium">
+              Bu sayfaya erişim için giriş yapmanız gerekiyor!
+            </span>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

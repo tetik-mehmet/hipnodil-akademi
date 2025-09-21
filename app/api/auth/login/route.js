@@ -38,6 +38,8 @@ export async function POST(request) {
     const token = await createSessionJwt({
       sub: String(user._id),
       email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
     });
 
     const res = NextResponse.json({

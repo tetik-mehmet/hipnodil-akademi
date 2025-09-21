@@ -12,10 +12,20 @@ export async function GET(request) {
       );
     }
 
-    // JWT token'ı doğrula
-    await verifySessionJwt(token);
+    // JWT token'ı doğrula ve kullanıcı bilgilerini al
+    const payload = await verifySessionJwt(token);
 
-    return NextResponse.json({ message: "Session geçerli" }, { status: 200 });
+    return NextResponse.json(
+      {
+        message: "Session geçerli",
+        user: {
+          firstName: payload.firstName,
+          lastName: payload.lastName,
+          email: payload.email,
+        },
+      },
+      { status: 200 }
+    );
   } catch (error) {
     return NextResponse.json({ message: "Session geçersiz" }, { status: 401 });
   }

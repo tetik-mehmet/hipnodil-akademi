@@ -7,6 +7,7 @@ export default function EgitimIcerikPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -18,7 +19,9 @@ export default function EgitimIcerikPage() {
         });
 
         if (response.ok) {
+          const data = await response.json();
           setIsAuthenticated(true);
+          setUser(data.user);
         } else {
           // Auth başarısız, login sayfasına yönlendir
           router.replace("/login");
@@ -61,11 +64,21 @@ export default function EgitimIcerikPage() {
     <div className="min-h-[calc(100vh-6rem)] w-full bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6 lg:px-8 py-10">
       <div className="max-w-7xl mx-auto">
         <header className="mb-8 sm:mb-10">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+          <div className="bg-gradient-to-r from-[#F28B82] to-[#FFA07A] rounded-2xl p-6 sm:p-8 mb-6 text-white">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-2">
+              Hoşgeldiniz, {user?.firstName} {user?.lastName}! 👋
+            </h1>
+            <p className="text-white/90 text-sm sm:text-base">
+              Eğitim içeriklerinize erişim sağlayabilir ve Vimeo üzerinden
+              eğitim videolarınızı izleyebilirsiniz.
+            </p>
+          </div>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
             Eğitim İçerikleri
-          </h1>
-          <p className="mt-2 text-gray-600 text-sm sm:text-base">
-            Vimeo üzerinden eğitim videolarınızı izleyebilirsiniz.
+          </h2>
+          <p className="text-gray-600 text-sm sm:text-base">
+            Aşağıdaki kategorilerden istediğiniz eğitimi seçerek
+            başlayabilirsiniz.
           </p>
         </header>
 
