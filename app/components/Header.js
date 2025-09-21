@@ -87,14 +87,14 @@ export default function Header() {
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
         {/* Dekoratif yumuşak parıltı */}
         <div className="pointer-events-none absolute inset-x-0 -top-8 mx-auto h-16 max-w-5xl scale-100 bg-gradient-to-r from-[#F28B82]/30 via-[#F9D162]/20 to-[#F28B82]/30 blur-2xl md:h-20 md:scale-105" />
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3 -ml-2">
           <Image
             src="/hipnodilakademilogo.png"
             alt="Hipnodil Akademi"
-            width={160}
-            height={40}
+            width={200}
+            height={50}
             priority
-            className="h-10 w-auto transition-transform duration-300 ease-out hover:scale-[1.03]"
+            className="h-12 w-auto transition-transform duration-300 ease-out hover:scale-[1.03]"
           />
         </Link>
 
@@ -131,31 +131,51 @@ export default function Header() {
         <nav className="hidden items-center gap-8 md:flex ml-4 md:ml-8">
           <Link
             href="/"
-            className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
+            className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+              pathname === "/"
+                ? "text-[#1F2937] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
+                : "text-[#F28B82] hover:text-[#1F2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
+            }`}
           >
             Ana Sayfa
           </Link>
           <Link
             href="/hakkimizda"
-            className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
+            className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+              pathname === "/hakkimizda"
+                ? "text-[#1F2937] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
+                : "text-[#F28B82] hover:text-[#1F2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
+            }`}
           >
             Hakkımızda
           </Link>
           <Link
             href="/paketler"
-            className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
+            className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+              pathname === "/paketler"
+                ? "text-[#1F2937] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
+                : "text-[#F28B82] hover:text-[#1F2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
+            }`}
           >
             Koçluk Paketleri
           </Link>
           <Link
             href="/egitmenler"
-            className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
+            className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+              pathname === "/egitmenler"
+                ? "text-[#1F2937] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
+                : "text-[#F28B82] hover:text-[#1F2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
+            }`}
           >
             Eğitmenlerimiz
           </Link>
           <Link
             href="/egitimlerimiz"
-            className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
+            className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+              pathname === "/egitimlerimiz"
+                ? "text-[#1F2937] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
+                : "text-[#F28B82] hover:text-[#1F2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
+            }`}
           >
             Eğitimlerimiz
           </Link>
@@ -164,20 +184,32 @@ export default function Header() {
               type="button"
               aria-haspopup="menu"
               aria-expanded="false"
-              className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
+              className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+                pathname === "/danismanlik" || pathname === "/grup_danismanlik"
+                  ? "text-[#1F2937] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
+                  : "text-[#F28B82] hover:text-[#1F2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
+              }`}
             >
               Danışmanlık Hizmetleri
             </button>
             <div className="invisible absolute left-0 top-full z-40 mt-3 w-64 rounded-xl border border-gray-200 bg-white p-2 opacity-0 shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
               <Link
                 href="/danismanlik"
-                className="block rounded-lg px-3 py-2 text-sm font-medium text-[#1F2937] hover:bg-[#1F2937]/5"
+                className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  pathname === "/danismanlik"
+                    ? "text-[#F28B82] bg-[#F28B82]/10"
+                    : "text-[#1F2937] hover:bg-[#1F2937]/5"
+                }`}
               >
                 Bireysel Danışmanlık Hizmetleri
               </Link>
               <Link
                 href="/grup_danismanlik"
-                className="mt-1 block rounded-lg px-3 py-2 text-sm font-medium text-[#1F2937] hover:bg-[#1F2937]/5"
+                className={`mt-1 block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  pathname === "/grup_danismanlik"
+                    ? "text-[#F28B82] bg-[#F28B82]/10"
+                    : "text-[#1F2937] hover:bg-[#1F2937]/5"
+                }`}
               >
                 Grup Danışmanlık Hizmetleri
               </Link>
@@ -185,42 +217,126 @@ export default function Header() {
           </div>
           <Link
             href="/iletisim"
-            className="relative font-semibold text-[#F28B82] transition-colors hover:text-[#1F2937] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] after:transition-transform after:duration-300 hover:after:scale-x-100"
+            className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+              pathname === "/iletisim"
+                ? "text-[#1F2937] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
+                : "text-[#F28B82] hover:text-[#1F2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
+            }`}
           >
             İletişim
           </Link>
           <button
             type="button"
             onClick={handleEgitimIcerikClick}
-            className="relative font-semibold text-[#F28B82]/70 transition-colors hover:text-[#059669] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#F28B82] after:to-[#059669] after:transition-transform after:duration-300 hover:after:scale-x-100"
+            className="relative font-bold text-[#1E3A8A] transition-colors hover:text-[#059669] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#1E3A8A] after:to-[#059669] after:transition-transform after:duration-300 hover:after:scale-x-100"
           >
             Eğitim İçeriğim
           </button>
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex ml-auto bg-[#94B4C1] backdrop-blur-sm rounded-2xl border border-gray-200/50 px-4 py-2 shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+        <div className="hidden items-center gap-4 md:flex ml-8">
           {isOnEgitimIcerik ? (
             <button
               type="button"
               onClick={handleLogout}
               disabled={isLoggingOut}
-              className="rounded-xl border border-red-300 bg-white px-4 py-2 text-red-600 shadow-sm transition-all duration-300 ease-out hover:border-red-400 hover:bg-red-50 hover:text-red-700 disabled:opacity-60"
+              className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-red-500 to-red-600 px-6 py-3 font-bold text-white shadow-lg shadow-red-500/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-red-500/40 hover:-translate-y-1 hover:scale-105 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:scale-100"
             >
-              {isLoggingOut ? "Çıkış Yapılıyor..." : "Çıkış Yap"}
+              <span className="relative z-10 flex items-center gap-2">
+                {isLoggingOut ? (
+                  <>
+                    <svg
+                      className="h-4 w-4 animate-spin"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Çıkış Yapılıyor...
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      className="h-4 w-4 transition-transform group-hover:rotate-12"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                      ></path>
+                    </svg>
+                    Çıkış Yap
+                  </>
+                )}
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
             </button>
           ) : (
             <>
               <Link
                 href="/login"
-                className="rounded-xl border border-[#F28B82]/40 bg-white px-5 py-2 font-bold text-[#F28B82] shadow-sm transition-all duration-300 ease-out hover:border-[#F28B82] hover:bg-[#F28B82] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(242,139,130,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-[0.98]"
+                className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#F28B82] to-[#FF6B6B] px-6 py-3 font-bold text-white shadow-lg shadow-[#F28B82]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#F28B82]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-95"
               >
-                Giriş
+                <span className="relative z-10 flex items-center gap-2">
+                  <svg
+                    className="h-5 w-5 transition-transform group-hover:rotate-12"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20 12C20 7.58172 16.4183 4 12 4M12 20C14.5264 20 16.7792 18.8289 18.2454 17"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M4 12H14M14 12L11 9M14 12L11 15"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Giriş Yap
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                <div className="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
               </Link>
               <Link
                 href="/signup"
-                className="whitespace-nowrap rounded-xl bg-[#FFA07A] px-5 py-2 font-bold text-[#1E3A8A] shadow-[0_10px_30px_-10px_rgba(255,160,122,0.45)] transition-all duration-300 ease-out hover:shadow-[0_18px_40px_-12px_rgba(255,160,122,0.55)] hover:-translate-y-0.5 hover:bg-[#FF8C69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFA07A]/60 active:translate-y-0 active:scale-[0.98]"
+                className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#FFA07A] to-[#FF8C69] px-6 py-3 font-bold text-white shadow-lg shadow-[#FFA07A]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#FFA07A]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFA07A]/60 active:scale-95"
               >
-                Üye Ol
+                <span className="relative z-10 flex items-center gap-2">
+                  <svg
+                    className="h-5 w-5 transition-transform group-hover:rotate-12"
+                    fill="currentColor"
+                    viewBox="0 0 512 512"
+                  >
+                    <path d="M259.993,460.958c14.498,14.498,75.487-23.002,89.985-37.492l59.598-59.606l-52.494-52.485l-59.597,59.597C282.996,385.462,245.504,446.46,259.993,460.958z" />
+                    <path d="M493.251,227.7c-14.498-14.49-37.996-14.49-52.485,0l-71.68,71.678l52.494,52.486l71.671-71.68C507.741,265.695,507.741,242.198,493.251,227.7z M399.586,308.882l-9.008-8.999l50.18-50.18l8.991,8.99L399.586,308.882z" />
+                    <path d="M374.714,448.193c-14.071,14.055-67.572,51.008-104.791,51.008c-0.008,0,0,0-0.008,0c-17.47,0-28.484-7.351-34.648-13.516c-44.758-44.775,36.604-138.56,37.492-139.439l4.123-4.124c-3.944-4.354-5.644-10.348-5.644-22.302c0-8.836,0-25.256,0-40.403c11.364-12.619,15.497-11.048,25.103-60.596c19.433,0,18.178-25.248,27.34-47.644c7.479-18.238,1.212-25.632-5.072-28.655c5.14-66.463,5.14-112.236-70.296-126.435c-27.349-23.438-68.606-15.48-88.158-11.57c-19.536,3.911-37.159,0-37.159,0l3.355,31.49C97.74,70.339,112.05,116.112,107.44,142.923c-5.994,3.27-11.407,10.809-4.269,28.254c9.17,22.396,7.906,47.644,27.339,47.644c9.614,49.548,13.747,47.976,25.111,60.596c0,15.148,0,31.567,0,40.403c0,25.248-8.58,25.684-28.134,36.612c-47.14,26.35-108.572,41.659-119.571,124.01C5.902,495.504,92.378,511.948,213.434,512c121.04-0.052,207.524-16.496,205.518-31.558c-3.168-23.702-10.648-41.547-20.68-55.806L374.714,448.193z" />
+                  </svg>
+                  Üye Ol
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C69] to-[#FF7F50] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                <div className="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
               </Link>
             </>
           )}
@@ -235,42 +351,67 @@ export default function Header() {
             <nav className="flex flex-col gap-1 p-3">
               <Link
                 href="/"
-                className="rounded-lg px-3 py-2 font-semibold text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                className={`rounded-lg px-3 py-2 font-semibold transition-colors ${
+                  pathname === "/"
+                    ? "text-[#1F2937] bg-[#F28B82]/10"
+                    : "text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 Ana Sayfa
               </Link>
               <Link
                 href="/hakkimizda"
-                className="rounded-lg px-3 py-2 font-semibold text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                className={`rounded-lg px-3 py-2 font-semibold transition-colors ${
+                  pathname === "/hakkimizda"
+                    ? "text-[#1F2937] bg-[#F28B82]/10"
+                    : "text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 Hakkımızda
               </Link>
               <Link
                 href="/paketler"
-                className="rounded-lg px-3 py-2 font-semibold text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                className={`rounded-lg px-3 py-2 font-semibold transition-colors ${
+                  pathname === "/paketler"
+                    ? "text-[#1F2937] bg-[#F28B82]/10"
+                    : "text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 Koçluk Paketleri
               </Link>
               <Link
                 href="/egitmenler"
-                className="rounded-lg px-3 py-2 font-semibold text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                className={`rounded-lg px-3 py-2 font-semibold transition-colors ${
+                  pathname === "/egitmenler"
+                    ? "text-[#1F2937] bg-[#F28B82]/10"
+                    : "text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 Eğitmenlerimiz
               </Link>
               <Link
                 href="/egitimlerimiz"
-                className="rounded-lg px-3 py-2 font-semibold text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                className={`rounded-lg px-3 py-2 font-semibold transition-colors ${
+                  pathname === "/egitimlerimiz"
+                    ? "text-[#1F2937] bg-[#F28B82]/10"
+                    : "text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 Eğitimlerimiz
               </Link>
               <Link
                 href="/danismanlik"
-                className="flex items-center justify-between rounded-lg px-3 py-2 font-semibold text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                className={`flex items-center justify-between rounded-lg px-3 py-2 font-semibold transition-colors ${
+                  pathname === "/danismanlik" ||
+                  pathname === "/grup_danismanlik"
+                    ? "text-[#1F2937] bg-[#F28B82]/10"
+                    : "text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                }`}
                 onClick={(e) => {
                   e.preventDefault();
                   setIsConsultingOpen((v) => !v);
@@ -296,14 +437,22 @@ export default function Header() {
                 <div className="ml-2 flex flex-col gap-1 pb-1">
                   <Link
                     href="/danismanlik"
-                    className="rounded-lg px-3 py-2 text-sm font-medium text-[#1F2937] hover:bg-[#1F2937]/10"
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      pathname === "/danismanlik"
+                        ? "text-[#F28B82] bg-[#F28B82]/10"
+                        : "text-[#1F2937] hover:bg-[#1F2937]/10"
+                    }`}
                     onClick={() => setIsOpen(false)}
                   >
                     Bireysel Danışmanlık Hizmetleri
                   </Link>
                   <Link
                     href="/grup_danismanlik"
-                    className="rounded-lg px-3 py-2 text-sm font-medium text-[#1F2937] hover:bg-[#1F2937]/10"
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      pathname === "/grup_danismanlik"
+                        ? "text-[#F28B82] bg-[#F28B82]/10"
+                        : "text-[#1F2937] hover:bg-[#1F2937]/10"
+                    }`}
                     onClick={() => setIsOpen(false)}
                   >
                     Grup Danışmanlık Hizmetleri
@@ -312,7 +461,11 @@ export default function Header() {
               )}
               <Link
                 href="/iletisim"
-                className="rounded-lg px-3 py-2 font-semibold text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                className={`rounded-lg px-3 py-2 font-semibold transition-colors ${
+                  pathname === "/iletisim"
+                    ? "text-[#1F2937] bg-[#F28B82]/10"
+                    : "text-[#F28B82] hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 İletişim
@@ -323,11 +476,11 @@ export default function Header() {
                   handleEgitimIcerikClick(e);
                   setIsOpen(false);
                 }}
-                className="rounded-lg px-3 py-2 font-semibold text-[#F28B82]/70 hover:bg-[#059669]/10 hover:text-[#059669]"
+                className="rounded-lg px-3 py-2 font-bold text-[#1E3A8A] hover:bg-[#059669]/10 hover:text-[#059669]"
               >
                 Eğitim İçeriğim
               </button>
-              <div className="mt-2 flex items-center gap-2 pt-2">
+              <div className="mt-4 flex flex-col gap-3 pt-2">
                 {isOnEgitimIcerik ? (
                   <button
                     type="button"
@@ -336,25 +489,105 @@ export default function Header() {
                       setIsOpen(false);
                     }}
                     disabled={isLoggingOut}
-                    className="flex-1 rounded-xl border border-red-300 bg-white px-4 py-2 text-center text-red-600 shadow-sm transition-all duration-300 ease-out hover:border-red-400 hover:bg-red-50 hover:text-red-700 disabled:opacity-60"
+                    className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-red-500 to-red-600 px-6 py-3 font-bold text-white shadow-lg shadow-red-500/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-red-500/40 hover:-translate-y-1 hover:scale-105 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:scale-100"
                   >
-                    {isLoggingOut ? "Çıkış..." : "Çıkış Yap"}
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      {isLoggingOut ? (
+                        <>
+                          <svg
+                            className="h-4 w-4 animate-spin"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                          </svg>
+                          Çıkış Yapılıyor...
+                        </>
+                      ) : (
+                        <>
+                          <svg
+                            className="h-4 w-4 transition-transform group-hover:rotate-12"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                            ></path>
+                          </svg>
+                          Çıkış Yap
+                        </>
+                      )}
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                   </button>
                 ) : (
                   <>
                     <Link
                       href="/login"
-                      className="flex-1 rounded-xl border border-[#F28B82]/40 bg-white px-4 py-2 text-center font-bold text-[#F28B82] shadow-sm transition-all duration-300 ease-out hover:border-[#F28B82] hover:bg-[#F28B82] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(242,139,130,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-[0.98]"
+                      className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#F28B82] to-[#FF6B6B] px-6 py-3 font-bold text-white shadow-lg shadow-[#F28B82]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#F28B82]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-95"
                       onClick={() => setIsOpen(false)}
                     >
-                      Giriş
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        <svg
+                          className="h-5 w-5 transition-transform group-hover:rotate-12"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M20 12C20 7.58172 16.4183 4 12 4M12 20C14.5264 20 16.7792 18.8289 18.2454 17"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M4 12H14M14 12L11 9M14 12L11 15"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        Giriş Yap
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                      <div className="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                     </Link>
                     <Link
                       href="/signup"
-                      className="flex-1 whitespace-nowrap rounded-xl bg-[#FFA07A] px-4 py-2 text-center font-bold text-[#1E3A8A] shadow-[0_10px_30px_-10px_rgba(255,160,122,0.45)] transition-all duration-300 ease-out hover:shadow-[0_18px_40px_-12px_rgba(255,160,122,0.55)] hover:-translate-y-0.5 hover:bg-[#FF8C69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFA07A]/60 active:translate-y-0 active:scale-[0.98]"
+                      className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#FFA07A] to-[#FF8C69] px-6 py-3 font-bold text-white shadow-lg shadow-[#FFA07A]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#FFA07A]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFA07A]/60 active:scale-95"
                       onClick={() => setIsOpen(false)}
                     >
-                      Üye Ol
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        <svg
+                          className="h-5 w-5 transition-transform group-hover:rotate-12"
+                          fill="currentColor"
+                          viewBox="0 0 512 512"
+                        >
+                          <path d="M259.993,460.958c14.498,14.498,75.487-23.002,89.985-37.492l59.598-59.606l-52.494-52.485l-59.597,59.597C282.996,385.462,245.504,446.46,259.993,460.958z" />
+                          <path d="M493.251,227.7c-14.498-14.49-37.996-14.49-52.485,0l-71.68,71.678l52.494,52.486l71.671-71.68C507.741,265.695,507.741,242.198,493.251,227.7z M399.586,308.882l-9.008-8.999l50.18-50.18l8.991,8.99L399.586,308.882z" />
+                          <path d="M374.714,448.193c-14.071,14.055-67.572,51.008-104.791,51.008c-0.008,0,0,0-0.008,0c-17.47,0-28.484-7.351-34.648-13.516c-44.758-44.775,36.604-138.56,37.492-139.439l4.123-4.124c-3.944-4.354-5.644-10.348-5.644-22.302c0-8.836,0-25.256,0-40.403c11.364-12.619,15.497-11.048,25.103-60.596c19.433,0,18.178-25.248,27.34-47.644c7.479-18.238,1.212-25.632-5.072-28.655c5.14-66.463,5.14-112.236-70.296-126.435c-27.349-23.438-68.606-15.48-88.158-11.57c-19.536,3.911-37.159,0-37.159,0l3.355,31.49C97.74,70.339,112.05,116.112,107.44,142.923c-5.994,3.27-11.407,10.809-4.269,28.254c9.17,22.396,7.906,47.644,27.339,47.644c9.614,49.548,13.747,47.976,25.111,60.596c0,15.148,0,31.567,0,40.403c0,25.248-8.58,25.684-28.134,36.612c-47.14,26.35-108.572,41.659-119.571,124.01C5.902,495.504,92.378,511.948,213.434,512c121.04-0.052,207.524-16.496,205.518-31.558c-3.168-23.702-10.648-41.547-20.68-55.806L374.714,448.193z" />
+                        </svg>
+                        Üye Ol
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C69] to-[#FF7F50] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                      <div className="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                     </Link>
                   </>
                 )}
