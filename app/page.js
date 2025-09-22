@@ -182,6 +182,7 @@ export default function Home() {
               key={p.title}
               title={p.title}
               description={p.description}
+              imageSrc={p.imageSrc}
               href={p.href}
             />
           ))}

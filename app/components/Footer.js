@@ -47,12 +47,12 @@ export default function Footer() {
             <div className="mt-5 flex items-center gap-3">
               {[
                 {
-                  href: "#",
+                  href: "https://www.instagram.com/hipnodilakademi/",
                   label: "Instagram",
                   src: "/insta.svg",
                 },
                 {
-                  href: "#",
+                  href: "https://www.youtube.com/@Hipnodil-Akademi",
                   label: "YouTube",
                   src: "/youtube.svg",
                 },
@@ -61,6 +61,18 @@ export default function Footer() {
                   key={item.label}
                   aria-label={item.label}
                   href={item.href}
+                  target={
+                    typeof item.href === "string" &&
+                    item.href.startsWith("http")
+                      ? "_blank"
+                      : undefined
+                  }
+                  rel={
+                    typeof item.href === "string" &&
+                    item.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                   className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#1e3a8a]/10 ring-1 ring-[#1e3a8a]/20 transition-all duration-300 hover:bg-[#1e3a8a]/20 hover:scale-110 hover:rotate-3 hover:shadow-lg hover:shadow-[#1e3a8a]/25"
                 >
                   {item.src ? (
@@ -122,21 +134,29 @@ export default function Footer() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm/6">
               {[
-                "MYK KOÇ SEVİYE 6 HAZIRLIK EĞİTİMİ",
-                "MYK KOÇ MENTÖRLÜK EĞİTİMİ",
-                "KURUMSAL KOÇLUK EĞİTİMİ",
-              ].map((text) => (
-                <li key={text} className="text-[#1e3a8a]">
-                  <span
-                    role="link"
-                    aria-disabled="true"
-                    className="group inline-flex cursor-default items-center gap-2 transition hover:text-[#1e3a8a]/80"
+                {
+                  label: "MYK KOÇ SEVİYE 6 HAZIRLIK EĞİTİMİ",
+                  href: "/kurslar/egitim_seviye_6",
+                },
+                {
+                  label: "MYK KOÇ MENTÖRLÜK EĞİTİMİ",
+                  href: "/kurslar/mentorluk",
+                },
+                {
+                  label: "KURUMSAL KOÇLUK EĞİTİMİ",
+                  href: "/kurslar/kurumsal_kocluk",
+                },
+              ].map((item) => (
+                <li key={item.label} className="text-[#1e3a8a]">
+                  <Link
+                    href={item.href}
+                    className="group inline-flex items-center gap-2 transition hover:text-[#1e3a8a]/80"
                   >
                     <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#F28B82] to-[#F9D162]" />
                     <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-[#1e3a8a] after:transition-all group-hover:after:w-full">
-                      {text}
+                      {item.label}
                     </span>
-                  </span>
+                  </Link>
                 </li>
               ))}
             </ul>
