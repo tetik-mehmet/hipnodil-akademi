@@ -60,6 +60,7 @@ export default function Home() {
       description:
         "Kurumsal ortamlarda koçluk becerilerinizi geliştirin ve organizasyonlarda fark yaratın.",
       href: "/kurslar/kurumsal_kocluk",
+      imageSrc: "/bulent.png",
     },
   ];
 
