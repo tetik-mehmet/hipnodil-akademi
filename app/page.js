@@ -42,6 +42,38 @@ function ProgramCard({ title, description, imageSrc = "/merve.png", href }) {
 export default function Home() {
   const slides = ["/slider/bir.png", "/slider/iki.png", "/slider/uc.png"];
 
+  const handleShare = async () => {
+    const url = window.location.href;
+    const text = "Hipnodil Akademi - Profesyonel Koçluk Eğitimleri";
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Hipnodil Akademi",
+          text: text,
+          url: url,
+        });
+      } catch (err) {
+        console.log("Paylaşım iptal edildi");
+      }
+    } else {
+      // Fallback: URL'yi panoya kopyala
+      try {
+        await navigator.clipboard.writeText(url);
+        alert("Link panoya kopyalandı!");
+      } catch (err) {
+        // Fallback: textarea ile kopyala
+        const textArea = document.createElement("textarea");
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        alert("Link panoya kopyalandı!");
+      }
+    }
+  };
+
   const programs = [
     {
       title: "MYK KOÇ SEVİYE 6 HAZIRLIK EĞİTİMİ",
@@ -89,6 +121,30 @@ export default function Home() {
     <div className="font-sans min-h-screen text-slate-800 bg-gradient-to-b from-[#FFF6E5] via-[#BBDCE5]/40 to-[#A8D5BA]/40">
       {/* soft, airy blurred background overlay */}
       <div className="pointer-events-none fixed inset-0 -z-10 blur-2xl opacity-70 [background-image:radial-gradient(1000px_600px_at_0%_0%,rgba(187,220,229,0.35),transparent_60%),radial-gradient(800px_500px_at_100%_100%,rgba(168,213,186,0.35),transparent_60%)]" />
+
+      {/* Paylaş Butonu - Header'ın hemen altında */}
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 pt-4 pb-2">
+        <div className="flex justify-center">
+          <button
+            onClick={handleShare}
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 text-white px-6 py-3 text-sm font-medium shadow-[0_4px_16px_rgba(51,65,85,0.3)] hover:shadow-[0_8px_24px_rgba(51,65,85,0.4)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm border border-slate-600/30"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                fillRule="evenodd"
+                d="M15.75 4.5a3 3 0 1 1 .825 2.066l-8.421 4.679a3.002 3.002 0 0 1 0 1.51l8.421 4.679a3 3 0 1 1-.729 1.31l-8.421-4.678a3 3 0 1 1 0-4.132l8.421-4.679a3 3 0 0 1-.096-.755Z"
+                clipRule="evenodd"
+              />
+            </svg>
+            Arkadaşına Haber Ver
+          </button>
+        </div>
+      </div>
 
       <div
         className="relative w-full h-[70vh] sm:h-[75vh] md:h-[75vh] overflow-hidden"
