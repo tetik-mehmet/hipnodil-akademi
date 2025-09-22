@@ -10,6 +10,9 @@ const UserSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true, lowercase: true },
     education: { type: String },
     password: { type: String, required: true, select: false },
+    // Şifre yenileme için yeni alanlar
+    resetPasswordToken: { type: String },
+    resetPasswordExpires: { type: Date },
   },
   { timestamps: true }
 );

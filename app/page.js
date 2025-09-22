@@ -116,7 +116,7 @@ export default function Home() {
         <button
           aria-label="Önceki"
           onClick={prev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/20 hover:bg-white/30 text-slate-800 backdrop-blur-md border border-white/30 px-4 py-4 sm:px-3 sm:py-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-[0_4px_16px_rgba(31,38,135,0.2)] hover:shadow-[0_8px_24px_rgba(31,38,135,0.3)]"
+          className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/20 hover:bg-white/30 text-slate-800 backdrop-blur-md border border-white/30 px-4 py-4 sm:px-3 sm:py-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-[0_4px_16px_rgba(31,38,135,0.2)] hover:shadow-[0_8px_24px_rgba(31,38,135,0.3)]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +134,7 @@ export default function Home() {
         <button
           aria-label="Sonraki"
           onClick={next}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/20 hover:bg-white/30 text-slate-800 backdrop-blur-md border border-white/30 px-4 py-4 sm:px-3 sm:py-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-[0_4px_16px_rgba(31,38,135,0.2)] hover:shadow-[0_8px_24px_rgba(31,38,135,0.3)]"
+          className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-white/20 hover:bg-white/30 text-slate-800 backdrop-blur-md border border-white/30 px-4 py-4 sm:px-3 sm:py-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-[0_4px_16px_rgba(31,38,135,0.2)] hover:shadow-[0_8px_24px_rgba(31,38,135,0.3)]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +150,7 @@ export default function Home() {
           </svg>
         </button>
 
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 backdrop-blur-md bg-white/10 border border-white/20 rounded-full px-4 py-3 sm:px-3 sm:py-2">
+        <div className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-10 items-center gap-2 backdrop-blur-md bg-white/10 border border-white/20 rounded-full px-4 py-3 sm:px-3 sm:py-2">
           {slides.map((_, i) => (
             <button
               key={i}
@@ -164,6 +164,62 @@ export default function Home() {
             />
           ))}
         </div>
+      </div>
+
+      {/* Mobile controls under slider */}
+      <div className="md:hidden mt-3 flex items-center justify-center gap-3">
+        <button
+          aria-label="Önceki"
+          onClick={prev}
+          className="inline-flex items-center justify-center rounded-full bg-white/70 text-slate-800 border border-white/30 h-10 w-10 shadow-sm active:scale-95 transition"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="h-5 w-5"
+          >
+            <path
+              fillRule="evenodd"
+              d="M15.53 4.47a.75.75 0 0 1 0 1.06L9.06 12l6.47 6.47a.75.75 0 1 1-1.06 1.06l-7-7a.75.75 0 0 1 0-1.06l7-7a.75.75 0 0 1 1.06 0Z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+
+        <div className="flex items-center gap-2 rounded-full bg-white/60 px-3 py-2 border border-white/40">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Slide ${i + 1}`}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                currentIndex === i
+                  ? "w-6 bg-slate-800/80"
+                  : "w-2.5 bg-slate-800/40"
+              }`}
+            />
+          ))}
+        </div>
+
+        <button
+          aria-label="Sonraki"
+          onClick={next}
+          className="inline-flex items-center justify-center rounded-full bg-white/70 text-slate-800 border border-white/30 h-10 w-10 shadow-sm active:scale-95 transition"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="h-5 w-5"
+          >
+            <path
+              fillRule="evenodd"
+              d="M8.47 19.53a.75.75 0 0 1 0-1.06L14.94 12 8.47 5.53a.75.75 0 1 1 1.06-1.06l7 7a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 0 1-1.06 0Z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
       </div>
 
       <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 bg-[radial-gradient(700px_400px_at_0%_0%,rgba(242,139,130,0.08),transparent_60%),radial-gradient(700px_400px_at_100%_100%,rgba(249,209,98,0.08),transparent_60%)] bg-no-repeat">

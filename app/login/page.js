@@ -322,12 +322,12 @@ export default function LoginPage() {
                 </label>
               </div>
               <div className="text-sm">
-                <a
-                  href="#"
+                <Link
+                  href="/forgot-password"
                   className="font-medium text-[#F9D162] hover:text-[#F28B82] transition-colors duration-200"
                 >
                   Şifremi unuttum
-                </a>
+                </Link>
               </div>
             </div>
 
