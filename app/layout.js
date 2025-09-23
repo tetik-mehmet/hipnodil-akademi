@@ -14,6 +14,7 @@ export const metadata = {
   description: "Hipnodil Akademi",
   icons: {
     icon: "/hipnodilakademilogo.svg",
+    apple: "/hipnodilakademilogo.png",
   },
 };
 
