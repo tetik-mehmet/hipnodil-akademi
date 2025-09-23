@@ -7,6 +7,7 @@ export default function Page() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const REQUIRED_COURSE = "seviye6_kursu";
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -17,6 +18,12 @@ export default function Page() {
         });
 
         if (response.ok) {
+          const data = await response.json();
+          const allowed = (data.user?.courses || []).includes(REQUIRED_COURSE);
+          if (!allowed) {
+            router.replace("/egitim_icerik");
+            return;
+          }
           setIsAuthenticated(true);
         } else {
           router.replace("/login");
@@ -635,6 +642,333 @@ export default function Page() {
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
             Canlı Yayın 1. Ders 2. Oturum – MYK’nın Görevleri Nelerdir?
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 1 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016483327?h=ce75d29d33&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 1 - GİRİŞ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 1: Giriş
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 2 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016480899?h=87aa77f0bf&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 2 - KOÇLUĞUN TANIMI VE TEMEL KOÇLUK KAVRAMLARI"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 2: Koçluğun Tanımı ve Temel
+            Kavramlar
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 3 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016482253?h=bc6f2e2140&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 3 - TEMEL KAVRAMLAR VE RESMİ GAZETEDEKİ KOÇLUK MESLEK TANIMI"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 3: Temel Kavramlar ve Meslek Tanımı
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016482775?h=26f7c4b85f&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 4 - RESMİ GAZETEDEKİ KOÇLUK TANIMI, KOÇLUĞUN TARİHÇESİ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 4: Koçluk Tanımı ve Tarihçesi
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 5 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016480107?h=079c6973af&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 5 - KOÇLUK İLİŞKİSİ (HARİTASI)"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 5: Koçluk İlişkisi (Haritası)
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 6 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016480329?h=176c5a4e30&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 6 - YETKİNLİKLER"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 6: Yetkinlikler
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 7 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016480688?h=66468adf92&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 7 - KOÇLUK FAYDALARI"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 7: Koçluk Faydaları
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 8 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016479724?h=5b8a5bba1f&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 8 - KOÇLUK DURUŞU VE ETİK KURALLAR"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 8: Koçluk Duruşu ve Etik Kurallar
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 9 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016479871?h=da3e33a13f&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 9 - KOÇLUK GÖRÜŞMELERİNİN TEMEL İLKELERİ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 9: Görüşmelerin Temel İlkeleri
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 10 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016479572?h=86f2239123&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 10 - TANIŞMA VE KOÇLUK BECERİLERİ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 10: Tanışma ve Koçluk Becerileri
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 11 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016479212?h=7bfbfbb188&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK  TEMEL KOÇLUK - 11 - KOÇLUKTA İLETİŞİM BECERİLERİ VE DİNLEME EVRELERİ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 11: İletişim Becerileri ve Dinleme
+            Evreleri
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 12 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1017492252?h=48f760cfe5&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 12 - BEDEN DİLİ VE GÖRÜŞMENİN AŞAMALARI 1"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 12: Beden Dili ve Görüşmenin
+            Aşamaları 1
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 13 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1017492515?h=66b733589c&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 13 - GÖRÜŞMENİN AŞAMALARI 2"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 13: Görüşmenin Aşamaları 2
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 14 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1017492839?h=2e0fa03d0b&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 14 - GÖRÜŞMENİN AŞAMALARI DİNLEME"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 14: Görüşmenin Aşamaları - Dinleme
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 15 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1017493140?h=d6936ea4ab&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 15 - İLETİŞİM ENGELLERİ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 15: İletişim Engelleri
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 16 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1017491273?h=05115bb4c9&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 16 - YANSITMA VE PEKİŞTİRME NEDİR NASIL YAPILIR"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 16: Yansıtma ve Pekiştirme
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 17 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1017491617?h=f010a2a724&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 17 - YORUMLAMA VE BİRLİKTE HAREKET ETME"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 17: Yorumlama ve Birlikte Hareket
+            Etme
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>

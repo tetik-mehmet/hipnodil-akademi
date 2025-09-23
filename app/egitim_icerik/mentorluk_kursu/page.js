@@ -7,6 +7,7 @@ export default function Page() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const REQUIRED_COURSE = "mentorluk_kursu";
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -17,6 +18,12 @@ export default function Page() {
         });
 
         if (response.ok) {
+          const data = await response.json();
+          const allowed = (data.user?.courses || []).includes(REQUIRED_COURSE);
+          if (!allowed) {
+            router.replace("/egitim_icerik");
+            return;
+          }
           setIsAuthenticated(true);
         } else {
           router.replace("/login");

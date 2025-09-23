@@ -22,6 +22,7 @@ export async function GET(request) {
           firstName: payload.firstName,
           lastName: payload.lastName,
           email: payload.email,
+          courses: payload.courses || [],
         },
       },
       { status: 200 }

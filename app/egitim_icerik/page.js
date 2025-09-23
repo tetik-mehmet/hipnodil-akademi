@@ -8,6 +8,7 @@ export default function EgitimIcerikPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -22,6 +23,7 @@ export default function EgitimIcerikPage() {
           const data = await response.json();
           setIsAuthenticated(true);
           setUser(data.user);
+          setCourses(data.user?.courses || []);
         } else {
           // Auth başarısız, login sayfasına yönlendir
           router.replace("/login");
@@ -43,6 +45,8 @@ export default function EgitimIcerikPage() {
 
     checkAuth();
   }, [router]);
+
+  const canAccess = (slug) => courses.includes(slug);
 
   // Loading durumu
   if (isLoading) {
@@ -83,9 +87,14 @@ export default function EgitimIcerikPage() {
             <button
               type="button"
               onClick={() => router.push("/egitim_icerik/mentorluk_kursu")}
-              className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-2.5 text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors w-full sm:w-auto"
+              disabled={!canAccess("mentorluk_kursu")}
+              className={`inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors w-full sm:w-auto ${
+                canAccess("mentorluk_kursu")
+                  ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                  : "bg-gray-200 text-gray-500 cursor-not-allowed"
+              }`}
             >
-              Eğitime Git
+              {canAccess("mentorluk_kursu") ? "Eğitime Git" : "Erişiminiz Yok"}
             </button>
           </div>
           {/* Yeni Kart: MYK Koç Seviye 6 Hazırlık Eğitimi */}
@@ -101,9 +110,14 @@ export default function EgitimIcerikPage() {
             <button
               type="button"
               onClick={() => router.push("/egitim_icerik/seviye6_kursu")}
-              className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-2.5 text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors w-full sm:w-auto"
+              disabled={!canAccess("seviye6_kursu")}
+              className={`inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors w-full sm:w-auto ${
+                canAccess("seviye6_kursu")
+                  ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                  : "bg-gray-200 text-gray-500 cursor-not-allowed"
+              }`}
             >
-              Eğitime Git
+              {canAccess("seviye6_kursu") ? "Eğitime Git" : "Erişiminiz Yok"}
             </button>
           </div>
         </section>

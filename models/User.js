@@ -10,6 +10,12 @@ const UserSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true, lowercase: true },
     education: { type: String },
     password: { type: String, required: true, select: false },
+    // Kullanıcının erişebildiği eğitim/paket slug listesi
+    courses: {
+      type: [String],
+      default: [],
+      enum: ["mentorluk_kursu", "seviye6_kursu"],
+    },
     // Şifre yenileme için yeni alanlar
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: Date },

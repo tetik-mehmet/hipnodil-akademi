@@ -40,6 +40,7 @@ export async function POST(request) {
       email: user.email,
       firstName: user.firstName,
       lastName: user.lastName,
+      courses: user.courses || [],
     });
 
     const res = NextResponse.json({
