@@ -34,18 +34,32 @@ export async function POST(request) {
       );
     }
 
-    // JWT oluştur ve HttpOnly cookie olarak ayarla
+    // Admin e-posta(lar)ını .env üzerinden kontrol et ve rolü senkronla
+    const adminEmails = (process.env.ADMIN_EMAILS || "")
+      .split(",")
+      .map((e) => e.trim().toLowerCase())
+      .filter(Boolean);
+    const shouldBeAdmin = adminEmails.includes(user.email.toLowerCase());
+    if (shouldBeAdmin && user.role !== "admin") {
+      user.role = "admin";
+      await user.save();
+    }
+
+    // JWT oluştur ve HttpOnly cookie olarak ayarla (role dahil)
     const token = await createSessionJwt({
       sub: String(user._id),
       email: user.email,
       firstName: user.firstName,
       lastName: user.lastName,
       courses: user.courses || [],
+      role: user.role || "user",
     });
 
     const res = NextResponse.json({
       message: "Giriş başarılı",
       userId: user._id,
+      role: user.role || "user",
+      redirectTo: user.role === "admin" ? "/admin" : "/egitim_icerik",
     });
     const isProd = process.env.NODE_ENV === "production";
     res.cookies.set("session", token, {

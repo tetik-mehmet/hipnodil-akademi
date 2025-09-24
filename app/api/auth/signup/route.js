@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { verifySessionJwt } from "@/lib/auth";
 import bcrypt from "bcryptjs";
 import dbConnect from "@/lib/dbConnect";
 import User from "@/models/User";
@@ -15,6 +17,7 @@ export async function POST(request) {
       email,
       education,
       password,
+      courses: incomingCourses,
     } = body || {};
 
     if (!email || !password || !firstName || !lastName) {
@@ -39,6 +42,24 @@ export async function POST(request) {
 
     const hashed = await bcrypt.hash(password, 10);
 
+    // Sadece admin kullanıcı "courses" alanını set edebilsin
+    let coursesToAssign = [];
+    try {
+      const sessionToken = cookies().get("session")?.value;
+      if (sessionToken) {
+        const payload = await verifySessionJwt(sessionToken);
+        if (payload?.role === "admin" && Array.isArray(incomingCourses)) {
+          // İzin verilen kurslar ile kesişim al
+          const allowed = ["mentorluk_kursu", "seviye6_kursu"];
+          coursesToAssign = incomingCourses
+            .map((c) => String(c))
+            .filter((c) => allowed.includes(c));
+        }
+      }
+    } catch (_) {
+      // Sessiyon yoksa veya doğrulanamadıysa courses boş kalır
+    }
+
     const user = await User.create({
       firstName,
       lastName,
@@ -48,6 +69,7 @@ export async function POST(request) {
       email: email.toLowerCase(),
       education,
       password: hashed,
+      ...(coursesToAssign.length > 0 ? { courses: coursesToAssign } : {}),
     });
 
     return NextResponse.json(

@@ -10,6 +10,12 @@ const UserSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true, lowercase: true },
     education: { type: String },
     password: { type: String, required: true, select: false },
+    // Kullanıcı rolü (admin panel erişimi için)
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
     // Kullanıcının erişebildiği eğitim/paket slug listesi
     courses: {
       type: [String],

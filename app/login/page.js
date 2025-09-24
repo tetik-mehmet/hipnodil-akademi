@@ -42,9 +42,10 @@ export default function LoginPage() {
       setSuccess(true); // Başarı mesajını göster
       setIsLoading(false);
 
-      // 2 saniye sonra yönlendir
+      // 2 saniye sonra role göre yönlendir
+      const target = data?.redirectTo || "/egitim_icerik";
       setTimeout(() => {
-        router.push("/egitim_icerik");
+        router.push(target);
       }, 2000);
     } catch (err) {
       setError(err.message);

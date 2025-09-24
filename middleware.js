@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { verifySessionJwt } from "@/lib/auth";
 
-const PROTECTED_PATHS = ["/egitim_icerik"];
+const PROTECTED_PATHS = ["/egitim_icerik", "/admin"];
 
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
@@ -28,7 +28,24 @@ export async function middleware(request) {
   }
 
   try {
-    await verifySessionJwt(token);
+    const payload = await verifySessionJwt(token);
+
+    // /admin için admin rol kontrolü
+    const isAdminPath = pathname.startsWith("/admin");
+    if (isAdminPath && payload.role !== "admin") {
+      const url = new URL("/login", request.url);
+      url.searchParams.set("redirect", pathname);
+      const response = NextResponse.redirect(url);
+      // Cache kontrolü header'ları ekle
+      response.headers.set(
+        "Cache-Control",
+        "no-store, no-cache, must-revalidate, proxy-revalidate"
+      );
+      response.headers.set("Pragma", "no-cache");
+      response.headers.set("Expires", "0");
+      return response;
+    }
+
     const response = NextResponse.next();
     // Cache kontrolü header'ları ekle
     response.headers.set(
@@ -54,5 +71,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ["/egitim_icerik"],
+  matcher: ["/egitim_icerik", "/admin"],
 };
