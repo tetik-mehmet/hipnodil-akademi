@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 
 export default function AdminPage() {
   return (
@@ -10,12 +11,12 @@ export default function AdminPage() {
             Yönetim Paneli
           </h1>
           <div className="flex items-center gap-2">
-            <a
+            <Link
               href="/"
               className="px-3 py-2 rounded-md border text-sm hover:bg-gray-100"
             >
               Siteye Dön
-            </a>
+            </Link>
           </div>
         </header>
 
