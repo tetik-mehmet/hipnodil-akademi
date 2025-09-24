@@ -1085,7 +1085,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            Özlem İsa ile MYK Temel Koçluk – 23: Süpervizyon Nedir, NLP'ye Giriş
+            Özlem İsa ile MYK Temel Koçluk – 23: Süpervizyon Nedir, NLP&apos;ye
+            Giriş
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1342,7 +1343,7 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            Özlem İsa ile MYK Temel Koçluk – 36: NLP'nin Temel Kuralları ve
+            Özlem İsa ile MYK Temel Koçluk – 36: NLP&apos;nin Temel Kuralları ve
             İlkeleri
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
