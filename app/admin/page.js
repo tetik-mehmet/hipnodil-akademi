@@ -6,6 +6,201 @@ import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+// Mobil Kullanıcı Kartı Bileşeni
+function MobileUserCard({ user, onDetail, onCourses, onPassword, onDelete }) {
+  const getEducationLabel = (education) => {
+    const labels = {
+      ilkokul: "İlkokul",
+      ortaokul: "Ortaokul",
+      lise: "Lise",
+      onlisans: "Ön Lisans",
+      lisans: "Lisans",
+      yukseklisans: "Yüksek Lisans",
+      doktora: "Doktora",
+    };
+    return labels[education] || education || "-";
+  };
+
+  const getCourseLabel = (course) => {
+    const labels = {
+      mentorluk_kursu: "Mentorluk",
+      seviye6_kursu: "Seviye 6",
+    };
+    return labels[course] || course;
+  };
+
+  return (
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-sm">
+      <div className="flex items-start justify-between mb-3">
+        <div className="flex-1">
+          <h3 className="font-medium text-gray-900 dark:text-gray-100">
+            {user.firstName} {user.lastName}
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            {user.email}
+          </p>
+          {user.phone && (
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              {user.phone}
+            </p>
+          )}
+        </div>
+        <span
+          className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+            user.role === "admin"
+              ? "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400"
+              : "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400"
+          }`}
+        >
+          {user.role || "user"}
+        </span>
+      </div>
+
+      <div className="grid grid-cols-2 gap-2 mb-3 text-sm">
+        <div>
+          <span className="text-gray-500 dark:text-gray-400">Eğitim:</span>
+          <span className="ml-1 text-gray-900 dark:text-gray-100">
+            {getEducationLabel(user.education)}
+          </span>
+        </div>
+        <div>
+          <span className="text-gray-500 dark:text-gray-400">Kurslar:</span>
+          <span className="ml-1 text-gray-900 dark:text-gray-100">
+            {(user.courses || []).length}
+          </span>
+        </div>
+      </div>
+
+      {(user.courses || []).length > 0 && (
+        <div className="mb-3">
+          <div className="flex flex-wrap gap-1">
+            {user.courses.map((course) => (
+              <span
+                key={course}
+                className="inline-flex items-center rounded-full bg-indigo-50 dark:bg-indigo-900/20 px-2 py-1 text-xs text-indigo-700 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-800"
+              >
+                {getCourseLabel(course)}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="flex flex-wrap gap-2">
+        <button
+          onClick={() => onDetail(user)}
+          className="flex-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+        >
+          Detay
+        </button>
+        <button
+          onClick={() => onCourses(user)}
+          className="flex-1 bg-blue-100 dark:bg-blue-900/20 hover:bg-blue-200 dark:hover:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+        >
+          Kurslar
+        </button>
+        <button
+          onClick={() => onPassword(user)}
+          className="flex-1 bg-yellow-100 dark:bg-yellow-900/20 hover:bg-yellow-200 dark:hover:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+        >
+          Şifre
+        </button>
+        <button
+          onClick={() => onDelete(user)}
+          className="flex-1 bg-red-100 dark:bg-red-900/20 hover:bg-red-200 dark:hover:bg-red-900/30 text-red-700 dark:text-red-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+        >
+          Sil
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// Swipe Hook
+function useSwipe(onSwipeLeft, onSwipeRight) {
+  const [touchStart, setTouchStart] = React.useState(null);
+  const [touchEnd, setTouchEnd] = React.useState(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && onSwipeLeft) {
+      onSwipeLeft();
+    }
+    if (isRightSwipe && onSwipeRight) {
+      onSwipeRight();
+    }
+  };
+
+  return {
+    onTouchStart,
+    onTouchMove,
+    onTouchEnd,
+  };
+}
+
+// Mobil Menü Bileşeni
+function MobileMenu({ isOpen, onClose, children }) {
+  return (
+    <>
+      {/* Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={onClose}
+        />
+      )}
+
+      {/* Menü */}
+      <div
+        className={`fixed top-0 right-0 h-full w-80 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out z-50 lg:hidden ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            Filtreler
+          </h2>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <svg
+              className="w-5 h-5 text-gray-600 dark:text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+        <div className="p-4 space-y-4 overflow-y-auto">{children}</div>
+      </div>
+    </>
+  );
+}
+
 // Dark Mode Hook
 function useDarkMode() {
   const [isDarkMode, setIsDarkMode] = React.useState(false);
@@ -711,11 +906,25 @@ function AdminUsersTable() {
   const [educationFilter, setEducationFilter] = React.useState("");
   const [sortKey, setSortKey] = React.useState("createdAt");
   const [sortDir, setSortDir] = React.useState("desc");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isMobileView, setIsMobileView] = React.useState(false);
   const [page, setPage] = React.useState(1);
   const [pageSize, setPageSize] = React.useState(10);
 
   const [selectedUser, setSelectedUser] = React.useState(null);
   const [isCoursesOpen, setIsCoursesOpen] = React.useState(false);
+
+  // Mobil görünüm kontrolü
+  React.useEffect(() => {
+    const checkMobileView = () => {
+      setIsMobileView(window.innerWidth < 1024);
+    };
+
+    checkMobileView();
+    window.addEventListener("resize", checkMobileView);
+
+    return () => window.removeEventListener("resize", checkMobileView);
+  }, []);
   const [isPasswordOpen, setIsPasswordOpen] = React.useState(false);
   const [isDetailOpen, setIsDetailOpen] = React.useState(false);
 
@@ -819,6 +1028,13 @@ function AdminUsersTable() {
     setSelectedUser(u);
     setIsDetailOpen(true);
   };
+
+  // Swipe handlers
+  const swipeHandlers = useSwipe(
+    () => setIsMobileMenuOpen(true), // Swipe left to open menu
+    () => setIsMobileMenuOpen(false) // Swipe right to close menu
+  );
+
   const deleteUser = async (u) => {
     if (
       !confirm(
@@ -863,6 +1079,28 @@ function AdminUsersTable() {
       {/* Filtre / Arama / Kontroller */}
       <div className="flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-2">
+          {/* Mobil menü butonu */}
+          {isMobileView && (
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="lg:hidden p-2 rounded-md border bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600"
+            >
+              <svg
+                className="w-5 h-5 text-gray-600 dark:text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.414A1 1 0 013 6.707V4z"
+                />
+              </svg>
+            </button>
+          )}
+
           <input
             value={query}
             onChange={(e) => {
@@ -872,185 +1110,292 @@ function AdminUsersTable() {
             placeholder="Ara (ad, soyad, e-posta, telefon)"
             className="w-64 rounded-md border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
-          <select
-            value={roleFilter}
-            onChange={(e) => {
-              setRoleFilter(e.target.value);
-              setPage(1);
-            }}
-            className="rounded-md border px-2 py-2 text-sm"
-          >
-            <option value="">Rol (hepsi)</option>
-            <option value="admin">admin</option>
-            <option value="user">user</option>
-          </select>
-          <select
-            value={courseFilter}
-            onChange={(e) => {
-              setCourseFilter(e.target.value);
-              setPage(1);
-            }}
-            className="rounded-md border px-2 py-2 text-sm"
-          >
-            <option value="">Kurs (hepsi)</option>
-            <option value="mentorluk_kursu">mentorluk_kursu</option>
-            <option value="seviye6_kursu">seviye6_kursu</option>
-          </select>
-          <select
-            value={educationFilter}
-            onChange={(e) => {
-              setEducationFilter(e.target.value);
-              setPage(1);
-            }}
-            className="rounded-md border px-2 py-2 text-sm"
-          >
-            <option value="">Eğitim (hepsi)</option>
-            <option value="ilkokul">İlkokul</option>
-            <option value="ortaokul">Ortaokul</option>
-            <option value="lise">Lise</option>
-            <option value="onlisans">Ön Lisans</option>
-            <option value="lisans">Lisans</option>
-            <option value="yukseklisans">Yüksek Lisans</option>
-            <option value="doktora">Doktora</option>
-          </select>
-          <select
-            value={pageSize}
-            onChange={(e) => {
-              setPageSize(Number(e.target.value));
-              setPage(1);
-            }}
-            className="rounded-md border px-2 py-2 text-sm"
-          >
-            <option value={10}>10</option>
-            <option value={20}>20</option>
-            <option value={50}>50</option>
-          </select>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="text-xs text-gray-600">
-            {processed.length} kayıt • {pageSafe}/{totalPages} sayfa
+          {/* Desktop filtreler */}
+          <div className="hidden lg:flex flex-wrap items-center gap-2">
+            <select
+              value={roleFilter}
+              onChange={(e) => {
+                setRoleFilter(e.target.value);
+                setPage(1);
+              }}
+              className="rounded-md border px-2 py-2 text-sm"
+            >
+              <option value="">Rol (hepsi)</option>
+              <option value="admin">admin</option>
+              <option value="user">user</option>
+            </select>
+            <select
+              value={courseFilter}
+              onChange={(e) => {
+                setCourseFilter(e.target.value);
+                setPage(1);
+              }}
+              className="rounded-md border px-2 py-2 text-sm"
+            >
+              <option value="">Kurs (hepsi)</option>
+              <option value="mentorluk_kursu">mentorluk_kursu</option>
+              <option value="seviye6_kursu">seviye6_kursu</option>
+            </select>
+            <select
+              value={educationFilter}
+              onChange={(e) => {
+                setEducationFilter(e.target.value);
+                setPage(1);
+              }}
+              className="rounded-md border px-2 py-2 text-sm"
+            >
+              <option value="">Eğitim (hepsi)</option>
+              <option value="ilkokul">İlkokul</option>
+              <option value="ortaokul">Ortaokul</option>
+              <option value="lise">Lise</option>
+              <option value="onlisans">Ön Lisans</option>
+              <option value="lisans">Lisans</option>
+              <option value="yukseklisans">Yüksek Lisans</option>
+              <option value="doktora">Doktora</option>
+            </select>
+            <select
+              value={pageSize}
+              onChange={(e) => {
+                setPageSize(Number(e.target.value));
+                setPage(1);
+              }}
+              className="rounded-md border px-2 py-2 text-sm"
+            >
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+              <option value={50}>50</option>
+            </select>
           </div>
-          <button
-            onClick={() => exportCsv(processed)}
-            className="rounded border px-3 py-2 text-sm hover:bg-gray-50"
-          >
-            CSV indir
-          </button>
-          <button
-            onClick={() => exportPdf(processed)}
-            className="rounded px-3 py-2 text-sm font-bold bg-red-600 text-black hover:bg-red-700 border border-red-700"
-          >
-            PDF indir
-          </button>
+          <div className="flex items-center gap-3">
+            <div className="text-xs text-gray-600">
+              {processed.length} kayıt • {pageSafe}/{totalPages} sayfa
+            </div>
+            <button
+              onClick={() => exportCsv(processed)}
+              className="rounded border px-3 py-2 text-sm hover:bg-gray-50"
+            >
+              CSV indir
+            </button>
+            <button
+              onClick={() => exportPdf(processed)}
+              className="rounded px-3 py-2 text-sm font-bold bg-red-600 text-black hover:bg-red-700 border border-red-700"
+            >
+              PDF indir
+            </button>
+          </div>
         </div>
       </div>
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
-          <tr>
-            <Th
-              clickable
-              onClick={() => toggleSort("firstName")}
-              active={sortKey === "firstName"}
-              dir={sortDir}
+
+      {/* Mobil Menü */}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      >
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Rol Filtresi
+            </label>
+            <select
+              value={roleFilter}
+              onChange={(e) => {
+                setRoleFilter(e.target.value);
+                setPage(1);
+              }}
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
-              Ad
-            </Th>
-            <Th
-              clickable
-              onClick={() => toggleSort("lastName")}
-              active={sortKey === "lastName"}
-              dir={sortDir}
+              <option value="">Rol (hepsi)</option>
+              <option value="admin">admin</option>
+              <option value="user">user</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Kurs Filtresi
+            </label>
+            <select
+              value={courseFilter}
+              onChange={(e) => {
+                setCourseFilter(e.target.value);
+                setPage(1);
+              }}
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
-              Soyad
-            </Th>
-            <Th
-              clickable
-              onClick={() => toggleSort("email")}
-              active={sortKey === "email"}
-              dir={sortDir}
+              <option value="">Kurs (hepsi)</option>
+              <option value="mentorluk_kursu">mentorluk_kursu</option>
+              <option value="seviye6_kursu">seviye6_kursu</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Eğitim Filtresi
+            </label>
+            <select
+              value={educationFilter}
+              onChange={(e) => {
+                setEducationFilter(e.target.value);
+                setPage(1);
+              }}
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
-              E-posta
-            </Th>
-            <Th>Telefon</Th>
-            <Th>Eğitim</Th>
-            <Th>Kurslar</Th>
-            <Th
-              clickable
-              onClick={() => toggleSort("role")}
-              active={sortKey === "role"}
-              dir={sortDir}
+              <option value="">Eğitim (hepsi)</option>
+              <option value="ilkokul">İlkokul</option>
+              <option value="ortaokul">Ortaokul</option>
+              <option value="lise">Lise</option>
+              <option value="onlisans">Ön Lisans</option>
+              <option value="lisans">Lisans</option>
+              <option value="yukseklisans">Yüksek Lisans</option>
+              <option value="doktora">Doktora</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Sayfa Boyutu
+            </label>
+            <select
+              value={pageSize}
+              onChange={(e) => {
+                setPageSize(Number(e.target.value));
+                setPage(1);
+              }}
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
-              Rol
-            </Th>
-            <Th
-              clickable
-              onClick={() => toggleSort("createdAt")}
-              active={sortKey === "createdAt"}
-              dir={sortDir}
-            >
-              Oluşturulma
-            </Th>
-            <Th>Aksiyon</Th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-gray-100">
-          {paged.map((u) => (
-            <tr key={String(u._id)} className="hover:bg-gray-50">
-              <Td>{u.firstName}</Td>
-              <Td>{u.lastName}</Td>
-              <Td className="whitespace-nowrap">{u.email}</Td>
-              <Td>{u.phone || "-"}</Td>
-              <Td>{u.education || "-"}</Td>
-              <Td>
-                {(u.courses || []).length > 0 ? (
-                  <div className="flex flex-wrap gap-1">
-                    {u.courses.map((c) => (
-                      <span
-                        key={c}
-                        className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-0.5 text-xs text-indigo-700 border border-indigo-100"
-                      >
-                        {c}
-                      </span>
-                    ))}
-                  </div>
-                ) : (
-                  <span className="text-xs text-gray-500">—</span>
-                )}
-              </Td>
-              <Td>{u.role || "user"}</Td>
-              <Td>
-                {u.createdAt ? new Date(u.createdAt).toLocaleString() : "-"}
-              </Td>
-              <Td className="whitespace-nowrap">
-                <button
-                  onClick={() => openDetail(u)}
-                  className="mr-2 rounded border px-2 py-1 text-xs hover:bg-gray-50"
-                >
-                  Detay
-                </button>
-                <button
-                  onClick={() => openCourses(u)}
-                  className="mr-2 rounded border px-2 py-1 text-xs hover:bg-gray-50"
-                >
-                  Kursları Düzenle
-                </button>
-                <button
-                  onClick={() => openPassword(u)}
-                  className="mr-2 rounded border px-2 py-1 text-xs hover:bg-gray-50"
-                >
-                  Şifre Sıfırla
-                </button>
-                <button
-                  onClick={() => deleteUser(u)}
-                  className="rounded border px-2 py-1 text-xs text-red-600 hover:bg-red-50"
-                >
-                  Sil
-                </button>
-              </Td>
+              <option value={10}>10 kayıt</option>
+              <option value={20}>20 kayıt</option>
+              <option value={50}>50 kayıt</option>
+            </select>
+          </div>
+        </div>
+      </MobileMenu>
+
+      {/* Desktop Tablo Görünümü */}
+      {!isMobileView ? (
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <Th
+                clickable
+                onClick={() => toggleSort("firstName")}
+                active={sortKey === "firstName"}
+                dir={sortDir}
+              >
+                Ad
+              </Th>
+              <Th
+                clickable
+                onClick={() => toggleSort("lastName")}
+                active={sortKey === "lastName"}
+                dir={sortDir}
+              >
+                Soyad
+              </Th>
+              <Th
+                clickable
+                onClick={() => toggleSort("email")}
+                active={sortKey === "email"}
+                dir={sortDir}
+              >
+                E-posta
+              </Th>
+              <Th>Telefon</Th>
+              <Th>Eğitim</Th>
+              <Th>Kurslar</Th>
+              <Th
+                clickable
+                onClick={() => toggleSort("role")}
+                active={sortKey === "role"}
+                dir={sortDir}
+              >
+                Rol
+              </Th>
+              <Th
+                clickable
+                onClick={() => toggleSort("createdAt")}
+                active={sortKey === "createdAt"}
+                dir={sortDir}
+              >
+                Oluşturulma
+              </Th>
+              <Th>Aksiyon</Th>
             </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-100">
+            {paged.map((u) => (
+              <tr key={String(u._id)} className="hover:bg-gray-50">
+                <Td>{u.firstName}</Td>
+                <Td>{u.lastName}</Td>
+                <Td className="whitespace-nowrap">{u.email}</Td>
+                <Td>{u.phone || "-"}</Td>
+                <Td>{u.education || "-"}</Td>
+                <Td>
+                  {(u.courses || []).length > 0 ? (
+                    <div className="flex flex-wrap gap-1">
+                      {u.courses.map((c) => (
+                        <span
+                          key={c}
+                          className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-0.5 text-xs text-indigo-700 border border-indigo-100"
+                        >
+                          {c}
+                        </span>
+                      ))}
+                    </div>
+                  ) : (
+                    <span className="text-xs text-gray-500">—</span>
+                  )}
+                </Td>
+                <Td>{u.role || "user"}</Td>
+                <Td>
+                  {u.createdAt ? new Date(u.createdAt).toLocaleString() : "-"}
+                </Td>
+                <Td className="whitespace-nowrap">
+                  <button
+                    onClick={() => openDetail(u)}
+                    className="mr-2 rounded border px-2 py-1 text-xs hover:bg-gray-50"
+                  >
+                    Detay
+                  </button>
+                  <button
+                    onClick={() => openCourses(u)}
+                    className="mr-2 rounded border px-2 py-1 text-xs hover:bg-gray-50"
+                  >
+                    Kursları Düzenle
+                  </button>
+                  <button
+                    onClick={() => openPassword(u)}
+                    className="mr-2 rounded border px-2 py-1 text-xs hover:bg-gray-50"
+                  >
+                    Şifre Sıfırla
+                  </button>
+                  <button
+                    onClick={() => deleteUser(u)}
+                    className="rounded border px-2 py-1 text-xs text-red-600 hover:bg-red-50"
+                  >
+                    Sil
+                  </button>
+                </Td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        /* Mobil Kart Görünümü */
+        <div className="space-y-4 p-4" {...swipeHandlers}>
+          {paged.map((user) => (
+            <MobileUserCard
+              key={user._id}
+              user={user}
+              onDetail={openDetail}
+              onCourses={openCourses}
+              onPassword={openPassword}
+              onDelete={deleteUser}
+            />
           ))}
-        </tbody>
-      </table>
+        </div>
+      )}
+
       {/* Sayfalama */}
       <div className="flex items-center justify-between px-4 py-3">
         <button
