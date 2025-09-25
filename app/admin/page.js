@@ -10,21 +10,11 @@ export default function AdminPage() {
           <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900">
             Yönetim Paneli
           </h1>
-          <div className="flex items-center gap-2">
-            <Link
-              href="/"
-              className="px-3 py-2 rounded-md border text-sm hover:bg-gray-100"
-            >
-              Siteye Dön
-            </Link>
-          </div>
         </header>
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card title="Kullanıcılar" value="—" />
+          <UsersSummaryCard />
           <Card title="Aktif Kurslar" value="—" />
-          <Card title="Son Giriş" value="—" />
-          <Card title="Sistem Durumu" value="—" />
         </div>
 
         <section className="mt-10">
@@ -39,6 +29,7 @@ export default function AdminPage() {
             Kullanıcı Listesi
           </h2>
           <AdminUsersTable />
+          <ToastViewport />
         </section>
       </section>
     </main>
@@ -52,6 +43,82 @@ function Card({ title, value }) {
       <div className="mt-1 text-2xl font-semibold text-gray-900">{value}</div>
     </div>
   );
+}
+
+function UsersSummaryCard() {
+  const [names, setNames] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState("");
+  const [query, setQuery] = React.useState("");
+  const debouncedQuery = useDebounce(query, 300);
+
+  const fetchNames = React.useCallback(async () => {
+    try {
+      setLoading(true);
+      setError("");
+      const res = await fetch("/api/admin/users", { cache: "no-store" });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || "Liste alınamadı");
+      const list = Array.isArray(data.users)
+        ? data.users
+            .map((u) => `${u.firstName || ""} ${u.lastName || ""}`.trim())
+            .filter(Boolean)
+        : [];
+      setNames(list);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    fetchNames();
+  }, [fetchNames]);
+
+  const filtered = React.useMemo(() => {
+    const q = debouncedQuery.trim().toLowerCase();
+    if (!q) return names;
+    return names.filter((n) => n.toLowerCase().includes(q));
+  }, [names, debouncedQuery]);
+
+  return (
+    <div className="rounded-lg border bg-white p-4 shadow-sm">
+      <div className="text-sm text-gray-500">Kullanıcılar</div>
+      <div className="mt-2">
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="İsim soyisim ara..."
+          className="w-full rounded-md border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          aria-label="Kullanıcı arama"
+        />
+      </div>
+      {loading ? (
+        <div className="mt-1 text-sm text-gray-600">Yükleniyor...</div>
+      ) : error ? (
+        <div className="mt-1 text-sm text-red-600">{error}</div>
+      ) : filtered.length === 0 ? (
+        <div className="mt-1 text-sm text-gray-500">Kayıtlı kullanıcı yok</div>
+      ) : (
+        <ul className="mt-2 max-h-40 overflow-auto text-sm text-gray-900 list-disc list-inside">
+          {filtered.map((n, i) => (
+            <li key={`${n}-${i}`}>{n}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+// Debounce yardımcı kancası
+function useDebounce(value, delay = 300) {
+  const [v, setV] = React.useState(value);
+  React.useEffect(() => {
+    const id = setTimeout(() => setV(value), delay);
+    return () => clearTimeout(id);
+  }, [value, delay]);
+  return v;
 }
 
 function ActionButton({ label }) {
@@ -121,6 +188,11 @@ function AdminCreateUserForm() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || "Kayıt başarısız");
+      showToast({
+        type: "success",
+        title: "Başarılı",
+        message: "Kullanıcı oluşturuldu",
+      });
       setServerSuccess("Kullanıcı başarıyla oluşturuldu.");
       setFormData({
         firstName: "",
@@ -135,6 +207,7 @@ function AdminCreateUserForm() {
       });
     } catch (err) {
       setServerError(err.message);
+      showToast({ type: "error", title: "Hata", message: err.message });
     } finally {
       setIsSubmitting(false);
     }
@@ -330,6 +403,8 @@ function AdminUsersTable() {
       setUsers(Array.isArray(data.users) ? data.users : []);
     } catch (e) {
       setError(e.message);
+      if (!isRefresh)
+        showToast({ type: "error", title: "Hata", message: e.message });
     } finally {
       if (!isRefresh) {
         setLoading(false);
@@ -408,10 +483,19 @@ function AdminUsersTable() {
       return;
     const res = await fetch(`/api/admin/users/${u._id}`, { method: "DELETE" });
     if (res.ok) {
+      showToast({
+        type: "success",
+        title: "Silindi",
+        message: `${u.firstName} ${u.lastName}`,
+      });
       fetchUsers(true);
     } else {
       const data = await res.json();
-      alert(data?.message || "Silme başarısız");
+      showToast({
+        type: "error",
+        title: "Hata",
+        message: data?.message || "Silme başarısız",
+      });
     }
   };
 
@@ -671,6 +755,52 @@ function Td({ children, className = "" }) {
   );
 }
 
+// Basit toast sistemi
+const ToastContext = React.createContext({ add: () => {} });
+let toastId = 0;
+
+export function ToastViewport() {
+  const [toasts, setToasts] = React.useState([]);
+
+  React.useEffect(() => {
+    window.__toast_add = (toast) => {
+      const id = ++toastId;
+      setToasts((list) => [...list, { id, ...toast }]);
+      setTimeout(() => {
+        setToasts((list) => list.filter((t) => t.id !== id));
+      }, toast.timeout ?? 3000);
+    };
+  }, []);
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
+      {toasts.map((t) => (
+        <div
+          key={t.id}
+          role="status"
+          aria-live="polite"
+          className={`min-w-[240px] rounded-md border px-3 py-2 shadow-sm ${
+            t.type === "success"
+              ? "border-green-200 bg-green-50 text-green-800"
+              : "border-red-200 bg-red-50 text-red-800"
+          }`}
+        >
+          <div className="text-sm font-semibold">{t.title}</div>
+          {t.message ? (
+            <div className="text-xs opacity-90">{t.message}</div>
+          ) : null}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function showToast({ type = "success", title, message, timeout = 3000 }) {
+  if (typeof window !== "undefined" && window.__toast_add) {
+    window.__toast_add({ type, title, message, timeout });
+  }
+}
+
 // CSV export: ekranda görünen kayıtları indirir
 function exportCsv(rows) {
   // Türkiye/Excel yerelde daha iyi açılması için noktalı virgül ayırıcı kullan
@@ -778,10 +908,20 @@ function CoursesModal({ user, onClose, onSaved }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ action: "updateCourses", courses: selected }),
     });
-    if (res.ok) onSaved();
-    else {
+    if (res.ok) {
+      showToast({
+        type: "success",
+        title: "Güncellendi",
+        message: "Kurslar kaydedildi",
+      });
+      onSaved();
+    } else {
       const data = await res.json();
-      alert(data?.message || "Kurslar güncellenemedi");
+      showToast({
+        type: "error",
+        title: "Hata",
+        message: data?.message || "Kurslar güncellenemedi",
+      });
     }
   };
   return (
@@ -833,7 +973,11 @@ function PasswordModal({ userId, onClose, onSaved }) {
   const [saving, setSaving] = React.useState(false);
   const save = async () => {
     if (password.length < 6) {
-      alert("Şifre en az 6 karakter olmalı");
+      showToast({
+        type: "error",
+        title: "Hata",
+        message: "Şifre en az 6 karakter olmalı",
+      });
       return;
     }
     setSaving(true);
@@ -843,10 +987,20 @@ function PasswordModal({ userId, onClose, onSaved }) {
       body: JSON.stringify({ action: "resetPassword", newPassword: password }),
     });
     setSaving(false);
-    if (res.ok) onSaved();
-    else {
+    if (res.ok) {
+      showToast({
+        type: "success",
+        title: "Güncellendi",
+        message: "Şifre güncellendi",
+      });
+      onSaved();
+    } else {
       const data = await res.json();
-      alert(data?.message || "Şifre güncellenemedi");
+      showToast({
+        type: "error",
+        title: "Hata",
+        message: data?.message || "Şifre güncellenemedi",
+      });
     }
   };
   return (

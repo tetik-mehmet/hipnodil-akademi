@@ -59,7 +59,7 @@ export async function POST(request) {
       message: "Giriş başarılı",
       userId: user._id,
       role: user.role || "user",
-      redirectTo: user.role === "admin" ? "/admin" : "/egitim_icerik",
+      redirectTo: user.role === "admin" ? "/admin/landing" : "/egitim_icerik",
     });
     const isProd = process.env.NODE_ENV === "production";
     res.cookies.set("session", token, {

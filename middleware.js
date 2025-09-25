@@ -71,5 +71,10 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ["/egitim_icerik", "/admin"],
+  matcher: [
+    "/egitim_icerik",
+    "/egitim_icerik/:path*",
+    "/admin",
+    "/admin/:path*",
+  ],
 };

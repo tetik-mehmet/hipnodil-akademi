@@ -13,6 +13,7 @@ export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const isOnEgitimIcerik = pathname?.startsWith("/egitim_icerik");
+  const isOnAdmin = pathname?.startsWith("/admin");
 
   const handleLogout = async () => {
     try {
@@ -241,7 +242,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-4 md:flex ml-8">
-          {isOnEgitimIcerik ? (
+          {isOnEgitimIcerik || isOnAdmin ? (
             <button
               type="button"
               onClick={handleLogout}
@@ -490,7 +491,7 @@ export default function Header() {
                 Eğitim İçeriğim
               </button>
               <div className="mt-4 flex flex-col gap-3 pt-2">
-                {isOnEgitimIcerik ? (
+                {isOnEgitimIcerik || isOnAdmin ? (
                   <button
                     type="button"
                     onClick={async () => {
