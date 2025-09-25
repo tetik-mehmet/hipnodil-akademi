@@ -145,16 +145,13 @@ export default function IletisimPage() {
           {/* Çalışma Saatleri */}
           <div className="rounded-2xl bg-sky-50/70 p-5 sm:p-6 ring-1 ring-sky-100">
             <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-600 text-white shadow-sm">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-7 w-7"
-                >
-                  <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 11h5v-2h-4V6h-2v7Z" />
-                </svg>
-              </span>
+              <Image
+                src="/wait.gif"
+                alt="Çalışma Saatleri"
+                width={48}
+                height={48}
+                className="shrink-0"
+              />
               <div>
                 <p className="text-slate-700 font-semibold">Çalışma Saatleri</p>
                 <p className="text-slate-700">
@@ -218,22 +215,7 @@ export default function IletisimPage() {
           </p>
           <div className="mt-4 flex items-center justify-center gap-4">
             <Link
-              href="https://facebook.com/hipnodil"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 ring-1 ring-slate-200 transition-all hover:bg-sky-50 hover:text-sky-700 hover:ring-sky-200 hover:-translate-y-0.5"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-5 w-5"
-              >
-                <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.7V12h2.7V9.7c0-2.7 1.6-4.2 4.1-4.2 1.2 0 2.4.2 2.4.2v2.6H15c-1.3 0-1.7.8-1.7 1.6V12h3l-.5 2.9h-2.5v7A10 10 0 0 0 22 12Z" />
-              </svg>
-            </Link>
-            <Link
-              href="https://instagram.com/hipnodil"
+              href="https://www.instagram.com/hipnodilakademi/"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 ring-1 ring-slate-200 transition-all hover:bg-pink-50 hover:text-pink-700 hover:ring-pink-200 hover:-translate-y-0.5"
@@ -248,10 +230,10 @@ export default function IletisimPage() {
               </svg>
             </Link>
             <Link
-              href="https://x.com/hipnodil"
+              href="https://www.youtube.com/@Hipnodil-Akademi"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 ring-1 ring-slate-200 transition-all hover:bg-slate-50 hover:text-slate-800 hover:ring-slate-300 hover:-translate-y-0.5"
+              className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 ring-1 ring-slate-200 transition-all hover:bg-red-50 hover:text-red-700 hover:ring-red-200 hover:-translate-y-0.5"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +241,7 @@ export default function IletisimPage() {
                 fill="currentColor"
                 className="h-5 w-5"
               >
-                <path d="M18.2 2H21l-6.5 7.4L22 22h-6.8l-4.7-6.6L4.9 22H2l7-8-6.5-9H9l4.3 6.1L18.2 2Zm-1.2 18h2L7.2 4H5.1l11.9 16Z" />
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.8 15.5v-7l6 3.5-6 3.5Z" />
               </svg>
             </Link>
           </div>

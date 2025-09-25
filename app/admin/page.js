@@ -913,6 +913,7 @@ function AdminUsersTable() {
 
   const [selectedUser, setSelectedUser] = React.useState(null);
   const [isCoursesOpen, setIsCoursesOpen] = React.useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
 
   // Mobil görünüm kontrolü
   React.useEffect(() => {
@@ -1036,18 +1037,21 @@ function AdminUsersTable() {
   );
 
   const deleteUser = async (u) => {
-    if (
-      !confirm(
-        `${u.firstName} ${u.lastName} kullanıcısını silmek istiyor musunuz?`
-      )
-    )
-      return;
-    const res = await fetch(`/api/admin/users/${u._id}`, { method: "DELETE" });
+    setSelectedUser(u);
+    setIsDeleteModalOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!selectedUser) return;
+
+    const res = await fetch(`/api/admin/users/${selectedUser._id}`, {
+      method: "DELETE",
+    });
     if (res.ok) {
       showToast({
         type: "success",
         title: "Silindi",
-        message: `${u.firstName} ${u.lastName}`,
+        message: `${selectedUser.firstName} ${selectedUser.lastName}`,
       });
       fetchUsers(true);
     } else {
@@ -1058,6 +1062,8 @@ function AdminUsersTable() {
         message: data?.message || "Silme başarısız",
       });
     }
+    setIsDeleteModalOpen(false);
+    setSelectedUser(null);
   };
 
   if (loading) {
@@ -1458,6 +1464,92 @@ function AdminUsersTable() {
           }}
         />
       )}
+
+      {/* Delete Confirmation Modal */}
+      {isDeleteModalOpen && selectedUser && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setIsDeleteModalOpen(false)}
+          />
+          <div className="relative z-10 w-full max-w-md rounded-xl bg-white dark:bg-gray-800 shadow-2xl border border-gray-200 dark:border-gray-700">
+            <div className="p-6">
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex-shrink-0 w-10 h-10 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center">
+                  <svg
+                    className="w-5 h-5 text-red-600 dark:text-red-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                    Kullanıcıyı Sil
+                  </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Bu işlem geri alınamaz
+                  </p>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="mb-6">
+                <p className="text-gray-700 dark:text-gray-300">
+                  <span className="font-medium text-gray-900 dark:text-gray-100">
+                    {selectedUser.firstName} {selectedUser.lastName}
+                  </span>{" "}
+                  kullanıcısını silmek istediğinizden emin misiniz?
+                </p>
+                <div className="mt-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-200 dark:border-red-800">
+                  <p className="text-sm text-red-700 dark:text-red-400">
+                    ⚠️ Bu işlem kullanıcının tüm verilerini kalıcı olarak
+                    silecektir.
+                  </p>
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setIsDeleteModalOpen(false)}
+                  className="flex-1 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors"
+                >
+                  İptal
+                </button>
+                <button
+                  onClick={confirmDelete}
+                  className="flex-1 px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors flex items-center justify-center gap-2"
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    />
+                  </svg>
+                  Sil
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {isPasswordOpen && selectedUser && (
         <PasswordModal
           userId={selectedUser._id}
