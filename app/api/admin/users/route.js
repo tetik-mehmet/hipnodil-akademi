@@ -21,12 +21,15 @@ export async function GET() {
       {
         firstName: 1,
         lastName: 1,
-        email: 1,
+        birthDate: 1,
+        tcNumber: 1,
         phone: 1,
+        email: 1,
         education: 1,
         courses: 1,
         role: 1,
         createdAt: 1,
+        updatedAt: 1,
       }
     )
       .sort({ createdAt: -1 })

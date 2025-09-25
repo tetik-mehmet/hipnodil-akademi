@@ -1,31 +1,100 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Pie } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+// Dark Mode Hook
+function useDarkMode() {
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
+
+  React.useEffect(() => {
+    // LocalStorage'dan tema tercihini oku
+    const savedTheme = localStorage.getItem("admin-dark-mode");
+    if (savedTheme === "dark") {
+      setIsDarkMode(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  const toggleDarkMode = React.useCallback(() => {
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+
+    if (newMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("admin-dark-mode", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("admin-dark-mode", "light");
+    }
+  }, [isDarkMode]);
+
+  return { isDarkMode, toggleDarkMode };
+}
+
+// Dark Mode Toggle Button
+function DarkModeToggle() {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
+
+  return (
+    <button
+      onClick={toggleDarkMode}
+      className="flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 dark:border-gray-600 dark:text-gray-300"
+      title={isDarkMode ? "Açık moda geç" : "Koyu moda geç"}
+    >
+      {isDarkMode ? (
+        <>
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fillRule="evenodd"
+              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <span className="hidden sm:inline">Açık Mod</span>
+        </>
+      ) : (
+        <>
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+          </svg>
+          <span className="hidden sm:inline">Koyu Mod</span>
+        </>
+      )}
+    </button>
+  );
+}
 
 export default function AdminPage() {
   return (
-    <main className="min-h-screen w-full bg-gray-50">
+    <main className="min-h-screen w-full bg-gray-50 dark:bg-gray-900">
       <section className="mx-auto max-w-6xl px-4 py-8">
         <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900">
+          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100">
             Yönetim Paneli
           </h1>
+          <DarkModeToggle />
         </header>
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <TotalUsersCard />
+          <NewUsersThisMonthCard />
+          <CourseDistributionCard />
           <UsersSummaryCard />
-          <Card title="Aktif Kurslar" value="—" />
         </div>
 
         <section className="mt-10">
-          <h2 className="text-lg font-medium text-gray-900 mb-3">
+          <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">
             Yeni Kullanıcı Oluştur
           </h2>
           <AdminCreateUserForm />
         </section>
 
         <section className="mt-10">
-          <h2 className="text-lg font-medium text-gray-900 mb-3">
+          <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">
             Kullanıcı Listesi
           </h2>
           <AdminUsersTable />
@@ -38,9 +107,260 @@ export default function AdminPage() {
 
 function Card({ title, value }) {
   return (
-    <div className="rounded-lg border bg-white p-4 shadow-sm">
-      <div className="text-sm text-gray-500">{title}</div>
-      <div className="mt-1 text-2xl font-semibold text-gray-900">{value}</div>
+    <div className="rounded-lg border bg-white dark:bg-gray-800 dark:border-gray-700 p-4 shadow-sm">
+      <div className="text-sm text-gray-500 dark:text-gray-400">{title}</div>
+      <div className="mt-1 text-2xl font-semibold text-gray-900 dark:text-gray-100">
+        {value}
+      </div>
+    </div>
+  );
+}
+
+// Toplam kullanıcı sayısı kartı
+function TotalUsersCard() {
+  const [totalUsers, setTotalUsers] = React.useState(0);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState("");
+
+  React.useEffect(() => {
+    const fetchTotalUsers = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const res = await fetch("/api/admin/users", { cache: "no-store" });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.message || "Veri alınamadı");
+        const count = Array.isArray(data.users) ? data.users.length : 0;
+        setTotalUsers(count);
+      } catch (e) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchTotalUsers();
+  }, []);
+
+  return (
+    <div className="rounded-lg border bg-white dark:bg-gray-800 dark:border-gray-700 p-4 shadow-sm">
+      <div className="text-sm text-gray-500 dark:text-gray-400">
+        Toplam Kullanıcı
+      </div>
+      <div className="mt-1 text-2xl font-semibold text-gray-900 dark:text-gray-100">
+        {loading ? "—" : error ? "Hata" : totalUsers}
+      </div>
+      {error && (
+        <div className="mt-1 text-xs text-red-500 dark:text-red-400">
+          {error}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Bu ay yeni kayıtlar kartı
+function NewUsersThisMonthCard() {
+  const [newUsers, setNewUsers] = React.useState(0);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState("");
+
+  React.useEffect(() => {
+    const fetchNewUsers = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const res = await fetch("/api/admin/users", { cache: "no-store" });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.message || "Veri alınamadı");
+
+        const now = new Date();
+        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+
+        const count = Array.isArray(data.users)
+          ? data.users.filter((user) => {
+              const userDate = new Date(user.createdAt);
+              return userDate >= startOfMonth;
+            }).length
+          : 0;
+        setNewUsers(count);
+      } catch (e) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchNewUsers();
+  }, []);
+
+  return (
+    <div className="rounded-lg border bg-white dark:bg-gray-800 dark:border-gray-700 p-4 shadow-sm">
+      <div className="text-sm text-gray-500 dark:text-gray-400">
+        Bu Ay Yeni Kayıtlar
+      </div>
+      <div className="mt-1 text-2xl font-semibold text-gray-900 dark:text-gray-100">
+        {loading ? "—" : error ? "Hata" : newUsers}
+      </div>
+      {error && (
+        <div className="mt-1 text-xs text-red-500 dark:text-red-400">
+          {error}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Kurs bazında kullanıcı dağılımı kartı
+function CourseDistributionCard() {
+  const [courseStats, setCourseStats] = React.useState({});
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState("");
+
+  React.useEffect(() => {
+    const fetchCourseStats = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const res = await fetch("/api/admin/users", { cache: "no-store" });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.message || "Veri alınamadı");
+
+        const stats = {
+          mentorluk_kursu: 0,
+          seviye6_kursu: 0,
+          kurs_yok: 0,
+          toplam: Array.isArray(data.users) ? data.users.length : 0,
+        };
+
+        if (Array.isArray(data.users)) {
+          data.users.forEach((user) => {
+            if (user.courses && user.courses.length > 0) {
+              user.courses.forEach((course) => {
+                if (stats.hasOwnProperty(course)) {
+                  stats[course]++;
+                }
+              });
+            } else {
+              stats.kurs_yok++;
+            }
+          });
+        }
+
+        setCourseStats(stats);
+      } catch (e) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCourseStats();
+  }, []);
+
+  const chartData = {
+    labels: ["Mentorluk Kursu", "Seviye 6 Kursu", "Kurs Erişimi Yok"],
+    datasets: [
+      {
+        data: [
+          courseStats.mentorluk_kursu || 0,
+          courseStats.seviye6_kursu || 0,
+          courseStats.kurs_yok || 0,
+        ],
+        backgroundColor: [
+          "#3B82F6", // Mavi - Mentorluk
+          "#10B981", // Yeşil - Seviye 6
+          "#EF4444", // Kırmızı - Kurs yok
+        ],
+        borderColor: ["#1E40AF", "#059669", "#DC2626"],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "bottom",
+        labels: {
+          usePointStyle: true,
+          padding: 15,
+          font: {
+            size: 11,
+          },
+        },
+      },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+            const percentage =
+              total > 0 ? ((context.parsed / total) * 100).toFixed(1) : 0;
+            return `${context.label}: ${context.parsed} (${percentage}%)`;
+          },
+        },
+      },
+    },
+  };
+
+  return (
+    <div className="rounded-lg border bg-white dark:bg-gray-800 dark:border-gray-700 p-4 shadow-sm">
+      <div className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+        Kurs Dağılımı
+      </div>
+      {loading ? (
+        <div className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Yükleniyor...
+        </div>
+      ) : error ? (
+        <div className="mt-1 text-xs text-red-500 dark:text-red-400">
+          {error}
+        </div>
+      ) : (
+        <div>
+          <div className="h-48 w-full">
+            <Pie data={chartData} options={chartOptions} />
+          </div>
+          <div className="mt-3 space-y-1">
+            <div className="flex justify-between text-xs">
+              <span className="flex items-center gap-1 text-gray-700 dark:text-gray-300">
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                Mentorluk:
+              </span>
+              <span className="font-medium text-gray-900 dark:text-gray-100">
+                {courseStats.mentorluk_kursu || 0}
+              </span>
+            </div>
+            <div className="flex justify-between text-xs">
+              <span className="flex items-center gap-1 text-gray-700 dark:text-gray-300">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                Seviye 6:
+              </span>
+              <span className="font-medium text-gray-900 dark:text-gray-100">
+                {courseStats.seviye6_kursu || 0}
+              </span>
+            </div>
+            <div className="flex justify-between text-xs">
+              <span className="flex items-center gap-1 text-gray-700 dark:text-gray-300">
+                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                Kurs Yok:
+              </span>
+              <span className="font-medium text-gray-900 dark:text-gray-100">
+                {courseStats.kurs_yok || 0}
+              </span>
+            </div>
+            <div className="border-t border-gray-200 dark:border-gray-600 pt-1 mt-2">
+              <div className="flex justify-between text-xs font-medium">
+                <span className="text-gray-700 dark:text-gray-300">
+                  Toplam Kullanıcı:
+                </span>
+                <span className="text-gray-900 dark:text-gray-100">
+                  {courseStats.toplam || 0}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -83,25 +403,33 @@ function UsersSummaryCard() {
   }, [names, debouncedQuery]);
 
   return (
-    <div className="rounded-lg border bg-white p-4 shadow-sm">
-      <div className="text-sm text-gray-500">Kullanıcılar</div>
+    <div className="rounded-lg border bg-white dark:bg-gray-800 dark:border-gray-700 p-4 shadow-sm">
+      <div className="text-sm text-gray-500 dark:text-gray-400">
+        Kullanıcılar
+      </div>
       <div className="mt-2">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="İsim soyisim ara..."
-          className="w-full rounded-md border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           aria-label="Kullanıcı arama"
         />
       </div>
       {loading ? (
-        <div className="mt-1 text-sm text-gray-600">Yükleniyor...</div>
+        <div className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Yükleniyor...
+        </div>
       ) : error ? (
-        <div className="mt-1 text-sm text-red-600">{error}</div>
+        <div className="mt-1 text-sm text-red-600 dark:text-red-400">
+          {error}
+        </div>
       ) : filtered.length === 0 ? (
-        <div className="mt-1 text-sm text-gray-500">Kayıtlı kullanıcı yok</div>
+        <div className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Kayıtlı kullanıcı yok
+        </div>
       ) : (
-        <ul className="mt-2 max-h-40 overflow-auto text-sm text-gray-900 list-disc list-inside">
+        <ul className="mt-2 max-h-40 overflow-auto text-sm text-gray-900 dark:text-gray-100 list-disc list-inside">
           {filtered.map((n, i) => (
             <li key={`${n}-${i}`}>{n}</li>
           ))}
@@ -214,14 +542,14 @@ function AdminCreateUserForm() {
   };
 
   return (
-    <div className="rounded-xl border bg-white p-6 shadow-sm">
+    <div className="rounded-xl border bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm">
       {serverError && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 px-4 py-3 text-sm text-red-700 dark:text-red-400">
           {serverError}
         </div>
       )}
       {serverSuccess && (
-        <div className="mb-4 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+        <div className="mb-4 rounded-lg border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20 px-4 py-3 text-sm text-green-700 dark:text-green-400">
           {serverSuccess}
         </div>
       )}
@@ -270,14 +598,14 @@ function AdminCreateUserForm() {
           onChange={handleChange}
         />
         <div className="sm:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             Eğitim Durumu
           </label>
           <select
             name="education"
             value={formData.education}
             onChange={handleChange}
-            className="w-full rounded-md border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           >
             <option value="">Seçiniz</option>
             <option value="ilkokul">İlkokul</option>
@@ -317,7 +645,7 @@ function AdminCreateUserForm() {
               onChange={handleChange}
             />
           </div>
-          <p className="mt-2 text-xs text-gray-500">
+          <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
             Seçilmeyen eğitimlere kullanıcı erişemez.
           </p>
         </div>
@@ -325,7 +653,7 @@ function AdminCreateUserForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="inline-flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-white text-sm font-medium hover:bg-indigo-700 disabled:opacity-60"
+            className="inline-flex items-center justify-center rounded-md bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 px-4 py-2 text-white text-sm font-medium disabled:opacity-60 transition-colors"
           >
             {isSubmitting ? "Oluşturuluyor..." : "Kullanıcı Oluştur"}
           </button>
@@ -340,7 +668,7 @@ function Input({ label, name, value, onChange, type = "text", maxLength }) {
     <div>
       <label
         htmlFor={name}
-        className="block text-sm font-medium text-gray-700 mb-2"
+        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
       >
         {label}
       </label>
@@ -351,7 +679,7 @@ function Input({ label, name, value, onChange, type = "text", maxLength }) {
         value={value}
         onChange={onChange}
         maxLength={maxLength}
-        className="w-full rounded-md border px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
       />
     </div>
   );
@@ -359,13 +687,13 @@ function Input({ label, name, value, onChange, type = "text", maxLength }) {
 
 function Checkbox({ label, name, checked, onChange }) {
   return (
-    <label className="inline-flex items-center gap-2 text-sm">
+    <label className="inline-flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
       <input
         type="checkbox"
         name={name}
         checked={checked}
         onChange={onChange}
-        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+        className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-indigo-600 focus:ring-indigo-500"
       />
       <span>{label}</span>
     </label>
@@ -380,6 +708,7 @@ function AdminUsersTable() {
   const [query, setQuery] = React.useState("");
   const [roleFilter, setRoleFilter] = React.useState("");
   const [courseFilter, setCourseFilter] = React.useState("");
+  const [educationFilter, setEducationFilter] = React.useState("");
   const [sortKey, setSortKey] = React.useState("createdAt");
   const [sortDir, setSortDir] = React.useState("desc");
   const [page, setPage] = React.useState(1);
@@ -388,6 +717,7 @@ function AdminUsersTable() {
   const [selectedUser, setSelectedUser] = React.useState(null);
   const [isCoursesOpen, setIsCoursesOpen] = React.useState(false);
   const [isPasswordOpen, setIsPasswordOpen] = React.useState(false);
+  const [isDetailOpen, setIsDetailOpen] = React.useState(false);
 
   const fetchUsers = React.useCallback(async (isRefresh = false) => {
     try {
@@ -437,6 +767,9 @@ function AdminUsersTable() {
     if (courseFilter) {
       list = list.filter((u) => (u.courses || []).includes(courseFilter));
     }
+    if (educationFilter) {
+      list = list.filter((u) => (u.education || "") === educationFilter);
+    }
     list.sort((a, b) => {
       const dir = sortDir === "asc" ? 1 : -1;
       const ka = a[sortKey];
@@ -447,7 +780,15 @@ function AdminUsersTable() {
       return String(ka || "").localeCompare(String(kb || "")) * dir;
     });
     return list;
-  }, [users, query, roleFilter, courseFilter, sortKey, sortDir]);
+  }, [
+    users,
+    query,
+    roleFilter,
+    courseFilter,
+    educationFilter,
+    sortKey,
+    sortDir,
+  ]);
 
   const totalPages = Math.max(1, Math.ceil(processed.length / pageSize));
   const pageSafe = Math.min(page, totalPages);
@@ -473,6 +814,10 @@ function AdminUsersTable() {
   const openPassword = (u) => {
     setSelectedUser(u);
     setIsPasswordOpen(true);
+  };
+  const openDetail = (u) => {
+    setSelectedUser(u);
+    setIsDetailOpen(true);
   };
   const deleteUser = async (u) => {
     if (
@@ -550,6 +895,23 @@ function AdminUsersTable() {
             <option value="">Kurs (hepsi)</option>
             <option value="mentorluk_kursu">mentorluk_kursu</option>
             <option value="seviye6_kursu">seviye6_kursu</option>
+          </select>
+          <select
+            value={educationFilter}
+            onChange={(e) => {
+              setEducationFilter(e.target.value);
+              setPage(1);
+            }}
+            className="rounded-md border px-2 py-2 text-sm"
+          >
+            <option value="">Eğitim (hepsi)</option>
+            <option value="ilkokul">İlkokul</option>
+            <option value="ortaokul">Ortaokul</option>
+            <option value="lise">Lise</option>
+            <option value="onlisans">Ön Lisans</option>
+            <option value="lisans">Lisans</option>
+            <option value="yukseklisans">Yüksek Lisans</option>
+            <option value="doktora">Doktora</option>
           </select>
           <select
             value={pageSize}
@@ -661,6 +1023,12 @@ function AdminUsersTable() {
               </Td>
               <Td className="whitespace-nowrap">
                 <button
+                  onClick={() => openDetail(u)}
+                  className="mr-2 rounded border px-2 py-1 text-xs hover:bg-gray-50"
+                >
+                  Detay
+                </button>
+                <button
                   onClick={() => openCourses(u)}
                   className="mr-2 rounded border px-2 py-1 text-xs hover:bg-gray-50"
                 >
@@ -722,6 +1090,12 @@ function AdminUsersTable() {
           onSaved={() => {
             setIsPasswordOpen(false);
           }}
+        />
+      )}
+      {isDetailOpen && selectedUser && (
+        <UserDetailModal
+          user={selectedUser}
+          onClose={() => setIsDetailOpen(false)}
         />
       )}
     </div>
@@ -1030,6 +1404,205 @@ function PasswordModal({ userId, onClose, onSaved }) {
         </div>
       </div>
     </Modal>
+  );
+}
+
+// Kullanıcı detay modalı
+function UserDetailModal({ user, onClose }) {
+  const formatDate = (dateString) => {
+    if (!dateString) return "-";
+    return new Date(dateString).toLocaleString("tr-TR", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+
+  const getEducationLabel = (education) => {
+    const labels = {
+      ilkokul: "İlkokul",
+      ortaokul: "Ortaokul",
+      lise: "Lise",
+      onlisans: "Ön Lisans",
+      lisans: "Lisans",
+      yukseklisans: "Yüksek Lisans",
+      doktora: "Doktora",
+    };
+    return labels[education] || education || "-";
+  };
+
+  const getCourseLabel = (course) => {
+    const labels = {
+      mentorluk_kursu: "Mentorluk Kursu",
+      seviye6_kursu: "Seviye 6 Kursu",
+    };
+    return labels[course] || course;
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/30" onClick={onClose} />
+      <div className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg bg-white p-6 shadow-lg">
+        <div className="mb-4 flex items-center justify-between">
+          <h3 className="text-lg font-semibold text-gray-900">
+            Kullanıcı Detayları
+          </h3>
+          <button
+            onClick={onClose}
+            className="rounded border px-3 py-1 text-sm hover:bg-gray-50"
+          >
+            Kapat
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Kişisel Bilgiler */}
+          <div className="space-y-4">
+            <h4 className="font-medium text-gray-900 border-b pb-2">
+              Kişisel Bilgiler
+            </h4>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-600">
+                Ad Soyad
+              </label>
+              <p className="mt-1 text-sm text-gray-900">
+                {user.firstName} {user.lastName}
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-600">
+                E-posta
+              </label>
+              <p className="mt-1 text-sm text-gray-900 break-all">
+                {user.email}
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-600">
+                Telefon
+              </label>
+              <p className="mt-1 text-sm text-gray-900">{user.phone || "-"}</p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-600">
+                TC Kimlik No
+              </label>
+              <p className="mt-1 text-sm text-gray-900">
+                {user.tcNumber || "-"}
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-600">
+                Doğum Tarihi
+              </label>
+              <p className="mt-1 text-sm text-gray-900">
+                {user.birthDate
+                  ? new Date(user.birthDate).toLocaleDateString("tr-TR")
+                  : "-"}
+              </p>
+            </div>
+          </div>
+
+          {/* Eğitim ve Sistem Bilgileri */}
+          <div className="space-y-4">
+            <h4 className="font-medium text-gray-900 border-b pb-2">
+              Eğitim ve Sistem Bilgileri
+            </h4>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-600">
+                Eğitim Durumu
+              </label>
+              <p className="mt-1 text-sm text-gray-900">
+                {getEducationLabel(user.education)}
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-600">
+                Rol
+              </label>
+              <span
+                className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                  user.role === "admin"
+                    ? "bg-red-100 text-red-800"
+                    : "bg-blue-100 text-blue-800"
+                }`}
+              >
+                {user.role || "user"}
+              </span>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-600">
+                Kurs Erişimleri
+              </label>
+              <div className="mt-1 space-y-1">
+                {user.courses && user.courses.length > 0 ? (
+                  user.courses.map((course) => (
+                    <span
+                      key={course}
+                      className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs text-indigo-700 border border-indigo-100 mr-1 mb-1"
+                    >
+                      {getCourseLabel(course)}
+                    </span>
+                  ))
+                ) : (
+                  <p className="text-sm text-gray-500">Hiç kurs erişimi yok</p>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-600">
+                Kayıt Tarihi
+              </label>
+              <p className="mt-1 text-sm text-gray-900">
+                {formatDate(user.createdAt)}
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-600">
+                Son Güncelleme
+              </label>
+              <p className="mt-1 text-sm text-gray-900">
+                {formatDate(user.updatedAt)}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Alt Bilgiler */}
+        <div className="mt-6 pt-4 border-t">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+            <div className="bg-gray-50 rounded-lg p-3">
+              <div className="text-sm text-gray-600">Kullanıcı ID</div>
+              <div className="text-xs font-mono text-gray-900 break-all">
+                {user._id}
+              </div>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-3">
+              <div className="text-sm text-gray-600">Toplam Kurs</div>
+              <div className="text-lg font-semibold text-gray-900">
+                {user.courses ? user.courses.length : 0}
+              </div>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-3">
+              <div className="text-sm text-gray-600">Durum</div>
+              <div className="text-sm font-medium text-green-600">Aktif</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
