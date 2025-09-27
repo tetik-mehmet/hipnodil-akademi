@@ -77,6 +77,79 @@ export async function PATCH(_request, { params }) {
       return NextResponse.json({ user: updated });
     }
 
+    if (action === "updateUser") {
+      const {
+        firstName,
+        lastName,
+        birthDate,
+        tcNumber,
+        phone,
+        email,
+        education,
+        courses,
+        role,
+        createdAt,
+      } = body;
+
+      // Güncellenecek alanları hazırla
+      const updateData = {};
+
+      if (firstName !== undefined)
+        updateData.firstName = String(firstName).trim();
+      if (lastName !== undefined) updateData.lastName = String(lastName).trim();
+      if (birthDate !== undefined) updateData.birthDate = birthDate || null;
+      if (tcNumber !== undefined)
+        updateData.tcNumber = String(tcNumber).replace(/\D/g, "").slice(0, 11);
+      if (phone !== undefined)
+        updateData.phone = String(phone).replace(/\D/g, "").slice(0, 10);
+      if (email !== undefined)
+        updateData.email = String(email).trim().toLowerCase();
+      if (education !== undefined) updateData.education = education || null;
+      if (courses !== undefined) {
+        const allowed = ["mentorluk_kursu", "seviye6_kursu"];
+        updateData.courses = Array.isArray(courses)
+          ? courses.map(String).filter((c) => allowed.includes(c))
+          : [];
+      }
+      if (role !== undefined)
+        updateData.role = role === "admin" ? "admin" : "user";
+      if (createdAt !== undefined) {
+        updateData.createdAt = createdAt ? new Date(createdAt) : null;
+      }
+
+      // E-posta benzersizlik kontrolü (kendi e-postası hariç)
+      if (updateData.email) {
+        const existingUser = await User.findOne({
+          email: updateData.email,
+          _id: { $ne: id },
+        });
+        if (existingUser) {
+          return NextResponse.json(
+            { message: "Bu e-posta adresi zaten kullanılıyor" },
+            { status: 400 }
+          );
+        }
+      }
+
+      const updated = await User.findByIdAndUpdate(
+        id,
+        { $set: updateData },
+        { new: true }
+      );
+
+      if (!updated) {
+        return NextResponse.json(
+          { message: "Kullanıcı bulunamadı" },
+          { status: 404 }
+        );
+      }
+
+      return NextResponse.json({
+        message: "Kullanıcı başarıyla güncellendi",
+        user: updated,
+      });
+    }
+
     return NextResponse.json({ message: "Geçersiz işlem" }, { status: 400 });
   } catch (err) {
     console.error("/api/admin/users/[id] PATCH error", err);

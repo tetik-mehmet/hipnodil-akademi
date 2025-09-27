@@ -274,18 +274,51 @@ export default function AdminPage() {
           <DarkModeToggle />
         </header>
 
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <TotalUsersCard />
-          <NewUsersThisMonthCard />
-          <CourseDistributionCard />
-          <UsersSummaryCard />
-        </div>
+        {/* İstatistikler Bölümü */}
+        <section className="mt-8">
+          <div className="mb-6">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+              İstatistikler
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Sistem genelinde kullanıcı ve kurs istatistikleri
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <TotalUsersCard />
+            <NewUsersThisMonthCard />
+            <CourseDistributionCard />
+            <EducationDistributionCard />
+          </div>
+        </section>
+
+        {/* Kullanıcı Arama Bölümü */}
+        <section className="mt-10">
+          <div className="mb-6">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+              Kullanıcı Arama
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Kullanıcıları hızlıca bulun ve görüntüleyin
+            </p>
+          </div>
+          <div className="max-w-md">
+            <UsersSummaryCard />
+          </div>
+        </section>
 
         <section className="mt-10">
           <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">
             Yeni Kullanıcı Oluştur
           </h2>
           <AdminCreateUserForm />
+        </section>
+
+        <section className="mt-10">
+          <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">
+            Kullanıcı Güncelle
+          </h2>
+          <AdminUpdateUserForm />
         </section>
 
         <section className="mt-10">
@@ -337,18 +370,38 @@ function TotalUsersCard() {
   }, []);
 
   return (
-    <div className="rounded-lg border bg-white dark:bg-gray-800 dark:border-gray-700 p-4 shadow-sm">
-      <div className="text-sm text-gray-500 dark:text-gray-400">
-        Toplam Kullanıcı
-      </div>
-      <div className="mt-1 text-2xl font-semibold text-gray-900 dark:text-gray-100">
-        {loading ? "—" : error ? "Hata" : totalUsers}
-      </div>
-      {error && (
-        <div className="mt-1 text-xs text-red-500 dark:text-red-400">
-          {error}
+    <div className="relative overflow-hidden rounded-xl border bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition-all duration-200">
+      <div className="flex items-center justify-between">
+        <div className="flex-1">
+          <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
+            Toplam Kullanıcı
+          </div>
+          <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+            {loading ? "—" : error ? "Hata" : totalUsers.toLocaleString()}
+          </div>
+          {error && (
+            <div className="mt-2 text-xs text-red-500 dark:text-red-400">
+              {error}
+            </div>
+          )}
         </div>
-      )}
+        <div className="flex-shrink-0">
+          <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
+            <svg
+              className="w-6 h-6 text-blue-600 dark:text-blue-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" />
+              <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" />
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -388,18 +441,39 @@ function NewUsersThisMonthCard() {
   }, []);
 
   return (
-    <div className="rounded-lg border bg-white dark:bg-gray-800 dark:border-gray-700 p-4 shadow-sm">
-      <div className="text-sm text-gray-500 dark:text-gray-400">
-        Bu Ay Yeni Kayıtlar
-      </div>
-      <div className="mt-1 text-2xl font-semibold text-gray-900 dark:text-gray-100">
-        {loading ? "—" : error ? "Hata" : newUsers}
-      </div>
-      {error && (
-        <div className="mt-1 text-xs text-red-500 dark:text-red-400">
-          {error}
+    <div className="relative overflow-hidden rounded-xl border bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition-all duration-200">
+      <div className="flex items-center justify-between">
+        <div className="flex-1">
+          <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
+            Bu Ay Yeni Kayıtlar
+          </div>
+          <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+            {loading ? "—" : error ? "Hata" : newUsers.toLocaleString()}
+          </div>
+          {error && (
+            <div className="mt-2 text-xs text-red-500 dark:text-red-400">
+              {error}
+            </div>
+          )}
         </div>
-      )}
+        <div className="flex-shrink-0">
+          <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
+            <svg
+              className="w-6 h-6 text-green-600 dark:text-green-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -498,58 +572,325 @@ function CourseDistributionCard() {
   };
 
   return (
-    <div className="rounded-lg border bg-white dark:bg-gray-800 dark:border-gray-700 p-4 shadow-sm">
-      <div className="text-sm text-gray-500 dark:text-gray-400 mb-3">
-        Kurs Dağılımı
+    <div className="relative overflow-hidden rounded-xl border bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition-all duration-200">
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+            Kurs Dağılımı
+          </div>
+        </div>
+        <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center">
+          <svg
+            className="w-6 h-6 text-purple-600 dark:text-purple-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+            />
+          </svg>
+        </div>
       </div>
+
       {loading ? (
-        <div className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+        <div className="text-sm text-gray-600 dark:text-gray-400 text-center py-8">
           Yükleniyor...
         </div>
       ) : error ? (
-        <div className="mt-1 text-xs text-red-500 dark:text-red-400">
+        <div className="text-xs text-red-500 dark:text-red-400 text-center py-8">
           {error}
         </div>
       ) : (
         <div>
-          <div className="h-48 w-full">
+          <div className="h-40 w-full mb-4">
             <Pie data={chartData} options={chartOptions} />
           </div>
-          <div className="mt-3 space-y-1">
-            <div className="flex justify-between text-xs">
-              <span className="flex items-center gap-1 text-gray-700 dark:text-gray-300">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                Mentorluk:
+          <div className="space-y-2">
+            <div className="flex justify-between items-center text-sm">
+              <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                Mentorluk
               </span>
-              <span className="font-medium text-gray-900 dark:text-gray-100">
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
                 {courseStats.mentorluk_kursu || 0}
               </span>
             </div>
-            <div className="flex justify-between text-xs">
-              <span className="flex items-center gap-1 text-gray-700 dark:text-gray-300">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                Seviye 6:
+            <div className="flex justify-between items-center text-sm">
+              <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                Seviye 6
               </span>
-              <span className="font-medium text-gray-900 dark:text-gray-100">
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
                 {courseStats.seviye6_kursu || 0}
               </span>
             </div>
-            <div className="flex justify-between text-xs">
-              <span className="flex items-center gap-1 text-gray-700 dark:text-gray-300">
-                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                Kurs Yok:
+            <div className="flex justify-between items-center text-sm">
+              <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                Kurs Yok
               </span>
-              <span className="font-medium text-gray-900 dark:text-gray-100">
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
                 {courseStats.kurs_yok || 0}
               </span>
             </div>
-            <div className="border-t border-gray-200 dark:border-gray-600 pt-1 mt-2">
-              <div className="flex justify-between text-xs font-medium">
-                <span className="text-gray-700 dark:text-gray-300">
-                  Toplam Kullanıcı:
-                </span>
+            <div className="border-t border-gray-200 dark:border-gray-600 pt-2 mt-3">
+              <div className="flex justify-between items-center text-sm font-semibold">
+                <span className="text-gray-700 dark:text-gray-300">Toplam</span>
                 <span className="text-gray-900 dark:text-gray-100">
                   {courseStats.toplam || 0}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Eğitim seviyesine göre kullanıcı dağılımı kartı
+function EducationDistributionCard() {
+  const [educationStats, setEducationStats] = React.useState({});
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState("");
+
+  React.useEffect(() => {
+    const fetchEducationStats = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const res = await fetch("/api/admin/users", { cache: "no-store" });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.message || "Veri alınamadı");
+
+        const stats = {
+          ilkokul: 0,
+          ortaokul: 0,
+          lise: 0,
+          onlisans: 0,
+          lisans: 0,
+          yukseklisans: 0,
+          doktora: 0,
+          belirtilmemiş: 0,
+          toplam: Array.isArray(data.users) ? data.users.length : 0,
+        };
+
+        if (Array.isArray(data.users)) {
+          data.users.forEach((user) => {
+            const education = user.education;
+            if (education && stats.hasOwnProperty(education)) {
+              stats[education]++;
+            } else {
+              stats.belirtilmemiş++;
+            }
+          });
+        }
+
+        setEducationStats(stats);
+      } catch (e) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchEducationStats();
+  }, []);
+
+  const chartData = {
+    labels: [
+      "İlkokul",
+      "Ortaokul",
+      "Lise",
+      "Ön Lisans",
+      "Lisans",
+      "Yüksek Lisans",
+      "Doktora",
+      "Belirtilmemiş",
+    ],
+    datasets: [
+      {
+        data: [
+          educationStats.ilkokul || 0,
+          educationStats.ortaokul || 0,
+          educationStats.lise || 0,
+          educationStats.onlisans || 0,
+          educationStats.lisans || 0,
+          educationStats.yukseklisans || 0,
+          educationStats.doktora || 0,
+          educationStats.belirtilmemiş || 0,
+        ],
+        backgroundColor: [
+          "#3B82F6", // Mavi - İlkokul
+          "#10B981", // Yeşil - Ortaokul
+          "#F59E0B", // Sarı - Lise
+          "#EF4444", // Kırmızı - Ön Lisans
+          "#8B5CF6", // Mor - Lisans
+          "#06B6D4", // Cyan - Yüksek Lisans
+          "#F97316", // Turuncu - Doktora
+          "#6B7280", // Gri - Belirtilmemiş
+        ],
+        borderColor: [
+          "#1E40AF",
+          "#059669",
+          "#D97706",
+          "#DC2626",
+          "#7C3AED",
+          "#0891B2",
+          "#EA580C",
+          "#4B5563",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "bottom",
+        labels: {
+          usePointStyle: true,
+          padding: 10,
+          font: {
+            size: 10,
+          },
+        },
+      },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+            const percentage =
+              total > 0 ? ((context.parsed / total) * 100).toFixed(1) : 0;
+            return `${context.label}: ${context.parsed} (${percentage}%)`;
+          },
+        },
+      },
+    },
+  };
+
+  return (
+    <div className="relative overflow-hidden rounded-xl border bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition-all duration-200">
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+            Eğitim Seviyesi Dağılımı
+          </div>
+        </div>
+        <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/20 rounded-lg flex items-center justify-center">
+          <svg
+            className="w-6 h-6 text-indigo-600 dark:text-indigo-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+            />
+          </svg>
+        </div>
+      </div>
+
+      {loading ? (
+        <div className="text-sm text-gray-600 dark:text-gray-400 text-center py-8">
+          Yükleniyor...
+        </div>
+      ) : error ? (
+        <div className="text-xs text-red-500 dark:text-red-400 text-center py-8">
+          {error}
+        </div>
+      ) : (
+        <div>
+          <div className="h-40 w-full mb-4">
+            <Pie data={chartData} options={chartOptions} />
+          </div>
+          <div className="space-y-1">
+            <div className="flex justify-between items-center text-xs">
+              <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                İlkokul
+              </span>
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                {educationStats.ilkokul || 0}
+              </span>
+            </div>
+            <div className="flex justify-between items-center text-xs">
+              <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                Ortaokul
+              </span>
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                {educationStats.ortaokul || 0}
+              </span>
+            </div>
+            <div className="flex justify-between items-center text-xs">
+              <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                Lise
+              </span>
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                {educationStats.lise || 0}
+              </span>
+            </div>
+            <div className="flex justify-between items-center text-xs">
+              <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                Ön Lisans
+              </span>
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                {educationStats.onlisans || 0}
+              </span>
+            </div>
+            <div className="flex justify-between items-center text-xs">
+              <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                Lisans
+              </span>
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                {educationStats.lisans || 0}
+              </span>
+            </div>
+            <div className="flex justify-between items-center text-xs">
+              <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                Yüksek Lisans
+              </span>
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                {educationStats.yukseklisans || 0}
+              </span>
+            </div>
+            <div className="flex justify-between items-center text-xs">
+              <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                Doktora
+              </span>
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                {educationStats.doktora || 0}
+              </span>
+            </div>
+            <div className="flex justify-between items-center text-xs">
+              <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <div className="w-2 h-2 bg-gray-500 rounded-full"></div>
+                Belirtilmemiş
+              </span>
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                {educationStats.belirtilmemiş || 0}
+              </span>
+            </div>
+            <div className="border-t border-gray-200 dark:border-gray-600 pt-2 mt-2">
+              <div className="flex justify-between items-center text-xs font-semibold">
+                <span className="text-gray-700 dark:text-gray-300">Toplam</span>
+                <span className="text-gray-900 dark:text-gray-100">
+                  {educationStats.toplam || 0}
                 </span>
               </div>
             </div>
@@ -598,37 +939,70 @@ function UsersSummaryCard() {
   }, [names, debouncedQuery]);
 
   return (
-    <div className="rounded-lg border bg-white dark:bg-gray-800 dark:border-gray-700 p-4 shadow-sm">
-      <div className="text-sm text-gray-500 dark:text-gray-400">
-        Kullanıcılar
+    <div className="relative overflow-hidden rounded-xl border bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition-all duration-200">
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+            Kullanıcı Arama
+          </div>
+        </div>
+        <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
+          <svg
+            className="w-6 h-6 text-orange-600 dark:text-orange-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </div>
       </div>
-      <div className="mt-2">
+
+      <div className="mb-4">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="İsim soyisim ara..."
-          className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           aria-label="Kullanıcı arama"
         />
       </div>
+
       {loading ? (
-        <div className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+        <div className="text-sm text-gray-600 dark:text-gray-400 text-center py-4">
           Yükleniyor...
         </div>
       ) : error ? (
-        <div className="mt-1 text-sm text-red-600 dark:text-red-400">
+        <div className="text-sm text-red-600 dark:text-red-400 text-center py-4">
           {error}
         </div>
       ) : filtered.length === 0 ? (
-        <div className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-          Kayıtlı kullanıcı yok
+        <div className="text-sm text-gray-500 dark:text-gray-400 text-center py-4">
+          {query ? "Arama sonucu bulunamadı" : "Kayıtlı kullanıcı yok"}
         </div>
       ) : (
-        <ul className="mt-2 max-h-40 overflow-auto text-sm text-gray-900 dark:text-gray-100 list-disc list-inside">
-          {filtered.map((n, i) => (
-            <li key={`${n}-${i}`}>{n}</li>
-          ))}
-        </ul>
+        <div className="max-h-48 overflow-auto">
+          <div className="space-y-2">
+            {filtered.map((n, i) => (
+              <div
+                key={`${n}-${i}`}
+                className="text-sm text-gray-900 dark:text-gray-100 py-1 px-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              >
+                {n}
+              </div>
+            ))}
+          </div>
+          {query && (
+            <div className="mt-3 pt-2 border-t border-gray-200 dark:border-gray-600 text-xs text-gray-500 dark:text-gray-400 text-center">
+              {filtered.length} sonuç bulundu
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
@@ -653,6 +1027,339 @@ function ActionButton({ label }) {
   );
 }
 
+// Admin kullanıcı güncelleme formu
+function AdminUpdateUserForm() {
+  const [selectedUserId, setSelectedUserId] = React.useState("");
+  const [selectedUser, setSelectedUser] = React.useState(null);
+  const [users, setUsers] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [formData, setFormData] = React.useState({
+    firstName: "",
+    lastName: "",
+    birthDate: "",
+    tcNumber: "",
+    phone: "",
+    email: "",
+    education: "",
+    courses: [],
+    role: "user",
+    createdAt: "",
+  });
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [serverError, setServerError] = React.useState("");
+  const [serverSuccess, setServerSuccess] = React.useState("");
+
+  // Kullanıcıları yükle
+  React.useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch("/api/admin/users", { cache: "no-store" });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.message || "Kullanıcılar alınamadı");
+        setUsers(Array.isArray(data.users) ? data.users : []);
+      } catch (e) {
+        setServerError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUsers();
+  }, []);
+
+  // Filtrelenmiş kullanıcı listesi
+  const filteredUsers = React.useMemo(() => {
+    if (!searchQuery.trim()) return users;
+    const query = searchQuery.toLowerCase().trim();
+    return users.filter((user) => {
+      const fullName = `${user.firstName || ""} ${
+        user.lastName || ""
+      }`.toLowerCase();
+      const email = (user.email || "").toLowerCase();
+      return fullName.includes(query) || email.includes(query);
+    });
+  }, [users, searchQuery]);
+
+  // Seçilen kullanıcı değiştiğinde formu güncelle
+  React.useEffect(() => {
+    if (selectedUserId && users.length > 0) {
+      const user = users.find((u) => u._id === selectedUserId);
+      if (user) {
+        setSelectedUser(user);
+        setFormData({
+          firstName: user.firstName || "",
+          lastName: user.lastName || "",
+          birthDate: user.birthDate || "",
+          tcNumber: user.tcNumber || "",
+          phone: user.phone || "",
+          email: user.email || "",
+          education: user.education || "",
+          courses: user.courses || [],
+          role: user.role || "user",
+          createdAt: user.createdAt
+            ? new Date(user.createdAt).toISOString().split("T")[0]
+            : "",
+        });
+        setServerError("");
+        setServerSuccess("");
+      }
+    }
+  }, [selectedUserId, users]);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (type === "checkbox" && name.startsWith("course:")) {
+      const course = name.split(":")[1];
+      setFormData((p) => {
+        const has = p.courses.includes(course);
+        const next = checked
+          ? has
+            ? p.courses
+            : [...p.courses, course]
+          : p.courses.filter((c) => c !== course);
+        return { ...p, courses: next };
+      });
+      return;
+    }
+    if (name === "phone") {
+      const digits = value.replace(/\D/g, "").slice(0, 10);
+      setFormData((p) => ({ ...p, phone: digits }));
+      return;
+    }
+    if (name === "tcNumber") {
+      const digits = value.replace(/\D/g, "").slice(0, 11);
+      setFormData((p) => ({ ...p, tcNumber: digits }));
+      return;
+    }
+    setFormData((p) => ({ ...p, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!selectedUserId) {
+      setServerError("Lütfen bir kullanıcı seçin");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setServerError("");
+    setServerSuccess("");
+
+    try {
+      const res = await fetch(`/api/admin/users/${selectedUserId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "updateUser",
+          ...formData,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || "Güncelleme başarısız");
+
+      showToast({
+        type: "success",
+        title: "Başarılı",
+        message: "Kullanıcı güncellendi",
+      });
+      setServerSuccess("Kullanıcı başarıyla güncellendi.");
+
+      // Kullanıcı listesini yenile
+      const usersRes = await fetch("/api/admin/users", { cache: "no-store" });
+      const usersData = await usersRes.json();
+      if (usersRes.ok) {
+        setUsers(Array.isArray(usersData.users) ? usersData.users : []);
+      }
+    } catch (err) {
+      setServerError(err.message);
+      showToast({ type: "error", title: "Hata", message: err.message });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="rounded-xl border bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm">
+      {serverError && (
+        <div className="mb-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 px-4 py-3 text-sm text-red-700 dark:text-red-400">
+          {serverError}
+        </div>
+      )}
+      {serverSuccess && (
+        <div className="mb-4 rounded-lg border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20 px-4 py-3 text-sm text-green-700 dark:text-green-400">
+          {serverSuccess}
+        </div>
+      )}
+
+      {/* Kullanıcı Seçimi */}
+      <div className="mb-6">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          Güncellenecek Kullanıcı
+        </label>
+
+        {/* Arama Kutusu */}
+        <div className="mb-3">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="İsim, soyisim veya e-posta ile ara..."
+            className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+
+        <select
+          value={selectedUserId}
+          onChange={(e) => setSelectedUserId(e.target.value)}
+          className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          disabled={loading}
+        >
+          <option value="">Kullanıcı seçiniz</option>
+          {filteredUsers.map((user) => (
+            <option key={user._id} value={user._id}>
+              {user.firstName} {user.lastName} ({user.email})
+            </option>
+          ))}
+        </select>
+
+        {loading && (
+          <p className="mt-1 text-sm text-gray-500">
+            Kullanıcılar yükleniyor...
+          </p>
+        )}
+
+        {!loading && searchQuery && (
+          <p className="mt-1 text-sm text-gray-500">
+            {filteredUsers.length} kullanıcı bulundu
+          </p>
+        )}
+      </div>
+
+      {/* Güncelleme Formu */}
+      {selectedUser && (
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+        >
+          <Input
+            label="İsim"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
+          <Input
+            label="Soyisim"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+          <Input
+            label="Doğum Tarihi"
+            name="birthDate"
+            type="date"
+            value={formData.birthDate}
+            onChange={handleChange}
+          />
+          <Input
+            label="TC Kimlik"
+            name="tcNumber"
+            value={formData.tcNumber}
+            onChange={handleChange}
+            maxLength={11}
+          />
+          <Input
+            label="Telefon"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            maxLength={10}
+          />
+          <Input
+            label="E-posta"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <Input
+            label="Kayıt Tarihi"
+            name="createdAt"
+            type="date"
+            value={formData.createdAt}
+            onChange={handleChange}
+          />
+          <div className="sm:col-span-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Eğitim Durumu
+            </label>
+            <select
+              name="education"
+              value={formData.education}
+              onChange={handleChange}
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            >
+              <option value="">Seçiniz</option>
+              <option value="ilkokul">İlkokul</option>
+              <option value="ortaokul">Ortaokul</option>
+              <option value="lise">Lise</option>
+              <option value="onlisans">Ön Lisans</option>
+              <option value="lisans">Lisans</option>
+              <option value="yukseklisans">Yüksek Lisans</option>
+              <option value="doktora">Doktora</option>
+            </select>
+          </div>
+          <div className="sm:col-span-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Rol
+            </label>
+            <select
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            >
+              <option value="user">Kullanıcı</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          <div className="sm:col-span-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Erişim Verilecek Eğitimler
+            </label>
+            <div className="flex flex-wrap gap-3">
+              <Checkbox
+                label="Mentorluk Kursu"
+                name="course:mentorluk_kursu"
+                checked={formData.courses.includes("mentorluk_kursu")}
+                onChange={handleChange}
+              />
+              <Checkbox
+                label="Seviye 6 Kursu"
+                name="course:seviye6_kursu"
+                checked={formData.courses.includes("seviye6_kursu")}
+                onChange={handleChange}
+              />
+            </div>
+            <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+              Seçilmeyen eğitimlere kullanıcı erişemez.
+            </p>
+          </div>
+          <div className="sm:col-span-2">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="inline-flex items-center justify-center rounded-md bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 px-4 py-2 text-white text-sm font-medium disabled:opacity-60 transition-colors"
+            >
+              {isSubmitting ? "Güncelleniyor..." : "Kullanıcıyı Güncelle"}
+            </button>
+          </div>
+        </form>
+      )}
+    </div>
+  );
+}
+
 // Admin kullanıcı oluşturma formu
 function AdminCreateUserForm() {
   const [formData, setFormData] = React.useState({
@@ -665,6 +1372,7 @@ function AdminCreateUserForm() {
     education: "",
     password: "",
     courses: [],
+    role: "user",
   });
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [serverError, setServerError] = React.useState("");
@@ -727,6 +1435,7 @@ function AdminCreateUserForm() {
         education: "",
         password: "",
         courses: [],
+        role: "user",
       });
     } catch (err) {
       setServerError(err.message);
@@ -820,6 +1529,20 @@ function AdminCreateUserForm() {
             value={formData.password}
             onChange={handleChange}
           />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Rol
+          </label>
+          <select
+            name="role"
+            value={formData.role}
+            onChange={handleChange}
+            className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          >
+            <option value="user">Kullanıcı</option>
+            <option value="admin">Admin</option>
+          </select>
         </div>
         {/* Kurs Seçimleri */}
         <div className="sm:col-span-2">
