@@ -1,8 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function EgitimSeviye6() {
+  const router = useRouter();
+
+  const handleKayitOl = () => {
+    router.push("/iletisim");
+  };
+
+  const handleDanismanlik = () => {
+    router.push("/iletisim");
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Hero Section */}
@@ -825,10 +836,16 @@ export default function EgitimSeviye6() {
             edin. Bugün kayıt olun ve değişim yolculuğunuza başlayın.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-blue-900 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold text-lg transition duration-300 transform hover:scale-105">
+            <button
+              onClick={handleKayitOl}
+              className="bg-white text-blue-900 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold text-lg transition duration-300 transform hover:scale-105"
+            >
               Hemen Kayıt Ol
             </button>
-            <button className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg transition duration-300">
+            <button
+              onClick={handleDanismanlik}
+              className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg transition duration-300"
+            >
               Ücretsiz Danışmanlık
             </button>
           </div>

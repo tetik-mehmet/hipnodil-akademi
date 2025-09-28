@@ -6,7 +6,8 @@ import Link from "next/link";
 export default function IletisimPage() {
   const phoneNumber = "+90 312 999 98 07";
   const phoneHref = "tel:+903129999807";
-  const whatsappHref = "https://wa.me/903129999807";
+  const whatsappNumber = "5350123295";
+  const whatsappHref = `https://wa.me/90${whatsappNumber}`;
   const email = "info@hipnodil.com";
   const emailHref = `mailto:${email}`;
   const addressText =
@@ -75,7 +76,7 @@ export default function IletisimPage() {
               <div className="flex-1">
                 <p className="text-slate-700 font-semibold">WhatsApp</p>
                 <p className="text-emerald-700 group-hover:text-emerald-800 font-medium">
-                  {phoneNumber}
+                  +90 {whatsappNumber}
                 </p>
               </div>
               <span className="ml-auto text-slate-400 group-hover:text-emerald-600 transition-colors">
@@ -220,14 +221,7 @@ export default function IletisimPage() {
               rel="noopener noreferrer"
               className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 ring-1 ring-slate-200 transition-all hover:bg-pink-50 hover:text-pink-700 hover:ring-pink-200 hover:-translate-y-0.5"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-5 w-5"
-              >
-                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.51 5.51 0 0 1 12 7.5ZM18 6.8a1.3 1.3 0 1 1-1.3 1.3A1.3 1.3 0 0 1 18 6.8Z" />
-              </svg>
+              <Image src="/insta.svg" alt="Instagram" width={20} height={20} />
             </Link>
             <Link
               href="https://www.youtube.com/@Hipnodil-Akademi"

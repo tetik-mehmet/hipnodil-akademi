@@ -339,7 +339,7 @@ export default function Home() {
       </section>
       {/* Floating WhatsApp Button */}
       <Link
-        href="https://wa.me/903129999807"
+        href="https://wa.me/905350123295"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp ile yazın"

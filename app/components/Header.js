@@ -176,16 +176,6 @@ export default function Header() {
           >
             Eğitmenlerimiz
           </Link>
-          <Link
-            href="/egitimlerimiz"
-            className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
-              pathname === "/egitimlerimiz"
-                ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
-                : "text-[#1f2937] hover:text-[#1f2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
-            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#F28B82] focus-visible:rounded-md`}
-          >
-            Eğitimlerimiz
-          </Link>
           <div className="relative group">
             <button
               type="button"
@@ -402,17 +392,6 @@ export default function Header() {
                 onClick={() => setIsOpen(false)}
               >
                 Eğitmenlerimiz
-              </Link>
-              <Link
-                href="/egitimlerimiz"
-                className={`rounded-lg px-3 py-2 font-semibold transition-colors ${
-                  pathname === "/egitimlerimiz"
-                    ? "text-[#1F2937] bg-[#F28B82]/10"
-                    : "text-gray-900 hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
-                } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#F28B82]`}
-                onClick={() => setIsOpen(false)}
-              >
-                Eğitimlerimiz
               </Link>
               <Link
                 href="/danismanlik"

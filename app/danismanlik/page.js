@@ -232,7 +232,7 @@ export default function DanismanlikPage() {
                       <div className="rounded-xl bg-gradient-to-r from-cyan-50 to-blue-50 p-4 border border-cyan-100">
                         <div className="flex items-start gap-3">
                           <div className="w-2 h-2 rounded-full bg-cyan-500 mt-2 flex-shrink-0"></div>
-                          <p className="text-sm text-gray-700 leading-relaxed">
+                          <div className="text-sm text-gray-700 leading-relaxed">
                             {item.id === "ogrenci" && (
                               <div className="space-y-4">
                                 <div>
@@ -270,19 +270,75 @@ export default function DanismanlikPage() {
                                 </div>
                               </div>
                             )}
-                            {item.id === "quantum" &&
-                              "Quantum koçluğu, bilinç ve bilinçaltı düzeyinde dönüşüm sağlayarak kişinin yaşamına yön vermesine yardımcı olan güçlü bir koçluk yaklaşımıdır. Düşünce ve inançları keşfetmeyi, engelleri dönüştürmeyi ve içsel potansiyeli açığa çıkarmayı hedefler. Bu süreçle birlikte kişi; hedeflerine daha kolay odaklanır, yaşamında dengeyi kurar ve istediği değişimi güvenle hayata geçirir.Negatif kodları pozitife dönüştürme yolculuğudur."}
-                            {item.id === "psikolojik" &&
-                              "Psikolojik danışmanlık, bireylerin duygusal, zihinsel ve davranışsal süreçlerini anlamalarına ve sağlıklı bir şekilde yönetmelerine destek olan profesyonel bir yardım sürecidir. Kişinin kendini keşfetmesine, yaşamındaki zorluklarla başa çıkmasına ve daha dengeli, doyumlu bir yaşam sürmesine yardımcı olur."}
-                            {item.id === "nlp" &&
-                              "NLP (Neuro Linguistic Programming) danışmanlığı, bireylerin düşünce, dil ve davranış kalıplarını anlayarak kişisel gelişim ve değişim süreçlerini hızlandıran bir koçluk yaklaşımıdır. Bireyin kendi değişim sürecini fark etmesidir."}
-                            {item.id === "aile" &&
-                              "Aile danışmanlığı, aile üyeleri arasındaki iletişim problemlerini çözmeye, aile dinamiklerini güçlendirmeye ve sağlıklı aile ilişkileri kurmaya odaklanan profesyonel bir destek sürecidir. Ebeveyn-çocuk ilişkilerini iyileştirir ve aile bireylerinin birbirlerini daha iyi anlamalarına yardımcı olur."}
-                            {item.id === "moxo" &&
-                              "Moxo Dikkat Testi, dikkat eksikliği ve dürtüsellik gibi bilişsel süreçleri ölçmek amacıyla kullanılan bilgisayar tabanlı, objektif bir değerlendirme aracıdır. Çocuklar ve yetişkinlerde dikkat, zamanlama, dürtüsellik ve hiperaktivite alanlarını ayrı ayrı inceleyerek detaylı bir profil sunar."}
-                            {item.id === "cozum" &&
-                              "Çözüm Odaklı Kısa Süreli Terapi, kişinin mevcut kaynaklarını ve güçlü yanlarını kullanarak hızlı ve etkili çözümler üretmeye odaklanan bir terapi yaklaşımıdır. Geçmiş problemlerin kişiye nasıl bir deneyim kattığına odaklanarak gelecekteki hedefler ve çözümler üzerinde durur. Kısa sürede sonuç alınmasını hedefleyen, pragmatik ve pozitif bir yaklaşımdır."}
-                          </p>
+                            {item.id === "quantum" && (
+                              <p>
+                                Quantum koçluğu, bilinç ve bilinçaltı düzeyinde
+                                dönüşüm sağlayarak kişinin yaşamına yön
+                                vermesine yardımcı olan güçlü bir koçluk
+                                yaklaşımıdır. Düşünce ve inançları keşfetmeyi,
+                                engelleri dönüştürmeyi ve içsel potansiyeli
+                                açığa çıkarmayı hedefler. Bu süreçle birlikte
+                                kişi; hedeflerine daha kolay odaklanır,
+                                yaşamında dengeyi kurar ve istediği değişimi
+                                güvenle hayata geçirir.Negatif kodları pozitife
+                                dönüştürme yolculuğudur.
+                              </p>
+                            )}
+                            {item.id === "psikolojik" && (
+                              <p>
+                                Psikolojik danışmanlık, bireylerin duygusal,
+                                zihinsel ve davranışsal süreçlerini anlamalarına
+                                ve sağlıklı bir şekilde yönetmelerine destek
+                                olan profesyonel bir yardım sürecidir. Kişinin
+                                kendini keşfetmesine, yaşamındaki zorluklarla
+                                başa çıkmasına ve daha dengeli, doyumlu bir
+                                yaşam sürmesine yardımcı olur.
+                              </p>
+                            )}
+                            {item.id === "nlp" && (
+                              <p>
+                                NLP (Neuro Linguistic Programming) danışmanlığı,
+                                bireylerin düşünce, dil ve davranış kalıplarını
+                                anlayarak kişisel gelişim ve değişim süreçlerini
+                                hızlandıran bir koçluk yaklaşımıdır. Bireyin
+                                kendi değişim sürecini fark etmesidir.
+                              </p>
+                            )}
+                            {item.id === "aile" && (
+                              <p>
+                                Aile danışmanlığı, aile üyeleri arasındaki
+                                iletişim problemlerini çözmeye, aile
+                                dinamiklerini güçlendirmeye ve sağlıklı aile
+                                ilişkileri kurmaya odaklanan profesyonel bir
+                                destek sürecidir. Ebeveyn-çocuk ilişkilerini
+                                iyileştirir ve aile bireylerinin birbirlerini
+                                daha iyi anlamalarına yardımcı olur.
+                              </p>
+                            )}
+                            {item.id === "moxo" && (
+                              <p>
+                                Moxo Dikkat Testi, dikkat eksikliği ve
+                                dürtüsellik gibi bilişsel süreçleri ölçmek
+                                amacıyla kullanılan bilgisayar tabanlı, objektif
+                                bir değerlendirme aracıdır. Çocuklar ve
+                                yetişkinlerde dikkat, zamanlama, dürtüsellik ve
+                                hiperaktivite alanlarını ayrı ayrı inceleyerek
+                                detaylı bir profil sunar.
+                              </p>
+                            )}
+                            {item.id === "cozum" && (
+                              <p>
+                                Çözüm Odaklı Kısa Süreli Terapi, kişinin mevcut
+                                kaynaklarını ve güçlü yanlarını kullanarak hızlı
+                                ve etkili çözümler üretmeye odaklanan bir terapi
+                                yaklaşımıdır. Geçmiş problemlerin kişiye nasıl
+                                bir deneyim kattığına odaklanarak gelecekteki
+                                hedefler ve çözümler üzerinde durur. Kısa sürede
+                                sonuç alınmasını hedefleyen, pragmatik ve
+                                pozitif bir yaklaşımdır.
+                              </p>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>

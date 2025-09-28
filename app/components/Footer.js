@@ -225,7 +225,7 @@ export default function Footer() {
         {/* Alt Çizgi ve Telif */}
         <div className="mt-10 border-t border-[#1e3a8a]/20 pt-6 text-xs/6 text-[#1e3a8a] md:mt-12 md:pt-7">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-            <p>© 2025 Hipnodil Akademi. Tüm Hakları Saklıdır.</p>
+            <p>© 2024 Hipnodil Akademi. Tüm Hakları Saklıdır.</p>
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 href="#"

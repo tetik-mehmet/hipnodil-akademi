@@ -122,7 +122,7 @@ export default function Page() {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <TrainerCard
           imageSrc="/merve.png"
-          name="Merve ÖÇÜT"
+          name="Merve Öcüt Çelik"
           title="PDR Uzmanı | ICF/MYK Profesyonel Koç"
           sections={[
             {
