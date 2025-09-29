@@ -10,6 +10,9 @@ export default function Page() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const REQUIRED_COURSE = "mentorluk_kursu";
   const [isVimeoReady, setIsVimeoReady] = useState(false);
+  const [docs, setDocs] = useState([]);
+  const [isDocsLoading, setIsDocsLoading] = useState(true);
+  const [docsError, setDocsError] = useState("");
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -39,6 +42,26 @@ export default function Page() {
 
     checkAuth();
   }, [router]);
+
+  // PDF dokümanlarını getir
+  useEffect(() => {
+    const fetchDocs = async () => {
+      try {
+        setIsDocsLoading(true);
+        const res = await fetch("/api/docs/mentorluk", { cache: "no-store" });
+        if (!res.ok) throw new Error("Doküman listesi alınamadı");
+        const data = await res.json();
+        const list = Array.isArray(data.docs) ? data.docs : [];
+        setDocs(list);
+      } catch (e) {
+        setDocsError(e?.message || "Bir hata oluştu");
+      } finally {
+        setIsDocsLoading(false);
+      }
+    };
+
+    fetchDocs();
+  }, []);
 
   if (isLoading) {
     return (
@@ -150,6 +173,47 @@ export default function Page() {
           </article>
         ))}
       </div>
+
+      {/* Dokümanlar Bölümü */}
+      <section className="mt-12">
+        <header className="mb-4 flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
+          <div>
+            <h2 className="text-xl font-semibold text-gray-900 md:text-2xl">
+              Dokümanlar
+            </h2>
+            <p className="mt-1 text-sm text-gray-600">
+              Eğitimle ilgili PDF dokümanlarını görüntüleyebilir veya
+              indirebilirsiniz.
+            </p>
+          </div>
+          {!isDocsLoading && docs?.length > 0 && (
+            <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
+              {docs.length} dosya
+            </span>
+          )}
+        </header>
+
+        {isDocsLoading ? (
+          <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-4">
+            <div className="h-5 w-5 animate-spin rounded-full border-2 border-blue-600 border-b-transparent"></div>
+            <p className="text-sm text-gray-600">Dokümanlar yükleniyor…</p>
+          </div>
+        ) : docsError ? (
+          <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+            {docsError}
+          </div>
+        ) : docs.length === 0 ? (
+          <div className="rounded-lg border border-gray-200 bg-white p-6 text-center text-sm text-gray-600">
+            Henüz doküman eklenmemiş.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {docs.map((doc) => (
+              <DocCard key={doc.href} doc={doc} />
+            ))}
+          </div>
+        )}
+      </section>
     </main>
   );
 }
@@ -192,4 +256,56 @@ function AutoFullscreenBinder() {
   }, []);
 
   return null;
+}
+
+function DocCard({ doc }) {
+  return (
+    <article className="group flex flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow-md">
+      <div className="flex items-start gap-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-md bg-red-50 text-red-600 ring-1 ring-red-100">
+          {/* PDF simgesi */}
+          <svg
+            className="h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M14 2H6a2 2 0 0 0-2 2v16.005A1.995 1.995 0 0 0 5.995 22H18a2 2 0 0 0 2-2V8z"
+              opacity=".2"
+            ></path>
+            <path d="M14 2v6h6M8 11h5M8 14h8M8 17h8"></path>
+          </svg>
+        </div>
+        <div className="min-w-0">
+          <h3
+            className="truncate text-sm font-medium text-gray-900"
+            title={doc.title}
+          >
+            {doc.title}
+          </h3>
+          {doc.sizeText && (
+            <p className="mt-0.5 text-xs text-gray-500">{doc.sizeText}</p>
+          )}
+        </div>
+      </div>
+      <div className="mt-4 flex gap-2">
+        <a
+          href={doc.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex flex-1 items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+        >
+          Görüntüle
+        </a>
+        <a
+          href={doc.href}
+          download
+          className="inline-flex flex-1 items-center justify-center rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
+        >
+          İndir
+        </a>
+      </div>
+    </article>
+  );
 }
