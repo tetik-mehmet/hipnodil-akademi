@@ -112,7 +112,7 @@ export default function Header() {
           aria-controls="mobile-menu"
           aria-expanded={isOpen}
           onClick={() => setIsOpen((v) => !v)}
-          className="md:hidden inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm transition hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#F28B82]"
+          className="md:hidden inline-flex items-center justify-center rounded-lg border border-transparent bg-[#F26B0F] px-3 py-2 text-white shadow-sm transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -145,9 +145,9 @@ export default function Header() {
             href="/"
             className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
               pathname === "/"
-                ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
-                : "text-[#1f2937] hover:text-[#1f2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
-            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#F28B82] focus-visible:rounded-md`}
+                ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-white"
+                : "text-white hover:text-white/90 after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-white hover:after:scale-x-100"
+            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70 focus-visible:rounded-md`}
           >
             Ana Sayfa
           </Link>
@@ -155,9 +155,9 @@ export default function Header() {
             href="/hakkimizda"
             className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
               pathname === "/hakkimizda"
-                ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
-                : "text-[#1f2937] hover:text-[#1f2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
-            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#F28B82] focus-visible:rounded-md`}
+                ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-white"
+                : "text-white hover:text-white/90 after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-white hover:after:scale-x-100"
+            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70 focus-visible:rounded-md`}
           >
             Hakkımızda
           </Link>
@@ -165,9 +165,9 @@ export default function Header() {
             href="/paketler"
             className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
               pathname === "/paketler"
-                ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
-                : "text-[#1f2937] hover:text-[#1f2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
-            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#F28B82] focus-visible:rounded-md`}
+                ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-white"
+                : "text-white hover:text-white/90 after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-white hover:after:scale-x-100"
+            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70 focus-visible:rounded-md`}
           >
             Koçluk Paketleri
           </Link>
@@ -175,9 +175,9 @@ export default function Header() {
             href="/egitmenler"
             className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
               pathname === "/egitmenler"
-                ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
-                : "text-[#1f2937] hover:text-[#1f2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
-            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#F28B82] focus-visible:rounded-md`}
+                ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-white"
+                : "text-white hover:text-white/90 after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-white hover:after:scale-x-100"
+            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70 focus-visible:rounded-md`}
           >
             Eğitmenlerimiz
           </Link>
@@ -188,9 +188,9 @@ export default function Header() {
               aria-expanded="false"
               className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
                 pathname === "/danismanlik" || pathname === "/grup_danismanlik"
-                  ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
-                  : "text-[#1f2937] hover:text-[#1f2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
-              } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#F28B82] focus-visible:rounded-md`}
+                  ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-white"
+                  : "text-white hover:text-white/90 after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-white hover:after:scale-x-100"
+              } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70 focus-visible:rounded-md`}
             >
               Danışmanlık Hizmetleri
             </button>
@@ -221,16 +221,16 @@ export default function Header() {
             href="/iletisim"
             className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
               pathname === "/iletisim"
-                ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937]"
-                : "text-[#1f2937] hover:text-[#1f2937] after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-[#1F2937] hover:after:scale-x-100"
-            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#F28B82] focus-visible:rounded-md`}
+                ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-white"
+                : "text-white hover:text-white/90 after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-white hover:after:scale-x-100"
+            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70 focus-visible:rounded-md`}
           >
             İletişim
           </Link>
           <button
             type="button"
             onClick={handleEgitimIcerikClick}
-            className="relative font-bold text-[#1E3A8A] transition-colors hover:text-[#059669] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-[#1E3A8A] after:to-[#059669] after:transition-transform after:duration-300 hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1E3A8A] focus-visible:rounded-md"
+            className="relative font-bold text-white transition-colors hover:text-white/90 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-white after:to-white after:transition-transform after:duration-300 hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70 focus-visible:rounded-md"
           >
             Eğitim İçeriğim
           </button>

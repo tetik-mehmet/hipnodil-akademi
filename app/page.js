@@ -118,10 +118,7 @@ export default function Home() {
   }, [isPaused, slides.length]);
 
   return (
-    <div className="font-sans min-h-screen text-slate-800 bg-gradient-to-b from-[#FFF6E5] via-[#BBDCE5]/40 to-[#A8D5BA]/40">
-      {/* soft, airy blurred background overlay */}
-      <div className="pointer-events-none fixed inset-0 -z-10 blur-2xl opacity-70 [background-image:radial-gradient(1000px_600px_at_0%_0%,rgba(187,220,229,0.35),transparent_60%),radial-gradient(800px_500px_at_100%_100%,rgba(168,213,186,0.35),transparent_60%)]" />
-
+    <div className="font-sans min-h-screen text-slate-800 bg-[#EEEEEE]">
       {/* Paylaş Butonu - Header'ın hemen altında */}
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 pt-4 pb-2">
         <div className="flex justify-center">
