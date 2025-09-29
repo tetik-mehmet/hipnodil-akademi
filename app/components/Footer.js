@@ -23,7 +23,7 @@ export default function Footer() {
     });
   };
   return (
-    <footer className="relative mt-0 w-full overflow-hidden bg-gradient-to-br from-[#FFB6C1] to-[#FFA07A] backdrop-blur-xl backdrop-saturate-150 border-t border-[#FFB6C1]/30">
+    <footer className="relative mt-0 w-full overflow-hidden bg-gradient-to-br from-[#06b6d4] to-[#14b8a6] backdrop-blur-xl backdrop-saturate-150 border-t border-white/20">
       <div className="relative mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           {/* Logo + Tanım */}
@@ -38,7 +38,7 @@ export default function Footer() {
                 priority
               />
             </Link>
-            <p className="mt-4 text-sm/6 text-[#1e3a8a]">
+            <p className="mt-4 text-sm/6 text-white/90">
               Hipnodil Akademi, hipnoz ve kişisel gelişim alanında
               Türkiye&#39;nin önde gelen eğitim kurumlarından biridir.
             </p>
@@ -73,7 +73,7 @@ export default function Footer() {
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#1e3a8a]/10 ring-1 ring-[#1e3a8a]/20 transition-all duration-300 hover:bg-[#1e3a8a]/20 hover:scale-110 hover:rotate-3 hover:shadow-lg hover:shadow-[#1e3a8a]/25"
+                  className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20 transition-all duration-300 hover:bg-white/20 hover:scale-110 hover:rotate-3 hover:shadow-lg hover:shadow-white/25"
                 >
                   {item.src ? (
                     <Image
@@ -81,13 +81,13 @@ export default function Footer() {
                       alt={item.label}
                       width={20}
                       height={20}
-                      className="h-5 w-5 object-contain opacity-80 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110 group-hover:rotate-6"
+                      className="h-5 w-5 object-contain opacity-90 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110 group-hover:rotate-6"
                       priority={false}
                     />
                   ) : (
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-5 w-5 text-[#1e3a8a] transition-all duration-300 group-hover:text-[#1e3a8a]/80 group-hover:scale-110 group-hover:rotate-6"
+                      className="h-5 w-5 text-white transition-all duration-300 group-hover:text-white/90 group-hover:scale-110 group-hover:rotate-6"
                       fill="currentColor"
                       aria-hidden
                     >
@@ -101,7 +101,7 @@ export default function Footer() {
 
           {/* Hızlı Linkler */}
           <div>
-            <h3 className="text-lg font-semibold tracking-tight text-[#1e3a8a]">
+            <h3 className="text-lg font-semibold tracking-tight text-white">
               Hızlı Linkler
             </h3>
             <ul className="mt-4 space-y-3 text-sm/6">
@@ -115,10 +115,10 @@ export default function Footer() {
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    className="group inline-flex items-center gap-2 text-[#1e3a8a] transition hover:text-[#1e3a8a]/80"
+                    className="group inline-flex items-center gap-2 text-white transition hover:text-white/90"
                   >
                     <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#F28B82] to-[#F9D162]" />
-                    <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-[#1e3a8a] after:transition-all group-hover:after:w-full">
+                    <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-white after:transition-all group-hover:after:w-full">
                       {l.label}
                     </span>
                   </Link>
@@ -129,7 +129,7 @@ export default function Footer() {
 
           {/* Eğitimlerimiz */}
           <div>
-            <h3 className="text-lg font-semibold tracking-tight text-[#1e3a8a]">
+            <h3 className="text-lg font-semibold tracking-tight text-white">
               Eğitimlerimiz
             </h3>
             <ul className="mt-4 space-y-3 text-sm/6">
@@ -147,13 +147,13 @@ export default function Footer() {
                   href: "/kurslar/kurumsal_kocluk",
                 },
               ].map((item) => (
-                <li key={item.label} className="text-[#1e3a8a]">
+                <li key={item.label} className="text-white">
                   <Link
                     href={item.href}
-                    className="group inline-flex items-center gap-2 transition hover:text-[#1e3a8a]/80"
+                    className="group inline-flex items-center gap-2 transition hover:text-white/90"
                   >
                     <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#F28B82] to-[#F9D162]" />
-                    <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-[#1e3a8a] after:transition-all group-hover:after:w-full">
+                    <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-white after:transition-all group-hover:after:w-full">
                       {item.label}
                     </span>
                   </Link>
@@ -164,15 +164,15 @@ export default function Footer() {
 
           {/* İletişim */}
           <div>
-            <h3 className="text-lg font-semibold tracking-tight text-[#1e3a8a]">
+            <h3 className="text-lg font-semibold tracking-tight text-white">
               İletişim
             </h3>
-            <ul className="mt-4 space-y-4 text-sm/6 text-[#1e3a8a]">
+            <ul className="mt-4 space-y-4 text-sm/6 text-white">
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#1e3a8a]/10 ring-1 ring-[#1e3a8a]/20">
+                <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20">
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 text-[#1e3a8a]"
+                    className="h-4 w-4 text-white"
                     fill="currentColor"
                   >
                     <path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 7 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8Zm0 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" />
@@ -182,30 +182,30 @@ export default function Footer() {
                   href="https://www.google.com/maps?q=Ba%C4%9Fl%C4%B1ca%20Mah.%20Hilal%20Cad.%2013%2F2%20Etimesgut%2FANKARA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#1e3a8a]/80 underline decoration-[#1e3a8a]/40 underline-offset-2"
+                  className="hover:text-white/90 underline decoration-white/50 underline-offset-2"
                 >
                   Bağlıca Mah. Hilal Cad. 13/2 Etimesgut/ANKARA
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#1e3a8a]/10 ring-1 ring-[#1e3a8a]/20">
+                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20">
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 text-[#1e3a8a]"
+                    className="h-4 w-4 text-white"
                     fill="currentColor"
                   >
                     <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.03-.24c1.12.37 2.33.57 3.56.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C12.85 21 3 11.15 3 0.99A1 1 0 0 1 4 0h2.49a1 1 0 0 1 1 1c0 1.23.2 2.44.57 3.56a1 1 0 0 1-.24 1.03l-2.2 2.2Z" />
                   </svg>
                 </span>
-                <a href="tel:+903129998807" className="hover:text-[#1e3a8a]/80">
+                <a href="tel:+903129998807" className="hover:text-white/90">
                   +90 (312) 999 98 07
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#1e3a8a]/10 ring-1 ring-[#1e3a8a]/20">
+                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20">
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 text-[#1e3a8a]"
+                    className="h-4 w-4 text-white"
                     fill="currentColor"
                   >
                     <path d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Zm3 1 7 5 7-5H5Zm14 3.24-7 5-7-5V20h14V8.24Z" />
@@ -213,7 +213,7 @@ export default function Footer() {
                 </span>
                 <a
                   href="mailto:info@hipnodilakademi.com"
-                  className="hover:text-[#1e3a8a]/80"
+                  className="hover:text-white/90"
                 >
                   info@hipnodilakademi.com
                 </a>
@@ -223,26 +223,17 @@ export default function Footer() {
         </div>
 
         {/* Alt Çizgi ve Telif */}
-        <div className="mt-10 border-t border-[#1e3a8a]/20 pt-6 text-xs/6 text-[#1e3a8a] md:mt-12 md:pt-7">
+        <div className="mt-10 border-t border-white/20 pt-6 text-xs/6 text-white/80 md:mt-12 md:pt-7">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <p>© 2024 Hipnodil Akademi. Tüm Hakları Saklıdır.</p>
             <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="#"
-                className="hover:text-[#1e3a8a]/80 transition-colors"
-              >
+              <Link href="#" className="hover:text-white/90 transition-colors">
                 Gizlilik Politikası
               </Link>
-              <Link
-                href="#"
-                className="hover:text-[#1e3a8a]/80 transition-colors"
-              >
+              <Link href="#" className="hover:text-white/90 transition-colors">
                 Kullanım Koşulları
               </Link>
-              <Link
-                href="#"
-                className="hover:text-[#1e3a8a]/80 transition-colors"
-              >
+              <Link href="#" className="hover:text-white/90 transition-colors">
                 Çerez Politikası
               </Link>
             </div>
@@ -255,7 +246,7 @@ export default function Footer() {
         <button
           onClick={scrollToTop}
           aria-label="Sayfanın en üstüne git"
-          className="fixed bottom-6 left-6 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-[#1e3a8a] to-[#1e40af] text-white shadow-lg shadow-[#1e3a8a]/25 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-[#1e3a8a]/40 focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/50 focus:ring-offset-2"
+          className="fixed bottom-6 left-6 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-[#0e7490] to-[#0f766e] text-white shadow-lg shadow-black/20 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-black/30 focus:outline-none focus:ring-2 focus:ring-white/40 focus:ring-offset-2"
         >
           <svg
             className="h-6 w-6 transition-transform duration-300 group-hover:-translate-y-0.5"

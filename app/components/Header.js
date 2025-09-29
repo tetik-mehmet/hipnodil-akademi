@@ -84,10 +84,15 @@ export default function Header() {
     checkAuthAndRedirect();
   };
   return (
-    <header className="sticky top-0 z-50 w-full bg-white md:bg-white/10 md:supports-[backdrop-filter]:bg-white/10 md:backdrop-blur-xl md:backdrop-saturate-150 border-b border-gray-200 md:border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+    <header className="sticky top-0 z-50 w-full bg-gradient-to-br from-[#06b6d4] to-[#14b8a6] border-b border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+      {/* Glassmorphism overlay */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-white/15 supports-[backdrop-filter]:bg-white/10 backdrop-blur-xl backdrop-saturate-150"
+      />
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
         {/* Dekoratif yumuşak parıltı */}
-        <div className="pointer-events-none absolute inset-x-0 -top-8 mx-auto h-16 max-w-5xl scale-100 bg-gradient-to-r from-[#F28B82]/30 via-[#F9D162]/20 to-[#F28B82]/30 blur-2xl md:h-20 md:scale-105" />
+        <div className="pointer-events-none absolute inset-x-0 -top-8 mx-auto h-16 max-w-5xl scale-100 bg-gradient-to-r from-white/30 via-white/20 to-white/30 blur-2xl md:h-20 md:scale-105" />
         <Link href="/" className="flex items-center gap-3 -ml-2">
           <Image
             src="/hipnodilakademilogo.png"
@@ -288,7 +293,7 @@ export default function Header() {
             <>
               <Link
                 href="/login"
-                className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#F28B82] to-[#FF6B6B] px-6 py-3 font-bold text-white shadow-lg shadow-[#F28B82]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#F28B82]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-95"
+                className="group relative overflow-hidden rounded-2xl bg-[#0D1B2A] px-6 py-3 font-bold text-white shadow-lg shadow-[#0D1B2A]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#0D1B2A]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D1B2A]/60 active:scale-95"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   <svg
@@ -313,12 +318,10 @@ export default function Header() {
                   </svg>
                   Giriş Yap
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-                <div className="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
               </Link>
               <Link
                 href="/signup"
-                className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#FFA07A] to-[#FF8C69] px-6 py-3 font-bold text-white shadow-lg shadow-[#FFA07A]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#FFA07A]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFA07A]/60 active:scale-95"
+                className="group relative overflow-hidden rounded-2xl bg-[#F26B0F] px-6 py-3 font-bold text-white shadow-lg shadow-[#F26B0F]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#F26B0F]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F26B0F]/60 active:scale-95"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   <svg
@@ -332,8 +335,6 @@ export default function Header() {
                   </svg>
                   Üye Ol
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C69] to-[#FF7F50] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-                <div className="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
               </Link>
             </>
           )}
@@ -529,7 +530,7 @@ export default function Header() {
                   <>
                     <Link
                       href="/login"
-                      className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#F28B82] to-[#FF6B6B] px-6 py-3 font-bold text-white shadow-lg shadow-[#F28B82]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#F28B82]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F28B82]/60 active:scale-95"
+                      className="group relative overflow-hidden rounded-2xl bg-[#0D1B2A] px-6 py-3 font-bold text-white shadow-lg shadow-[#0D1B2A]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#0D1B2A]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D1B2A]/60 active:scale-95"
                       onClick={() => setIsOpen(false)}
                     >
                       <span className="relative z-10 flex items-center justify-center gap-2">
@@ -555,12 +556,10 @@ export default function Header() {
                         </svg>
                         Giriş Yap
                       </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-                      <div className="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                     </Link>
                     <Link
                       href="/signup"
-                      className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#FFA07A] to-[#FF8C69] px-6 py-3 font-bold text-white shadow-lg shadow-[#FFA07A]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#FFA07A]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFA07A]/60 active:scale-95"
+                      className="group relative overflow-hidden rounded-2xl bg-[#F26B0F] px-6 py-3 font-bold text-white shadow-lg shadow-[#F26B0F]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#F26B0F]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F26B0F]/60 active:scale-95"
                       onClick={() => setIsOpen(false)}
                     >
                       <span className="relative z-10 flex items-center justify-center gap-2">
@@ -575,8 +574,6 @@ export default function Header() {
                         </svg>
                         Üye Ol
                       </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#FF8C69] to-[#FF7F50] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-                      <div className="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                     </Link>
                   </>
                 )}
@@ -586,7 +583,7 @@ export default function Header() {
         )}
 
         {/* İnce gradient alt çizgi */}
-        <div className="pointer-events-none absolute inset-x-0 -bottom-[1px] h-px bg-gradient-to-r from-transparent via-[#F28B82]/60 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 -bottom-[1px] h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
       </div>
 
       {/* Hata mesajı */}
