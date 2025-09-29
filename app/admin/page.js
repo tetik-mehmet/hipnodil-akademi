@@ -497,7 +497,7 @@ function CourseDistributionCard() {
           mentorluk_kursu: 0,
           seviye6_kursu: 0,
           kurs_yok: 0,
-          toplam: Array.isArray(data.users) ? data.users.length : 0,
+          toplam: 0, // Kurs sayılarının toplamı olarak hesaplanacak
         };
 
         if (Array.isArray(data.users)) {
@@ -513,6 +513,9 @@ function CourseDistributionCard() {
             }
           });
         }
+
+        // Toplamı sadece mentorluk ve seviye 6 kurslarının toplamı olarak hesapla
+        stats.toplam = stats.mentorluk_kursu + stats.seviye6_kursu;
 
         setCourseStats(stats);
       } catch (e) {
@@ -628,6 +631,16 @@ function CourseDistributionCard() {
                 {courseStats.seviye6_kursu || 0}
               </span>
             </div>
+            <div className="border-t border-gray-200 dark:border-gray-600 pt-2 mt-3">
+              <div className="flex justify-between items-center text-sm font-semibold">
+                <span className="text-gray-700 dark:text-gray-300">
+                  Toplam Kurslar
+                </span>
+                <span className="text-gray-900 dark:text-gray-100">
+                  {courseStats.toplam || 0}
+                </span>
+              </div>
+            </div>
             <div className="flex justify-between items-center text-sm">
               <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -636,14 +649,6 @@ function CourseDistributionCard() {
               <span className="font-semibold text-gray-900 dark:text-gray-100">
                 {courseStats.kurs_yok || 0}
               </span>
-            </div>
-            <div className="border-t border-gray-200 dark:border-gray-600 pt-2 mt-3">
-              <div className="flex justify-between items-center text-sm font-semibold">
-                <span className="text-gray-700 dark:text-gray-300">Toplam</span>
-                <span className="text-gray-900 dark:text-gray-100">
-                  {courseStats.toplam || 0}
-                </span>
-              </div>
             </div>
           </div>
         </div>
