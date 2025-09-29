@@ -182,7 +182,7 @@ export default function EgitimIcerikPage() {
                     alt="Bilgi"
                     width={120}
                     height={120}
-                    className="rounded-xl shadow-sm ring-1 ring-gray-200 hidden sm:block"
+                    className="rounded-xl shadow-sm ring-1 ring-gray-200"
                     priority
                   />
                 </div>
