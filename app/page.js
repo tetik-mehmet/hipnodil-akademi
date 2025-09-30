@@ -144,7 +144,7 @@ export default function Home() {
       </div>
 
       <div
-        className="relative w-full h-[70vh] sm:h-[75vh] md:h-[75vh] overflow-hidden"
+        className="relative w-full aspect-[3/1] sm:h-[60vh] md:h-[75vh] overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
