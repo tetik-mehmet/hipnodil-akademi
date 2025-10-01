@@ -39,7 +39,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 text-sm/6 text-white/90">
-              Hipnodil Akademi, hipnoz ve kişisel gelişim alanında
+              Hipnodil Akademi, koçluk ve kişisel gelişim alanında
               Türkiye&#39;nin önde gelen eğitim kurumlarından biridir.
             </p>
 

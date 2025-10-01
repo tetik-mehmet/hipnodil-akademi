@@ -287,6 +287,7 @@ export default function AdminPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <TotalUsersCard />
             <NewUsersThisMonthCard />
+            <LastAddedUserCard />
             <CourseDistributionCard />
             <EducationDistributionCard />
           </div>
@@ -474,6 +475,102 @@ function NewUsersThisMonthCard() {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+// En son eklenen kullanıcı kartı
+function LastAddedUserCard() {
+  const [lastUser, setLastUser] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState("");
+
+  React.useEffect(() => {
+    const fetchLastUser = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const res = await fetch("/api/admin/users", { cache: "no-store" });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.message || "Veri alınamadı");
+
+        if (Array.isArray(data.users) && data.users.length > 0) {
+          const sorted = [...data.users].sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          );
+          setLastUser(sorted[0]);
+        } else {
+          setLastUser(null);
+        }
+      } catch (e) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchLastUser();
+  }, []);
+
+  const formatDateTime = (dt) =>
+    dt ? new Date(dt).toLocaleString("tr-TR") : "-";
+
+  return (
+    <div className="relative overflow-hidden rounded-xl border bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition-all duration-200">
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+            En Son Eklenen Kullanıcı
+          </div>
+        </div>
+        <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/20 rounded-lg flex items-center justify-center">
+          <svg
+            className="w-6 h-6 text-amber-600 dark:text-amber-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+          </svg>
+        </div>
+      </div>
+
+      {loading ? (
+        <div className="text-sm text-gray-600 dark:text-gray-400 text-center py-6">
+          Yükleniyor...
+        </div>
+      ) : error ? (
+        <div className="text-xs text-red-500 dark:text-red-400 text-center py-6">
+          {error}
+        </div>
+      ) : !lastUser ? (
+        <div className="text-sm text-gray-600 dark:text-gray-400 text-center py-6">
+          Kayıtlı kullanıcı yok
+        </div>
+      ) : (
+        <div className="flex items-start gap-3">
+          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-sm font-semibold">
+            {(lastUser.firstName?.[0] || "?").toUpperCase()}
+            {(lastUser.lastName?.[0] || "").toUpperCase()}
+          </div>
+          <div className="min-w-0">
+            <div className="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">
+              {(lastUser.firstName || "").trim()}{" "}
+              {(lastUser.lastName || "").trim()}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 break-all">
+              {lastUser.email || "-"}
+            </div>
+            <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+              Eklendi: {formatDateTime(lastUser.createdAt)}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
