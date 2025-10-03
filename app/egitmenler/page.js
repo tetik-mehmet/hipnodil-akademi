@@ -131,8 +131,8 @@ export default function Page() {
               items: [
                 "Psikolojik Danışmanlık ve Rehberlik Bölümü mezunu",
                 "Psikoloji alanında yüksek lisans eğitimi",
-                "Drama alanında uzmanlaşma",
-                "Quantum teknikleri eğitimi",
+                "Drama alanında uzmanlık",
+                "Quantum ve NLP teknikleri eğitimi",
               ],
             },
             {
@@ -148,6 +148,7 @@ export default function Page() {
               heading: "Hizmet Alanları",
               type: "pills",
               items: [
+                { label: "Bireysel Danışmanlık", color: "sky" },
                 { label: "Yaşam Koçluğu", color: "sky" },
                 { label: "Öğrenci Koçluğu", color: "violet" },
                 { label: "Etkili İletişim", color: "emerald" },
