@@ -336,6 +336,22 @@ export default function Header() {
                   Üye Ol
                 </span>
               </Link>
+              <Link
+                href="/calismalar"
+                className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 font-bold text-white shadow-lg shadow-purple-500/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60 active:scale-95 animate-pulse"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  <svg
+                    className="h-5 w-5 transition-transform group-hover:rotate-12"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                  </svg>
+                  Hipnodil Medyada
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+              </Link>
             </>
           )}
         </div>
@@ -574,6 +590,23 @@ export default function Header() {
                         </svg>
                         Üye Ol
                       </span>
+                    </Link>
+                    <Link
+                      href="/calismalar"
+                      className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 font-bold text-white shadow-lg shadow-purple-500/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60 active:scale-95 animate-pulse"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        <svg
+                          className="h-5 w-5 transition-transform group-hover:rotate-12"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                        Hipnodil Medyada
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                     </Link>
                   </>
                 )}
