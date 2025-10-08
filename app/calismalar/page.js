@@ -51,7 +51,7 @@ export default function CalismalarPage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              Çalışmalarımız
+              Etkinliklerimiz
             </h1>
             <p className="mt-6 text-xl leading-8 text-white/90 max-w-3xl mx-auto">
               Kişisel gelişim ve koçluk alanında gerçekleştirdiğimiz
