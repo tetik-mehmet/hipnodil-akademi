@@ -250,6 +250,60 @@ export default function CalismalarPage() {
           ))}
         </div>
       </div>
+
+      {/* Kurumsal Eğitimlerimiz Bölümü */}
+      <div className="py-16 sm:py-24 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+              Kurumsal Eğitimlerimiz
+            </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              Kurumsal yapılara özel gelişim programları ve eğitimler
+            </p>
+          </div>
+
+          {/* Resim Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              "/kultur4.png",
+              "/kultur5.png",
+              "/kultur6.png",
+              "/kultur7.png",
+              "/kultur8.png",
+              "/kultur9.png",
+              "/kultur10.png",
+              "/kultur11.png",
+              "/kultur12.png",
+              "/kultur13.png",
+              "/kultur14.png",
+              "/kultur15.png",
+            ].map((resim, index) => (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+              >
+                <div className="relative w-full h-[400px] bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+                  <Image
+                    src={resim}
+                    alt={`Kurumsal Eğitim ${index + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    unoptimized
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                  <p className="text-white text-sm font-semibold">
+                    Kurumsal Eğitim {index + 1}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
