@@ -93,14 +93,14 @@ export default function Header() {
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
         {/* Dekoratif yumuşak parıltı */}
         <div className="pointer-events-none absolute inset-x-0 -top-8 mx-auto h-16 max-w-5xl scale-100 bg-gradient-to-r from-white/30 via-white/20 to-white/30 blur-2xl md:h-20 md:scale-105" />
-        <Link href="/" className="flex items-center gap-3 -ml-2">
+        <Link href="/" className="flex items-center gap-3 -ml-4">
           <Image
             src="/hipnodilakademilogo.png"
             alt="Hipnodil Akademi"
-            width={200}
-            height={50}
+            width={220}
+            height={55}
             priority
-            className="h-12 w-auto transition-transform duration-300 ease-out hover:scale-[1.03]"
+            className="h-14 w-auto transition-transform duration-300 ease-out hover:scale-[1.03]"
           />
         </Link>
 
@@ -143,7 +143,7 @@ export default function Header() {
         >
           <Link
             href="/"
-            className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+            className={`relative text-sm font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
               pathname === "/"
                 ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-white"
                 : "text-white hover:text-white/90 after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-white hover:after:scale-x-100"
@@ -153,7 +153,7 @@ export default function Header() {
           </Link>
           <Link
             href="/hakkimizda"
-            className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+            className={`relative text-sm font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
               pathname === "/hakkimizda"
                 ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-white"
                 : "text-white hover:text-white/90 after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-white hover:after:scale-x-100"
@@ -163,7 +163,7 @@ export default function Header() {
           </Link>
           <Link
             href="/paketler"
-            className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+            className={`relative text-sm font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
               pathname === "/paketler"
                 ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-white"
                 : "text-white hover:text-white/90 after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-white hover:after:scale-x-100"
@@ -173,7 +173,7 @@ export default function Header() {
           </Link>
           <Link
             href="/egitmenler"
-            className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+            className={`relative text-sm font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
               pathname === "/egitmenler"
                 ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-white"
                 : "text-white hover:text-white/90 after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-white hover:after:scale-x-100"
@@ -186,7 +186,7 @@ export default function Header() {
               type="button"
               aria-haspopup="menu"
               aria-expanded="false"
-              className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+              className={`relative text-sm font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
                 pathname === "/danismanlik" || pathname === "/grup_danismanlik"
                   ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-white"
                   : "text-white hover:text-white/90 after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-white hover:after:scale-x-100"
@@ -219,7 +219,7 @@ export default function Header() {
           </div>
           <Link
             href="/iletisim"
-            className={`relative font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
+            className={`relative text-sm font-semibold transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded after:transition-transform after:duration-300 ${
               pathname === "/iletisim"
                 ? "text-[#F28B82] after:scale-x-100 after:bg-gradient-to-r after:from-[#F28B82] after:to-white"
                 : "text-white hover:text-white/90 after:scale-x-0 after:bg-gradient-to-r after:from-[#F28B82] after:to-white hover:after:scale-x-100"
@@ -230,7 +230,7 @@ export default function Header() {
           <button
             type="button"
             onClick={handleEgitimIcerikClick}
-            className="relative font-bold text-white transition-colors hover:text-white/90 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-white after:to-white after:transition-transform after:duration-300 hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70 focus-visible:rounded-md"
+            className="relative text-sm font-bold text-white transition-colors hover:text-white/90 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded after:bg-gradient-to-r after:from-white after:to-white after:transition-transform after:duration-300 hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70 focus-visible:rounded-md"
           >
             Eğitim İçeriğim
           </button>
@@ -291,54 +291,56 @@ export default function Header() {
             </button>
           ) : (
             <>
-              <Link
-                href="/login"
-                className="group relative overflow-hidden rounded-2xl bg-[#0D1B2A] px-6 py-3 font-bold text-white shadow-lg shadow-[#0D1B2A]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#0D1B2A]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D1B2A]/60 active:scale-95"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  <svg
-                    className="h-5 w-5 transition-transform group-hover:rotate-12"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M20 12C20 7.58172 16.4183 4 12 4M12 20C14.5264 20 16.7792 18.8289 18.2454 17"
+              <div className="flex items-center gap-3 rounded-2xl border-2 border-white/30 bg-white/10 backdrop-blur-md px-3 py-2 shadow-[0_8px_30px_rgba(255,255,255,0.1)]">
+                <Link
+                  href="/login"
+                  className="group relative overflow-hidden rounded-xl bg-[#0D1B2A] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#0D1B2A]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#0D1B2A]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D1B2A]/60 active:scale-95"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    <svg
+                      className="h-4 w-4 transition-transform group-hover:rotate-12"
+                      fill="none"
                       stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M4 12H14M14 12L11 9M14 12L11 15"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  Giriş Yap
-                </span>
-              </Link>
-              <Link
-                href="/signup"
-                className="group relative overflow-hidden rounded-2xl bg-[#F26B0F] px-6 py-3 font-bold text-white shadow-lg shadow-[#F26B0F]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#F26B0F]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F26B0F]/60 active:scale-95"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  <svg
-                    className="h-5 w-5 transition-transform group-hover:rotate-12"
-                    fill="currentColor"
-                    viewBox="0 0 512 512"
-                  >
-                    <path d="M259.993,460.958c14.498,14.498,75.487-23.002,89.985-37.492l59.598-59.606l-52.494-52.485l-59.597,59.597C282.996,385.462,245.504,446.46,259.993,460.958z" />
-                    <path d="M493.251,227.7c-14.498-14.49-37.996-14.49-52.485,0l-71.68,71.678l52.494,52.486l71.671-71.68C507.741,265.695,507.741,242.198,493.251,227.7z M399.586,308.882l-9.008-8.999l50.18-50.18l8.991,8.99L399.586,308.882z" />
-                    <path d="M374.714,448.193c-14.071,14.055-67.572,51.008-104.791,51.008c-0.008,0,0,0-0.008,0c-17.47,0-28.484-7.351-34.648-13.516c-44.758-44.775,36.604-138.56,37.492-139.439l4.123-4.124c-3.944-4.354-5.644-10.348-5.644-22.302c0-8.836,0-25.256,0-40.403c11.364-12.619,15.497-11.048,25.103-60.596c19.433,0,18.178-25.248,27.34-47.644c7.479-18.238,1.212-25.632-5.072-28.655c5.14-66.463,5.14-112.236-70.296-126.435c-27.349-23.438-68.606-15.48-88.158-11.57c-19.536,3.911-37.159,0-37.159,0l3.355,31.49C97.74,70.339,112.05,116.112,107.44,142.923c-5.994,3.27-11.407,10.809-4.269,28.254c9.17,22.396,7.906,47.644,27.339,47.644c9.614,49.548,13.747,47.976,25.111,60.596c0,15.148,0,31.567,0,40.403c0,25.248-8.58,25.684-28.134,36.612c-47.14,26.35-108.572,41.659-119.571,124.01C5.902,495.504,92.378,511.948,213.434,512c121.04-0.052,207.524-16.496,205.518-31.558c-3.168-23.702-10.648-41.547-20.68-55.806L374.714,448.193z" />
-                  </svg>
-                  Üye Ol
-                </span>
-              </Link>
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M20 12C20 7.58172 16.4183 4 12 4M12 20C14.5264 20 16.7792 18.8289 18.2454 17"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M4 12H14M14 12L11 9M14 12L11 15"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    Giriş Yap
+                  </span>
+                </Link>
+                <Link
+                  href="/signup"
+                  className="group relative overflow-hidden rounded-xl bg-[#F26B0F] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#F26B0F]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#F26B0F]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F26B0F]/60 active:scale-95"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    <svg
+                      className="h-4 w-4 transition-transform group-hover:rotate-12"
+                      fill="currentColor"
+                      viewBox="0 0 512 512"
+                    >
+                      <path d="M259.993,460.958c14.498,14.498,75.487-23.002,89.985-37.492l59.598-59.606l-52.494-52.485l-59.597,59.597C282.996,385.462,245.504,446.46,259.993,460.958z" />
+                      <path d="M493.251,227.7c-14.498-14.49-37.996-14.49-52.485,0l-71.68,71.678l52.494,52.486l71.671-71.68C507.741,265.695,507.741,242.198,493.251,227.7z M399.586,308.882l-9.008-8.999l50.18-50.18l8.991,8.99L399.586,308.882z" />
+                      <path d="M374.714,448.193c-14.071,14.055-67.572,51.008-104.791,51.008c-0.008,0,0,0-0.008,0c-17.47,0-28.484-7.351-34.648-13.516c-44.758-44.775,36.604-138.56,37.492-139.439l4.123-4.124c-3.944-4.354-5.644-10.348-5.644-22.302c0-8.836,0-25.256,0-40.403c11.364-12.619,15.497-11.048,25.103-60.596c19.433,0,18.178-25.248,27.34-47.644c7.479-18.238,1.212-25.632-5.072-28.655c5.14-66.463,5.14-112.236-70.296-126.435c-27.349-23.438-68.606-15.48-88.158-11.57c-19.536,3.911-37.159,0-37.159,0l3.355,31.49C97.74,70.339,112.05,116.112,107.44,142.923c-5.994,3.27-11.407,10.809-4.269,28.254c9.17,22.396,7.906,47.644,27.339,47.644c9.614,49.548,13.747,47.976,25.111,60.596c0,15.148,0,31.567,0,40.403c0,25.248-8.58,25.684-28.134,36.612c-47.14,26.35-108.572,41.659-119.571,124.01C5.902,495.504,92.378,511.948,213.434,512c121.04-0.052,207.524-16.496,205.518-31.558c-3.168-23.702-10.648-41.547-20.68-55.806L374.714,448.193z" />
+                    </svg>
+                    Üye Ol
+                  </span>
+                </Link>
+              </div>
               <Link
                 href="/calismalar"
-                className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 font-bold text-white shadow-lg shadow-purple-500/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60 active:scale-95 animate-pulse"
+                className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-5 py-2.5 font-bold text-white shadow-xl shadow-purple-500/30 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-purple-500/50 hover:-translate-y-1 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60 active:scale-95 animate-pulse ml-6"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   <svg
@@ -368,7 +370,7 @@ export default function Header() {
             <nav className="flex flex-col gap-1 p-3">
               <Link
                 href="/"
-                className={`rounded-lg px-3 py-2 font-semibold transition-colors ${
+                className={`text-sm rounded-lg px-3 py-2 font-semibold transition-colors ${
                   pathname === "/"
                     ? "text-[#1F2937] bg-[#F28B82]/10"
                     : "text-gray-900 hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
@@ -379,7 +381,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/hakkimizda"
-                className={`rounded-lg px-3 py-2 font-semibold transition-colors ${
+                className={`text-sm rounded-lg px-3 py-2 font-semibold transition-colors ${
                   pathname === "/hakkimizda"
                     ? "text-[#1F2937] bg-[#F28B82]/10"
                     : "text-gray-900 hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
@@ -390,7 +392,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/paketler"
-                className={`rounded-lg px-3 py-2 font-semibold transition-colors ${
+                className={`text-sm rounded-lg px-3 py-2 font-semibold transition-colors ${
                   pathname === "/paketler"
                     ? "text-[#1F2937] bg-[#F28B82]/10"
                     : "text-gray-900 hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
@@ -401,7 +403,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/egitmenler"
-                className={`rounded-lg px-3 py-2 font-semibold transition-colors ${
+                className={`text-sm rounded-lg px-3 py-2 font-semibold transition-colors ${
                   pathname === "/egitmenler"
                     ? "text-[#1F2937] bg-[#F28B82]/10"
                     : "text-gray-900 hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
@@ -412,7 +414,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/danismanlik"
-                className={`flex items-center justify-between rounded-lg px-3 py-2 font-semibold transition-colors ${
+                className={`text-sm flex items-center justify-between rounded-lg px-3 py-2 font-semibold transition-colors ${
                   pathname === "/danismanlik" ||
                   pathname === "/grup_danismanlik"
                     ? "text-[#1F2937] bg-[#F28B82]/10"
@@ -467,7 +469,7 @@ export default function Header() {
               )}
               <Link
                 href="/iletisim"
-                className={`rounded-lg px-3 py-2 font-semibold transition-colors ${
+                className={`text-sm rounded-lg px-3 py-2 font-semibold transition-colors ${
                   pathname === "/iletisim"
                     ? "text-[#1F2937] bg-[#F28B82]/10"
                     : "text-gray-900 hover:bg-[#1F2937]/10 hover:text-[#1F2937]"
@@ -482,7 +484,7 @@ export default function Header() {
                   handleEgitimIcerikClick(e);
                   setIsOpen(false);
                 }}
-                className="rounded-lg px-3 py-2 font-bold text-[#1E3A8A] hover:bg-[#059669]/10 hover:text-[#059669] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1E3A8A]"
+                className="text-sm rounded-lg px-3 py-2 font-bold text-[#1E3A8A] hover:bg-[#059669]/10 hover:text-[#059669] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1E3A8A]"
               >
                 Eğitim İçeriğim
               </button>
@@ -544,56 +546,58 @@ export default function Header() {
                   </button>
                 ) : (
                   <>
-                    <Link
-                      href="/login"
-                      className="group relative overflow-hidden rounded-2xl bg-[#0D1B2A] px-6 py-3 font-bold text-white shadow-lg shadow-[#0D1B2A]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#0D1B2A]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D1B2A]/60 active:scale-95"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <span className="relative z-10 flex items-center justify-center gap-2">
-                        <svg
-                          className="h-5 w-5 transition-transform group-hover:rotate-12"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M20 12C20 7.58172 16.4183 4 12 4M12 20C14.5264 20 16.7792 18.8289 18.2454 17"
+                    <div className="flex flex-col gap-3 rounded-2xl border-2 border-gray-200 bg-gray-50 p-3 shadow-[0_8px_30px_rgba(0,0,0,0.1)]">
+                      <Link
+                        href="/login"
+                        className="group relative overflow-hidden rounded-xl bg-[#0D1B2A] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#0D1B2A]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#0D1B2A]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D1B2A]/60 active:scale-95"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <span className="relative z-10 flex items-center justify-center gap-2">
+                          <svg
+                            className="h-4 w-4 transition-transform group-hover:rotate-12"
+                            fill="none"
                             stroke="currentColor"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                          />
-                          <path
-                            d="M4 12H14M14 12L11 9M14 12L11 15"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                        Giriş Yap
-                      </span>
-                    </Link>
-                    <Link
-                      href="/signup"
-                      className="group relative overflow-hidden rounded-2xl bg-[#F26B0F] px-6 py-3 font-bold text-white shadow-lg shadow-[#F26B0F]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#F26B0F]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F26B0F]/60 active:scale-95"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <span className="relative z-10 flex items-center justify-center gap-2">
-                        <svg
-                          className="h-5 w-5 transition-transform group-hover:rotate-12"
-                          fill="currentColor"
-                          viewBox="0 0 512 512"
-                        >
-                          <path d="M259.993,460.958c14.498,14.498,75.487-23.002,89.985-37.492l59.598-59.606l-52.494-52.485l-59.597,59.597C282.996,385.462,245.504,446.46,259.993,460.958z" />
-                          <path d="M493.251,227.7c-14.498-14.49-37.996-14.49-52.485,0l-71.68,71.678l52.494,52.486l71.671-71.68C507.741,265.695,507.741,242.198,493.251,227.7z M399.586,308.882l-9.008-8.999l50.18-50.18l8.991,8.99L399.586,308.882z" />
-                          <path d="M374.714,448.193c-14.071,14.055-67.572,51.008-104.791,51.008c-0.008,0,0,0-0.008,0c-17.47,0-28.484-7.351-34.648-13.516c-44.758-44.775,36.604-138.56,37.492-139.439l4.123-4.124c-3.944-4.354-5.644-10.348-5.644-22.302c0-8.836,0-25.256,0-40.403c11.364-12.619,15.497-11.048,25.103-60.596c19.433,0,18.178-25.248,27.34-47.644c7.479-18.238,1.212-25.632-5.072-28.655c5.14-66.463,5.14-112.236-70.296-126.435c-27.349-23.438-68.606-15.48-88.158-11.57c-19.536,3.911-37.159,0-37.159,0l3.355,31.49C97.74,70.339,112.05,116.112,107.44,142.923c-5.994,3.27-11.407,10.809-4.269,28.254c9.17,22.396,7.906,47.644,27.339,47.644c9.614,49.548,13.747,47.976,25.111,60.596c0,15.148,0,31.567,0,40.403c0,25.248-8.58,25.684-28.134,36.612c-47.14,26.35-108.572,41.659-119.571,124.01C5.902,495.504,92.378,511.948,213.434,512c121.04-0.052,207.524-16.496,205.518-31.558c-3.168-23.702-10.648-41.547-20.68-55.806L374.714,448.193z" />
-                        </svg>
-                        Üye Ol
-                      </span>
-                    </Link>
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M20 12C20 7.58172 16.4183 4 12 4M12 20C14.5264 20 16.7792 18.8289 18.2454 17"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            />
+                            <path
+                              d="M4 12H14M14 12L11 9M14 12L11 15"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                          Giriş Yap
+                        </span>
+                      </Link>
+                      <Link
+                        href="/signup"
+                        className="group relative overflow-hidden rounded-xl bg-[#F26B0F] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#F26B0F]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#F26B0F]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F26B0F]/60 active:scale-95"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <span className="relative z-10 flex items-center justify-center gap-2">
+                          <svg
+                            className="h-4 w-4 transition-transform group-hover:rotate-12"
+                            fill="currentColor"
+                            viewBox="0 0 512 512"
+                          >
+                            <path d="M259.993,460.958c14.498,14.498,75.487-23.002,89.985-37.492l59.598-59.606l-52.494-52.485l-59.597,59.597C282.996,385.462,245.504,446.46,259.993,460.958z" />
+                            <path d="M493.251,227.7c-14.498-14.49-37.996-14.49-52.485,0l-71.68,71.678l52.494,52.486l71.671-71.68C507.741,265.695,507.741,242.198,493.251,227.7z M399.586,308.882l-9.008-8.999l50.18-50.18l8.991,8.99L399.586,308.882z" />
+                            <path d="M374.714,448.193c-14.071,14.055-67.572,51.008-104.791,51.008c-0.008,0,0,0-0.008,0c-17.47,0-28.484-7.351-34.648-13.516c-44.758-44.775,36.604-138.56,37.492-139.439l4.123-4.124c-3.944-4.354-5.644-10.348-5.644-22.302c0-8.836,0-25.256,0-40.403c11.364-12.619,15.497-11.048,25.103-60.596c19.433,0,18.178-25.248,27.34-47.644c7.479-18.238,1.212-25.632-5.072-28.655c5.14-66.463,5.14-112.236-70.296-126.435c-27.349-23.438-68.606-15.48-88.158-11.57c-19.536,3.911-37.159,0-37.159,0l3.355,31.49C97.74,70.339,112.05,116.112,107.44,142.923c-5.994,3.27-11.407,10.809-4.269,28.254c9.17,22.396,7.906,47.644,27.339,47.644c9.614,49.548,13.747,47.976,25.111,60.596c0,15.148,0,31.567,0,40.403c0,25.248-8.58,25.684-28.134,36.612c-47.14,26.35-108.572,41.659-119.571,124.01C5.902,495.504,92.378,511.948,213.434,512c121.04-0.052,207.524-16.496,205.518-31.558c-3.168-23.702-10.648-41.547-20.68-55.806L374.714,448.193z" />
+                          </svg>
+                          Üye Ol
+                        </span>
+                      </Link>
+                    </div>
                     <Link
                       href="/calismalar"
-                      className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 font-bold text-white shadow-lg shadow-purple-500/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60 active:scale-95 animate-pulse"
+                      className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-5 py-3 font-bold text-white shadow-xl shadow-purple-500/30 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-purple-500/50 hover:-translate-y-1 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60 active:scale-95 animate-pulse mt-3"
                       onClick={() => setIsOpen(false)}
                     >
                       <span className="relative z-10 flex items-center justify-center gap-2">
