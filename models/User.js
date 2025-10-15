@@ -22,6 +22,12 @@ const UserSchema = new mongoose.Schema(
       default: [],
       enum: ["mentorluk_kursu", "seviye6_kursu"],
     },
+    // Sınav durumu
+    examStatus: {
+      type: String,
+      enum: ["not_specified", "entered", "not_entered"],
+      default: "not_specified",
+    },
     // Şifre yenileme için yeni alanlar
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: Date },

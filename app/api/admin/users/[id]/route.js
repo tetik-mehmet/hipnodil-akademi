@@ -88,6 +88,7 @@ export async function PATCH(_request, { params }) {
         education,
         courses,
         role,
+        examStatus,
         createdAt,
       } = body;
 
@@ -113,6 +114,12 @@ export async function PATCH(_request, { params }) {
       }
       if (role !== undefined)
         updateData.role = role === "admin" ? "admin" : "user";
+      if (examStatus !== undefined) {
+        const allowedStatuses = ["entered", "not_entered", "not_specified"];
+        updateData.examStatus = allowedStatuses.includes(examStatus)
+          ? examStatus
+          : "not_specified";
+      }
       if (createdAt !== undefined) {
         updateData.createdAt = createdAt ? new Date(createdAt) : null;
       }

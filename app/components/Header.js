@@ -90,7 +90,7 @@ export default function Header() {
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-white/15 supports-[backdrop-filter]:bg-white/10 backdrop-blur-xl backdrop-saturate-150"
       />
-      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
+      <div className="relative mx-auto flex w-full items-center justify-between px-4 py-3 md:px-6 md:py-4">
         {/* Dekoratif yumuşak parıltı */}
         <div className="pointer-events-none absolute inset-x-0 -top-8 mx-auto h-16 max-w-5xl scale-100 bg-gradient-to-r from-white/30 via-white/20 to-white/30 blur-2xl md:h-20 md:scale-105" />
         <Link href="/" className="flex items-center gap-3 -ml-4">
@@ -138,7 +138,7 @@ export default function Header() {
         </button>
 
         <nav
-          className="hidden items-center gap-8 md:flex ml-4 md:ml-8"
+          className="hidden items-center gap-12 md:flex ml-4 md:ml-8"
           aria-label="Ana gezinme"
         >
           <Link
@@ -236,7 +236,7 @@ export default function Header() {
           </button>
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex ml-8">
+        <div className="hidden items-center gap-6 md:flex ml-8">
           {isOnEgitimIcerik || isOnAdmin ? (
             <button
               type="button"
@@ -291,7 +291,7 @@ export default function Header() {
             </button>
           ) : (
             <>
-              <div className="flex items-center gap-3 rounded-2xl border-2 border-white/30 bg-white/10 backdrop-blur-md px-3 py-2 shadow-[0_8px_30px_rgba(255,255,255,0.1)]">
+              <div className="flex items-center gap-4 rounded-2xl border-2 border-white/30 bg-white/10 backdrop-blur-md px-3 py-2 shadow-[0_8px_30px_rgba(255,255,255,0.1)]">
                 <Link
                   href="/login"
                   className="group relative overflow-hidden rounded-xl bg-[#0D1B2A] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#0D1B2A]/25 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-[#0D1B2A]/40 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D1B2A]/60 active:scale-95"

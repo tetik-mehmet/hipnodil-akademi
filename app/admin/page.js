@@ -29,6 +29,23 @@ function MobileUserCard({ user, onDetail, onCourses, onPassword, onDelete }) {
     return labels[course] || course;
   };
 
+  const getExamStatusLabel = (status) => {
+    const labels = {
+      entered: "Sınava Girdi",
+      not_entered: "Sınava Girmedi",
+      not_specified: "Belirtilmemiş",
+    };
+    return labels[status] || "Belirtilmemiş";
+  };
+
+  const getExamStatusColor = (status) => {
+    if (status === "entered")
+      return "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400";
+    if (status === "not_entered")
+      return "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400";
+    return "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-400";
+  };
+
   return (
     <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-sm">
       <div className="flex items-start justify-between mb-3">
@@ -67,6 +84,16 @@ function MobileUserCard({ user, onDetail, onCourses, onPassword, onDelete }) {
           <span className="text-gray-500 dark:text-gray-400">Kurslar:</span>
           <span className="ml-1 text-gray-900 dark:text-gray-100">
             {(user.courses || []).length}
+          </span>
+        </div>
+        <div className="col-span-2">
+          <span className="text-gray-500 dark:text-gray-400">Sınav:</span>
+          <span
+            className={`ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getExamStatusColor(
+              user.examStatus
+            )}`}
+          >
+            {getExamStatusLabel(user.examStatus)}
           </span>
         </div>
       </div>
@@ -1146,6 +1173,7 @@ function AdminUpdateUserForm() {
     education: "",
     courses: [],
     role: "user",
+    examStatus: "not_specified",
     createdAt: "",
   });
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -1199,6 +1227,7 @@ function AdminUpdateUserForm() {
           education: user.education || "",
           courses: user.courses || [],
           role: user.role || "user",
+          examStatus: user.examStatus || "not_specified",
           createdAt: user.createdAt
             ? new Date(user.createdAt).toISOString().split("T")[0]
             : "",
@@ -1427,6 +1456,21 @@ function AdminUpdateUserForm() {
           </div>
           <div className="sm:col-span-2">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Sınav Durumu
+            </label>
+            <select
+              name="examStatus"
+              value={formData.examStatus}
+              onChange={handleChange}
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            >
+              <option value="not_specified">Belirtilmemiş</option>
+              <option value="entered">Sınava Girdi</option>
+              <option value="not_entered">Sınava Girmedi</option>
+            </select>
+          </div>
+          <div className="sm:col-span-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Erişim Verilecek Eğitimler
             </label>
             <div className="flex flex-wrap gap-3">
@@ -1475,6 +1519,7 @@ function AdminCreateUserForm() {
     password: "",
     courses: [],
     role: "user",
+    examStatus: "not_specified",
   });
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [serverError, setServerError] = React.useState("");
@@ -1538,6 +1583,7 @@ function AdminCreateUserForm() {
         password: "",
         courses: [],
         role: "user",
+        examStatus: "not_specified",
       });
     } catch (err) {
       setServerError(err.message);
@@ -1646,6 +1692,21 @@ function AdminCreateUserForm() {
             <option value="admin">Admin</option>
           </select>
         </div>
+        <div className="sm:col-span-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Sınav Durumu
+          </label>
+          <select
+            name="examStatus"
+            value={formData.examStatus}
+            onChange={handleChange}
+            className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          >
+            <option value="not_specified">Belirtilmemiş</option>
+            <option value="entered">Sınava Girdi</option>
+            <option value="not_entered">Sınava Girmedi</option>
+          </select>
+        </div>
         {/* Kurs Seçimleri */}
         <div className="sm:col-span-2">
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -1729,6 +1790,7 @@ function AdminUsersTable() {
   const [roleFilter, setRoleFilter] = React.useState("");
   const [courseFilter, setCourseFilter] = React.useState("");
   const [educationFilter, setEducationFilter] = React.useState("");
+  const [examStatusFilter, setExamStatusFilter] = React.useState("");
   const [sortKey, setSortKey] = React.useState("createdAt");
   const [sortDir, setSortDir] = React.useState("desc");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -1805,6 +1867,11 @@ function AdminUsersTable() {
     if (educationFilter) {
       list = list.filter((u) => (u.education || "") === educationFilter);
     }
+    if (examStatusFilter) {
+      list = list.filter(
+        (u) => (u.examStatus || "not_specified") === examStatusFilter
+      );
+    }
     list.sort((a, b) => {
       const dir = sortDir === "asc" ? 1 : -1;
       const ka = a[sortKey];
@@ -1821,6 +1888,7 @@ function AdminUsersTable() {
     roleFilter,
     courseFilter,
     educationFilter,
+    examStatusFilter,
     sortKey,
     sortDir,
   ]);
@@ -1985,6 +2053,19 @@ function AdminUsersTable() {
               <option value="doktora">Doktora</option>
             </select>
             <select
+              value={examStatusFilter}
+              onChange={(e) => {
+                setExamStatusFilter(e.target.value);
+                setPage(1);
+              }}
+              className="rounded-md border px-2 py-2 text-sm"
+            >
+              <option value="">Sınav (hepsi)</option>
+              <option value="entered">Girdi</option>
+              <option value="not_entered">Girmedi</option>
+              <option value="not_specified">Belirtilmemiş</option>
+            </select>
+            <select
               value={pageSize}
               onChange={(e) => {
                 setPageSize(Number(e.target.value));
@@ -2030,6 +2111,7 @@ function AdminUsersTable() {
                 setRoleFilter("");
                 setCourseFilter("");
                 setEducationFilter("");
+                setExamStatusFilter("");
                 setPageSize(10);
                 setPage(1);
                 setIsMobileMenuOpen(false);
@@ -2114,6 +2196,25 @@ function AdminUsersTable() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Sınav Durumu Filtresi
+            </label>
+            <select
+              value={examStatusFilter}
+              onChange={(e) => {
+                setExamStatusFilter(e.target.value);
+                setPage(1);
+              }}
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              <option value="">Sınav (hepsi)</option>
+              <option value="entered">Sınava Girdi</option>
+              <option value="not_entered">Sınava Girmedi</option>
+              <option value="not_specified">Belirtilmemiş</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Sayfa Boyutu
             </label>
             <select
@@ -2174,6 +2275,14 @@ function AdminUsersTable() {
               </Th>
               <Th
                 clickable
+                onClick={() => toggleSort("examStatus")}
+                active={sortKey === "examStatus"}
+                dir={sortDir}
+              >
+                Sınav Durumu
+              </Th>
+              <Th
+                clickable
                 onClick={() => toggleSort("createdAt")}
                 active={sortKey === "createdAt"}
                 dir={sortDir}
@@ -2208,6 +2317,23 @@ function AdminUsersTable() {
                   )}
                 </Td>
                 <Td>{u.role || "user"}</Td>
+                <Td>
+                  <span
+                    className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${
+                      u.examStatus === "entered"
+                        ? "bg-green-100 text-green-800"
+                        : u.examStatus === "not_entered"
+                        ? "bg-red-100 text-red-800"
+                        : "bg-gray-100 text-gray-800"
+                    }`}
+                  >
+                    {u.examStatus === "entered"
+                      ? "Girdi"
+                      : u.examStatus === "not_entered"
+                      ? "Girmedi"
+                      : "Belirtilmemiş"}
+                  </span>
+                </Td>
                 <Td>
                   {u.createdAt ? new Date(u.createdAt).toLocaleString() : "-"}
                 </Td>
@@ -2479,6 +2605,7 @@ function exportCsv(rows) {
     "Eğitim",
     "Kurslar",
     "Rol",
+    "Sınav Durumu",
     "Oluşturulma",
   ];
   const escape = (v) => {
@@ -2488,6 +2615,12 @@ function exportCsv(rows) {
       return '"' + s.replace(/"/g, '""') + '"';
     return s;
   };
+  const getExamStatusLabel = (status) => {
+    if (status === "entered") return "Sınava Girdi";
+    if (status === "not_entered") return "Sınava Girmedi";
+    return "Belirtilmemiş";
+  };
+
   const lines = [headers.join(SEP)].concat(
     rows.map((u) =>
       [
@@ -2498,6 +2631,7 @@ function exportCsv(rows) {
         u.education || "",
         (u.courses || []).join(" | "),
         u.role || "user",
+        getExamStatusLabel(u.examStatus),
         u.createdAt ? new Date(u.createdAt).toLocaleString() : "",
       ]
         .map(escape)
@@ -2526,6 +2660,12 @@ function exportPdf(rows) {
       unit: "pt",
       format: "a4",
     });
+    const getExamStatusLabel = (status) => {
+      if (status === "entered") return "Girdi";
+      if (status === "not_entered") return "Girmedi";
+      return "Belirtilmemiş";
+    };
+
     const head = [
       [
         "Ad",
@@ -2535,6 +2675,7 @@ function exportPdf(rows) {
         "Eğitim",
         "Kurslar",
         "Rol",
+        "Sınav",
         "Oluşturulma",
       ],
     ];
@@ -2546,6 +2687,7 @@ function exportPdf(rows) {
       u.education || "",
       (u.courses || []).join(", "),
       u.role || "user",
+      getExamStatusLabel(u.examStatus),
       u.createdAt ? new Date(u.createdAt).toLocaleString() : "",
     ]);
     autoTable(doc, {
@@ -2733,6 +2875,21 @@ function UserDetailModal({ user, onClose }) {
     return labels[course] || course;
   };
 
+  const getExamStatusLabel = (status) => {
+    const labels = {
+      entered: "Sınava Girdi",
+      not_entered: "Sınava Girmedi",
+      not_specified: "Belirtilmemiş",
+    };
+    return labels[status] || "Belirtilmemiş";
+  };
+
+  const getExamStatusColor = (status) => {
+    if (status === "entered") return "bg-green-100 text-green-800";
+    if (status === "not_entered") return "bg-red-100 text-red-800";
+    return "bg-gray-100 text-gray-800";
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/30" onClick={onClose} />
@@ -2829,6 +2986,19 @@ function UserDetailModal({ user, onClose }) {
                 }`}
               >
                 {user.role || "user"}
+              </span>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-600">
+                Sınav Durumu
+              </label>
+              <span
+                className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getExamStatusColor(
+                  user.examStatus
+                )}`}
+              >
+                {getExamStatusLabel(user.examStatus)}
               </span>
             </div>
 

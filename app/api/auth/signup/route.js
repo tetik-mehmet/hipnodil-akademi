@@ -18,6 +18,7 @@ export async function POST(request) {
       education,
       password,
       courses: incomingCourses,
+      examStatus: incomingExamStatus,
     } = body || {};
 
     if (!email || !password || !firstName || !lastName) {
@@ -42,18 +43,27 @@ export async function POST(request) {
 
     const hashed = await bcrypt.hash(password, 10);
 
-    // Sadece admin kullanıcı "courses" alanını set edebilsin
+    // Sadece admin kullanıcı "courses" ve "examStatus" alanlarını set edebilsin
     let coursesToAssign = [];
+    let examStatusToAssign = "not_specified";
     try {
       const sessionToken = cookies().get("session")?.value;
       if (sessionToken) {
         const payload = await verifySessionJwt(sessionToken);
-        if (payload?.role === "admin" && Array.isArray(incomingCourses)) {
-          // İzin verilen kurslar ile kesişim al
-          const allowed = ["mentorluk_kursu", "seviye6_kursu"];
-          coursesToAssign = incomingCourses
-            .map((c) => String(c))
-            .filter((c) => allowed.includes(c));
+        if (payload?.role === "admin") {
+          if (Array.isArray(incomingCourses)) {
+            // İzin verilen kurslar ile kesişim al
+            const allowed = ["mentorluk_kursu", "seviye6_kursu"];
+            coursesToAssign = incomingCourses
+              .map((c) => String(c))
+              .filter((c) => allowed.includes(c));
+          }
+          if (incomingExamStatus) {
+            const allowedStatuses = ["entered", "not_entered", "not_specified"];
+            if (allowedStatuses.includes(incomingExamStatus)) {
+              examStatusToAssign = incomingExamStatus;
+            }
+          }
         }
       }
     } catch (_) {
@@ -69,6 +79,7 @@ export async function POST(request) {
       email: email.toLowerCase(),
       education,
       password: hashed,
+      examStatus: examStatusToAssign,
       ...(coursesToAssign.length > 0 ? { courses: coursesToAssign } : {}),
     });
 
