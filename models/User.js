@@ -22,11 +22,24 @@ const UserSchema = new mongoose.Schema(
       default: [],
       enum: ["mentorluk_kursu", "seviye6_kursu"],
     },
-    // Sınav durumu
+    // Sınav başvurusu durumu
+    examApplication: {
+      type: String,
+      enum: ["not_specified", "applied", "not_applied"],
+      default: "not_specified",
+      required: false, // Eski kullanıcılar için
+    },
+    // Sınav durumu (sadece başvuru yapıldı ise)
     examStatus: {
       type: String,
-      enum: ["not_specified", "entered", "not_entered"],
-      default: "not_specified",
+      enum: ["not_applicable", "entered", "not_entered"],
+      default: "not_applicable",
+    },
+    // Sınav sonucu (sadece sınava girdi ise)
+    examResult: {
+      type: String,
+      enum: ["not_applicable", "successful", "unsuccessful"],
+      default: "not_applicable",
     },
     // Şifre yenileme için yeni alanlar
     resetPasswordToken: { type: String },

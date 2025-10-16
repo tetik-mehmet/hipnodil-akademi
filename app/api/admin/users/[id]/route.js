@@ -88,9 +88,15 @@ export async function PATCH(_request, { params }) {
         education,
         courses,
         role,
+        examApplication,
         examStatus,
+        examResult,
         createdAt,
       } = body;
+
+      console.log("🔍 API RECEIVED - examApplication:", examApplication);
+      console.log("🔍 API RECEIVED - examStatus:", examStatus);
+      console.log("🔍 API RECEIVED - examResult:", examResult);
 
       // Güncellenecek alanları hazırla
       const updateData = {};
@@ -114,11 +120,36 @@ export async function PATCH(_request, { params }) {
       }
       if (role !== undefined)
         updateData.role = role === "admin" ? "admin" : "user";
+      if (examApplication !== undefined) {
+        const allowedApplications = ["applied", "not_applied", "not_specified"];
+        updateData.examApplication = allowedApplications.includes(
+          examApplication
+        )
+          ? examApplication
+          : "not_specified";
+
+        // Eğer examApplication "applied" değilse, examStatus ve examResult'ı sıfırla
+        if (updateData.examApplication !== "applied") {
+          updateData.examStatus = "not_applicable";
+          updateData.examResult = "not_applicable";
+        }
+      }
       if (examStatus !== undefined) {
-        const allowedStatuses = ["entered", "not_entered", "not_specified"];
+        const allowedStatuses = ["entered", "not_entered", "not_applicable"];
         updateData.examStatus = allowedStatuses.includes(examStatus)
           ? examStatus
-          : "not_specified";
+          : "not_applicable";
+
+        // Eğer examStatus "entered" değilse, examResult'ı sıfırla
+        if (updateData.examStatus !== "entered") {
+          updateData.examResult = "not_applicable";
+        }
+      }
+      if (examResult !== undefined) {
+        const allowedResults = ["successful", "unsuccessful", "not_applicable"];
+        updateData.examResult = allowedResults.includes(examResult)
+          ? examResult
+          : "not_applicable";
       }
       if (createdAt !== undefined) {
         updateData.createdAt = createdAt ? new Date(createdAt) : null;
@@ -138,6 +169,8 @@ export async function PATCH(_request, { params }) {
         }
       }
 
+      console.log("💾 updateData:", updateData);
+
       const updated = await User.findByIdAndUpdate(
         id,
         { $set: updateData },
@@ -150,6 +183,13 @@ export async function PATCH(_request, { params }) {
           { status: 404 }
         );
       }
+
+      console.log(
+        "✅ Updated User - examApplication:",
+        updated.examApplication
+      );
+      console.log("✅ Updated User - examStatus:", updated.examStatus);
+      console.log("✅ Updated User - examResult:", updated.examResult);
 
       return NextResponse.json({
         message: "Kullanıcı başarıyla güncellendi",

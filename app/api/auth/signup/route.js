@@ -18,7 +18,9 @@ export async function POST(request) {
       education,
       password,
       courses: incomingCourses,
+      examApplication: incomingExamApplication,
       examStatus: incomingExamStatus,
+      examResult: incomingExamResult,
     } = body || {};
 
     if (!email || !password || !firstName || !lastName) {
@@ -43,9 +45,11 @@ export async function POST(request) {
 
     const hashed = await bcrypt.hash(password, 10);
 
-    // Sadece admin kullanıcı "courses" ve "examStatus" alanlarını set edebilsin
+    // Sadece admin kullanıcı "courses", "examApplication", "examStatus" ve "examResult" alanlarını set edebilsin
     let coursesToAssign = [];
-    let examStatusToAssign = "not_specified";
+    let examApplicationToAssign = "not_specified";
+    let examStatusToAssign = "not_applicable";
+    let examResultToAssign = "not_applicable";
     try {
       const sessionToken = cookies().get("session")?.value;
       if (sessionToken) {
@@ -58,10 +62,34 @@ export async function POST(request) {
               .map((c) => String(c))
               .filter((c) => allowed.includes(c));
           }
+          if (incomingExamApplication) {
+            const allowedApplications = [
+              "applied",
+              "not_applied",
+              "not_specified",
+            ];
+            if (allowedApplications.includes(incomingExamApplication)) {
+              examApplicationToAssign = incomingExamApplication;
+            }
+          }
           if (incomingExamStatus) {
-            const allowedStatuses = ["entered", "not_entered", "not_specified"];
+            const allowedStatuses = [
+              "entered",
+              "not_entered",
+              "not_applicable",
+            ];
             if (allowedStatuses.includes(incomingExamStatus)) {
               examStatusToAssign = incomingExamStatus;
+            }
+          }
+          if (incomingExamResult && examStatusToAssign === "entered") {
+            const allowedResults = [
+              "successful",
+              "unsuccessful",
+              "not_applicable",
+            ];
+            if (allowedResults.includes(incomingExamResult)) {
+              examResultToAssign = incomingExamResult;
             }
           }
         }
@@ -79,7 +107,9 @@ export async function POST(request) {
       email: email.toLowerCase(),
       education,
       password: hashed,
+      examApplication: examApplicationToAssign,
       examStatus: examStatusToAssign,
+      examResult: examResultToAssign,
       ...(coursesToAssign.length > 0 ? { courses: coursesToAssign } : {}),
     });
 
