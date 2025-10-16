@@ -403,6 +403,19 @@ export default function AdminPage() {
           <AdminUpdateUserForm />
         </section>
 
+        {/* Sınav Filtreleme Bölümü - Kullanıcı Listesinin Hemen Üstünde */}
+        <section className="mt-10">
+          <div className="mb-6">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+              Sınav Filtreleme
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Sınav başvuru ve sonuçlarına göre kullanıcıları filtreleyin
+            </p>
+          </div>
+          <ExamFilterCard />
+        </section>
+
         <section className="mt-10">
           <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">
             Kullanıcı Listesi
@@ -1080,6 +1093,438 @@ function EducationDistributionCard() {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+// Sınav filtreleme kartı
+function ExamFilterCard() {
+  const [examStats, setExamStats] = React.useState({
+    totalApplications: 0,
+    applied: 0,
+    notApplied: 0,
+    notSpecified: 0,
+    entered: 0,
+    notEntered: 0,
+    successful: 0,
+    unsuccessful: 0,
+  });
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState("");
+  const [selectedFilter, setSelectedFilter] = React.useState({
+    application: "",
+    status: "",
+    result: "",
+  });
+
+  React.useEffect(() => {
+    const fetchExamStats = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const res = await fetch("/api/admin/users", { cache: "no-store" });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.message || "Veri alınamadı");
+
+        const stats = {
+          totalApplications: 0,
+          applied: 0,
+          notApplied: 0,
+          notSpecified: 0,
+          entered: 0,
+          notEntered: 0,
+          successful: 0,
+          unsuccessful: 0,
+        };
+
+        if (Array.isArray(data.users)) {
+          data.users.forEach((user) => {
+            // Başvuru durumu
+            if (user.examApplication === "applied") {
+              stats.applied++;
+              stats.totalApplications++;
+
+              // Sınav durumu
+              if (user.examStatus === "entered") {
+                stats.entered++;
+
+                // Sınav sonucu
+                if (user.examResult === "successful") {
+                  stats.successful++;
+                } else if (user.examResult === "unsuccessful") {
+                  stats.unsuccessful++;
+                }
+              } else if (user.examStatus === "not_entered") {
+                stats.notEntered++;
+              }
+            } else if (user.examApplication === "not_applied") {
+              stats.notApplied++;
+            } else {
+              stats.notSpecified++;
+            }
+          });
+        }
+
+        setExamStats(stats);
+      } catch (e) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchExamStats();
+  }, []);
+
+  const handleApplicationFilter = (value) => {
+    setSelectedFilter({ ...selectedFilter, application: value });
+    // Tablodaki filtreyi tetikle (event dispatch)
+    window.dispatchEvent(
+      new CustomEvent("examFilterChange", {
+        detail: { ...selectedFilter, application: value },
+      })
+    );
+  };
+
+  const handleStatusFilter = (value) => {
+    setSelectedFilter({ ...selectedFilter, status: value });
+    window.dispatchEvent(
+      new CustomEvent("examFilterChange", {
+        detail: { ...selectedFilter, status: value },
+      })
+    );
+  };
+
+  const handleResultFilter = (value) => {
+    setSelectedFilter({ ...selectedFilter, result: value });
+    window.dispatchEvent(
+      new CustomEvent("examFilterChange", {
+        detail: { ...selectedFilter, result: value },
+      })
+    );
+  };
+
+  const clearFilters = () => {
+    setSelectedFilter({ application: "", status: "", result: "" });
+    window.dispatchEvent(
+      new CustomEvent("examFilterChange", {
+        detail: { application: "", status: "", result: "" },
+      })
+    );
+  };
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Sınav Başvurusu Kartı */}
+      <div className="relative overflow-hidden rounded-xl border bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition-all duration-200">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+              Sınav Başvurusu
+            </div>
+          </div>
+          <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
+            <svg
+              className="w-6 h-6 text-blue-600 dark:text-blue-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        {loading ? (
+          <div className="text-sm text-gray-600 dark:text-gray-400 text-center py-4">
+            Yükleniyor...
+          </div>
+        ) : error ? (
+          <div className="text-xs text-red-500 dark:text-red-400 text-center py-4">
+            {error}
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <button
+              onClick={() =>
+                handleApplicationFilter(
+                  selectedFilter.application === "applied" ? "" : "applied"
+                )
+              }
+              className={`w-full flex justify-between items-center p-3 rounded-lg transition-all ${
+                selectedFilter.application === "applied"
+                  ? "bg-blue-100 dark:bg-blue-900/30 border-2 border-blue-500 dark:border-blue-400"
+                  : "bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600"
+              }`}
+            >
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                Başvuru Yapıldı
+              </span>
+              <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                {examStats.applied}
+              </span>
+            </button>
+
+            <button
+              onClick={() =>
+                handleApplicationFilter(
+                  selectedFilter.application === "not_applied"
+                    ? ""
+                    : "not_applied"
+                )
+              }
+              className={`w-full flex justify-between items-center p-3 rounded-lg transition-all ${
+                selectedFilter.application === "not_applied"
+                  ? "bg-gray-200 dark:bg-gray-600 border-2 border-gray-500 dark:border-gray-400"
+                  : "bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600"
+              }`}
+            >
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+                Başvuru Yapılmadı
+              </span>
+              <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                {examStats.notApplied}
+              </span>
+            </button>
+
+            <button
+              onClick={() =>
+                handleApplicationFilter(
+                  selectedFilter.application === "not_specified"
+                    ? ""
+                    : "not_specified"
+                )
+              }
+              className={`w-full flex justify-between items-center p-3 rounded-lg transition-all ${
+                selectedFilter.application === "not_specified"
+                  ? "bg-gray-200 dark:bg-gray-600 border-2 border-gray-500 dark:border-gray-400"
+                  : "bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600"
+              }`}
+            >
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+                Belirtilmemiş
+              </span>
+              <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                {examStats.notSpecified}
+              </span>
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Sınav Durumu Kartı */}
+      <div className="relative overflow-hidden rounded-xl border bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition-all duration-200">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+              Sınav Durumu
+            </div>
+          </div>
+          <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
+            <svg
+              className="w-6 h-6 text-green-600 dark:text-green-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+              />
+            </svg>
+          </div>
+        </div>
+
+        {loading ? (
+          <div className="text-sm text-gray-600 dark:text-gray-400 text-center py-4">
+            Yükleniyor...
+          </div>
+        ) : error ? (
+          <div className="text-xs text-red-500 dark:text-red-400 text-center py-4">
+            {error}
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <button
+              onClick={() =>
+                handleStatusFilter(
+                  selectedFilter.status === "entered" ? "" : "entered"
+                )
+              }
+              className={`w-full flex justify-between items-center p-3 rounded-lg transition-all ${
+                selectedFilter.status === "entered"
+                  ? "bg-green-100 dark:bg-green-900/30 border-2 border-green-500 dark:border-green-400"
+                  : "bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600"
+              }`}
+            >
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                Sınava Girdi
+              </span>
+              <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                {examStats.entered}
+              </span>
+            </button>
+
+            <button
+              onClick={() =>
+                handleStatusFilter(
+                  selectedFilter.status === "not_entered" ? "" : "not_entered"
+                )
+              }
+              className={`w-full flex justify-between items-center p-3 rounded-lg transition-all ${
+                selectedFilter.status === "not_entered"
+                  ? "bg-red-100 dark:bg-red-900/30 border-2 border-red-500 dark:border-red-400"
+                  : "bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600"
+              }`}
+            >
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                Sınava Girmedi
+              </span>
+              <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                {examStats.notEntered}
+              </span>
+            </button>
+
+            <div className="flex justify-between items-center p-3 rounded-lg bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600">
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
+                Toplam Başvuru
+              </span>
+              <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                {examStats.applied}
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Sınav Sonucu Kartı */}
+      <div className="relative overflow-hidden rounded-xl border bg-white dark:bg-gray-800 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition-all duration-200">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+              Sınav Sonucu
+            </div>
+          </div>
+          <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/20 rounded-lg flex items-center justify-center">
+            <svg
+              className="w-6 h-6 text-emerald-600 dark:text-emerald-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        {loading ? (
+          <div className="text-sm text-gray-600 dark:text-gray-400 text-center py-4">
+            Yükleniyor...
+          </div>
+        ) : error ? (
+          <div className="text-xs text-red-500 dark:text-red-400 text-center py-4">
+            {error}
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <button
+              onClick={() =>
+                handleResultFilter(
+                  selectedFilter.result === "successful" ? "" : "successful"
+                )
+              }
+              className={`w-full flex justify-between items-center p-3 rounded-lg transition-all ${
+                selectedFilter.result === "successful"
+                  ? "bg-emerald-100 dark:bg-emerald-900/30 border-2 border-emerald-500 dark:border-emerald-400"
+                  : "bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600"
+              }`}
+            >
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                Başarılı
+              </span>
+              <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                {examStats.successful}
+              </span>
+            </button>
+
+            <button
+              onClick={() =>
+                handleResultFilter(
+                  selectedFilter.result === "unsuccessful" ? "" : "unsuccessful"
+                )
+              }
+              className={`w-full flex justify-between items-center p-3 rounded-lg transition-all ${
+                selectedFilter.result === "unsuccessful"
+                  ? "bg-orange-100 dark:bg-orange-900/30 border-2 border-orange-500 dark:border-orange-400"
+                  : "bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600"
+              }`}
+            >
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                Başarısız
+              </span>
+              <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                {examStats.unsuccessful}
+              </span>
+            </button>
+
+            <div className="flex justify-between items-center p-3 rounded-lg bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600">
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                Toplam Sınava Giren
+              </span>
+              <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                {examStats.entered}
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* Filtreleri Temizle Butonu */}
+        {(selectedFilter.application ||
+          selectedFilter.status ||
+          selectedFilter.result) && (
+          <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
+            <button
+              onClick={clearFilters}
+              className="w-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
+            >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
+              </svg>
+              Filtreleri Temizle
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -2044,9 +2489,24 @@ function AdminUsersTable() {
 
   React.useEffect(() => {
     fetchUsers(false);
-    const id = setInterval(() => fetchUsers(true), 10000); // 10 sn’de bir sessiz yenile
+    const id = setInterval(() => fetchUsers(true), 10000); // 10 sn'de bir sessiz yenile
     return () => clearInterval(id);
   }, [fetchUsers]);
+
+  // ExamFilterCard'dan gelen filtreleri dinle
+  React.useEffect(() => {
+    const handleExamFilterChange = (e) => {
+      const { application, status, result } = e.detail;
+      setExamApplicationFilter(application || "");
+      setExamStatusFilter(status || "");
+      setExamResultFilter(result || "");
+      setPage(1); // Sayfa numarasını sıfırla
+    };
+
+    window.addEventListener("examFilterChange", handleExamFilterChange);
+    return () =>
+      window.removeEventListener("examFilterChange", handleExamFilterChange);
+  }, []);
 
   // Türev liste: arama + filtre + sıralama (early return'lardan ÖNCE tanımlı olmalı)
   const processed = React.useMemo(() => {
