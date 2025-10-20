@@ -220,7 +220,7 @@ export default function Paketler() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Hemen Başvur
+                  Şimdi Başvur
                 </motion.button>
               </div>
             </div>
