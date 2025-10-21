@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Lottie from "lottie-react";
+import animationData from "@/public/duzenleme.json";
 
 export default function EgitimIcerikPage() {
   const router = useRouter();
@@ -176,14 +178,11 @@ export default function EgitimIcerikPage() {
             {/* Form içi dekoratif/ipuçları görseli */}
             <div className="sm:col-span-2 mb-4">
               <div className="w-full flex justify-end">
-                <div className="relative">
-                  <Image
-                    src="/file-info.gif"
-                    alt="Bilgi"
-                    width={120}
-                    height={120}
+                <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px]">
+                  <Lottie
+                    animationData={animationData}
+                    loop={true}
                     className="rounded-xl shadow-sm ring-1 ring-gray-200"
-                    priority
                   />
                 </div>
               </div>
