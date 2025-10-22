@@ -39,7 +39,11 @@ export async function PATCH(_request, { params }) {
     await dbConnect();
 
     if (action === "updateCourses") {
-      const allowed = ["mentorluk_kursu", "seviye6_kursu"];
+      const allowed = [
+        "mentorluk_kursu",
+        "seviye6_kursu",
+        "egitim_uzmanlik_kursu",
+      ];
       const courses = Array.isArray(body.courses)
         ? body.courses.map(String).filter((c) => allowed.includes(c))
         : [];
@@ -113,7 +117,11 @@ export async function PATCH(_request, { params }) {
         updateData.email = String(email).trim().toLowerCase();
       if (education !== undefined) updateData.education = education || null;
       if (courses !== undefined) {
-        const allowed = ["mentorluk_kursu", "seviye6_kursu"];
+        const allowed = [
+          "mentorluk_kursu",
+          "seviye6_kursu",
+          "egitim_uzmanlik_kursu",
+        ];
         updateData.courses = Array.isArray(courses)
           ? courses.map(String).filter((c) => allowed.includes(c))
           : [];

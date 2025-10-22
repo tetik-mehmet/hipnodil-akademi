@@ -25,6 +25,7 @@ function MobileUserCard({ user, onDetail, onCourses, onPassword, onDelete }) {
     const labels = {
       mentorluk_kursu: "Mentorluk",
       seviye6_kursu: "Seviye 6",
+      egitim_uzmanlik_kursu: "Eğitim Uzmanlığı",
     };
     return labels[course] || course;
   };
@@ -129,27 +130,27 @@ function MobileUserCard({ user, onDetail, onCourses, onPassword, onDelete }) {
           >
             {getExamApplicationLabel(user.examApplication)}
           </span>
-          {user.examApplication === "applied" && (
-            <>
+        </div>
+        {user.examApplication === "applied" && (
+          <>
+            <span
+              className={`ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getExamStatusColor(
+                user.examStatus
+              )}`}
+            >
+              {getExamStatusLabel(user.examStatus)}
+            </span>
+            {user.examStatus === "entered" && (
               <span
-                className={`ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getExamStatusColor(
-                  user.examStatus
+                className={`ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getExamResultColor(
+                  user.examResult
                 )}`}
               >
-                {getExamStatusLabel(user.examStatus)}
+                {getExamResultLabel(user.examResult)}
               </span>
-              {user.examStatus === "entered" && (
-                <span
-                  className={`ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getExamResultColor(
-                    user.examResult
-                  )}`}
-                >
-                  {getExamResultLabel(user.examResult)}
-                </span>
-              )}
-            </>
-          )}
-        </div>
+            )}
+          </>
+        )}
       </div>
 
       {(user.courses || []).length > 0 && (
@@ -687,6 +688,7 @@ function CourseDistributionCard() {
         const stats = {
           mentorluk_kursu: 0,
           seviye6_kursu: 0,
+          egitim_uzmanlik_kursu: 0,
           kurs_yok: 0,
           toplam: 0, // Kurs sayılarının toplamı olarak hesaplanacak
         };
@@ -705,8 +707,11 @@ function CourseDistributionCard() {
           });
         }
 
-        // Toplamı sadece mentorluk ve seviye 6 kurslarının toplamı olarak hesapla
-        stats.toplam = stats.mentorluk_kursu + stats.seviye6_kursu;
+        // Toplamı tüm kursların toplamı olarak hesapla
+        stats.toplam =
+          stats.mentorluk_kursu +
+          stats.seviye6_kursu +
+          stats.egitim_uzmanlik_kursu;
 
         setCourseStats(stats);
       } catch (e) {
@@ -719,20 +724,27 @@ function CourseDistributionCard() {
   }, []);
 
   const chartData = {
-    labels: ["Mentorluk Kursu", "Seviye 6 Kursu", "Kurs Erişimi Yok"],
+    labels: [
+      "Mentorluk Kursu",
+      "Seviye 6 Kursu",
+      "Eğitim Uzmanlığı",
+      "Kurs Erişimi Yok",
+    ],
     datasets: [
       {
         data: [
           courseStats.mentorluk_kursu || 0,
           courseStats.seviye6_kursu || 0,
+          courseStats.egitim_uzmanlik_kursu || 0,
           courseStats.kurs_yok || 0,
         ],
         backgroundColor: [
           "#3B82F6", // Mavi - Mentorluk
           "#10B981", // Yeşil - Seviye 6
+          "#F59E0B", // Turuncu - Eğitim Uzmanlığı
           "#EF4444", // Kırmızı - Kurs yok
         ],
-        borderColor: ["#1E40AF", "#059669", "#DC2626"],
+        borderColor: ["#1E40AF", "#059669", "#D97706", "#DC2626"],
         borderWidth: 1,
       },
     ],
@@ -820,6 +832,15 @@ function CourseDistributionCard() {
               </span>
               <span className="font-semibold text-gray-900 dark:text-gray-100">
                 {courseStats.seviye6_kursu || 0}
+              </span>
+            </div>
+            <div className="flex justify-between items-center text-sm">
+              <span className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <div className="w-3 h-3 bg-amber-500 rounded-full"></div>
+                Eğitim Uzmanlığı
+              </span>
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                {courseStats.egitim_uzmanlik_kursu || 0}
               </span>
             </div>
             <div className="border-t border-gray-200 dark:border-gray-600 pt-2 mt-3">
@@ -2069,6 +2090,12 @@ function AdminUpdateUserForm() {
                 checked={formData.courses.includes("seviye6_kursu")}
                 onChange={handleChange}
               />
+              <Checkbox
+                label="Eğitim Uzmanlığı Kursu"
+                name="course:egitim_uzmanlik_kursu"
+                checked={formData.courses.includes("egitim_uzmanlik_kursu")}
+                onChange={handleChange}
+              />
             </div>
             <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
               Seçilmeyen eğitimlere kullanıcı erişemez.
@@ -2364,6 +2391,12 @@ function AdminCreateUserForm() {
               label="Seviye 6 Kursu"
               name="course:seviye6_kursu"
               checked={formData.courses.includes("seviye6_kursu")}
+              onChange={handleChange}
+            />
+            <Checkbox
+              label="Eğitim Uzmanlığı Kursu"
+              name="course:egitim_uzmanlik_kursu"
+              checked={formData.courses.includes("egitim_uzmanlik_kursu")}
               onChange={handleChange}
             />
           </div>
@@ -2707,6 +2740,9 @@ function AdminUsersTable() {
               <option value="">Kurs (hepsi)</option>
               <option value="mentorluk_kursu">mentorluk_kursu</option>
               <option value="seviye6_kursu">seviye6_kursu</option>
+              <option value="egitim_uzmanlik_kursu">
+                egitim_uzmanlik_kursu
+              </option>
             </select>
             <select
               value={educationFilter}
@@ -2869,6 +2905,9 @@ function AdminUsersTable() {
               <option value="">Kurs (hepsi)</option>
               <option value="mentorluk_kursu">mentorluk_kursu</option>
               <option value="seviye6_kursu">seviye6_kursu</option>
+              <option value="egitim_uzmanlik_kursu">
+                egitim_uzmanlik_kursu
+              </option>
             </select>
           </div>
 
@@ -3599,6 +3638,15 @@ function CoursesModal({ user, onClose, onSaved }) {
           />
           <span>seviye6_kursu</span>
         </label>
+        <label className="flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={selected.includes("egitim_uzmanlik_kursu")}
+            onChange={() => toggle("egitim_uzmanlik_kursu")}
+            className="h-4 w-4"
+          />
+          <span>egitim_uzmanlik_kursu</span>
+        </label>
         <div className="pt-2 flex justify-end gap-2">
           <button
             onClick={onClose}
@@ -3714,6 +3762,7 @@ function UserDetailModal({ user, onClose }) {
     const labels = {
       mentorluk_kursu: "Mentorluk Kursu",
       seviye6_kursu: "Seviye 6 Kursu",
+      egitim_uzmanlik_kursu: "Eğitim Uzmanlığı Kursu",
     };
     return labels[course] || course;
   };

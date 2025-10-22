@@ -146,10 +146,20 @@ export default function EgitimIcerikPage() {
     <div className="min-h-[calc(100vh-6rem)] w-full bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6 lg:px-8 py-10">
       <div className="max-w-7xl mx-auto">
         <header className="mb-8 sm:mb-10">
-          <div className="inline-block w-fit bg-gradient-to-r from-[#F28B82] to-[#FFA07A] rounded-2xl p-6 sm:p-8 mb-6 text-white">
-            <h1 className="text-2xl sm:text-3xl font-bold mb-2">
-              Hoşgeldiniz, {user?.firstName} {user?.lastName}! 👋
-            </h1>
+          <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 rounded-3xl p-8 sm:p-10 mb-6 shadow-2xl">
+            {/* Dekoratif arka plan efektleri */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl transform translate-x-32 -translate-y-32"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/20 rounded-full blur-2xl transform -translate-x-24 translate-y-24"></div>
+
+            {/* İçerik */}
+            <div className="relative z-10">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2 drop-shadow-lg">
+                Hoşgeldiniz, {user?.firstName} {user?.lastName}! 👋
+              </h1>
+              <p className="text-blue-100 text-base sm:text-lg font-medium">
+                Eğitim içeriklerinize erişmek için hazırsınız
+              </p>
+            </div>
           </div>
         </header>
         <section className="max-w-4xl mx-auto">
@@ -179,11 +189,7 @@ export default function EgitimIcerikPage() {
             <div className="sm:col-span-2 mb-4">
               <div className="w-full flex justify-end">
                 <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px]">
-                  <Lottie
-                    animationData={animationData}
-                    loop={true}
-                    className="rounded-xl shadow-sm ring-1 ring-gray-200"
-                  />
+                  <Lottie animationData={animationData} loop={true} />
                 </div>
               </div>
             </div>
@@ -328,6 +334,33 @@ export default function EgitimIcerikPage() {
               }`}
             >
               {canAccess("seviye6_kursu") ? "Eğitime Git" : "Erişiminiz Yok"}
+            </button>
+          </div>
+          {/* Eğitim Uzmanlığı Kursu */}
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mt-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+              Eğitim Uzmanlığı
+            </h3>
+            <p className="text-gray-600 mb-6 text-sm sm:text-base">
+              MYK Eğitim Uzmanlığı Seviye 6 sertifikasyon programı: Eğitim
+              faaliyetleri, ölçme ve değerlendirme, performans sınavı hazırlık
+              ve uygulamalı çalışmalar.
+            </p>
+            <button
+              type="button"
+              onClick={() =>
+                router.push("/egitim_icerik/egitim_uzmanlik_kursu")
+              }
+              disabled={!canAccess("egitim_uzmanlik_kursu")}
+              className={`inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors w-full sm:w-auto ${
+                canAccess("egitim_uzmanlik_kursu")
+                  ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                  : "bg-gray-200 text-gray-500 cursor-not-allowed"
+              }`}
+            >
+              {canAccess("egitim_uzmanlik_kursu")
+                ? "Eğitime Git"
+                : "Erişiminiz Yok"}
             </button>
           </div>
         </section>
