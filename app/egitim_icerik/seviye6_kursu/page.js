@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Script from "next/script";
 import { useRouter } from "next/navigation";
 
 export default function Page() {
@@ -8,6 +9,7 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const REQUIRED_COURSE = "seviye6_kursu";
+  const [isVimeoReady, setIsVimeoReady] = useState(false);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -55,6 +57,13 @@ export default function Page() {
 
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-10">
+      <Script
+        src="https://player.vimeo.com/api/player.js"
+        strategy="afterInteractive"
+        onLoad={() => setIsVimeoReady(true)}
+      />
+      {/* Vimeo oynatıcıları play olduğunda otomatik tam ekrana geçirme */}
+      {isVimeoReady && <AutoFullscreenBinder />}
       <header className="mb-8 text-center">
         <h1 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
           MYK Koçluk Seviye 6 Eğitimi – Ders Videoları
@@ -1506,4 +1515,89 @@ export default function Page() {
       </div>
     </main>
   );
+}
+
+function AutoFullscreenBinder() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const boundIframes = new Set();
+    const offFns = [];
+    let attempts = 0;
+    const maxAttempts = 20;
+
+    const setupPlayer = (iframe) => {
+      // Bu iframe zaten bağlandıysa atla
+      if (boundIframes.has(iframe)) return;
+
+      // Vimeo API hazır değilse bekle
+      if (!window.Vimeo || !window.Vimeo.Player) return;
+
+      try {
+        const player = new window.Vimeo.Player(iframe);
+        boundIframes.add(iframe);
+
+        const onPlay = () => {
+          // Kullanıcı etkileşimiyle tetiklenen play olayında tam ekran isteği
+          player.requestFullscreen().catch(() => {
+            // Tarayıcı ya da kullanıcı ayarları engelleyebilir; sessizce geç
+          });
+        };
+
+        player.on("play", onPlay);
+        offFns.push(() => {
+          try {
+            player.off("play", onPlay);
+          } catch (_e) {
+            // Player zaten destroy olmuş
+          }
+        });
+      } catch (_e) {
+        // Geçersiz iframe veya Player oluşturulamadı
+      }
+    };
+
+    // Mevcut iframe'leri bağla
+    const setupExistingIframes = () => {
+      const iframes = Array.from(
+        document.querySelectorAll('iframe[src*="player.vimeo.com"]')
+      );
+      iframes.forEach(setupPlayer);
+    };
+
+    // Tekrarlayan kontrol - iframe'ler ve API'nin hazır olmasını bekler
+    const checkInterval = setInterval(() => {
+      attempts++;
+      setupExistingIframes();
+
+      if (attempts >= maxAttempts) {
+        clearInterval(checkInterval);
+      }
+    }, 200);
+
+    // 5 saniye sonra interval'i durdur
+    const stopTimer = setTimeout(() => {
+      clearInterval(checkInterval);
+    }, 5000);
+
+    // Dinamik olarak eklenen iframe'ler için observer
+    const observer = new MutationObserver(() => {
+      setupExistingIframes();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => {
+      clearInterval(checkInterval);
+      clearTimeout(stopTimer);
+      observer.disconnect();
+      offFns.forEach((off) => off());
+      boundIframes.clear();
+    };
+  }, []);
+
+  return null;
 }

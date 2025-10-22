@@ -144,38 +144,83 @@ export default function Page() {
 
 function AutoFullscreenBinder() {
   useEffect(() => {
-    if (
-      !(typeof window !== "undefined" && window.Vimeo && window.Vimeo.Player)
-    ) {
-      return;
-    }
+    if (typeof window === "undefined") return;
 
-    const iframes = Array.from(
-      document.querySelectorAll('iframe[src*="player.vimeo.com"]')
-    );
-    const players = [];
+    const boundIframes = new Set();
     const offFns = [];
+    let attempts = 0;
+    const maxAttempts = 20;
 
-    iframes.forEach((iframe) => {
+    const setupPlayer = (iframe) => {
+      // Bu iframe zaten bağlandıysa atla
+      if (boundIframes.has(iframe)) return;
+
+      // Vimeo API hazır değilse bekle
+      if (!window.Vimeo || !window.Vimeo.Player) return;
+
       try {
         const player = new window.Vimeo.Player(iframe);
-        players.push(player);
+        boundIframes.add(iframe);
+
         const onPlay = () => {
           // Kullanıcı etkileşimiyle tetiklenen play olayında tam ekran isteği
           player.requestFullscreen().catch(() => {
             // Tarayıcı ya da kullanıcı ayarları engelleyebilir; sessizce geç
           });
         };
+
         player.on("play", onPlay);
-        offFns.push(() => player.off("play", onPlay));
+        offFns.push(() => {
+          try {
+            player.off("play", onPlay);
+          } catch (_e) {
+            // Player zaten destroy olmuş
+          }
+        });
       } catch (_e) {
         // Geçersiz iframe veya Player oluşturulamadı
       }
+    };
+
+    // Mevcut iframe'leri bağla
+    const setupExistingIframes = () => {
+      const iframes = Array.from(
+        document.querySelectorAll('iframe[src*="player.vimeo.com"]')
+      );
+      iframes.forEach(setupPlayer);
+    };
+
+    // Tekrarlayan kontrol - iframe'ler ve API'nin hazır olmasını bekler
+    const checkInterval = setInterval(() => {
+      attempts++;
+      setupExistingIframes();
+
+      if (attempts >= maxAttempts) {
+        clearInterval(checkInterval);
+      }
+    }, 200);
+
+    // 5 saniye sonra interval'i durdur
+    const stopTimer = setTimeout(() => {
+      clearInterval(checkInterval);
+    }, 5000);
+
+    // Dinamik olarak eklenen iframe'ler için observer
+    const observer = new MutationObserver(() => {
+      setupExistingIframes();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
     });
 
     return () => {
+      clearInterval(checkInterval);
+      clearTimeout(stopTimer);
+      observer.disconnect();
       offFns.forEach((off) => off());
-      // Player'ları destroy etmiyoruz; iframe ömrünü Next yönetiyor
+      boundIframes.clear();
     };
   }, []);
 

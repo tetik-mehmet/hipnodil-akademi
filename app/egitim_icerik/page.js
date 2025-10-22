@@ -52,17 +52,10 @@ export default function EgitimIcerikPage() {
         } else {
           // Auth başarısız, login sayfasına yönlendir
           router.replace("/login");
-          // Browser history'yi temizle
-          window.history.replaceState(null, "", "/login");
-          // Sayfayı yenile
-          window.location.href = "/login";
         }
       } catch (error) {
         console.error("Auth kontrolü başarısız:", error);
         router.replace("/login");
-        window.history.replaceState(null, "", "/login");
-        // Sayfayı yenile
-        window.location.href = "/login";
       } finally {
         setIsLoading(false);
       }
