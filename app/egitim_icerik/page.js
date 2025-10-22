@@ -300,18 +300,31 @@ export default function EgitimIcerikPage() {
               Yapılandırılmış oturumlar, uygulamalı çalışmalar ve sınav odaklı
               geri bildirimlerle sürecinizi hızlandırın.
             </p>
-            <button
-              type="button"
-              onClick={() => router.push("/egitim_icerik/mentorluk_kursu")}
-              disabled={!canAccess("mentorluk_kursu")}
-              className={`inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors w-full sm:w-auto ${
-                canAccess("mentorluk_kursu")
-                  ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
-                  : "bg-gray-200 text-gray-500 cursor-not-allowed"
-              }`}
-            >
-              {canAccess("mentorluk_kursu") ? "Eğitime Git" : "Erişiminiz Yok"}
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                type="button"
+                onClick={() => router.push("/egitim_icerik/mentorluk_kursu")}
+                disabled={!canAccess("mentorluk_kursu")}
+                className={`inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors w-full sm:w-auto ${
+                  canAccess("mentorluk_kursu")
+                    ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                    : "bg-gray-200 text-gray-500 cursor-not-allowed"
+                }`}
+              >
+                {canAccess("mentorluk_kursu")
+                  ? "Eğitime Git"
+                  : "Erişiminiz Yok"}
+              </button>
+              {!canAccess("mentorluk_kursu") && (
+                <button
+                  type="button"
+                  onClick={() => router.push("/paketler")}
+                  className="inline-flex items-center justify-center rounded-lg px-3 py-2 text-sm font-medium bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all w-full sm:w-auto shadow-md hover:shadow-lg"
+                >
+                  Bu Eğitimi Almak İstiyorum
+                </button>
+              )}
+            </div>
           </div>
           {/* Yeni Kart: MYK Koç Seviye 6 Hazırlık Eğitimi */}
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mt-6">
@@ -323,18 +336,29 @@ export default function EgitimIcerikPage() {
               teori, uygulama örnekleri, deneme sınavları ve performans geri
               bildirimleri.
             </p>
-            <button
-              type="button"
-              onClick={() => router.push("/egitim_icerik/seviye6_kursu")}
-              disabled={!canAccess("seviye6_kursu")}
-              className={`inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors w-full sm:w-auto ${
-                canAccess("seviye6_kursu")
-                  ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
-                  : "bg-gray-200 text-gray-500 cursor-not-allowed"
-              }`}
-            >
-              {canAccess("seviye6_kursu") ? "Eğitime Git" : "Erişiminiz Yok"}
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                type="button"
+                onClick={() => router.push("/egitim_icerik/seviye6_kursu")}
+                disabled={!canAccess("seviye6_kursu")}
+                className={`inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors w-full sm:w-auto ${
+                  canAccess("seviye6_kursu")
+                    ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                    : "bg-gray-200 text-gray-500 cursor-not-allowed"
+                }`}
+              >
+                {canAccess("seviye6_kursu") ? "Eğitime Git" : "Erişiminiz Yok"}
+              </button>
+              {!canAccess("seviye6_kursu") && (
+                <button
+                  type="button"
+                  onClick={() => router.push("/paketler")}
+                  className="inline-flex items-center justify-center rounded-lg px-3 py-2 text-sm font-medium bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all w-full sm:w-auto shadow-md hover:shadow-lg"
+                >
+                  Bu Eğitimi Almak İstiyorum
+                </button>
+              )}
+            </div>
           </div>
           {/* Eğitim Uzmanlığı Kursu */}
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mt-6">
@@ -346,22 +370,33 @@ export default function EgitimIcerikPage() {
               faaliyetleri, ölçme ve değerlendirme, performans sınavı hazırlık
               ve uygulamalı çalışmalar.
             </p>
-            <button
-              type="button"
-              onClick={() =>
-                router.push("/egitim_icerik/egitim_uzmanlik_kursu")
-              }
-              disabled={!canAccess("egitim_uzmanlik_kursu")}
-              className={`inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors w-full sm:w-auto ${
-                canAccess("egitim_uzmanlik_kursu")
-                  ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
-                  : "bg-gray-200 text-gray-500 cursor-not-allowed"
-              }`}
-            >
-              {canAccess("egitim_uzmanlik_kursu")
-                ? "Eğitime Git"
-                : "Erişiminiz Yok"}
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                type="button"
+                onClick={() =>
+                  router.push("/egitim_icerik/egitim_uzmanlik_kursu")
+                }
+                disabled={!canAccess("egitim_uzmanlik_kursu")}
+                className={`inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors w-full sm:w-auto ${
+                  canAccess("egitim_uzmanlik_kursu")
+                    ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                    : "bg-gray-200 text-gray-500 cursor-not-allowed"
+                }`}
+              >
+                {canAccess("egitim_uzmanlik_kursu")
+                  ? "Eğitime Git"
+                  : "Erişiminiz Yok"}
+              </button>
+              {!canAccess("egitim_uzmanlik_kursu") && (
+                <button
+                  type="button"
+                  onClick={() => router.push("/paketler")}
+                  className="inline-flex items-center justify-center rounded-lg px-3 py-2 text-sm font-medium bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all w-full sm:w-auto shadow-md hover:shadow-lg"
+                >
+                  Bu Eğitimi Almak İstiyorum
+                </button>
+              )}
+            </div>
           </div>
         </section>
       </div>
