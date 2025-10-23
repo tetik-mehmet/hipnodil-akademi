@@ -68,7 +68,28 @@ export default function Page() {
         <h1 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
           MYK Koçluk Seviye 6 Eğitimi – Ders Videoları
         </h1>
-        <p className="mt-2 text-sm text-gray-600 md:text-base">
+        <div className="mt-4 flex items-center justify-center gap-2">
+          <div className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-2 shadow-lg">
+            <svg
+              className="mr-2 h-5 w-5 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+              />
+            </svg>
+            <span className="text-base font-semibold text-white md:text-lg">
+              Toplam <span className="mx-1 text-xl font-bold">68</span> Video
+            </span>
+          </div>
+        </div>
+        <p className="mt-4 text-sm text-gray-600 md:text-base">
           Aşağıdaki dersleri sırasıyla izleyebilir, kaldığınız yerden devam
           edebilirsiniz.
         </p>
@@ -318,339 +339,6 @@ export default function Page() {
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
             Ders 18: Teorik T2 Açık Uçlu Soru Anlatımı
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        {/* T2 Açık Uçlu Soru Çeşidi 1. Oturum */}
-        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1015252543?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK Koçluk Seviye 6 Eğitimi - T2 AÇIK UÇLU SORU ÇEŞİDİ 1. OTURUM"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            T2 Açık Uçlu Soru Çeşidi – 1. Oturum
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        {/* T2 Açık Uçlu Soru Çeşidi 2. Oturum */}
-        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1015258614?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK Koçluk Seviye 6 Eğitimi - T2 AÇIK UÇLU SORU ÇEŞİDİ 2. OTURUM"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            T2 Açık Uçlu Soru Çeşidi – 2. Oturum
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        {/* 1. Performans Dersi 1. Oturum */}
-        <article className="group rounded-xl border-2 border-orange-500 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1015262022?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK Koçluk Seviye 6 Eğitimi - 1. PERFORMANS DERSİ 1. OTURUM"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            1. Performans Dersi – 1. Oturum
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        {/* 1. Performans Dersi 2. Oturum */}
-        <article className="group rounded-xl border-2 border-orange-500 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1015269655?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK Koçluk Seviye 6 Eğitimi - 1. PERFORMANS DERSİ 2. OTURUM"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            1. Performans Dersi – 2. Oturum
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        {/* 2. Performans Dersi 2. Oturum */}
-        <article className="group rounded-xl border-2 border-orange-500 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1015297143?h=8c5aadb641&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK Koçluk Seviye 6 Eğitimi - 2. PERFORMANS DERSİ 2. OTURUM"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            2. Performans Dersi – 2. Oturum
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        {/* 3. Performans Dersi 1. Oturum */}
-        <article className="group rounded-xl border-2 border-orange-500 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1015628175?h=99415a66bb&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK Koçluk Seviye 6 Eğitimi - 3. PERFORMANS DERSİ 1. OTURUM"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            3. Performans Dersi – 1. Oturum
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        {/* 3. Performans Dersi 2. Oturum */}
-        <article className="group rounded-xl border-2 border-orange-500 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1015637515?h=ad1219c921&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK Koçluk Seviye 6 Eğitimi - 3. PERFORMANS DERSİ 2. OTURUM"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            3. Performans Dersi – 2. Oturum
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-        {/* Mentorluk – Canlı Yayın Kayıtları */}
-        <article className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1079774040?h=4218d79fbf&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK KOÇ SEVİYE 6 - 3. Grup 5. Canlı Yayın"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            3. Grup 5. Canlı Yayın
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        <article className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1074962620?h=5b82794e4b&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK KOÇ SEVİYE 6 - 3. Grup 1. Canlı Yayın"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            3. Grup 1. Canlı Yayın
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        <article className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1052575306?h=846e0d9072&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK KOÇ SEVİYE 6 - 2. Grup 4. Canlı Yayın"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            2. Grup 4. Canlı Yayın
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        <article className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1051894685?h=955590a4bd&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK KOÇ SEVİYE 6 - 2. Grup 3. Canlı Yayın"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            2. Grup 3. Canlı Yayın
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        <article className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1050053220?h=7233d65586&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK KOÇ SEVİYE 6 - 2. Grup 2. Canlı Yayın"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            2. Grup 2. Canlı Yayın
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        <article className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1048934916?h=0af232a866&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK KOÇ SEVİYE 6 - 2. Grup 1. Canlı Yayın"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            2. Grup 1. Canlı Yayın
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        <article className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1078294669?h=ce025ba24c&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK KOÇ SEVİYE 6 - 3. Grup 4. Canlı Yayın"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            3. Grup 4. Canlı Yayın
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        <article className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1078073738?h=8db7b19f98&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK KOÇ SEVİYE 6 - 3. Grup 3. Canlı Yayın"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            3. Grup 3. Canlı Yayın
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        <article className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1077226974?h=dc5820387a&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK KOÇ SEVİYE 6 - 3. Grup 2. Canlı Yayın"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            3. Grup 2. Canlı Yayın
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        {/* Tanışma – Canlı Yayın 1. Ders 1. Oturum */}
-        <article className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1015233575?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK Koçluk Seviye 6 Eğitimi - TANIŞMA - CANLI YAYIN 1. DERS 1. OTURUM"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            Tanışma – Canlı Yayın 1. Ders 1. Oturum
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-        </article>
-
-        {/* Canlı Yayın 1. Ders 2. Oturum – MYK’nın Görevleri Nelerdir? */}
-        <article className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md">
-          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-            <iframe
-              src="https://player.vimeo.com/video/1015251231?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 h-full w-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="MYK Koçluk Seviye 6 Eğitimi - CANLI YAYIN 1. DERS 2. OTURUM - MYK'NIN GÖREVLERİ NELERDİR?"
-              allowFullScreen
-            />
-          </div>
-          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            Canlı Yayın 1. Ders 2. Oturum – MYK’nın Görevleri Nelerdir?
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1512,7 +1200,663 @@ export default function Page() {
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 45 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1045320001?h=a520c57395&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 45 - META PROGRAMLAR 1"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 45: Meta Programlar 1
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 46 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1045319667?h=ba290ad75e&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 46 - META PROGRAMLAR 2"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 46: Meta Programlar 2
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 47 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1045319203?h=4837e6e582&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 47 - KOÇLUK TEKNİKLERİ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 47: Koçluk Teknikleri
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 48 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1045318800?h=8b1de31891&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 48 - HAREKETE GEÇİRME VE KOÇLUK GÖRUSMELERİNDE DİKKAT ETMEMİZ GEREKENLER"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 48: Harekete Geçirme ve Dikkat
+            Edilmesi Gerekenler
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 49 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1045318381?h=78717c16ff&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 49 - YARGILARIMIZ VE GÜÇLÜ SORULAR"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 49: Yargılarımız ve Güçlü Sorular
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 50 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1045317647?h=042685201d&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 50 - GÜÇLÜ SORULAR SMART MODEL VE GROW MODEL"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 50: Güçlü Sorular SMART Model ve
+            GROW Model
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 51 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1045317302?h=32d14aa8f7&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 51 - GROW MODEL"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 51: GROW Model
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 52 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1045316936?h=ef0acb4811&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 52 - ETKİN GERİ BİLDİRİM VE GÜÇLÜ RİCALAR"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 52: Etkin Geri Bildirim ve Güçlü
+            Ricalar
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 53 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1045316586?h=43e4c94c40&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 53 - KOÇLUK SÜRECİ VE KOÇLUK MODELLERİ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 53: Koçluk Süreci ve Koçluk
+            Modelleri
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 54 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1045320529?h=709285bc46&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 54 - KOÇLUK MODELLERİ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 54: Koçluk Modelleri
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 55 */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1045320297?h=5fecf25e5e&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="ÖZLEM İSA HOCAYLA MYK TEMEL KOÇLUK - 55 - İLK GÖRÜŞME VE GÖRÜŞME İPUÇLARI"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            Özlem İsa ile MYK Temel Koçluk – 55: İlk Görüşme ve Görüşme İpuçları
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
       </div>
+
+      {/* PDF Dökümanlar Bölümü */}
+      <section className="mt-12">
+        <div className="mb-8 text-center">
+          <h2 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
+            Eğitim Dökümanları
+          </h2>
+          <div className="mt-4 flex items-center justify-center gap-2">
+            <div className="inline-flex items-center rounded-full bg-gradient-to-r from-red-500 to-red-600 px-4 py-2 shadow-lg">
+              <svg
+                className="mr-2 h-5 w-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                />
+              </svg>
+              <span className="text-base font-semibold text-white md:text-lg">
+                Toplam <span className="mx-1 text-xl font-bold">11</span> PDF
+                Döküman
+              </span>
+            </div>
+          </div>
+          <p className="mt-4 text-sm text-gray-600 md:text-base">
+            Eğitim materyallerini indirebilir ve inceleyebilirsiniz.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* PDF 1 */}
+          <a
+            href="/seviye6_pdf/myk-koc-seviye-6-hazirlik-egitimi-1-modul-temel-kocluk1.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-xl border-2 border-red-900 bg-white p-4 shadow-sm transition hover:shadow-md hover:bg-red-50"
+          >
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-100">
+              <svg
+                className="h-6 w-6 text-red-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 18v-2h8v2H8zm0-4v-2h8v2H8z" />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                Modül 1: Temel Koçluk
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">PDF Döküman</p>
+            </div>
+            <svg
+              className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-red-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+          </a>
+
+          {/* PDF 2 */}
+          <a
+            href="/seviye6_pdf/myk-koc-seviye-6-hazirlik-egitimi-2-modul-genel-kocluk-notlari2.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-xl border-2 border-red-900 bg-white p-4 shadow-sm transition hover:shadow-md hover:bg-red-50"
+          >
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-100">
+              <svg
+                className="h-6 w-6 text-red-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 18v-2h8v2H8zm0-4v-2h8v2H8z" />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                Modül 2: Genel Koçluk Notları
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">PDF Döküman</p>
+            </div>
+            <svg
+              className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-red-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+          </a>
+
+          {/* PDF 3 */}
+          <a
+            href="/seviye6_pdf/myk-koc-seviye-6-hazirlik-egitimi-4-modul-koclukta-derinlesme-nlp-ile-kisisel-gelisime-giris4.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-xl border-2 border-red-900 bg-white p-4 shadow-sm transition hover:shadow-md hover:bg-red-50"
+          >
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-100">
+              <svg
+                className="h-6 w-6 text-red-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 18v-2h8v2H8zm0-4v-2h8v2H8z" />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                Modül 4: Koçlukta Derinleşme - NLP ile Kişisel Gelişime Giriş
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">PDF Döküman</p>
+            </div>
+            <svg
+              className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-red-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+          </a>
+
+          {/* PDF 4 */}
+          <a
+            href="/seviye6_pdf/myk-koc-seviye-6-hazirlik-egitimi-koc-myk-seviye-6-detay5.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-xl border-2 border-red-900 bg-white p-4 shadow-sm transition hover:shadow-md hover:bg-red-50"
+          >
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-100">
+              <svg
+                className="h-6 w-6 text-red-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 18v-2h8v2H8zm0-4v-2h8v2H8z" />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                Koç MYK Seviye 6 Detayları
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">PDF Döküman</p>
+            </div>
+            <svg
+              className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-red-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+          </a>
+
+          {/* PDF 5 */}
+          <a
+            href="/seviye6_pdf/myk-koc-seviye-6-hazirlik-egitimi-kocluk-musteri-cizelgesi11.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-xl border-2 border-red-900 bg-white p-4 shadow-sm transition hover:shadow-md hover:bg-red-50"
+          >
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-100">
+              <svg
+                className="h-6 w-6 text-red-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 18v-2h8v2H8zm0-4v-2h8v2H8z" />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                Koçluk Müşteri Çizelgesi
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">PDF Döküman</p>
+            </div>
+            <svg
+              className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-red-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+          </a>
+
+          {/* PDF 6 */}
+          <a
+            href="/seviye6_pdf/myk-koc-seviye-6-hazirlik-egitimi-koclukta-johari-penceresi-uygulama-ornegi6.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-xl border-2 border-red-900 bg-white p-4 shadow-sm transition hover:shadow-md hover:bg-red-50"
+          >
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-100">
+              <svg
+                className="h-6 w-6 text-red-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 18v-2h8v2H8zm0-4v-2h8v2H8z" />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                Koçlukta Johari Penceresi Uygulama Örneği
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">PDF Döküman</p>
+            </div>
+            <svg
+              className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-red-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+          </a>
+
+          {/* PDF 7 */}
+          <a
+            href="/seviye6_pdf/myk-koc-seviye-6-hazirlik-egitimi-musteri-yasam-degerlendirme-gorusme-anketi7.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-xl border-2 border-red-900 bg-white p-4 shadow-sm transition hover:shadow-md hover:bg-red-50"
+          >
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-100">
+              <svg
+                className="h-6 w-6 text-red-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 18v-2h8v2H8zm0-4v-2h8v2H8z" />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                Müşteri Yaşam Değerlendirme Görüşme Anketi
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">PDF Döküman</p>
+            </div>
+            <svg
+              className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-red-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+          </a>
+
+          {/* PDF 8 */}
+          <a
+            href="/seviye6_pdf/myk-koc-seviye-6-hazirlik-egitimi-ogrenme-stili-testi8.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-xl border-2 border-red-900 bg-white p-4 shadow-sm transition hover:shadow-md hover:bg-red-50"
+          >
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-100">
+              <svg
+                className="h-6 w-6 text-red-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 18v-2h8v2H8zm0-4v-2h8v2H8z" />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                Öğrenme Stili Testi
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">PDF Döküman</p>
+            </div>
+            <svg
+              className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-red-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+          </a>
+
+          {/* PDF 9 */}
+          <a
+            href="/seviye6_pdf/myk-koc-seviye-6-hazirlik-egitimi-ornek-kocluk-gorusmesi9.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-xl border-2 border-red-900 bg-white p-4 shadow-sm transition hover:shadow-md hover:bg-red-50"
+          >
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-100">
+              <svg
+                className="h-6 w-6 text-red-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 18v-2h8v2H8zm0-4v-2h8v2H8z" />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                Örnek Koçluk Görüşmesi
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">PDF Döküman</p>
+            </div>
+            <svg
+              className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-red-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+          </a>
+
+          {/* PDF 10 */}
+          <a
+            href="/seviye6_pdf/myk-koc-seviye-6-hazirlik-egitimi-temel-kocluk-egitimi-1-odev12.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-xl border-2 border-red-900 bg-white p-4 shadow-sm transition hover:shadow-md hover:bg-red-50"
+          >
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-100">
+              <svg
+                className="h-6 w-6 text-red-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 18v-2h8v2H8zm0-4v-2h8v2H8z" />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                Temel Koçluk Eğitimi - Ödev 1
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">PDF Döküman</p>
+            </div>
+            <svg
+              className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-red-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+          </a>
+
+          {/* PDF 11 */}
+          <a
+            href="/seviye6_pdf/myk-koc-seviye-6-hazirlik-egitimi-yasam-denge-carki-alistirmasi10.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-xl border-2 border-red-900 bg-white p-4 shadow-sm transition hover:shadow-md hover:bg-red-50"
+          >
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-100">
+              <svg
+                className="h-6 w-6 text-red-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 18v-2h8v2H8zm0-4v-2h8v2H8z" />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                Yaşam Denge Çarkı Alıştırması
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">PDF Döküman</p>
+            </div>
+            <svg
+              className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-red-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              />
+            </svg>
+          </a>
+        </div>
+      </section>
     </main>
   );
 }

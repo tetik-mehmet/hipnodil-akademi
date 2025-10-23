@@ -34,7 +34,50 @@ export async function GET() {
 
     const docs = stats
       .map(({ name, size }) => {
-        const title = name.replace(/_/g, " ").replace(/\.pdf$/i, "");
+        // Dosya adından anlamlı başlık oluştur
+        let title = name.replace(/\.pdf$/i, "");
+
+        // Dosya adına göre özel başlıklar
+        if (title.includes("sinav-hazirlik-egitimi-modul1")) {
+          title = "Modül 1: Sınav Hazırlık Eğitimi";
+        } else if (title.includes("modul-22")) {
+          title = "Modül 2: Ulusal Meslek Standardı ve Ulusal Yeterliliği";
+        } else if (title.includes("modul-33")) {
+          title = "Modül 3: Ulusal Meslek Standardı ve Ulusal Yeterliliği";
+        } else if (title.includes("modul-44")) {
+          title = "Modül 4: Ulusal Meslek Standardı ve Ulusal Yeterliliği";
+        } else if (title.includes("degerlere-kocluk-sorular")) {
+          title = "Değerlere Koçluk Soruları";
+        } else if (title.includes("ek-1-tyc-terimler-sozlugu")) {
+          title = "Ek 1: TYÇ Terimler Sözlüğü";
+        } else if (
+          title.includes("ek-2-seviye-6-ulusal-yeterlilik-meslek-standarti")
+        ) {
+          title = "Ek 2: Seviye 6 Ulusal Yeterlilik Meslek Standardı";
+        } else if (
+          title.includes("ek-3-seviye-6-ulusal-yeterlilik-koc-dokumani")
+        ) {
+          title = "Ek 3: Seviye 6 Ulusal Yeterlilik Koç Dokümanı";
+        } else if (title.includes("iliskilere-kocluk-detay")) {
+          title = "İlişkilere Koçluk Detayı";
+        } else if (title.includes("kocluk-ornek-sorular")) {
+          title = "Koçluk Örnek Sorular";
+        } else if (title.includes("yasam-cemberi-sorular")) {
+          title = "Yaşam Çemberi Soruları";
+        } else if (title.includes("yasam-cemberi9")) {
+          title = "Yaşam Çemberi";
+        } else if (title.includes("zihinsel-prova-detay")) {
+          title = "Zihinsel Prova Detayı";
+        } else if (
+          title.includes("revizyon-214") ||
+          title.includes("2024-2025")
+        ) {
+          title = "MYK Koç Seviye 6 - 2024-2025 Revizyonu";
+        } else {
+          // Varsayılan: dosya adını temizle
+          title = title.replace(/_/g, " ").replace(/-/g, " ");
+        }
+
         return {
           title,
           href: `${hrefBase}/${name}`,
