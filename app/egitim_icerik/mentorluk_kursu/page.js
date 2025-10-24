@@ -78,7 +78,210 @@ export default function Page() {
     return null;
   }
 
-  const videos = [
+  // Ders videoları
+  const lessonVideos = [
+    {
+      src: "https://player.vimeo.com/video/1015297143?h=8c5aadb641&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "2. PERFORMANS DERSİ 2. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 2. PERFORMANS DERSİ 2. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1014780792?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 1 - ULUSAL YETERLİLİK SİMGELER, TERİMLER, VE KISALTMALAR",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 1 - ULUSAL YETERLİLİK SİMGELER, TERİMLER, VE KISALTMALAR",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015148357?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 2 - KOÇ ULUSAL YETERLİLİĞİNE GİRİŞ",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 2 - KOÇ ULUSAL YETERLİLİĞİNE GİRİŞ",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015153841?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 3 - ULUSAL YETERLİLİK BİRİMİ - 1",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 3 - ULUSAL YETERLİLİK BİRİMİ - 1",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015157127?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 4 - ULUSAL YETERLİLİK BİRİMİ - 2",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 4 - ULUSAL YETERLİLİK BİRİMİ - 2",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015157595?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 5 - ULUSAL YETERLİLİK BİRİMİ - 3",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 5 - ULUSAL YETERLİLİK BİRİMİ - 3",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015157883?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 6 - ULUSAL YETERLİLİK BİRİMİ - 4",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 6 - ULUSAL YETERLİLİK BİRİMİ - 4",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015160408?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 7 - ULUSAL YETERLİLİK BİRİMİ - 5",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 7 - ULUSAL YETERLİLİK BİRİMİ - 5",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015161158?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 8 - ULUSAL YETERLİLİK BİRİMİ - 6",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 8 - ULUSAL YETERLİLİK BİRİMİ - 6",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015162916?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 9 - ULUSAL YETERLİLİK BİRİMİ - 7",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 9 - ULUSAL YETERLİLİK BİRİMİ - 7",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015163317?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 10 - KOÇLUK SÜRECİNİ YAPILANDIRMA - GİRİŞ",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 10 - KOÇLUK SÜRECİNİ YAPILANDIRMA - GİRİŞ",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015165011?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 11 - KOÇLUK SÜRECİNİ YAPILANDIRMA 1",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 11 - KOÇLUK SÜRECİNİ YAPILANDIRMA 1",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015165684?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 12 - KOÇLUK SÜRECİNİ YAPILANDIRMA 2",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 12 - KOÇLUK SÜRECİNİ YAPILANDIRMA 2",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015179539?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 13 - KOÇLUK SÜRECİNİ YAPILANDIRMA 3",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 13 - KOÇLUK SÜRECİNİ YAPILANDIRMA 3",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015194733?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 14 - KOÇLUK SÜRECİNİ YAPILANDIRMA 4",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 14 - KOÇLUK SÜRECİNİ YAPILANDIRMA 4",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015197730?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 15 - KOÇLUK SÜRECİNİ YAPILANDIRMA 5",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 15 - KOÇLUK SÜRECİNİ YAPILANDIRMA 5",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015200790?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 16 - KOÇLUK SÜRECİNİ YAPILANDIRMA 6",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 16 - KOÇLUK SÜRECİNİ YAPILANDIRMA 6",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015225094?h=&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 17 - KOÇLUK SÜRECİNİ YAPILANDIRMA 7",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 17 - KOÇLUK SÜRECİNİ YAPILANDIRMA 7",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015226101?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "DERS 18 - TEORİK T2 AÇIK UÇLU SORU ANLATIMI",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - DERS 18 - TEORİK T2 AÇIK UÇLU SORU ANLATIMI",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015252543?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "T2 AÇIK UÇLU SORU ÇEŞİDİ 1. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - T2 AÇIK UÇLU SORU ÇEŞİDİ 1. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015258614?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "T2 AÇIK UÇLU SORU ÇEŞİDİ 2. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - T2 AÇIK UÇLU SORU ÇEŞİDİ 2. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015262022?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "1. PERFORMANS DERSİ 1. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 1. PERFORMANS DERSİ 1. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015269655?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "1. PERFORMANS DERSİ 2. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 1. PERFORMANS DERSİ 2. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015295843?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "2. PERFORMANS DERSİ 1. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 2. PERFORMANS DERSİ 1. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015297143?h=8c5aadb641&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "2. PERFORMANS DERSİ 2. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 2. PERFORMANS DERSİ 2. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015628175?h=99415a66bb&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "3. PERFORMANS DERSİ 1. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 3. PERFORMANS DERSİ 1. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015637515?h=ad1219c921&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "3. PERFORMANS DERSİ 2. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 3. PERFORMANS DERSİ 2. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015690889?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "4. PERFORMANS DERSİ 1. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 4. PERFORMANS DERSİ 1. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015693155?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "4. PERFORMANS DERSİ 2. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 4. PERFORMANS DERSİ 2. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1016155160?h=08bf8d0639&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "5. PERFORMANS DERSİ 1. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 5. PERFORMANS DERSİ 1. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1016251965?h=0c642082cc&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "5. PERFORMANS DERSİ 2. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 5. PERFORMANS DERSİ 2. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1016443320?h=042ab854e0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "6. PERFORMANS DERSİ 1. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 6. PERFORMANS DERSİ 1. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1016817484?h=c970c0ce89&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "6. PERFORMANS DERSİ 2. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - 6. PERFORMANS DERSİ 2. OTURUM",
+    },
+  ];
+
+  // Canlı yayın videoları
+  const liveVideos = [
     {
       src: "https://player.vimeo.com/video/1079774040?h=4218d79fbf&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
       title: "3. Grup 5. Canlı Yayın",
@@ -124,9 +327,32 @@ export default function Page() {
       title: "3. Grup 2. Canlı Yayın",
       iframeTitle: "MYK KOÇ SEVİYE 6 - 3. Grup 2. Canlı Yayın",
     },
+    {
+      src: "https://player.vimeo.com/video/1129875511?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "4. Grup 1. Canlı Yayın",
+      iframeTitle:
+        "MYK KOÇ SEVİYE 6 SINAVINA HAZIRLIK (MENTÖRLÜK) 4. GRUP 1. CANLI YAYIN",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015233575?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "TANIŞMA - CANLI YAYIN 1. DERS 1. OTURUM",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - TANIŞMA - CANLI YAYIN 1. DERS 1. OTURUM",
+    },
+    {
+      src: "https://player.vimeo.com/video/1015251231?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "CANLI YAYIN 1. DERS 2. OTURUM - MYK'NIN GÖREVLERİ NELERDİR",
+      iframeTitle:
+        "MYK Koçluk Seviye 6 Eğitimi - CANLI YAYIN 1. DERS 2. OTURUM - MYK'NIN GÖREVLERİ NELERDİR _",
+    },
   ];
 
-  const sortedVideos = [...videos].sort((a, b) =>
+  // Her grubu kendi içinde sırala
+  const sortedLessonVideos = [...lessonVideos].sort((a, b) =>
+    a.title.localeCompare(b.title, "tr", { numeric: true, sensitivity: "base" })
+  );
+
+  const sortedLiveVideos = [...liveVideos].sort((a, b) =>
     a.title.localeCompare(b.title, "tr", { numeric: true, sensitivity: "base" })
   );
 
@@ -141,38 +367,120 @@ export default function Page() {
       {isVimeoReady && <AutoFullscreenBinder />}
       <header className="mb-8 text-center">
         <h1 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
-          MYK Koç Seviye 6 Mentorluk – Canlı Yayın Kayıtları
+          MYK Koç Seviye 6 Mentorluk Eğitimi
         </h1>
         <p className="mt-2 text-sm text-gray-600 md:text-base">
-          Tüm oturumları küçük kartlar halinde izleyebilir, yakında eklenecek
-          yeni kayıtları da buradan takip edebilirsiniz.
+          Ders videoları ve canlı yayın kayıtlarını küçük kartlar halinde
+          izleyebilirsiniz.
         </p>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+          <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700">
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+              />
+            </svg>
+            Toplam {lessonVideos.length + liveVideos.length} Video
+          </div>
+          <div className="inline-flex items-center gap-2 rounded-full bg-green-50 px-4 py-2 text-sm font-medium text-green-700">
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            ~{Math.round((lessonVideos.length + liveVideos.length) * 1.5)} Saat
+            Eğitim
+          </div>
+        </div>
       </header>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {sortedVideos.map((v, idx) => (
-          <article
-            key={v.src}
-            className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md"
-          >
-            <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-              <iframe
-                src={v.src}
-                className="absolute inset-0 h-full w-full"
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                title={`${idx + 1}. Canlı Video`}
-                allowFullScreen
-              />
-            </div>
-            <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">{`${
-              idx + 1
-            }. Canlı Video`}</h3>
-            <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-          </article>
-        ))}
-      </div>
+      {/* Ders Videoları Bölümü */}
+      <section className="mb-12">
+        <header className="mb-6">
+          <h2 className="text-xl font-semibold text-gray-900 md:text-2xl">
+            Ders Videoları
+          </h2>
+          <p className="mt-1 text-sm text-gray-600">
+            Eğitim içeriklerini sırasıyla takip edebilirsiniz.
+          </p>
+        </header>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {sortedLessonVideos.map((v, idx) => (
+            <article
+              key={v.src}
+              className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md"
+            >
+              <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+                <iframe
+                  src={v.src}
+                  className="absolute inset-0 h-full w-full"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title={v.iframeTitle}
+                  allowFullScreen
+                />
+              </div>
+              <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+                {v.title}
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Canlı Yayınlar Bölümü */}
+      <section className="mb-12">
+        <header className="mb-6">
+          <h2 className="text-xl font-semibold text-gray-900 md:text-2xl">
+            Canlı Yayın Kayıtları
+          </h2>
+          <p className="mt-1 text-sm text-gray-600">
+            Grup çalışmaları ve canlı yayın kayıtlarını izleyebilirsiniz.
+          </p>
+        </header>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {sortedLiveVideos.map((v, idx) => (
+            <article
+              key={v.src}
+              className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md"
+            >
+              <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+                <iframe
+                  src={v.src}
+                  className="absolute inset-0 h-full w-full"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title={v.iframeTitle}
+                  allowFullScreen
+                />
+              </div>
+              <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+                {v.title}
+              </h3>
+              <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
       {/* Dokümanlar Bölümü */}
       <section className="mt-12">
