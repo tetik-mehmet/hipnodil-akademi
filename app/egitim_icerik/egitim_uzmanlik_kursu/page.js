@@ -75,14 +75,9 @@ export default function Page() {
         "MYK EĞİTİM UZMANLIĞI SEVİYE 6 - EĞİTİM FAALİYETLERİ 2. BÖLÜM",
     },
     {
-      src: "https://player.vimeo.com/video/1129134347?h=9e661fa619&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
-      title: "Eğitim Uzmanlığı 2",
-      iframeTitle: "egitim_uzmanlik_2",
-    },
-    {
-      src: "https://player.vimeo.com/video/1129135818?h=1378ae5a7b&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
-      title: "Eğitim Uzmanlığı 3",
-      iframeTitle: "egitim_uzmanlik_3",
+      src: "https://player.vimeo.com/video/1129833510?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Eğitim Uzmanlığı Canlı Yayın",
+      iframeTitle: "Egitim Uzmnlıgı Canlı Yayın",
     },
   ];
 

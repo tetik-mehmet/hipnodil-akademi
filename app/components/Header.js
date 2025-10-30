@@ -9,6 +9,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [isConsultingOpen, setIsConsultingOpen] = useState(false);
+  const [isCorporateOpen, setIsCorporateOpen] = useState(false);
   const [showError, setShowError] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
@@ -336,6 +337,121 @@ export default function Header() {
             <div className="absolute inset-0 shadow-[1px_0_0_rgba(255,255,255,0.8),-1px_0_0_rgba(0,0,0,0.1)]" />
           </div>
 
+          <div className="relative group">
+            <Link
+              href="/kurumsal"
+              className={`relative text-base font-bold transition-all duration-300 px-4 flex items-center gap-1 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded-full after:transition-transform after:duration-300 ${
+                pathname === "/kurumsal"
+                  ? "text-cyan-600 after:scale-x-100 after:bg-gradient-to-r after:from-cyan-500 after:to-teal-500"
+                  : "text-gray-700 hover:text-cyan-600 after:scale-x-0 after:bg-gradient-to-r after:from-cyan-500 after:to-teal-500 hover:after:scale-x-100"
+              } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500/50 focus-visible:rounded-md`}
+            >
+              Kurumsal Eğitimlerimiz
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </Link>
+            <div className="invisible absolute left-0 top-full z-40 mt-3 w-[28rem] rounded-xl border-2 border-cyan-200 bg-white p-2 opacity-0 scale-95 shadow-[0_8px_30px_rgba(6,182,212,0.2)] transition-all duration-300 ease-out group-hover:visible group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-1">
+              <div className="grid grid-cols-1 gap-1">
+                <Link
+                  href="/kurumsal"
+                  className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    pathname === "/kurumsal"
+                      ? "text-cyan-700 bg-cyan-50 font-bold"
+                      : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
+                  }`}
+                >
+                  Kurumsal İletişim ve Etkileşim Becerileri Eğitimi
+                </Link>
+                <Link
+                  href="/kurumsal/kriz"
+                  className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    pathname === "/kurumsal/kriz"
+                      ? "text-cyan-700 bg-cyan-50 font-bold"
+                      : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
+                  }`}
+                >
+                  Kriz Yönetimi ve Krize Müdahale Eğitimi
+                </Link>
+                <Link
+                  href="/takim_calismasi"
+                  className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    pathname === "/kurumsal"
+                      ? "text-cyan-700 bg-cyan-50 font-bold"
+                      : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
+                  }`}
+                >
+                  Takım Çalışması ve Motivasyon Eğitimi
+                </Link>
+                <Link
+                  href="/is_sagligi"
+                  className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    pathname === "/is_sagligi_guvenlik"
+                      ? "text-cyan-700 bg-cyan-50 font-bold"
+                      : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
+                  }`}
+                >
+                  İş Sağlığı ve Güvenliği Eğitimi
+                </Link>
+                <Link
+                  href="/protokol"
+                  className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    pathname === "/protokol_karsilama"
+                      ? "text-cyan-700 bg-cyan-50 font-bold"
+                      : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
+                  }`}
+                >
+                  Protokol Kuralları ve Karşılama Eğitimi
+                </Link>
+                <Link
+                  href="/ofke_stres"
+                  className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    pathname === "/ofke_stres_kaygi"
+                      ? "text-cyan-700 bg-cyan-50 font-bold"
+                      : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
+                  }`}
+                >
+                  Öfke Stres ve Kaygı Yönetimi Eğitimi
+                </Link>
+                <Link
+                  href="/beden_dili"
+                  className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    pathname === "/beden_dili_iletisim"
+                      ? "text-cyan-700 bg-cyan-50 font-bold"
+                      : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
+                  }`}
+                >
+                  Beden Dili ve Etkili İletişim Eğitimi
+                </Link>
+                <Link
+                  href="/kurslar/kurumsal_kocluk"
+                  className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    pathname === "/kurslar/kurumsal_kocluk"
+                      ? "text-cyan-700 bg-cyan-50 font-bold"
+                      : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
+                  }`}
+                >
+                  Kurumsal Koçluk Eğitimi
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* 3D Duvar Ayırıcı */}
+          <div className="h-6 w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-50" />
+            <div className="absolute inset-0 shadow-[1px_0_0_rgba(255,255,255,0.8),-1px_0_0_rgba(0,0,0,0.1)]" />
+          </div>
+
           <Link
             href="/referans"
             className={`relative text-base font-bold transition-all duration-300 px-4 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:rounded-full after:transition-transform after:duration-300 ${
@@ -502,6 +618,135 @@ export default function Header() {
               >
                 Eğitmenlerimiz
               </Link>
+              <button
+                type="button"
+                className={`text-base flex items-center justify-between rounded-lg px-3 py-2 font-semibold transition-all duration-300 w-full ${
+                  pathname === "/kurumsal" ||
+                  pathname === "/kurumsal/kriz" ||
+                  pathname === "/takim_calismasi" ||
+                  pathname === "/is_sagligi_guvenlik" ||
+                  pathname === "/protokol_karsilama" ||
+                  pathname === "/ofke_stres_kaygi" ||
+                  pathname === "/beden_dili_iletisim" ||
+                  pathname === "/kurslar/kurumsal_kocluk"
+                    ? "text-cyan-700 bg-cyan-50 font-bold"
+                    : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
+                } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500 ${
+                  isOpen ? "animate-[slideIn_0.3s_ease-out_0.275s_both]" : ""
+                }`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsCorporateOpen((v) => !v);
+                }}
+              >
+                <span>Kurumsal Eğitimlerimiz</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className={`h-5 w-5 transition-transform duration-300 ${
+                    isCorporateOpen ? "rotate-180" : "rotate-0"
+                  }`}
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12 14.25a.75.75 0 0 1-.53-.22l-4.5-4.5a.75.75 0 1 1 1.06-1.06L12 12.44l3.97-3.97a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-.53.22Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+              {isCorporateOpen && (
+                <div className="ml-2 flex flex-col gap-1 pb-1 animate-[slideIn_0.2s_ease-out]">
+                  <Link
+                    href="/kurumsal"
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      pathname === "/kurumsal"
+                        ? "text-cyan-700 bg-cyan-100 font-bold"
+                        : "text-gray-600 hover:bg-cyan-100 hover:text-cyan-600"
+                    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Kurumsal İletişim ve Etkileşim
+                  </Link>
+                  <Link
+                    href="/kurumsal/kriz"
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      pathname === "/kurumsal/kriz"
+                        ? "text-cyan-700 bg-cyan-100 font-bold"
+                        : "text-gray-600 hover:bg-cyan-100 hover:text-cyan-600"
+                    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Kriz Yönetimi ve Krize Müdahale
+                  </Link>
+                  <Link
+                    href="/takim_calismasi"
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      pathname === "/takim_calismasi"
+                        ? "text-cyan-700 bg-cyan-100 font-bold"
+                        : "text-gray-600 hover:bg-cyan-100 hover:text-cyan-600"
+                    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Takım Çalışması ve Motivasyon
+                  </Link>
+                  <Link
+                    href="/is_sagligi_guvenlik"
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      pathname === "/is_sagligi_guvenlik"
+                        ? "text-cyan-700 bg-cyan-100 font-bold"
+                        : "text-gray-600 hover:bg-cyan-100 hover:text-cyan-600"
+                    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    İş Sağlığı ve Güvenliği
+                  </Link>
+                  <Link
+                    href="/protokol_karsilama"
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      pathname === "/protokol_karsilama"
+                        ? "text-cyan-700 bg-cyan-100 font-bold"
+                        : "text-gray-600 hover:bg-cyan-100 hover:text-cyan-600"
+                    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Protokol Kuralları ve Karşılama
+                  </Link>
+                  <Link
+                    href="/ofke_stres_kaygi"
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      pathname === "/ofke_stres_kaygi"
+                        ? "text-cyan-700 bg-cyan-100 font-bold"
+                        : "text-gray-600 hover:bg-cyan-100 hover:text-cyan-600"
+                    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Öfke Stres ve Kaygı Yönetimi
+                  </Link>
+                  <Link
+                    href="/beden_dili_iletisim"
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      pathname === "/beden_dili_iletisim"
+                        ? "text-cyan-700 bg-cyan-100 font-bold"
+                        : "text-gray-600 hover:bg-cyan-100 hover:text-cyan-600"
+                    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Beden Dili ve Etkili İletişim
+                  </Link>
+                  <Link
+                    href="/kurslar/kurumsal_kocluk"
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      pathname === "/kurslar/kurumsal_kocluk"
+                        ? "text-cyan-700 bg-cyan-100 font-bold"
+                        : "text-gray-600 hover:bg-cyan-100 hover:text-cyan-600"
+                    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Kurumsal Koçluk
+                  </Link>
+                </div>
+              )}
               <Link
                 href="/referans"
                 className={`text-base rounded-lg px-3 py-2 font-semibold transition-all duration-300 ${

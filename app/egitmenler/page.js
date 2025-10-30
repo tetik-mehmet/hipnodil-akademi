@@ -206,6 +206,91 @@ export default function Page() {
           ]}
           footerHighlight="Hipnodil Akademi'de Kurumsal Koçluk Eğitimi vermektedir."
         />
+
+        <TrainerCard
+          imageSrc="/ozlem.png"
+          name="Özlem İSA"
+          title="Profesyonel Koç | Yaşam Koçluğu Eğitmeni"
+          sections={[
+            {
+              heading: "Özgeçmiş",
+              type: "list",
+              items: [
+                "2012'de kişisel gelişim alanına başladı ve çeşitli eğitimler aldı",
+                "2016'da ilk koçluk sertifikasını, 2020'de profesyonel koçluk sertifikasını aldı",
+                "2020'den itibaren 100'den fazla danışana, 1000'e yakın danışmanlık verdi",
+                "Kişisel gelişim alanında eğitimler vermektedir",
+                "2020'den beri Nefes21 Akademi ve Megaverse'de hizmet vermekte; rehber koç olarak çalışmaktadır",
+                "Mentörlük yapmaya devam etmektedir",
+              ],
+            },
+            {
+              heading: "Alınan Eğitimler",
+              type: "list",
+              items: [
+                "Numeroloji Uzmanı",
+                "Bioenerji Uzmanı",
+                "Reiki Master",
+                "Aile Dizimi Uygulayıcısı",
+                "Olumlu Yaşam Teknikleri Uygulayıcısı",
+                "Astroloji Uzmanı",
+                "Pandül / Sarkaç",
+              ],
+            },
+            {
+              heading: "Uzmanlık Alanları",
+              type: "pills",
+              items: [
+                { label: "Profesyonel Koçluk", color: "sky" },
+                { label: "OYT – Bilinçaltı Uygulama", color: "violet" },
+              ],
+            },
+          ]}
+          footerHighlight="Hipnodil Akademi bünyesinde Temel Koçluk, Numeroloji, Holistik Koçluk ve Bioenerji eğitimleri vermektedir."
+        />
+
+        <TrainerCard
+          imageSrc="/ceyda.png"
+          name="Ceyda YENAL"
+          title="MYK Belgeli Profesyonel Koç / Mentör"
+          sections={[
+            {
+              heading: "Özgeçmiş",
+              type: "list",
+              items: [
+                "Sakarya Üniversitesi Kamu Yönetimi ve Çevre Koruma mezunudur",
+                "Koçlukla bireylerin farkındalıklarını artırmalarına ve potansiyellerini açığa çıkarmalarına rehberlik eder",
+                "ICF ve MYK sertifikasyonları ile koçluk alanında güçlü bir uzmanlık geliştirmiştir",
+                "Profesyonel bir zeminde derinleşerek bireylerin içsel gücünü keşfetmesine ve dönüştürücü adımlar atmasına destek olur",
+              ],
+            },
+            {
+              heading: "Alınan Eğitimler",
+              type: "list",
+              items: [
+                "PCC Profesyonel Koçluk",
+                "Holistik Koçluk / Nefes Koçluğu / İlişki Koçluğu",
+                "Eğiticinin Eğitimi",
+              ],
+            },
+            {
+              heading: "Uzmanlık Alanları",
+              type: "pills",
+              items: [
+                { label: "MYK Koç Seviye 6 Profesyonel Koç", color: "sky" },
+                {
+                  label: "ICF Profesyonel Koç Eğitimi / Öğrenci Koçluğu",
+                  color: "violet",
+                },
+                {
+                  label: "CCE / NLP / Olumlu Yaşam Teknikleri / Reiki Master",
+                  color: "emerald",
+                },
+              ],
+            },
+          ]}
+          footerHighlight="Hipnodil Akademi bünyesinde MYK (Koç Seviye 6) Mentörlük Hizmeti vermektedir."
+        />
       </div>
     </main>
   );

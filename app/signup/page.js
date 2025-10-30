@@ -16,11 +16,16 @@ export default function SignupPage() {
     email: "",
     education: "",
     password: "",
+    // Eski backend uyumluluğu için agreement alanını koruyoruz (iki onay true ise true)
     agreement: false,
+    kvkkConsent: false,
+    contractConsent: false,
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverError, setServerError] = useState("");
+  const [showKvkk, setShowKvkk] = useState(false);
+  const [showContract, setShowContract] = useState(false);
 
   // Sayfa yüklendiğinde giriş animasyonlarını tetikle
   useEffect(() => {
@@ -49,10 +54,15 @@ export default function SignupPage() {
         [name]: files[0] || null,
       }));
     } else if (type === "checkbox") {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: checked,
-      }));
+      setFormData((prev) => {
+        const next = { ...prev, [name]: checked };
+        // İki onay kutusundan herhangi biri değiştiğinde combined agreement flag'ini güncelle
+        const kvkk = name === "kvkkConsent" ? checked : next.kvkkConsent;
+        const contract =
+          name === "contractConsent" ? checked : next.contractConsent;
+        next.agreement = Boolean(kvkk && contract);
+        return next;
+      });
     } else {
       setFormData((prev) => ({
         ...prev,
@@ -112,8 +122,13 @@ export default function SignupPage() {
       newErrors.password = "Şifre en az 6 karakter olmalıdır";
     }
 
-    if (!formData.agreement) {
-      newErrors.agreement = "Kullanıcı sözleşmesini onaylamanız gereklidir";
+    if (!formData.kvkkConsent) {
+      newErrors.kvkkConsent = "KVKK metnini onaylamanız gereklidir";
+    }
+
+    if (!formData.contractConsent) {
+      newErrors.contractConsent =
+        "Kullanıcı sözleşmesini onaylamanız gereklidir";
     }
 
     setErrors(newErrors);
@@ -487,32 +502,93 @@ export default function SignupPage() {
                 )}
               </div>
 
-              {/* Kullanıcı Sözleşmesi */}
+              {/* KVKK Onayı */}
               <div
-                className={`sm:col-span-2 flex items-start space-x-3 rounded-xl border border-slate-200/70 bg-white/50 p-4 backdrop-blur-sm transition-all duration-700 ${
+                className={`sm:col-span-2 rounded-xl border border-slate-200/70 bg-white/50 p-4 backdrop-blur-sm transition-all duration-700 ${
                   mounted
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-2"
                 }`}
                 style={{ transitionDelay: "400ms" }}
               >
-                <input
-                  type="checkbox"
-                  id="agreement"
-                  name="agreement"
-                  checked={formData.agreement}
-                  onChange={handleInputChange}
-                  className="mt-1 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-                />
-                <label htmlFor="agreement" className="text-sm text-gray-700">
-                  Kullanıcı Sözleşmesini okudum onaylıyorum
-                </label>
+                <div className="flex items-start space-x-3">
+                  <input
+                    type="checkbox"
+                    id="kvkkConsent"
+                    name="kvkkConsent"
+                    checked={formData.kvkkConsent}
+                    onChange={handleInputChange}
+                    className="mt-1 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                  />
+                  <div className="flex-1">
+                    <label
+                      htmlFor="kvkkConsent"
+                      className="text-sm text-gray-700"
+                    >
+                      KVKK Aydınlatma Metnini okudum, onaylıyorum
+                    </label>
+                    <div className="mt-2">
+                      <button
+                        type="button"
+                        onClick={() => setShowKvkk((s) => !s)}
+                        className="text-xs font-medium text-indigo-600 hover:text-indigo-700 underline underline-offset-2"
+                      >
+                        {showKvkk ? "Metni gizle" : "Metni gör"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                {errors.kvkkConsent && (
+                  <p className="mt-2 text-sm text-red-600">
+                    {errors.kvkkConsent}
+                  </p>
+                )}
+                {/* KVKK metni modalda gösterilir */}
               </div>
-              {errors.agreement && (
-                <p className="sm:col-span-2 text-sm text-red-600">
-                  {errors.agreement}
-                </p>
-              )}
+
+              {/* Kullanıcı Sözleşmesi Onayı */}
+              <div
+                className={`sm:col-span-2 rounded-xl border border-slate-200/70 bg-white/50 p-4 backdrop-blur-sm transition-all duration-700 ${
+                  mounted
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-2"
+                }`}
+                style={{ transitionDelay: "440ms" }}
+              >
+                <div className="flex items-start space-x-3">
+                  <input
+                    type="checkbox"
+                    id="contractConsent"
+                    name="contractConsent"
+                    checked={formData.contractConsent}
+                    onChange={handleInputChange}
+                    className="mt-1 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                  />
+                  <div className="flex-1">
+                    <label
+                      htmlFor="contractConsent"
+                      className="text-sm text-gray-700"
+                    >
+                      Kullanıcı Sözleşmesini okudum, onaylıyorum
+                    </label>
+                    <div className="mt-2">
+                      <button
+                        type="button"
+                        onClick={() => setShowContract((s) => !s)}
+                        className="text-xs font-medium text-indigo-600 hover:text-indigo-700 underline underline-offset-2"
+                      >
+                        {showContract ? "Sözleşmeyi gizle" : "Sözleşmeyi gör"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                {errors.contractConsent && (
+                  <p className="mt-2 text-sm text-red-600">
+                    {errors.contractConsent}
+                  </p>
+                )}
+                {/* Kullanıcı sözleşmesi metni modalda gösterilir */}
+              </div>
 
               {/* Gönder Butonu */}
               <div
@@ -579,6 +655,322 @@ export default function SignupPage() {
           </div>
         </div>
       </div>
+      {/* MODALS */}
+      {(showKvkk || showContract) && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
+            onClick={() => {
+              setShowKvkk(false);
+              setShowContract(false);
+            }}
+          />
+          <div className="relative z-10 w-full max-w-3xl max-h-[80vh] overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5">
+            <div className="flex items-center justify-between border-b border-slate-200 px-5 py-3">
+              <h3 className="text-base font-semibold text-slate-800">
+                {showKvkk ? "KVKK Aydınlatma Metni" : "Kullanıcı Sözleşmesi"}
+              </h3>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowKvkk(false);
+                  setShowContract(false);
+                }}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-700"
+                aria-label="Kapat"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className="h-5 w-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div className="overflow-y-auto p-5 text-sm text-slate-700 max-h-[70vh]">
+              {showKvkk && (
+                <div>
+                  <p className="font-semibold mb-2">1. Veri Sorumlusu</p>
+                  <p className="mb-3">
+                    6698 sayılı Kişisel Verilerin Korunması Kanunu
+                    (&quot;KVKK&quot;) uyarınca, kişisel verileriniz Hipnodil
+                    Akademi tarafından veri sorumlusu sıfatıyla işlenmektedir.
+                  </p>
+                  <p className="font-semibold mb-2">
+                    2. Kişisel Verilerin Toplanma Yöntemi ve Hukuki Sebebi
+                  </p>
+                  <p className="mb-2">Kişisel verileriniz,</p>
+                  <ul className="list-disc pl-5 mb-2 space-y-1">
+                    <li>Web sitemizdeki kayıt formu,</li>
+                    <li>E-posta veya telefon aracılığıyla iletişim,</li>
+                    <li>Eğitim satın alma veya ödeme işlemleri,</li>
+                    <li>
+                      Sistem kullanım verileri (giriş/çıkış kayıtları, IP
+                      bilgisi, cihaz bilgisi)
+                    </li>
+                  </ul>
+                  <p className="mb-2">
+                    gibi yollarla otomatik veya manuel yöntemlerle toplanabilir.
+                  </p>
+                  <p className="mb-2">
+                    Verileriniz şu hukuki sebeplerle işlenmektedir:
+                  </p>
+                  <ul className="list-disc pl-5 mb-2 space-y-1">
+                    <li>Sözleşmenin kurulması veya ifası,</li>
+                    <li>Hukuki yükümlülüklerin yerine getirilmesi,</li>
+                    <li>Açık rızanızın alınması,</li>
+                    <li>Meşru menfaatlerin korunması.</li>
+                  </ul>
+                  <p className="font-semibold mb-2">
+                    3. İşlenen Kişisel Veriler
+                  </p>
+                  <ul className="list-disc pl-5 mb-2 space-y-1">
+                    <li>Kimlik bilgisi (ad, soyad)</li>
+                    <li>İletişim bilgileri (e-posta, telefon numarası)</li>
+                    <li>Kullanıcı adı ve şifre</li>
+                    <li>Eğitim ve kullanım geçmişi</li>
+                    <li>
+                      Ödeme bilgileri (sadece ödeme sağlayıcısı aracılığıyla,
+                      sistemimizde saklanmaz)
+                    </li>
+                    <li>IP adresi ve oturum bilgileri</li>
+                  </ul>
+                  <p className="font-semibold mb-2">
+                    4. Kişisel Verilerin İşlenme Amaçları
+                  </p>
+                  <ul className="list-disc pl-5 mb-2 space-y-1">
+                    <li>Üyelik oluşturma ve giriş işlemlerinin sağlanması</li>
+                    <li>Eğitim içeriklerine erişim ve ilerleme takibi</li>
+                    <li>Faturalandırma ve ödeme süreçlerinin yürütülmesi</li>
+                    <li>Kullanıcı desteği sağlanması</li>
+                    <li>Platform güvenliği ve performansının izlenmesi</li>
+                    <li>Yasal yükümlülüklerin yerine getirilmesi</li>
+                    <li>
+                      Tarafınıza özel kampanya, duyuru ve bilgilendirmelerin
+                      iletilmesi
+                    </li>
+                  </ul>
+                  <p className="font-semibold mb-2">
+                    5. Kişisel Verilerin Aktarımı
+                  </p>
+                  <p className="mb-2">
+                    Kişisel verileriniz, KVKK ve ilgili mevzuata uygun şekilde:
+                  </p>
+                  <ul className="list-disc pl-5 mb-2 space-y-1">
+                    <li>
+                      Hizmet aldığımız bilişim altyapısı firmalarına (örneğin
+                      hosting veya e-posta hizmeti),
+                    </li>
+                    <li>Yasal zorunluluk durumunda resmi kurumlara,</li>
+                  </ul>
+                  <p className="mb-2">
+                    aktarılabilir. Hiçbir koşulda verileriniz izniniz olmadan
+                    üçüncü şahıslara satılmaz veya pazarlama amacıyla
+                    paylaşılmaz.
+                  </p>
+                  <p className="font-semibold mb-2">
+                    6. Kişisel Verilerin Saklanma Süresi
+                  </p>
+                  <p className="mb-2">
+                    Kişisel verileriniz, yasal yükümlülükler ve hizmet süresi
+                    boyunca saklanır. Üyeliğinizi sonlandırmanız durumunda,
+                    ilgili mevzuat gereği 3 yıl süreyle saklanıp ardından imha
+                    edilir.
+                  </p>
+                  <p className="font-semibold mb-2">7. Haklarınız</p>
+                  <p className="mb-2">
+                    KVKK madde 11 uyarınca, aşağıdaki haklara sahipsiniz:
+                  </p>
+                  <ul className="list-disc pl-5 mb-4 space-y-1">
+                    <li>
+                      Kişisel verilerinizin işlenip işlenmediğini öğrenme,
+                    </li>
+                    <li>İşlenmişse buna ilişkin bilgi talep etme,</li>
+                    <li>Verilerin işlenme amacını öğrenme,</li>
+                    <li>
+                      Eksik veya yanlış işlenmiş verilerin düzeltilmesini
+                      isteme,
+                    </li>
+                    <li>
+                      Silinmesini veya anonim hale getirilmesini talep etme,
+                    </li>
+                    <li>
+                      İşlemenin kanuna aykırı olması hâlinde zararın
+                      giderilmesini talep etme.
+                    </li>
+                  </ul>
+                  <p className="mb-1">Bu haklarınızı,</p>
+                  <p className="mb-1">
+                    📩{" "}
+                    <span className="font-medium">
+                      hipnodilakademi@gmail.com
+                    </span>
+                  </p>
+                  <p className="">
+                    adresine e-posta göndererek kullanabilirsiniz.
+                  </p>
+                </div>
+              )}
+              {showContract && (
+                <div>
+                  <p className="font-semibold mb-2">1. Taraflar</p>
+                  <p className="mb-3">
+                    İşbu sözleşme, www.hipnodilakademi.net adresinde faaliyet
+                    gösteren Hipnodil Akademi ile siteye üye olan kullanıcı
+                    arasında düzenlenmiştir.
+                  </p>
+                  <p className="font-semibold mb-2">2. Sözleşmenin Konusu</p>
+                  <p className="mb-3">
+                    Bu sözleşme, kullanıcıların Hipnodil Akademi platformu
+                    üzerinden sunulan çevrim içi eğitim hizmetlerinden
+                    faydalanma koşullarını düzenler.
+                  </p>
+                  <p className="font-semibold mb-2">
+                    3. Üyelik ve Kullanıcı Hesabı
+                  </p>
+                  <ul className="list-disc pl-5 mb-3 space-y-1">
+                    <li>
+                      Kullanıcı, kayıt formunu doldurarak doğru ve güncel
+                      bilgiler vermekle yükümlüdür.
+                    </li>
+                    <li>
+                      Hesap bilgileri kullanıcıya özeldir, üçüncü kişilerle
+                      paylaşılması yasaktır.
+                    </li>
+                    <li>
+                      Hipnodil Akademi, sahte veya yanıltıcı bilgi tespit etmesi
+                      halinde üyeliği askıya alma hakkına sahiptir.
+                    </li>
+                  </ul>
+                  <p className="font-semibold mb-2">4. Hizmetin Kapsamı</p>
+                  <ul className="list-disc pl-5 mb-3 space-y-1">
+                    <li>
+                      Kullanıcı, platformda sunulan eğitim, video ve
+                      materyallere erişim hakkı elde eder.
+                    </li>
+                    <li>
+                      İçeriklerin kopyalanması, paylaşılması veya ticari amaçla
+                      kullanılması yasaktır.
+                    </li>
+                    <li>
+                      Platform içeriğinde değişiklik yapma hakkı Hipnodil
+                      Akademi’ye aittir.
+                    </li>
+                  </ul>
+                  <p className="font-semibold mb-2">
+                    5. Fikri Mülkiyet Hakları
+                  </p>
+                  <p className="mb-3">
+                    Tüm içerikler (metin, video, grafik, logo, eğitim materyali
+                    vb.) Hipnodil Akademi’ye aittir. İzinsiz çoğaltılması,
+                    dağıtılması veya yayınlanması Fikir ve Sanat Eserleri Kanunu
+                    uyarınca yasaktır.
+                  </p>
+                  <p className="mb-2 text-slate-800 font-extrabold text-lg">
+                    6. Ödeme Koşulları
+                  </p>
+                  <ul className="list-disc pl-5 mb-3 space-y-2 font-extrabold">
+                    <li>
+                      Ücretli eğitimlerde kullanıcı, belirtilen bedeli online
+                      ödeme sistemleri üzerinden veya şirket banka hesabına
+                      EFT/havale yoluyla öder. Kredi kartı (online ödeme) ile
+                      yapılan ödemelerde 12 aya kadar taksit imkânı mevcuttur.
+                      Banka hesabına yapılan ödemelerde ise, eğitim paketine
+                      bağlı olarak en fazla 3 taksit imkânı sunulur. Banka
+                      hesabına yapılan ödemelerde kullanıcı, ödeme gününü
+                      Akademi ile görüşerek belirler. Kullanıcı EFT veya havale
+                      yoluyla ödeme yapmayı taahhüt ediyorsa, belirlenen ödeme
+                      gününde ödemesini gerçekleştirmekle yükümlüdür.
+                    </li>
+                    <li>
+                      Kullanıcının ödeme gününde ödemeyi gerçekleştirmemesi
+                      durumunda, Akademi kullanıcıya bir haftalık ek süre tanır.
+                      Bu süre içerisinde de ödeme yapılmazsa, Akademi
+                      kullanıcının hesabını askıya alma hakkına sahiptir.
+                    </li>
+                    <li>
+                      Hipnodil Akademi, fiyat ve kampanya koşullarını değiştirme
+                      hakkını saklı tutar.
+                    </li>
+                    <li>
+                      Tüm ödeme işlemleri güvenli ödeme altyapısı üzerinden
+                      gerçekleştirilir; kredi kartı bilgileri sistemde
+                      kesinlikle saklanmaz.
+                    </li>
+                    <li>
+                      Kredi kartı, EFT ve havale ile yapılan ödemelerde
+                      kullanıcı iade hakkına sahiptir. Kullanıcı, verilen
+                      hizmetten memnun kalmadığını belirterek, ödemeyi yaptığı
+                      tarihten itibaren 2 hafta içinde ücret iadesi talebinde
+                      bulunabilir. Ödemeden itibaren 2 haftalık süre geçtikten
+                      sonra yapılan iade talepleri Akademi tarafından kabul
+                      edilmek zorunda değildir.
+                    </li>
+                    <li>Eğitim paketi ücretlerine kdv dahildir.</li>
+                  </ul>
+                  <p className="font-semibold mb-2">
+                    7. Kullanıcı Yükümlülükleri
+                  </p>
+                  <p className="mb-2">Kullanıcı,</p>
+                  <ul className="list-disc pl-5 mb-3 space-y-1">
+                    <li>Platformu yalnızca yasal amaçlarla kullanacağını,</li>
+                    <li>Diğer kullanıcıların haklarına zarar vermeyeceğini,</li>
+                    <li>
+                      Platform güvenliğini tehdit edecek girişimlerde
+                      bulunmayacağını kabul eder.
+                    </li>
+                  </ul>
+                  <p className="font-semibold mb-2">8. Sorumluluk Reddi</p>
+                  <p className="mb-2">Hipnodil Akademi,</p>
+                  <ul className="list-disc pl-5 mb-3 space-y-1">
+                    <li>
+                      Kullanıcının internet bağlantısından veya cihazından
+                      kaynaklanan hatalardan,
+                    </li>
+                    <li>Üçüncü taraf hizmet sağlayıcıların kesintilerinden,</li>
+                    <li>Kullanıcının verdiği yanlış bilgilerden</li>
+                  </ul>
+                  <p className="mb-3">sorumlu değildir.</p>
+                  <p className="font-semibold mb-2">9. Sözleşmenin Feshi</p>
+                  <p className="mb-3">
+                    Kullanıcı, istediği zaman hesabını kapatarak sözleşmeyi
+                    feshedebilir. Hipnodil Akademi, kullanım şartlarına aykırı
+                    davranışlarda üyeliği askıya alma veya sonlandırma hakkına
+                    sahiptir.
+                  </p>
+                  <p className="font-semibold mb-2">
+                    10. Uyuşmazlıkların Çözümü
+                  </p>
+                  <p className="mb-1">
+                    İşbu sözleşmeden doğabilecek uyuşmazlıklarda Ankara
+                    Mahkemeleri ve İcra Daireleri yetkilidir.
+                  </p>
+                </div>
+              )}
+            </div>
+            <div className="flex items-center justify-end gap-3 border-t border-slate-200 px-5 py-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowKvkk(false);
+                  setShowContract(false);
+                }}
+                className="rounded-lg bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-200"
+              >
+                Kapat
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

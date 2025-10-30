@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Footer() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +18,21 @@ export default function Footer() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    if (isPrivacyOpen) {
+      const previous = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = previous;
+      };
+    }
+  }, [isPrivacyOpen, isMounted]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -227,14 +245,17 @@ export default function Footer() {
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <p>© 2024 Hipnodil Akademi. Tüm Hakları Saklıdır.</p>
             <div className="flex flex-wrap items-center gap-4">
-              <Link href="#" className="hover:text-white/90 transition-colors">
+              <button
+                type="button"
+                onClick={() => setIsPrivacyOpen(true)}
+                className="hover:text-white/90 transition-colors underline decoration-white/30 underline-offset-4"
+                aria-haspopup="dialog"
+                aria-expanded={isPrivacyOpen}
+              >
                 Gizlilik Politikası
-              </Link>
+              </button>
               <Link href="#" className="hover:text-white/90 transition-colors">
                 Kullanım Koşulları
-              </Link>
-              <Link href="#" className="hover:text-white/90 transition-colors">
-                Çerez Politikası
               </Link>
             </div>
           </div>
@@ -264,6 +285,160 @@ export default function Footer() {
           </svg>
         </button>
       )}
+
+      {/* Gizlilik Politikası Modal (Portal) */}
+      {isMounted &&
+        isPrivacyOpen &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Gizlilik Politikası"
+          >
+            <div
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setIsPrivacyOpen(false)}
+            />
+            <div className="relative z-[101] w-full max-w-4xl overflow-hidden rounded-2xl bg-white shadow-2xl">
+              <div className="flex items-center justify-between border-b px-6 py-4">
+                <h2 className="text-base font-semibold text-gray-900">
+                  Gizlilik Politikası
+                </h2>
+                <button
+                  type="button"
+                  onClick={() => setIsPrivacyOpen(false)}
+                  className="rounded-md p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  aria-label="Kapat"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5"
+                    fill="currentColor"
+                  >
+                    <path d="M6.225 4.811 4.811 6.225 10.586 12l-5.775 5.775 1.414 1.414L12 13.414l5.775 5.775 1.414-1.414L13.414 12l5.775-5.775-1.414-1.414L12 10.586 6.225 4.811Z" />
+                  </svg>
+                </button>
+              </div>
+              <div className="max-h-[85vh] overflow-y-auto px-6 py-5 text-sm leading-6 text-gray-700">
+                <h3 className="mb-2 text-base font-semibold text-gray-900">
+                  1. Genel Bilgiler
+                </h3>
+                <p className="mb-4">
+                  Hipnodil Akademi olarak, kullanıcılarımızın gizliliğine büyük
+                  önem veriyoruz. Bu Gizlilik Politikası, web sitemiz ve mobil
+                  platformlarımız aracılığıyla toplanan bilgilerin nasıl
+                  toplandığını, kullanıldığını, korunduğunu ve paylaşıldığını
+                  açıklar.
+                </p>
+
+                <h3 className="mb-2 text-base font-semibold text-gray-900">
+                  2. Toplanan Bilgiler
+                </h3>
+                <p className="mb-2">
+                  Platformumuzda aşağıdaki bilgileri toplayabiliriz:
+                </p>
+                <ul className="mb-4 list-disc space-y-1 pl-5">
+                  <li>Ad, soyad, e-posta adresi, telefon numarası</li>
+                  <li>Kullanıcı adı, parola</li>
+                  <li>IP adresi, tarayıcı bilgisi, cihaz türü</li>
+                  <li>
+                    Eğitim geçmişi ve platform üzerindeki etkileşim bilgileri
+                  </li>
+                  <li>Geri bildirimler, yorumlar veya destek talepleri</li>
+                </ul>
+
+                <h3 className="mb-2 text-base font-semibold text-gray-900">
+                  3. Bilgilerin Kullanım Amaçları
+                </h3>
+                <p className="mb-2">
+                  Toplanan bilgiler şu amaçlarla kullanılabilir:
+                </p>
+                <ul className="mb-4 list-disc space-y-1 pl-5">
+                  <li>Üyelik ve kimlik doğrulama süreçlerinin yürütülmesi</li>
+                  <li>
+                    Eğitim içeriklerine erişim ve kullanıcı deneyiminin
+                    geliştirilmesi
+                  </li>
+                  <li>Sistem güvenliği ve performans optimizasyonu</li>
+                  <li>
+                    Kullanıcılara bilgilendirme, duyuru ve kampanya iletimi
+                  </li>
+                  <li>Yasal yükümlülüklerin yerine getirilmesi</li>
+                </ul>
+
+                <h3 className="mb-2 text-base font-semibold text-gray-900">
+                  4. Verilerin Saklanması ve Güvenliği
+                </h3>
+                <p className="mb-4">
+                  Verileriniz güvenli sunucularda, şifrelenmiş bağlantılar (SSL)
+                  aracılığıyla korunur. Kredi kartı veya ödeme bilgileri,
+                  yalnızca ödeme sağlayıcısı (örneğin iyzico, Stripe vb.)
+                  tarafından işlenir ve sistemimizde saklanmaz. Veriler, yasal
+                  süre boyunca saklanır ve süresi dolduğunda güvenli şekilde
+                  silinir.
+                </p>
+
+                <h3 className="mb-2 text-base font-semibold text-gray-900">
+                  5. Bilgilerin Paylaşımı
+                </h3>
+                <p className="mb-2">
+                  Kişisel verileriniz, yalnızca aşağıdaki durumlarda
+                  paylaşılabilir:
+                </p>
+                <ul className="mb-4 list-disc space-y-1 pl-5">
+                  <li>Yasal yükümlülük gereği resmi kurumlarla,</li>
+                  <li>
+                    Hizmet aldığımız iş ortakları (barındırma, e-posta, güvenlik
+                    sağlayıcıları) ile,
+                  </li>
+                  <li>Açık rızanızla belirttiğiniz üçüncü taraflarla.</li>
+                </ul>
+                <p className="mb-4">
+                  Hiçbir durumda kişisel verileriniz üçüncü kişilere satılmaz.
+                </p>
+
+                <h3 className="mb-2 text-base font-semibold text-gray-900">
+                  6. Çocukların Gizliliği
+                </h3>
+                <p className="mb-4">
+                  Hipnodil Akademi, 18 yaşından küçük kişilerden bilerek veri
+                  toplamaz. Yanlışlıkla alınan bilgiler tespit edildiğinde
+                  derhal silinir.
+                </p>
+
+                <h3 className="mb-2 text-base font-semibold text-gray-900">
+                  7. Haklarınız
+                </h3>
+                <p className="mb-2">
+                  KVKK madde 11 kapsamında, kişisel verilerinizle ilgili: Bilgi
+                  talep etme, düzeltme veya silinmesini isteme, işlenmesine
+                  itiraz etme haklarına sahipsiniz.
+                </p>
+                <p className="mb-0">
+                  Taleplerinizi{" "}
+                  <a
+                    href="mailto:kvkk@hipnodilakademi.net"
+                    className="font-medium text-cyan-700 underline"
+                  >
+                    kvkk@hipnodilakademi.net
+                  </a>{" "}
+                  adresine gönderebilirsiniz.
+                </p>
+              </div>
+              <div className="sticky bottom-0 flex items-center justify-end gap-3 border-t bg-white px-6 py-4">
+                <button
+                  type="button"
+                  onClick={() => setIsPrivacyOpen(false)}
+                  className="rounded-md bg-cyan-700 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-cyan-800 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                >
+                  Kapat
+                </button>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
     </footer>
   );
 }

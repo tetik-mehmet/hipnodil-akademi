@@ -155,9 +155,7 @@ export default function Hakkimizda() {
         {/* Son Paragraf */}
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-2xl shadow-xl p-8 md:p-12 text-center">
           <div className="text-6xl mb-6">💫</div>
-          <h3 className="text-2xl md:text-3xl font-bold mb-6">
-            Bizim İnançlarımız
-          </h3>
+          <h3 className="text-2xl md:text-3xl font-bold mb-6">Hedefimiz</h3>
           <p className="text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
             Biz, her bireyin gelişim yolculuğunun benzersiz olduğuna inanıyor ve
             bu yolculukta güvenilir bir rehber olmayı taahhüt ediyoruz.

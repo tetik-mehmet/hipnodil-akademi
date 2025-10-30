@@ -334,6 +334,21 @@ export default function Page() {
         "MYK KOÇ SEVİYE 6 SINAVINA HAZIRLIK (MENTÖRLÜK) 4. GRUP 1. CANLI YAYIN",
     },
     {
+      src: "https://player.vimeo.com/video/1130159831?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "4. Grup 2. Canlı Yayın",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - 4. Grup 2. Canlı Yayın",
+    },
+    {
+      src: "https://player.vimeo.com/video/1132010457?h=9fef606088&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "4. Grup 3. Canlı Yayın",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - 4. Grup 3. Canlı Yayın",
+    },
+    {
+      src: "https://player.vimeo.com/video/1132042547?h=cd542d2fcd&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "4. Grup 4. Canlı Yayın",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - 4. Grup 4. Canlı Yayın",
+    },
+    {
       src: "https://player.vimeo.com/video/1015233575?badge=0&autopause=0&player_id=0&app_id=58479",
       title: "TANIŞMA - CANLI YAYIN 1. DERS 1. OTURUM",
       iframeTitle:
@@ -347,14 +362,63 @@ export default function Page() {
     },
   ];
 
+  // "PERFORMANS DERSİ" ve "T2 AÇIK UÇLU SORU ÇEŞİDİ" videolarını derslerden çıkar
+  const performanceVideos = lessonVideos.filter((v) =>
+    v.title?.toUpperCase().includes("PERFORMANS DERSİ")
+  );
+  const t2Videos = lessonVideos.filter((v) =>
+    v.title?.toUpperCase().startsWith("T2 AÇIK UÇLU SORU ÇEŞİDİ")
+  );
+  const lessonVideosFiltered = lessonVideos.filter(
+    (v) =>
+      !v.title?.toUpperCase().includes("PERFORMANS DERSİ") &&
+      !v.title?.toUpperCase().startsWith("T2 AÇIK UÇLU SORU ÇEŞİDİ")
+  );
+
+  // Önce canlı listesine performans videolarını ekle ve mevcut kurala göre sırala
+  const baseLive = [...liveVideos, ...performanceVideos];
+
   // Her grubu kendi içinde sırala
-  const sortedLessonVideos = [...lessonVideos].sort((a, b) =>
+  const sortedLessonVideos = [...lessonVideosFiltered].sort((a, b) =>
     a.title.localeCompare(b.title, "tr", { numeric: true, sensitivity: "base" })
   );
 
-  const sortedLiveVideos = [...liveVideos].sort((a, b) =>
-    a.title.localeCompare(b.title, "tr", { numeric: true, sensitivity: "base" })
-  );
+  // Belirli canlı yayınları listenin başına almak için öncelik tanımla
+  const livePriority = new Set([
+    "CANLI YAYIN 1. DERS 2. OTURUM - MYK'NIN GÖREVLERİ NELERDİR",
+    "TANIŞMA - CANLI YAYIN 1. DERS 1. OTURUM",
+  ]);
+
+  const baseSortedLive = [...baseLive].sort((a, b) => {
+    const aPriority = livePriority.has(a.title) ? 0 : 1;
+    const bPriority = livePriority.has(b.title) ? 0 : 1;
+    if (aPriority !== bPriority) return aPriority - bPriority;
+    return a.title.localeCompare(b.title, "tr", {
+      numeric: true,
+      sensitivity: "base",
+    });
+  });
+
+  // T2 videolarını "1. PERFORMANS DERSİ 2. OTURUM"dan hemen sonra yerleştir
+  const sortedLiveVideos = (() => {
+    const result = [...baseSortedLive];
+    if (t2Videos.length === 0) return result;
+    const anchorIndex = result.findIndex(
+      (v) => v.title === "1. PERFORMANS DERSİ 2. OTURUM"
+    );
+    const t2Sorted = [...t2Videos].sort((a, b) =>
+      a.title.localeCompare(b.title, "tr", {
+        numeric: true,
+        sensitivity: "base",
+      })
+    );
+    if (anchorIndex === -1) {
+      return [...result, ...t2Sorted];
+    }
+    const before = result.slice(0, anchorIndex + 1);
+    const after = result.slice(anchorIndex + 1);
+    return [...before, ...t2Sorted, ...after];
+  })();
 
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-10">
@@ -388,7 +452,7 @@ export default function Page() {
                 d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
               />
             </svg>
-            Toplam {lessonVideos.length + liveVideos.length} Video
+            Toplam {lessonVideosFiltered.length + sortedLiveVideos.length} Video
           </div>
           <div className="inline-flex items-center gap-2 rounded-full bg-green-50 px-4 py-2 text-sm font-medium text-green-700">
             <svg
@@ -404,8 +468,11 @@ export default function Page() {
                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            ~{Math.round((lessonVideos.length + liveVideos.length) * 1.5)} Saat
-            Eğitim
+            ~
+            {Math.round(
+              (lessonVideosFiltered.length + sortedLiveVideos.length) * 1.5
+            )}{" "}
+            Saat Eğitim
           </div>
         </div>
       </header>
