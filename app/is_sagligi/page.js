@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function IsSagligiPage() {
   return (
@@ -89,6 +90,33 @@ export default function IsSagligiPage() {
               Eğitimler, kurumun faaliyet alanına ve risk düzeyine göre özel
               olarak planlanır:
             </p>
+            <figure className="mt-8 mx-auto w-full max-w-2xl rounded-xl border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-4 sm:p-5 shadow-sm">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 ring-1 ring-inset ring-emerald-100">
+                  Güvenlik Kültürü
+                </span>
+              </div>
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-5 gap-4 sm:gap-5 items-center">
+                <div className="sm:col-span-2">
+                  <div className="relative mx-auto w-full max-w-[220px]">
+                    <Image
+                      src="/guvenlik.png"
+                      alt="İş güvenliği"
+                      width={440}
+                      height={300}
+                      className="w-full h-auto rounded-lg ring-1 ring-gray-100 object-cover"
+                      sizes="(max-width: 640px) 70vw, 220px"
+                    />
+                  </div>
+                </div>
+                <figcaption className="sm:col-span-3 text-sm sm:text-[15px] leading-relaxed text-gray-700">
+                  Kurumlarda kalıcı güvenlik alışkanlıklarının yerleşmesi;
+                  farkındalık, eğitim ve düzenli uygulamalarla mümkündür.
+                  Görsel, eğitim içeriğinin destekleyici bir unsuru olarak sade
+                  biçimde konumlandırılmıştır.
+                </figcaption>
+              </div>
+            </figure>
             <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 "Genel İş Sağlığı ve Güvenliği Bilgilendirmesi",

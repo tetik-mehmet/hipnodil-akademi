@@ -119,7 +119,7 @@ export default function OfkeStresKaygiPage() {
             <BulletList
               items={[
                 "Duygusal farkındalık ve öz düzenleme becerisi",
-                "Zorlu durumlarda çözüm odaklı yaklaşım",
+                "Çatışmalı durumlarında çözüm odaklı yaklaşım",
                 "Kurumsal iletişimde empati ve anlayış kültürü",
               ]}
             />

@@ -1,3 +1,4 @@
+import Image from "next/image";
 export const metadata = {
   title: "Kriz Yönetimi ve Krize Müdahale Eğitimi | Hipnodil Akademi",
   description:
@@ -39,6 +40,19 @@ export default function KrizPage() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Görsel */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-gray-100">
+          <Image
+            src="/kriz_1.png"
+            alt="Kriz yönetimi eğitimi görseli"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
       </section>
 
@@ -106,8 +120,8 @@ export default function KrizPage() {
             },
             {
               icon: "🛡️",
-              title: "İtibar Koruması",
-              desc: "Kurum itibarını ve çalışan güvenini koruma yetkinliği",
+              title: "Kurumsal Güveni Koruma",
+              desc: "Kurum prestijini ve çalışan güvenini koruma yetkinliği",
             },
             {
               icon: "📊",
@@ -164,7 +178,7 @@ export default function KrizPage() {
             <ul className="mt-4 space-y-2 text-gray-700 text-base leading-relaxed list-disc list-inside">
               <li>Kriz nedir? Kriz türleri analizi</li>
               <li>Kurum kültüründe kriz algısı</li>
-              <li>Kısa ve uzun vadeli etkiler</li>
+              <li>Kısa ve uzun vadeli çözümler</li>
               <li>Gerçek vaka analizleri</li>
             </ul>
           </article>
@@ -210,7 +224,7 @@ export default function KrizPage() {
             <ul className="mt-4 space-y-2 text-gray-700 text-base leading-relaxed list-disc list-inside">
               <li>Ekip rolleri ve sorumlulukları</li>
               <li>Liderlik ve yetkilendirme</li>
-              <li>Görev paylaşımı ve hızlı karar alma</li>
+              <li>Görev paylaşımı ve çözüm odaklı karar verme </li>
               <li>Simülasyon: İlk 30 dakika senaryosu</li>
             </ul>
           </article>
@@ -246,7 +260,7 @@ export default function KrizPage() {
               </span>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Psikolojik Dayanıklılık
+                  Psikolojik Dayanıklılık Ve İyi Oluş Hali
                 </h3>
                 <p className="text-base text-gray-500">
                   Stres ve moral yönetimi.
@@ -254,10 +268,9 @@ export default function KrizPage() {
               </div>
             </header>
             <ul className="mt-4 space-y-2 text-gray-700 text-base leading-relaxed list-disc list-inside">
-              <li>Kriz anında stres yönetimi</li>
-              <li>Ekip dayanışması ve moral</li>
-              <li>Toparlanma psikolojisi</li>
-              <li>Liderlik duygusal dayanıklılık becerileri</li>
+              <li>Kriz anında stres ve çatışma yönetimi</li>
+              <li>Ekip dayanışması moral ve motivasyon</li>
+              <li>Kriz sonrası iyi oluş ve dayanıklılık</li>
             </ul>
           </article>
 
@@ -279,8 +292,8 @@ export default function KrizPage() {
             <ul className="mt-4 space-y-2 text-gray-700 text-base leading-relaxed list-disc list-inside">
               <li>Kriz sonrası analiz raporları</li>
               <li>Kurumsal hafıza ve öğrenme kültürü</li>
-              <li>Kriz tatbikatları ve senaryolar</li>
-              <li>Sürdürülebilir yönetim planı geliştirme</li>
+              <li>Kriz tatbikatları ve senaryo süreçleri</li>
+              <li>Sürdürülebilir yönetim planı geliştirme ve uygulama</li>
             </ul>
           </article>
         </div>
@@ -334,7 +347,7 @@ export default function KrizPage() {
                   icon: "✅",
                   text: "Çalışanlar panik yerine çözüm odaklı davranır",
                 },
-                { icon: "✅", text: "İtibar ve marka güveni korunur" },
+                { icon: "✅", text: "Prestij ve marka güveni korunur" },
                 {
                   icon: "✅",
                   text: "Daha dirençli ve proaktif kurum kültürü oluşur",

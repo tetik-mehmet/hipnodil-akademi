@@ -16,7 +16,7 @@ export default function KurumsalPage() {
               Kurum içi iletişimin kalitesini artırarak güvene dayalı iş
               birliğini güçlendirmeyi ve ekipler arasında açık, saygılı, hedef
               odaklı bir iletişim kültürü oluşturmayı amaçlayan kapsamlı
-              program.
+              programdır.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -50,12 +50,13 @@ export default function KurumsalPage() {
           <div className="lg:col-span-2">
             <div className="rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 shadow-sm">
               <p className="text-base text-gray-700 leading-relaxed">
-                Bu eğitim, kurum içi iletişimin kalitesini artırarak güvene
-                dayalı iş birliğini güçlendirmeyi, ekipler arasında açık,
-                saygılı ve hedef odaklı bir iletişim kültürü oluşturmayı
-                amaçlamaktadır. Katılımcılar, çatışmaları yapıcı biçimde
-                yönetme, etkili geri bildirim verme ve profesyonel iletişim dili
-                geliştirme becerilerini kazanacaktır.
+                Bu eğitim, kurum içi iletişimin kalitesini artırarak, ekip içi
+                motivasyonu ve iletişim dengesini kapsar. Güvene dayalı iş
+                birliğini güçlendirmeyi, ekipler arasında açık, saygılı ve hedef
+                odaklı bir iletişim kültürü oluşturmayı amaçlamaktadır.
+                Katılımcılar, çatışmaları yapıcı biçimde yönetme, etkili geri
+                bildirim verme ve profesyonel iletişim dili geliştirme
+                becerilerini kazanacaktır.
               </p>
             </div>
           </div>
@@ -95,9 +96,7 @@ export default function KurumsalPage() {
             <ul className="mt-4 space-y-2 text-gray-700 text-base leading-relaxed list-disc list-inside">
               <li>Kurumsal iletişimin stratejik önemi</li>
               <li>Kurum kültürü ile iletişim dili arasındaki ilişki</li>
-              <li>
-                Resmî, gayri resmî ve yatay iletişim ağlarının etkin kullanımı
-              </li>
+              <li>İletişim ağlarının etkin kullanımı</li>
               <li>Güven ve aidiyet duygusunun iletişim yoluyla inşası</li>
             </ul>
           </article>
@@ -142,8 +141,8 @@ export default function KurumsalPage() {
             </header>
             <ul className="mt-4 space-y-2 text-gray-700 text-base leading-relaxed list-disc list-inside">
               <li>Kurumsal ortamda aktif dinleme teknikleri</li>
-              <li>Soru sorma sanatı ve stratejik iletişim becerileri</li>
-              <li>Sağlıklı etkileşimin temeli: anlamadan onaylamamak</li>
+              <li>Güçlü soru sorma sanatı ve stratejik iletişim becerileri</li>
+              <li>Sağlıklı etkileşimin temeli: anlayarak onaylamak</li>
               <li>Toplantı ve yazılı iletişimde netlik oluşturma yöntemleri</li>
             </ul>
           </article>
@@ -159,7 +158,7 @@ export default function KurumsalPage() {
                   Geri Bildirim Kültürü
                 </h3>
                 <p className="text-base text-gray-500">
-                  Sürdürülebilir ve 360° uygulamalar.
+                  Sürdürülebilir uygulamalar.
                 </p>
               </div>
             </header>
@@ -167,9 +166,9 @@ export default function KurumsalPage() {
               <li>
                 Kurum genelinde sürdürülebilir geri bildirim kültürü oluşturmak
               </li>
-              <li>Ast-üst iletişiminde etkili geri bildirim dili</li>
+              <li>Ast-üst iletişiminde etkili iletişim teknikleri</li>
               <li>Takdir ve gelişim odaklı iletişim yaklaşımları</li>
-              <li>360 derece geri bildirim uygulamaları</li>
+              <li>Etkili ve efektif geri bildirim uygulamaları</li>
             </ul>
           </article>
 
@@ -192,8 +191,14 @@ export default function KurumsalPage() {
               <li>
                 Takım içinde güven, saygı ve açık iletişim ortamı oluşturmak
               </li>
-              <li>Roller, beklentiler ve olası çatışma alanlarını yönetmek</li>
-              <li>“Biz bilinci”ni güçlendiren birlikte üretme kültürü</li>
+              <li>
+                Roller, beklentiler ve olası çatışma alanları ve krize yönelik
+                iletişim halini yönetmek
+              </li>
+              <li>
+                “Biz bilinci”ni güçlendirerek ekip olabilme duygusunu, birlikte
+                üretme kültürünü desteklemek
+              </li>
               <li>Grup çalışması: İletişimde güven testi</li>
             </ul>
           </article>
@@ -206,7 +211,7 @@ export default function KurumsalPage() {
               </span>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Zor İnsanlar ve Kriz İletişimi
+                  İnsanlarla Çatışma ve Kriz Yönetimi
                 </h3>
                 <p className="text-base text-gray-500">
                   Model ve stratejilerle çözüm odaklı yaklaşım.
@@ -214,12 +219,13 @@ export default function KurumsalPage() {
               </div>
             </header>
             <ul className="mt-4 space-y-2 text-gray-700 text-base leading-relaxed list-disc list-inside">
+              <li>Çalışma hayatında yapıcı iletişim dillerini geliştirmek</li>
+              <li> Çatışma yönetimi modeli</li>
+              <li>Stres, öfke karşısında etkili iletişim kurmak</li>
               <li>
-                Zorlayıcı kişilerle yapıcı iletişim stratejileri geliştirmek
+                Kriz anlarında soğukkanlı, kısa süreli ve çözüm odaklı
+                yaklaşımlar belirlemek
               </li>
-              <li>Thomas-Kilmann çatışma yönetimi modeli</li>
-              <li>Stres, öfke ve savunma altında etkili iletişim kurmak</li>
-              <li>Kriz anlarında soğukkanlı, çözüm odaklı yaklaşım</li>
             </ul>
           </article>
 
@@ -239,10 +245,15 @@ export default function KurumsalPage() {
               </div>
             </header>
             <ul className="mt-4 space-y-2 text-gray-700 text-base leading-relaxed list-disc list-inside">
-              <li>Liderin dili, tonu ve görünürlüğü</li>
-              <li>Güven temelli liderlik iletişimi kurmak</li>
-              <li>Etkileme, ilham verme ve yönlendirme becerileri</li>
-              <li>Geri bildirim odaklı liderlik pratikleri</li>
+              <li>Liderin dili, tonu ve motivasyonu</li>
+              <li>Güven temelli liderlik yaklaşımı ve ekip olma becerisi</li>
+              <li>
+                Etkileme, ilham verme ve yönlendirme becerilerini sağlamak
+              </li>
+              <li>
+                Geri bildirim odaklı liderlik pratiklerini hayata
+                konumlandırabilmek
+              </li>
             </ul>
           </article>
 
@@ -264,8 +275,7 @@ export default function KurumsalPage() {
             <ul className="mt-4 space-y-2 text-gray-700 text-base leading-relaxed list-disc list-inside">
               <li>Online toplantılarda etkileşimi artırma yöntemleri</li>
               <li>Dijital beden dili ve profesyonel yazışma protokolleri</li>
-              <li>Mesaj tonunu doğru yönetme ve yanlış anlamaları önleme</li>
-              <li>Dijital yorgunluk yönetimi ve iletişim molaları</li>
+              <li>Mesaj dilini doğru yönetme ve yanlış anlamaları önleme</li>
             </ul>
           </article>
         </div>

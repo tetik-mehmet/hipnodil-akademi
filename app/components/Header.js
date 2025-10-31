@@ -395,7 +395,7 @@ export default function Header() {
                 <Link
                   href="/is_sagligi"
                   className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                    pathname === "/is_sagligi_guvenlik"
+                    pathname === "/is_sagligi"
                       ? "text-cyan-700 bg-cyan-50 font-bold"
                       : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
                   }`}
@@ -405,7 +405,7 @@ export default function Header() {
                 <Link
                   href="/protokol"
                   className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                    pathname === "/protokol_karsilama"
+                    pathname === "/protokol"
                       ? "text-cyan-700 bg-cyan-50 font-bold"
                       : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
                   }`}
@@ -415,7 +415,7 @@ export default function Header() {
                 <Link
                   href="/ofke_stres"
                   className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                    pathname === "/ofke_stres_kaygi"
+                    pathname === "/ofke_stres"
                       ? "text-cyan-700 bg-cyan-50 font-bold"
                       : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
                   }`}
@@ -425,7 +425,7 @@ export default function Header() {
                 <Link
                   href="/beden_dili"
                   className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                    pathname === "/beden_dili_iletisim"
+                    pathname === "/beden_dili"
                       ? "text-cyan-700 bg-cyan-50 font-bold"
                       : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
                   }`}
@@ -624,10 +624,10 @@ export default function Header() {
                   pathname === "/kurumsal" ||
                   pathname === "/kurumsal/kriz" ||
                   pathname === "/takim_calismasi" ||
-                  pathname === "/is_sagligi_guvenlik" ||
-                  pathname === "/protokol_karsilama" ||
-                  pathname === "/ofke_stres_kaygi" ||
-                  pathname === "/beden_dili_iletisim" ||
+                  pathname === "/is_sagligi" ||
+                  pathname === "/protokol" ||
+                  pathname === "/ofke_stres" ||
+                  pathname === "/beden_dili" ||
                   pathname === "/kurslar/kurumsal_kocluk"
                     ? "text-cyan-700 bg-cyan-50 font-bold"
                     : "text-gray-700 hover:bg-cyan-50 hover:text-cyan-600"
@@ -691,9 +691,9 @@ export default function Header() {
                     Takım Çalışması ve Motivasyon
                   </Link>
                   <Link
-                    href="/is_sagligi_guvenlik"
+                    href="/is_sagligi"
                     className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                      pathname === "/is_sagligi_guvenlik"
+                      pathname === "/is_sagligi"
                         ? "text-cyan-700 bg-cyan-100 font-bold"
                         : "text-gray-600 hover:bg-cyan-100 hover:text-cyan-600"
                     } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500`}
@@ -702,9 +702,9 @@ export default function Header() {
                     İş Sağlığı ve Güvenliği
                   </Link>
                   <Link
-                    href="/protokol_karsilama"
+                    href="/protokol"
                     className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                      pathname === "/protokol_karsilama"
+                      pathname === "/protokol"
                         ? "text-cyan-700 bg-cyan-100 font-bold"
                         : "text-gray-600 hover:bg-cyan-100 hover:text-cyan-600"
                     } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500`}
@@ -713,9 +713,9 @@ export default function Header() {
                     Protokol Kuralları ve Karşılama
                   </Link>
                   <Link
-                    href="/ofke_stres_kaygi"
+                    href="/ofke_stres"
                     className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                      pathname === "/ofke_stres_kaygi"
+                      pathname === "/ofke_stres"
                         ? "text-cyan-700 bg-cyan-100 font-bold"
                         : "text-gray-600 hover:bg-cyan-100 hover:text-cyan-600"
                     } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500`}
@@ -724,9 +724,9 @@ export default function Header() {
                     Öfke Stres ve Kaygı Yönetimi
                   </Link>
                   <Link
-                    href="/beden_dili_iletisim"
+                    href="/beden_dili"
                     className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                      pathname === "/beden_dili_iletisim"
+                      pathname === "/beden_dili"
                         ? "text-cyan-700 bg-cyan-100 font-bold"
                         : "text-gray-600 hover:bg-cyan-100 hover:text-cyan-600"
                     } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-500`}

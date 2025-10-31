@@ -917,17 +917,14 @@ export default function SignupPage() {
                     <li>Eğitim paketi ücretlerine kdv dahildir.</li>
                   </ul>
                   <p className="font-semibold mb-2">
-                    7. Kullanıcı Yükümlülükleri
+                    7 – Kullancıların panele erişim süresi 4 ayla sınırlıdır.
+                    Eğitime başlama tarihinden itibaren (kullancıya üyelik adı
+                    ve şifresi iletildiği tarihten itibaren ) 4 ay içerisinde
+                    videolara pdflere ve çeşitli ders materyallerine sınırsız
+                    erişim hakkı vardır. 4 ay sonra sistem otomatik olarak
+                    kullanıcının ders videolarına ve çeşitli ders materyallerine
+                    erişimini engelleyecektir.
                   </p>
-                  <p className="mb-2">Kullanıcı,</p>
-                  <ul className="list-disc pl-5 mb-3 space-y-1">
-                    <li>Platformu yalnızca yasal amaçlarla kullanacağını,</li>
-                    <li>Diğer kullanıcıların haklarına zarar vermeyeceğini,</li>
-                    <li>
-                      Platform güvenliğini tehdit edecek girişimlerde
-                      bulunmayacağını kabul eder.
-                    </li>
-                  </ul>
                   <p className="font-semibold mb-2">8. Sorumluluk Reddi</p>
                   <p className="mb-2">Hipnodil Akademi,</p>
                   <ul className="list-disc pl-5 mb-3 space-y-1">

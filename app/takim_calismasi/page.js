@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function TakimCalismasiPage() {
   return (
     <main className="min-h-screen w-full bg-gradient-to-b from-white to-slate-50 text-slate-800">
@@ -59,6 +61,24 @@ export default function TakimCalismasiPage() {
           </div>
         </div>
       </section>
+
+      {/* Görsel - Orta Boy, Merkezde */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-2 sm:mt-4">
+        <div className="flex justify-center">
+          <div className="w-full">
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <Image
+                src="/takim.png"
+                alt="Takım Çalışması görseli"
+                width={1200}
+                height={800}
+                className="h-auto w-full object-contain"
+                priority={false}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Amaç ve Hedefler */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">

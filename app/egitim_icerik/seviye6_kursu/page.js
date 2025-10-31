@@ -85,7 +85,7 @@ export default function Page() {
               />
             </svg>
             <span className="text-base font-semibold text-white md:text-lg">
-              Toplam <span className="mx-1 text-xl font-bold">68</span> Video
+              Toplam <span className="mx-1 text-xl font-bold">82</span> Video
             </span>
           </div>
         </div>
@@ -1410,6 +1410,272 @@ export default function Page() {
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
             Özlem İsa ile MYK Temel Koçluk – 55: İlk Görüşme ve Görüşme İpuçları
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 1 - TEMEL KOÇLUĞA GİRİŞ */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016992464?h=6cd5f3e892&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 1 - TEMEL KOÇLUĞA GİRİŞ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 1: Temel Koçluğa Giriş
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 2 - KOÇLUK BECERİLERİ VE SORUMLULUKLARI */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016990709?h=c62453d179&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 2 - KOÇLUK BECERİLERİ VE SORUMLULUKLARI"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 2: Koçluk Becerileri ve Sorumlulukları
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 3 - GÜÇLÜ SORULAR VE SÜREÇ YÖNETİMİ */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1017004129?h=8766d022cc&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 3 - GÜÇLÜ SORULAR VE SÜREÇ YÖNETİMİ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 3: Güçlü Sorular ve Süreç Yönetimi
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 4 - KOÇ NELERİ YAPMALI / YAPMAMALI ? */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1017012349?h=066e46ff8b&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 4 - KOÇ NELERİ YAPMALI / YAPMAMALI ?"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 4: Koç Neleri Yapmalı / Yapmamalı?
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 5 - HEDEF - PLAN VE STRATEJİ OLUŞTURMA */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1017024764?h=caa4600996&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 5 - HEDEF - PLAN VE STRATEJİ OLUŞTURMA"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 5: Hedef - Plan ve Strateji Oluşturma
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 6 - KOÇLUKTA İLETİŞİM VE SEANS SÜRECİ */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016117189?h=8669a9514e&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 6 - KOÇLUKTA İLETİŞİM VE SEANS SÜRECİ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 6: Koçlukta İletişim ve Seans Süreci
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 7 - ÖĞRENME BİÇİMLERİ */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016117036?h=42be36be2e&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 7 - ÖĞRENME BİÇİMLERİ"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 7: Öğrenme Biçimleri
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 8 - KİŞİLİK TİPLERİ SARI ve KIRMIZI */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016115350?h=489d512421&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 8 - KİŞİLİK TİPLERİ SARI ve KIRMIZI"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 8: Kişilik Tipleri Sarı ve Kırmızı
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 9 - KİŞİLİK TİPLERİ MAVİ ve YEŞİL */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016116104?h=8850a9fb63&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 9 - KİŞİLİK TİPLERİ MAVİ ve YEŞİL"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 9: Kişilik Tipleri Mavi ve Yeşil
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 10 - İNANÇLAR VE KALIP YARGILAR */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016115880?h=13419a66c3&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 10 - İNANÇLAR VE KALIP YARGILAR"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 10: İnançlar ve Kalıp Yargılar
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 11 - KOÇLUKTA DEĞERLER VE HAYAL KAVRAMI */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016116770?h=fe9a6814a0&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 11 - KOÇLUKTA DEĞERLER VE HAYAL KAVRAMI"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 11: Koçlukta Değerler ve Hayal Kavramı
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 12 - HEDEF KAVRAMI */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016114795?h=d3c820e34f&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 12 - HEDEF KAVRAMI"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 12: Hedef Kavramı
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 13 - KOÇLUKTA CANLANDIRMA NEDİR */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016115138?h=e4b749b287&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 13 - KOÇLUKTA CANLANDIRMA NEDİR"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 13: Koçlukta Canlandırma Nedir
+          </h3>
+          <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+        </article>
+
+        {/* MYK TEMEL YAŞAM KOÇLUĞU DERS 14 - MÜŞTERİYİ HAREKETE GEÇİRME */}
+        <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
+          <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+            <iframe
+              src="https://player.vimeo.com/video/1016116526?h=df07f72639&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="MYK TEMEL YAŞAM KOÇLUĞU DERS 14 - MÜŞTERİYİ HAREKETE GEÇİRME"
+              allowFullScreen
+            />
+          </div>
+          <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+            MYK Temel Yaşam Koçluğu Ders 14: Müşteriyi Harekete Geçirme
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
