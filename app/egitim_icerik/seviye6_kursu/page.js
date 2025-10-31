@@ -1428,7 +1428,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 1: Temel Koçluğa Giriş
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 1: Temel Koçluğa
+            Giriş
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1447,7 +1448,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 2: Koçluk Becerileri ve Sorumlulukları
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 2: Koçluk Becerileri
+            ve Sorumlulukları
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1466,7 +1468,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 3: Güçlü Sorular ve Süreç Yönetimi
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 3: Güçlü Sorular ve
+            Süreç Yönetimi
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1485,7 +1488,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 4: Koç Neleri Yapmalı / Yapmamalı?
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 4: Koç Neleri
+            Yapmalı / Yapmamalı?
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1504,7 +1508,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 5: Hedef - Plan ve Strateji Oluşturma
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 5: Hedef - Plan ve
+            Strateji Oluşturma
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1523,7 +1528,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 6: Koçlukta İletişim ve Seans Süreci
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 6: Koçlukta İletişim
+            ve Seans Süreci
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1542,7 +1548,7 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 7: Öğrenme Biçimleri
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 7: Öğrenme Biçimleri
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1561,7 +1567,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 8: Kişilik Tipleri Sarı ve Kırmızı
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 8: Kişilik Tipleri
+            Sarı ve Kırmızı
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1580,7 +1587,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 9: Kişilik Tipleri Mavi ve Yeşil
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 9: Kişilik Tipleri
+            Mavi ve Yeşil
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1599,7 +1607,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 10: İnançlar ve Kalıp Yargılar
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 10: İnançlar ve
+            Kalıp Yargılar
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1618,7 +1627,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 11: Koçlukta Değerler ve Hayal Kavramı
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 11: Koçlukta
+            Değerler ve Hayal Kavramı
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1637,7 +1647,7 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 12: Hedef Kavramı
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 12: Hedef Kavramı
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1656,7 +1666,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 13: Koçlukta Canlandırma Nedir
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 13: Koçlukta
+            Canlandırma Nedir
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
@@ -1675,7 +1686,8 @@ export default function Page() {
             />
           </div>
           <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-            MYK Temel Yaşam Koçluğu Ders 14: Müşteriyi Harekete Geçirme
+            Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 14: Müşteriyi
+            Harekete Geçirme
           </h3>
           <p className="mt-1 text-xs text-gray-500">Süre: —</p>
         </article>
