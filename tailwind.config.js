@@ -19,6 +19,7 @@ module.exports = {
         "float-y": "floatY 6s ease-in-out infinite",
         "float-x": "floatX 4s ease-in-out infinite",
         "slow-spin": "slowSpin 8s linear infinite",
+        blob: "blob 7s infinite",
       },
       keyframes: {
         floatY: {
@@ -33,6 +34,26 @@ module.exports = {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
+        blob: {
+          "0%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(30px, -50px) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-20px, 20px) scale(0.9)",
+          },
+          "100%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+        },
+      },
+      animationDelay: {
+        200: "200ms",
+        400: "400ms",
+        2000: "2s",
+        4000: "4s",
       },
     },
   },
