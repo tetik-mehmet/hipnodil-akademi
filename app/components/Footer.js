@@ -421,7 +421,7 @@ export default function Footer() {
                     href="mailto:kvkk@hipnodilakademi.net"
                     className="font-medium text-cyan-700 underline"
                   >
-                    kvkk@hipnodilakademi.net
+                    hipnodilakademi@gmail.com
                   </a>{" "}
                   adresine gönderebilirsiniz.
                 </p>
