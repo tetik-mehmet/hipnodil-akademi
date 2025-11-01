@@ -6,8 +6,9 @@ export default function TakimCalismasiPage() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+            {/* Sol Taraf - İçerik */}
+            <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-semibold text-slate-600 shadow-sm backdrop-blur">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                 Ekip Dinamikleri ve Motivasyon
@@ -15,7 +16,7 @@ export default function TakimCalismasiPage() {
               <h1 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900">
                 Takım Çalışması ve Motivasyon Eğitimi
               </h1>
-              <p className="mt-5 max-w-2xl text-base sm:text-lg text-slate-600">
+              <p className="mt-5 text-base sm:text-lg text-slate-600">
                 Kurumlarda ekiplerin ortak hedeflere uyum içinde ve yüksek
                 motivasyonla ulaşmasını destekleyen, iletişim, iş birliği ve
                 güven odaklı, uygulamalı bir gelişim programı.
@@ -31,9 +32,9 @@ export default function TakimCalismasiPage() {
                   Yüz yüze / Online
                 </span>
               </div>
-            </div>
-            <div className="lg:col-span-5">
-              <div className="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+
+              {/* Anahtar Kelimeler */}
+              <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                   {[
                     "Takım ruhu",
@@ -52,33 +53,22 @@ export default function TakimCalismasiPage() {
                     </div>
                   ))}
                 </div>
-                <p className="mt-4 text-sm text-slate-600">
-                  Ekip üyeleri bu eğitimle yalnızca birlikte çalışmayı değil,
-                  birlikte başarmayı öğrenir.
-                </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Görsel - Orta Boy, Merkezde */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-2 sm:mt-4">
-        <div className="flex justify-center">
-          <div className="w-full">
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            {/* Sağ Taraf - Görsel */}
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200">
               <Image
-                src="/takim.png"
-                alt="Takım Çalışması görseli"
-                width={1200}
-                height={800}
-                className="h-auto w-full object-contain"
-                priority={false}
+                src="/takim_2.png"
+                alt="Takım çalışması ve motivasyon eğitimi görseli"
+                fill
+                className="object-cover"
+                priority
               />
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Amaç ve Hedefler */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">

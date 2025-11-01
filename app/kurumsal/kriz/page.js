@@ -15,44 +15,45 @@ export default function KrizPage() {
           <div className="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-blue-100 blur-3xl" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
-          <div className="max-w-3xl">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900">
-              Kriz Yönetimi ve Krize Müdahale Eğitimi
-            </h1>
-            <p className="mt-4 text-lg sm:text-xl text-gray-600 leading-relaxed">
-              Kurumsal yapıların olası kriz durumlarında hızlı, doğru ve etkili
-              kararlar alabilmesini sağlamak; itibar kaybı, operasyonel aksaklık
-              ve çalışan paniklerini en aza indirgeyerek sürdürülebilir bir
-              yönetim kültürü oluşturmak.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href="#icerik"
-                className="inline-flex items-center rounded-full bg-cyan-600 px-5 py-2.5 text-base font-medium text-white shadow hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
-              >
-                Eğitim İçeriği
-              </a>
-              <a
-                href="#hedefler"
-                className="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-base font-medium text-cyan-700 ring-1 ring-inset ring-cyan-200 shadow-sm hover:bg-cyan-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
-              >
-                Eğitim Hedefleri
-              </a>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Sol Taraf - İçerik */}
+            <div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900">
+                Kriz Yönetimi ve Krize Müdahale Eğitimi
+              </h1>
+              <p className="mt-4 text-lg sm:text-xl text-gray-600 leading-relaxed">
+                Kurumsal yapıların olası kriz durumlarında hızlı, doğru ve
+                etkili kararlar alabilmesini sağlamak; itibar kaybı, operasyonel
+                aksaklık ve çalışan paniklerini en aza indirgeyerek
+                sürdürülebilir bir yönetim kültürü oluşturmak.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="#icerik"
+                  className="inline-flex items-center rounded-full bg-cyan-600 px-5 py-2.5 text-base font-medium text-white shadow hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+                >
+                  Eğitim İçeriği
+                </a>
+                <a
+                  href="#hedefler"
+                  className="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-base font-medium text-cyan-700 ring-1 ring-inset ring-cyan-200 shadow-sm hover:bg-cyan-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+                >
+                  Eğitim Hedefleri
+                </a>
+              </div>
+            </div>
+
+            {/* Sağ Taraf - Görsel */}
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-gray-100">
+              <Image
+                src="/kriz_1.png"
+                alt="Kriz yönetimi eğitimi görseli"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Görsel */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-gray-100">
-          <Image
-            src="/kriz_1.png"
-            alt="Kriz yönetimi eğitimi görseli"
-            fill
-            className="object-cover"
-            priority
-          />
         </div>
       </section>
 
