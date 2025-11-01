@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function KurumsalPage() {
   return (
     <main className="w-full">
@@ -10,45 +8,29 @@ export default function KurumsalPage() {
           <div className="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-indigo-100 blur-3xl" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
-          <div className="grid gap-8 lg:grid-cols-2 items-center">
-            <div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900">
-                Kurumsal İletişim ve Etkileşim Becerileri Eğitimi
-              </h1>
-              <p className="mt-4 text-lg sm:text-xl text-gray-600 leading-relaxed">
-                Kurum içi iletişimin kalitesini artırarak güvene dayalı iş
-                birliğini güçlendirmeyi ve ekipler arasında açık, saygılı, hedef
-                odaklı bir iletişim kültürü oluşturmayı amaçlayan kapsamlı
-                programdır.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="#icerik"
-                  className="inline-flex items-center rounded-full bg-indigo-600 px-5 py-2.5 text-base font-medium text-white shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                  Eğitim İçeriği
-                </a>
-                <a
-                  href="#kazanımlar"
-                  className="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-base font-medium text-indigo-700 ring-1 ring-inset ring-indigo-200 shadow-sm hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                  Kazanımlar
-                </a>
-              </div>
-            </div>
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-xl">
-                <div className="rounded-2xl border border-gray-200 bg-white/70 backdrop-blur shadow-lg overflow-hidden">
-                  <Image
-                    src="/kurum.png"
-                    alt="Kurumsal İletişim"
-                    width={700}
-                    height={700}
-                    className="w-full h-auto"
-                    priority
-                  />
-                </div>
-              </div>
+          <div className="max-w-3xl">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900">
+              Kurumsal İletişim ve Etkileşim Becerileri Eğitimi
+            </h1>
+            <p className="mt-4 text-lg sm:text-xl text-gray-600 leading-relaxed">
+              Kurum içi iletişimin kalitesini artırarak güvene dayalı iş
+              birliğini güçlendirmeyi ve ekipler arasında açık, saygılı, hedef
+              odaklı bir iletişim kültürü oluşturmayı amaçlayan kapsamlı
+              programdır.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="#icerik"
+                className="inline-flex items-center rounded-full bg-indigo-600 px-5 py-2.5 text-base font-medium text-white shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              >
+                Eğitim İçeriği
+              </a>
+              <a
+                href="#kazanımlar"
+                className="inline-flex items-center rounded-full bg-white px-5 py-2.5 text-base font-medium text-indigo-700 ring-1 ring-inset ring-indigo-200 shadow-sm hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              >
+                Kazanımlar
+              </a>
             </div>
           </div>
         </div>
