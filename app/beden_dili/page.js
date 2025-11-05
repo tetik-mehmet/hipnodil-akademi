@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 function Section({ id, title, children }) {
   return (
@@ -77,35 +76,6 @@ export default function BedenDiliIletisimPage() {
                 >
                   İçeriği Gör
                 </a>
-              </div>
-            </div>
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl border border-gray-200 bg-white/70 backdrop-blur shadow-sm overflow-hidden">
-                <div className="relative w-full">
-                  <Image
-                    src="/body.png"
-                    alt="Beden Dili ve Etkileşim"
-                    width={400}
-                    height={400}
-                    className="w-full h-auto"
-                    priority
-                  />
-                </div>
-                <div className="p-5 sm:p-6">
-                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                    {["Duruş", "Göz Teması", "Ses Tonu", "İkna"].map((tag) => (
-                      <div
-                        key={tag}
-                        className="rounded-lg border border-gray-200 bg-white p-3 sm:p-4 text-center text-sm text-gray-700 font-medium"
-                      >
-                        {tag}
-                      </div>
-                    ))}
-                  </div>
-                  <p className="mt-4 text-sm text-gray-600">
-                    ✨ Doğru beden dili, güven ve etkiyi artırır.
-                  </p>
-                </div>
               </div>
             </div>
           </div>

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 function SectionBadge({ children }) {
   return (
-    <span className="inline-flex items-center rounded-full bg-gradient-to-r from-sky-500/10 to-fuchsia-500/10 px-3 py-1 text-base font-medium text-slate-600 ring-1 ring-sky-500/20">
+    <span className="inline-flex items-center rounded-full bg-gradient-to-r from-sky-500/10 to-fuchsia-500/10 px-3 py-1 text-sm font-medium text-slate-600 ring-1 ring-sky-500/20">
       {children}
     </span>
   );
@@ -26,7 +26,7 @@ function Pill({ children, color = "sky" }) {
   };
   return (
     <span
-      className={`inline-flex items-center rounded-full px-3 py-1 text-base font-medium ring-1 ${
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-sm font-medium ring-1 ${
         colorMap[color] || colorMap.slate
       }`}
     >
@@ -48,23 +48,23 @@ function TrainerCard({ imageSrc, name, title, sections, footerHighlight }) {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
-      <div className="relative w-full overflow-hidden aspect-[3/5]">
+      <div className="relative w-full overflow-hidden aspect-square">
         <Image
           src={imageSrc}
           alt={name}
           fill
-          className="object-contain transition-transform duration-700 group-hover:scale-[1.01]"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
           priority
         />
       </div>
 
-      <div className="flex flex-1 flex-col gap-6 p-6">
+      <div className="flex flex-1 flex-col gap-5 p-6">
         <div>
-          <h3 className="text-4xl font-semibold text-slate-900">{name}</h3>
-          <p className="mt-1 text-lg text-slate-600">{title}</p>
+          <h3 className="text-3xl font-semibold text-slate-900">{name}</h3>
+          <p className="mt-1 text-base text-slate-600">{title}</p>
         </div>
         {sections.map((section, idx) => (
-          <div key={idx} className="space-y-3">
+          <div key={idx} className="space-y-2.5">
             <div className="flex items-center gap-2">
               <SectionBadge>{section.heading}</SectionBadge>
               {section.badge && (
@@ -73,7 +73,7 @@ function TrainerCard({ imageSrc, name, title, sections, footerHighlight }) {
             </div>
 
             {section.type === "list" && (
-              <ul className="list-disc space-y-1 pl-5 text-lg text-slate-700 marker:text-sky-500">
+              <ul className="list-disc space-y-1 pl-5 text-base text-slate-700 marker:text-sky-500">
                 {section.items.map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
@@ -95,7 +95,7 @@ function TrainerCard({ imageSrc, name, title, sections, footerHighlight }) {
 
       {footerHighlight && (
         <div className="m-6 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-500 p-1">
-          <div className="rounded-[10px] bg-white/10 px-4 py-3 text-center text-lg font-medium text-white backdrop-blur">
+          <div className="rounded-[10px] bg-white/10 px-4 py-3 text-center text-base font-medium text-white backdrop-blur">
             {footerHighlight}
           </div>
         </div>
