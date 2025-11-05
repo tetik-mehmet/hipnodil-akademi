@@ -160,6 +160,30 @@ export default function Header() {
 
           {/* Desktop Auth Butonları */}
           <div className="hidden items-center gap-4 md:flex relative z-10">
+            {/* Hipnodil Medya - Modern Tasarım */}
+            <Link
+              href="/calismalar"
+              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-teal-600 via-cyan-600 to-blue-600 px-6 py-2.5 shadow-lg shadow-cyan-500/40 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-cyan-500/60 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 active:scale-95"
+            >
+              {/* Parlama efekti */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+
+              <span className="relative z-10 flex items-center gap-2 text-white font-bold text-sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-5 h-5 transition-transform group-hover:scale-110"
+                >
+                  <path d="M4.5 4.5a3 3 0 00-3 3v9a3 3 0 003 3h8.25a3 3 0 003-3v-9a3 3 0 00-3-3H4.5zM19.94 18.75l-2.69-2.69V7.94l2.69-2.69c.944-.945 2.56-.276 2.56 1.06v11.38c0 1.336-1.616 2.005-2.56 1.06z" />
+                </svg>
+                Hipnodil Medya
+              </span>
+            </Link>
+
+            {/* Ayırıcı Çizgi */}
+            <div className="h-8 w-px bg-white/30" />
+
             {isOnEgitimIcerik || isOnAdmin ? (
               <button
                 type="button"
@@ -842,6 +866,35 @@ export default function Header() {
               >
                 Eğitim İçeriğim
               </button>
+
+              {/* Hipnodil Medya - Mobil */}
+              <div
+                className={`mt-4 flex flex-col gap-3 pt-4 border-t-2 border-cyan-200 ${
+                  isOpen ? "animate-[slideIn_0.3s_ease-out_0.475s_both]" : ""
+                }`}
+              >
+                <Link
+                  href="/calismalar"
+                  className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-teal-600 via-cyan-600 to-blue-600 px-6 py-4 shadow-lg shadow-cyan-500/50 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-cyan-500/70 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 active:scale-95"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {/* Parlama efekti */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+
+                  <span className="relative z-10 flex items-center justify-center gap-2.5 text-white font-bold text-base">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-6 h-6 transition-transform group-hover:scale-110"
+                    >
+                      <path d="M4.5 4.5a3 3 0 00-3 3v9a3 3 0 003 3h8.25a3 3 0 003-3v-9a3 3 0 00-3-3H4.5zM19.94 18.75l-2.69-2.69V7.94l2.69-2.69c.944-.945 2.56-.276 2.56 1.06v11.38c0 1.336-1.616 2.005-2.56 1.06z" />
+                    </svg>
+                    Hipnodil Medya
+                  </span>
+                </Link>
+              </div>
+
               <div
                 className={`mt-4 flex flex-col gap-3 pt-2 border-t-2 border-cyan-100 ${
                   isOpen ? "animate-[slideIn_0.3s_ease-out_0.5s_both]" : ""

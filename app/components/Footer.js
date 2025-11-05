@@ -187,16 +187,23 @@ export default function Footer() {
                         rel="noopener noreferrer"
                         className="group/social relative"
                       >
+                        {/* Ana Glow - Sürekli Görünür */}
                         <div
-                          className={`absolute -inset-2 bg-gradient-to-r ${item.color} rounded-2xl blur-xl opacity-0 group-hover/social:opacity-70 transition-all duration-500`}
+                          className={`absolute -inset-2 bg-gradient-to-r ${item.color} rounded-2xl blur-xl opacity-60 group-hover/social:opacity-100 group-hover/social:blur-2xl group-hover/social:scale-110 transition-all duration-500 animate-pulse`}
                         ></div>
-                        <div className="relative inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/5 ring-1 ring-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:ring-white/40 hover:shadow-2xl">
+
+                        {/* Hover Rotate Glow */}
+                        <div
+                          className={`absolute -inset-3 bg-gradient-to-r ${item.color} rounded-2xl blur-2xl opacity-0 group-hover/social:opacity-80 group-hover/social:animate-spin-slow transition-all duration-700`}
+                        ></div>
+
+                        <div className="relative inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/5 ring-1 ring-white/20 backdrop-blur-sm transition-all duration-300 group-hover/social:scale-125 group-hover/social:rotate-12 group-hover/social:ring-white/60 group-hover/social:shadow-2xl">
                           <Image
                             src={item.src}
                             alt={item.label}
                             width={22}
                             height={22}
-                            className="h-5.5 w-5.5 object-contain brightness-110 transition-all duration-300 group-hover/social:brightness-125 group-hover/social:scale-110"
+                            className="h-5.5 w-5.5 object-contain brightness-110 transition-all duration-300 group-hover/social:brightness-150 group-hover/social:scale-125 group-hover/social:-rotate-12"
                             priority={false}
                           />
                         </div>

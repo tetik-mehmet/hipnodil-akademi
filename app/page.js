@@ -341,24 +341,6 @@ export default function Home() {
       </section>
       {/* Floating Buttons - Sağ Taraf */}
       <div className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-50 flex flex-col gap-3 items-end">
-        {/* Hipnodil Medyada Button */}
-        <Link
-          href="/calismalar"
-          className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-4 py-3 sm:px-5 sm:py-3 font-bold text-white shadow-xl shadow-purple-500/30 transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-purple-500/50 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60 active:scale-95 animate-pulse"
-        >
-          <span className="relative z-10 flex items-center justify-center gap-2 text-sm sm:text-base">
-            <svg
-              className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:rotate-12"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-            </svg>
-            Hipnodil Medyada
-          </span>
-          <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-        </Link>
-
         {/* WhatsApp Button */}
         <Link
           href="https://wa.me/905350123295"
