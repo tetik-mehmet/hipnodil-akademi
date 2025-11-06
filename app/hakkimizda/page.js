@@ -169,7 +169,7 @@ export default function Hakkimizda() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">
-                500+
+                1000+
               </div>
               <div className="text-gray-300">Mutlu Katılımcı</div>
             </div>
@@ -181,13 +181,13 @@ export default function Hakkimizda() {
             </div>
             <div>
               <div className="text-4xl md:text-5xl font-bold text-purple-400 mb-2">
-                5+
+                8+
               </div>
               <div className="text-gray-300">Uzman Eğitmen</div>
             </div>
             <div>
               <div className="text-4xl md:text-5xl font-bold text-pink-400 mb-2">
-                5+
+                10+
               </div>
               <div className="text-gray-300">Yıllık Deneyim</div>
             </div>
