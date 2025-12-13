@@ -6,7 +6,8 @@ import { verifySessionJwt } from "@/lib/auth";
 import bcrypt from "bcryptjs";
 
 async function requireAdmin() {
-  const token = cookies().get("session")?.value;
+  const cookieStore = await cookies();
+  const token = cookieStore.get("session")?.value;
   if (!token)
     return {
       ok: false,
@@ -50,11 +51,8 @@ export async function PATCH(_request, { params }) {
       const updated = await User.findByIdAndUpdate(
         id,
         { $set: { courses } },
-        {
-          new: true,
-          projection: { firstName: 1, lastName: 1, email: 1, courses: 1 },
-        }
-      );
+        { new: true }
+      ).select({ firstName: 1, lastName: 1, email: 1, courses: 1 });
       return NextResponse.json({ user: updated });
     }
 
@@ -76,8 +74,8 @@ export async function PATCH(_request, { params }) {
       const updated = await User.findByIdAndUpdate(
         id,
         { $set: { role } },
-        { new: true, projection: { role: 1 } }
-      );
+        { new: true }
+      ).select({ role: 1 });
       return NextResponse.json({ user: updated });
     }
 

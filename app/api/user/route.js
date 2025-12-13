@@ -5,16 +5,16 @@ import User from "@/models/User";
 import { verifySessionJwt } from "@/lib/auth";
 
 async function getCurrentUserFromSession() {
-  const token = cookies().get("session")?.value;
+  const cookieStore = await cookies();
+  const token = cookieStore.get("session")?.value;
   if (!token) {
     return { ok: false, status: 401, message: "Yetkisiz" };
   }
   try {
     const payload = await verifySessionJwt(token);
     await dbConnect();
-    const user = await User.findOne(
-      { email: payload.email },
-      {
+    const user = await User.findOne({ email: payload.email })
+      .select({
         firstName: 1,
         lastName: 1,
         email: 1,
@@ -24,8 +24,8 @@ async function getCurrentUserFromSession() {
         role: 1,
         createdAt: 1,
         updatedAt: 1,
-      }
-    ).lean();
+      })
+      .lean();
     if (!user) {
       return { ok: false, status: 404, message: "Kullanıcı bulunamadı" };
     }
@@ -47,7 +47,8 @@ export async function GET() {
 }
 
 export async function PATCH(request) {
-  const token = cookies().get("session")?.value;
+  const cookieStore = await cookies();
+  const token = cookieStore.get("session")?.value;
   if (!token) {
     return NextResponse.json({ message: "Yetkisiz" }, { status: 401 });
   }
@@ -76,10 +77,10 @@ export async function PATCH(request) {
     await dbConnect();
 
     // Mevcut kullanıcıyı bul
-    const currentUser = await User.findOne(
-      { email: payload.email },
-      { _id: 1, email: 1 }
-    );
+    const currentUser = await User.findOne({ email: payload.email }).select({
+      _id: 1,
+      email: 1,
+    });
     if (!currentUser) {
       return NextResponse.json(
         { message: "Kullanıcı bulunamadı" },
@@ -107,18 +108,17 @@ export async function PATCH(request) {
     const updated = await User.findOneAndUpdate(
       { _id: currentUser._id },
       { $set: updateData },
-      {
-        new: true,
-        projection: {
-          firstName: 1,
-          lastName: 1,
-          email: 1,
-          phone: 1,
-          birthDate: 1,
-          courses: 1,
-        },
-      }
-    ).lean();
+      { new: true }
+    )
+      .select({
+        firstName: 1,
+        lastName: 1,
+        email: 1,
+        phone: 1,
+        birthDate: 1,
+        courses: 1,
+      })
+      .lean();
 
     if (!updated) {
       return NextResponse.json(

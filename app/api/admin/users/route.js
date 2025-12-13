@@ -6,7 +6,8 @@ import { verifySessionJwt } from "@/lib/auth";
 
 export async function GET() {
   try {
-    const token = cookies().get("session")?.value;
+    const cookieStore = await cookies();
+    const token = cookieStore.get("session")?.value;
     if (!token) {
       return NextResponse.json({ message: "Yetkisiz" }, { status: 401 });
     }
@@ -16,9 +17,8 @@ export async function GET() {
     }
 
     await dbConnect();
-    const users = await User.find(
-      {},
-      {
+    const users = await User.find({})
+      .select({
         firstName: 1,
         lastName: 1,
         birthDate: 1,
@@ -33,8 +33,7 @@ export async function GET() {
         examResult: 1,
         createdAt: 1,
         updatedAt: 1,
-      }
-    )
+      })
       .sort({ createdAt: -1 })
       .lean();
 

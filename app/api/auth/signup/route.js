@@ -51,7 +51,8 @@ export async function POST(request) {
     let examStatusToAssign = "not_applicable";
     let examResultToAssign = "not_applicable";
     try {
-      const sessionToken = cookies().get("session")?.value;
+      const cookieStore = await cookies();
+      const sessionToken = cookieStore.get("session")?.value;
       if (sessionToken) {
         const payload = await verifySessionJwt(sessionToken);
         if (payload?.role === "admin") {
