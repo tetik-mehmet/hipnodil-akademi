@@ -33,6 +33,7 @@ export default function LoginPage() {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include", // Cookie'lerin gönderilmesi için gerekli
         body: JSON.stringify(formData),
       });
       const data = await res.json();
@@ -42,11 +43,18 @@ export default function LoginPage() {
       setSuccess(true); // Başarı mesajını göster
       setIsLoading(false);
 
-      // 2 saniye sonra role göre yönlendir
+      // Cookie'nin set edilmesi için kısa bir bekleme
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      // Role göre yönlendir
       const target = data?.redirectTo || "/egitim_icerik";
-      setTimeout(() => {
+      try {
         router.push(target);
-      }, 2000);
+      } catch (routerError) {
+        console.error("Yönlendirme hatası:", routerError);
+        // Fallback: window.location kullan
+        window.location.href = target;
+      }
     } catch (err) {
       setError(err.message);
       setIsLoading(false);
