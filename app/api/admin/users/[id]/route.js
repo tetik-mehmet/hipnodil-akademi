@@ -34,7 +34,7 @@ export async function PATCH(_request, { params }) {
   const guard = await requireAdmin();
   if (!guard.ok) return guard.res;
   try {
-    const id = params.id;
+    const { id } = await params;
     const body = await _request.json();
     const { action } = body || {};
     await dbConnect();
@@ -161,17 +161,35 @@ export async function PATCH(_request, { params }) {
         updateData.createdAt = createdAt ? new Date(createdAt) : null;
       }
 
-      // E-posta benzersizlik kontrolü (kendi e-postası hariç)
+      // E-posta benzersizlik kontrolü (sadece e-posta değiştiğinde)
       if (updateData.email) {
-        const existingUser = await User.findOne({
-          email: updateData.email,
-          _id: { $ne: id },
-        });
-        if (existingUser) {
+        // Mevcut kullanıcıyı bul
+        const currentUser = await User.findById(id).select({ email: 1 });
+        if (!currentUser) {
           return NextResponse.json(
-            { message: "Bu e-posta adresi zaten kullanılıyor" },
-            { status: 400 }
+            { message: "Kullanıcı bulunamadı" },
+            { status: 404 }
           );
+        }
+
+        // E-posta değiştiyse benzersizlik kontrolü yap
+        const normalizedNewEmail = updateData.email.trim().toLowerCase();
+        const normalizedCurrentEmail = (currentUser.email || "").trim().toLowerCase();
+        
+        if (normalizedNewEmail !== normalizedCurrentEmail) {
+          const existingUser = await User.findOne({
+            email: normalizedNewEmail,
+            _id: { $ne: id },
+          });
+          if (existingUser) {
+            return NextResponse.json(
+              { message: "Bu e-posta adresi zaten kullanılıyor" },
+              { status: 400 }
+            );
+          }
+        } else {
+          // E-posta değişmediyse, updateData'dan email'i kaldır (gereksiz güncelleme önlenir)
+          delete updateData.email;
         }
       }
 
@@ -214,7 +232,7 @@ export async function DELETE(_request, { params }) {
   const guard = await requireAdmin();
   if (!guard.ok) return guard.res;
   try {
-    const id = params.id;
+    const { id } = await params;
     await dbConnect();
     await User.findByIdAndDelete(id);
     return NextResponse.json({ ok: true });
