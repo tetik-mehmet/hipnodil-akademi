@@ -346,6 +346,9 @@ function DarkModeToggle() {
 }
 
 export default function AdminPage() {
+  const [isCreateFormOpen, setIsCreateFormOpen] = React.useState(false);
+  const [isUpdateFormOpen, setIsUpdateFormOpen] = React.useState(false);
+
   return (
     <main className="min-h-screen w-full bg-gray-50 dark:bg-gray-900">
       <section className="mx-auto max-w-6xl px-4 py-8">
@@ -358,8 +361,8 @@ export default function AdminPage() {
 
         {/* İstatistikler Bölümü */}
         <section className="mt-8">
-          <div className="mb-6">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          <div className="mb-6 pb-4 border-b border-gray-200 dark:border-gray-700">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
               İstatistikler
             </h2>
             <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -377,8 +380,8 @@ export default function AdminPage() {
 
         {/* Kullanıcı Arama Bölümü */}
         <section className="mt-10">
-          <div className="mb-6">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          <div className="mb-6 pb-4 border-b border-gray-200 dark:border-gray-700">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
               Kullanıcı Arama
             </h2>
             <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -391,23 +394,71 @@ export default function AdminPage() {
         </section>
 
         <section className="mt-10">
-          <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">
-            Yeni Kullanıcı Oluştur
-          </h2>
-          <AdminCreateUserForm />
+          <div className="pb-4 border-b border-gray-200 dark:border-gray-700 mb-4">
+            <button
+              onClick={() => setIsCreateFormOpen(!isCreateFormOpen)}
+              className="flex items-center gap-3 text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group"
+            >
+              <svg
+                className={`w-7 h-7 text-green-600 dark:text-green-400 transition-all duration-200 group-hover:scale-110 ${
+                  isCreateFormOpen ? "rotate-45" : ""
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+              Yeni Kullanıcı Oluştur
+            </button>
+          </div>
+          {isCreateFormOpen && (
+            <div className="mt-4">
+              <AdminCreateUserForm />
+            </div>
+          )}
         </section>
 
         <section className="mt-10">
-          <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">
-            Kullanıcı Güncelle
-          </h2>
-          <AdminUpdateUserForm />
+          <div className="pb-4 border-b border-gray-200 dark:border-gray-700 mb-4">
+            <button
+              onClick={() => setIsUpdateFormOpen(!isUpdateFormOpen)}
+              className="flex items-center gap-3 text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group"
+            >
+              <svg
+                className={`w-7 h-7 text-blue-600 dark:text-blue-400 transition-all duration-200 group-hover:scale-110 ${
+                  isUpdateFormOpen ? "rotate-90" : ""
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+              Kullanıcı Güncelle
+            </button>
+          </div>
+          {isUpdateFormOpen && (
+            <div className="mt-4">
+              <AdminUpdateUserForm />
+            </div>
+          )}
         </section>
 
         {/* Sınav Filtreleme Bölümü - Kullanıcı Listesinin Hemen Üstünde */}
         <section className="mt-10">
-          <div className="mb-6">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          <div className="mb-6 pb-4 border-b border-gray-200 dark:border-gray-700">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
               Sınav Filtreleme
             </h2>
             <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -418,9 +469,14 @@ export default function AdminPage() {
         </section>
 
         <section className="mt-10">
-          <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">
-            Kullanıcı Listesi
-          </h2>
+          <div className="mb-6 pb-4 border-b border-gray-200 dark:border-gray-700">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+              Kullanıcı Listesi
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Tüm kullanıcıları görüntüleyin ve yönetin
+            </p>
+          </div>
           <AdminUsersTable />
           <ToastViewport />
         </section>
@@ -2666,23 +2722,82 @@ function AdminUsersTable() {
   };
 
   if (loading) {
-    return <div className="text-sm text-gray-600">Yükleniyor...</div>;
+    return (
+      <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg p-8 flex flex-col items-center justify-center">
+        <svg
+          className="animate-spin h-8 w-8 text-indigo-600 dark:text-indigo-400 mb-4"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          ></circle>
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
+        <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+          Yükleniyor...
+        </p>
+      </div>
+    );
   }
   if (error) {
     return (
-      <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-        {error}
+      <div className="rounded-xl border border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-900/20 shadow-lg px-6 py-4">
+        <div className="flex items-center gap-3">
+          <svg
+            className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <p className="text-sm font-medium text-red-700 dark:text-red-400">
+            {error}
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="overflow-x-auto rounded-lg border bg-white shadow-sm">
+    <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg">
       {refreshing && (
-        <div className="px-4 py-2 text-xs text-gray-500">Güncelleniyor…</div>
+        <div className="px-4 py-3 text-sm text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 border-b border-indigo-100 dark:border-indigo-800/50 flex items-center gap-2">
+          <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+          Güncelleniyor…
+        </div>
       )}
       {/* Filtre / Arama / Kontroller */}
-      <div className="flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 px-6 py-4 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-700 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-2">
           {/* Mobil menü butonu */}
           {isMobileView && (
@@ -2706,15 +2821,30 @@ function AdminUsersTable() {
             </button>
           )}
 
-          <input
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setPage(1);
-            }}
-            placeholder="Ara (ad, soyad, e-posta, telefon)"
-            className="w-64 rounded-md border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
+          <div className="relative">
+            <svg
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <input
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setPage(1);
+              }}
+              placeholder="Ara (ad, soyad, e-posta, telefon)"
+              className="w-64 pl-10 pr-3 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+            />
+          </div>
           {/* Desktop filtreler */}
           <div className="hidden lg:flex flex-wrap items-center gap-2">
             <select
@@ -2723,7 +2853,7 @@ function AdminUsersTable() {
                 setRoleFilter(e.target.value);
                 setPage(1);
               }}
-              className="rounded-md border px-2 py-2 text-sm"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
             >
               <option value="">Rol (hepsi)</option>
               <option value="admin">admin</option>
@@ -2735,7 +2865,7 @@ function AdminUsersTable() {
                 setCourseFilter(e.target.value);
                 setPage(1);
               }}
-              className="rounded-md border px-2 py-2 text-sm"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
             >
               <option value="">Kurs (hepsi)</option>
               <option value="mentorluk_kursu">mentorluk_kursu</option>
@@ -2750,7 +2880,7 @@ function AdminUsersTable() {
                 setEducationFilter(e.target.value);
                 setPage(1);
               }}
-              className="rounded-md border px-2 py-2 text-sm"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
             >
               <option value="">Eğitim (hepsi)</option>
               <option value="ilkokul">İlkokul</option>
@@ -2767,7 +2897,7 @@ function AdminUsersTable() {
                 setExamApplicationFilter(e.target.value);
                 setPage(1);
               }}
-              className="rounded-md border px-2 py-2 text-sm"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
             >
               <option value="">Başvuru (hepsi)</option>
               <option value="applied">Yapıldı</option>
@@ -2780,7 +2910,7 @@ function AdminUsersTable() {
                 setExamStatusFilter(e.target.value);
                 setPage(1);
               }}
-              className="rounded-md border px-2 py-2 text-sm"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
             >
               <option value="">Sınav (hepsi)</option>
               <option value="entered">Girdi</option>
@@ -2793,7 +2923,7 @@ function AdminUsersTable() {
                 setExamResultFilter(e.target.value);
                 setPage(1);
               }}
-              className="rounded-md border px-2 py-2 text-sm"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
             >
               <option value="">Sonuç (hepsi)</option>
               <option value="successful">Başarılı</option>
@@ -2806,12 +2936,41 @@ function AdminUsersTable() {
                 setPageSize(Number(e.target.value));
                 setPage(1);
               }}
-              className="rounded-md border px-2 py-2 text-sm"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
             >
               <option value={10}>10</option>
               <option value={20}>20</option>
               <option value={50}>50</option>
             </select>
+            {/* Sıralama Butonları */}
+            <button
+              onClick={() => {
+                setSortKey("createdAt");
+                setSortDir("desc");
+                setPage(1);
+              }}
+              className={`rounded-md border px-3 py-2 text-sm transition-colors ${
+                sortKey === "createdAt" && sortDir === "desc"
+                  ? "bg-indigo-600 text-white border-indigo-600 hover:bg-indigo-700"
+                  : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600"
+              }`}
+            >
+              En Yeni
+            </button>
+            <button
+              onClick={() => {
+                setSortKey("createdAt");
+                setSortDir("asc");
+                setPage(1);
+              }}
+              className={`rounded-md border px-3 py-2 text-sm transition-colors ${
+                sortKey === "createdAt" && sortDir === "asc"
+                  ? "bg-indigo-600 text-white border-indigo-600 hover:bg-indigo-700"
+                  : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600"
+              }`}
+            >
+              En Eski
+            </button>
           </div>
           <div className="flex items-center gap-3">
             <div className="text-xs text-gray-600">
@@ -2819,14 +2978,40 @@ function AdminUsersTable() {
             </div>
             <button
               onClick={() => exportCsv(processed)}
-              className="rounded border px-3 py-2 text-sm hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors flex items-center gap-2"
             >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
               CSV indir
             </button>
             <button
               onClick={() => exportPdf(processed)}
-              className="rounded px-3 py-2 text-sm font-bold bg-red-600 text-black hover:bg-red-700 border border-red-700"
+              className="rounded-lg bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white px-4 py-2 text-sm font-bold transition-colors flex items-center gap-2 shadow-md hover:shadow-lg"
             >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                />
+              </svg>
               PDF indir
             </button>
           </div>
@@ -2993,6 +3178,42 @@ function AdminUsersTable() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Kayıt Tarihi Sıralaması
+            </label>
+            <div className="flex gap-2">
+              <button
+                onClick={() => {
+                  setSortKey("createdAt");
+                  setSortDir("desc");
+                  setPage(1);
+                }}
+                className={`flex-1 rounded-md border px-3 py-2 text-sm font-medium transition-colors ${
+                  sortKey === "createdAt" && sortDir === "desc"
+                    ? "bg-indigo-600 text-white border-indigo-600 hover:bg-indigo-700"
+                    : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600"
+                }`}
+              >
+                En Yeni
+              </button>
+              <button
+                onClick={() => {
+                  setSortKey("createdAt");
+                  setSortDir("asc");
+                  setPage(1);
+                }}
+                className={`flex-1 rounded-md border px-3 py-2 text-sm font-medium transition-colors ${
+                  sortKey === "createdAt" && sortDir === "asc"
+                    ? "bg-indigo-600 text-white border-indigo-600 hover:bg-indigo-700"
+                    : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600"
+                }`}
+              >
+                En Eski
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Sayfa Boyutu
             </label>
             <select
@@ -3014,7 +3235,7 @@ function AdminUsersTable() {
       {/* Desktop Tablo Görünümü */}
       {!isMobileView ? (
         <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+          <thead className="bg-gray-100 dark:bg-gray-800 border-b-2 border-gray-200 dark:border-gray-700">
             <tr>
               <Th
                 clickable
@@ -3088,7 +3309,10 @@ function AdminUsersTable() {
           </thead>
           <tbody className="divide-y divide-gray-100">
             {paged.map((u) => (
-              <tr key={String(u._id)} className="hover:bg-gray-50">
+              <tr
+                key={String(u._id)}
+                className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors border-b border-gray-100 dark:border-gray-700/50"
+              >
                 <Td>{u.firstName}</Td>
                 <Td>{u.lastName}</Td>
                 <Td className="whitespace-nowrap">{u.email}</Td>
@@ -3117,15 +3341,15 @@ function AdminUsersTable() {
                       u.examApplication === "applied"
                         ? "bg-blue-100 text-blue-800"
                         : u.examApplication === "not_applied"
-                        ? "bg-gray-100 text-gray-800"
-                        : "bg-gray-100 text-gray-800"
+                          ? "bg-gray-100 text-gray-800"
+                          : "bg-gray-100 text-gray-800"
                     }`}
                   >
                     {u.examApplication === "applied"
                       ? "Yapıldı"
                       : u.examApplication === "not_applied"
-                      ? "Yapılmadı"
-                      : "Belirtilmemiş"}
+                        ? "Yapılmadı"
+                        : "Belirtilmemiş"}
                   </span>
                 </Td>
                 <Td>
@@ -3135,15 +3359,15 @@ function AdminUsersTable() {
                         u.examStatus === "entered"
                           ? "bg-green-100 text-green-800"
                           : u.examStatus === "not_entered"
-                          ? "bg-red-100 text-red-800"
-                          : "bg-gray-100 text-gray-800"
+                            ? "bg-red-100 text-red-800"
+                            : "bg-gray-100 text-gray-800"
                       }`}
                     >
                       {u.examStatus === "entered"
                         ? "Girdi"
                         : u.examStatus === "not_entered"
-                        ? "Girmedi"
-                        : "-"}
+                          ? "Girmedi"
+                          : "-"}
                     </span>
                   ) : (
                     <span className="text-xs text-gray-400">-</span>
@@ -3157,15 +3381,15 @@ function AdminUsersTable() {
                         u.examResult === "successful"
                           ? "bg-emerald-100 text-emerald-800"
                           : u.examResult === "unsuccessful"
-                          ? "bg-orange-100 text-orange-800"
-                          : "bg-gray-100 text-gray-600"
+                            ? "bg-orange-100 text-orange-800"
+                            : "bg-gray-100 text-gray-600"
                       }`}
                     >
                       {u.examResult === "successful"
                         ? "Başarılı"
                         : u.examResult === "unsuccessful"
-                        ? "Başarısız"
-                        : "-"}
+                          ? "Başarısız"
+                          : "-"}
                     </span>
                   ) : (
                     <span className="text-xs text-gray-400">-</span>
@@ -3175,30 +3399,90 @@ function AdminUsersTable() {
                   {u.createdAt ? new Date(u.createdAt).toLocaleString() : "-"}
                 </Td>
                 <Td className="whitespace-nowrap">
-                  <button
-                    onClick={() => openDetail(u)}
-                    className="mr-2 rounded border px-2 py-1 text-xs hover:bg-gray-50"
-                  >
-                    Detay
-                  </button>
-                  <button
-                    onClick={() => openCourses(u)}
-                    className="mr-2 rounded border px-2 py-1 text-xs hover:bg-gray-50"
-                  >
-                    Kursları Düzenle
-                  </button>
-                  <button
-                    onClick={() => openPassword(u)}
-                    className="mr-2 rounded border px-2 py-1 text-xs hover:bg-gray-50"
-                  >
-                    Şifre Sıfırla
-                  </button>
-                  <button
-                    onClick={() => deleteUser(u)}
-                    className="rounded border px-2 py-1 text-xs text-red-600 hover:bg-red-50"
-                  >
-                    Sil
-                  </button>
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={() => openDetail(u)}
+                      className="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-gray-700 transition-colors"
+                      title="Detayları Görüntüle"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={() => openCourses(u)}
+                      className="p-2 rounded-md text-blue-600 hover:text-blue-900 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-900/20 transition-colors"
+                      title="Kursları Düzenle"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={() => openPassword(u)}
+                      className="p-2 rounded-md text-yellow-600 hover:text-yellow-900 hover:bg-yellow-50 dark:text-yellow-400 dark:hover:text-yellow-300 dark:hover:bg-yellow-900/20 transition-colors"
+                      title="Şifre Sıfırla"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={() => deleteUser(u)}
+                      className="p-2 rounded-md text-red-600 hover:text-red-900 hover:bg-red-50 dark:text-red-400 dark:hover:text-red-300 dark:hover:bg-red-900/20 transition-colors"
+                      title="Kullanıcıyı Sil"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </Td>
               </tr>
             ))}
@@ -3221,23 +3505,53 @@ function AdminUsersTable() {
       )}
 
       {/* Sayfalama */}
-      <div className="flex items-center justify-between px-4 py-3">
+      <div className="flex items-center justify-between px-6 py-4 bg-gray-50 dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-700">
         <button
           onClick={() => setPage((p) => Math.max(1, p - 1))}
           disabled={pageSafe <= 1}
-          className="rounded border px-3 py-1 text-sm disabled:opacity-50"
+          className="flex items-center gap-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
           Önceki
         </button>
-        <div className="text-xs text-gray-600">
-          Sayfa {pageSafe} / {totalPages}
+        <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
+          Sayfa{" "}
+          <span className="font-bold text-indigo-600 dark:text-indigo-400">
+            {pageSafe}
+          </span>{" "}
+          / <span className="font-bold">{totalPages}</span>
         </div>
         <button
           onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
           disabled={pageSafe >= totalPages}
-          className="rounded border px-3 py-1 text-sm disabled:opacity-50"
+          className="flex items-center gap-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           Sonraki
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
         </button>
       </div>
 
@@ -3369,14 +3683,18 @@ function Th({ children, clickable = false, onClick, active, dir }) {
     <th
       scope="col"
       onClick={onClick}
-      className={`px-4 py-3 text-left text-xs font-semibold text-gray-700 ${
-        clickable ? "cursor-pointer select-none" : ""
+      className={`px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300 ${
+        clickable
+          ? "cursor-pointer select-none hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          : ""
       }`}
     >
-      <span className="inline-flex items-center gap-1">
+      <span className="inline-flex items-center gap-2">
         {children}
         {active ? (
-          <span className="text-gray-400">{dir === "asc" ? "▲" : "▼"}</span>
+          <span className="text-indigo-600 dark:text-indigo-400 font-bold">
+            {dir === "asc" ? "▲" : "▼"}
+          </span>
         ) : null}
       </span>
     </th>
@@ -3385,7 +3703,9 @@ function Th({ children, clickable = false, onClick, active, dir }) {
 
 function Td({ children, className = "" }) {
   return (
-    <td className={`px-4 py-3 text-sm text-gray-900 ${className}`}>
+    <td
+      className={`px-6 py-4 text-sm text-gray-900 dark:text-gray-100 ${className}`}
+    >
       {children}
     </td>
   );
