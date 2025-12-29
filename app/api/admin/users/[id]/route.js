@@ -110,7 +110,7 @@ export async function PATCH(_request, { params }) {
       if (tcNumber !== undefined)
         updateData.tcNumber = String(tcNumber).replace(/\D/g, "").slice(0, 11);
       if (phone !== undefined)
-        updateData.phone = String(phone).replace(/\D/g, "").slice(0, 10);
+        updateData.phone = String(phone).trim();
       if (email !== undefined)
         updateData.email = String(email).trim().toLowerCase();
       if (education !== undefined) updateData.education = education || null;

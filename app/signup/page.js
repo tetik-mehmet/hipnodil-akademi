@@ -35,12 +35,11 @@ export default function SignupPage() {
   const handleInputChange = (e) => {
     const { name, value, type, checked, files } = e.target;
 
-    // Telefon alanı: sadece rakam, max 10 hane
+    // Telefon alanı: serbest format (yurtdışı müşteriler için)
     if (name === "phone") {
-      const digitsOnly = value.replace(/\D/g, "").slice(0, 10);
       setFormData((prev) => ({
         ...prev,
-        phone: digitsOnly,
+        phone: value,
       }));
       if (errors.phone) {
         setErrors((prev) => ({ ...prev, phone: "" }));
@@ -102,8 +101,6 @@ export default function SignupPage() {
 
     if (!formData.phone.trim()) {
       newErrors.phone = "Telefon numarası gereklidir";
-    } else if (!/^5\d{9}$/.test(formData.phone)) {
-      newErrors.phone = "Telefon numarası 5xxxxxxxxx formatında olmalıdır";
     }
 
     if (!formData.email.trim()) {
@@ -379,7 +376,7 @@ export default function SignupPage() {
                   htmlFor="phone"
                   className="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Telefon <span className="text-gray-500">(5xxxxXXXXX)</span>
+                  Telefon
                 </label>
                 <input
                   type="tel"
@@ -387,10 +384,7 @@ export default function SignupPage() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  placeholder="Telefon"
-                  maxLength="10"
-                  inputMode="numeric"
-                  pattern="[0-9]*"
+                  placeholder="Telefon (örn: +90 555 123 4567)"
                   className={`w-full rounded-xl border bg-white/60 px-4 py-3 shadow-sm outline-none backdrop-blur-sm transition-all duration-300 placeholder:text-slate-400 focus:-translate-y-0.5 focus:bg-white/80 focus:shadow-lg focus:ring-4 focus:ring-indigo-200/60 ${
                     errors.phone ? "border-red-500" : "border-gray-300"
                   }`}

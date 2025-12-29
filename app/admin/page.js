@@ -1834,8 +1834,8 @@ function AdminUpdateUserForm() {
       return;
     }
     if (name === "phone") {
-      const digits = value.replace(/\D/g, "").slice(0, 10);
-      setFormData((p) => ({ ...p, phone: digits }));
+      // Telefon alanı: serbest format (yurtdışı müşteriler için)
+      setFormData((p) => ({ ...p, phone: value }));
       return;
     }
     if (name === "tcNumber") {
@@ -2029,7 +2029,6 @@ function AdminUpdateUserForm() {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            maxLength={10}
           />
           <Input
             label="E-posta"
@@ -2209,8 +2208,8 @@ function AdminCreateUserForm() {
       return;
     }
     if (name === "phone") {
-      const digits = value.replace(/\D/g, "").slice(0, 10);
-      setFormData((p) => ({ ...p, phone: digits }));
+      // Telefon alanı: serbest format (yurtdışı müşteriler için)
+      setFormData((p) => ({ ...p, phone: value }));
       return;
     }
     if (name === "tcNumber") {
@@ -2329,7 +2328,6 @@ function AdminCreateUserForm() {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-          maxLength={10}
         />
         <Input
           label="E-posta"
