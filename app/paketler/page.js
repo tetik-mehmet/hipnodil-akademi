@@ -168,7 +168,7 @@ export default function Paketler() {
                 >
                   <div className="flex items-baseline">
                     <span className="text-5xl font-bold text-gray-800">
-                      22.950
+                      28950
                     </span>
                     <span className="text-gray-600 ml-2">/ Tek Seferlik</span>
                   </div>
@@ -259,7 +259,7 @@ export default function Paketler() {
                 >
                   <div className="flex items-baseline">
                     <span className="text-5xl font-bold text-green-600">
-                      25.950
+                      31950
                     </span>
                     <span className="text-gray-600 ml-2">/ Tek Seferlik</span>
                   </div>
@@ -360,7 +360,7 @@ export default function Paketler() {
                 >
                   <div className="flex items-baseline">
                     <span className="text-5xl font-bold text-gray-800">
-                      37.950
+                      47950
                     </span>
                     <span className="text-gray-600 ml-2">/ Tek Seferlik</span>
                   </div>
