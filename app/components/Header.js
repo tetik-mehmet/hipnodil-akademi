@@ -110,16 +110,50 @@ export default function Header() {
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-white/10 backdrop-blur-sm"
           />
-          <Link href="/" className="flex items-center gap-3 relative z-10">
-            <Image
-              src="/hipnodilakademilogo.png"
-              alt="Hipnodil Akademi"
-              width={220}
-              height={55}
-              priority
-              className="h-12 md:h-14 w-auto transition-transform duration-300 ease-out hover:scale-[1.03]"
-            />
-          </Link>
+          <div className="flex items-center gap-6 md:gap-8 relative z-10">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/hipnodilakademilogo.png"
+                alt="Hipnodil Akademi"
+                width={220}
+                height={55}
+                priority
+                className="h-12 md:h-14 w-auto transition-transform duration-300 ease-out hover:scale-[1.03]"
+              />
+            </Link>
+
+            {/* ODAKANATOLİA Giriş Butonu */}
+            <a
+              href="https://odakanatolia.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 px-4 py-2 md:px-5 md:py-2.5 text-lg md:text-xl font-bold text-white shadow-lg shadow-orange-500/40 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-orange-500/60 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 active:scale-95 border-2 border-white/30"
+            >
+              {/* Parlama efekti */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <span className="relative z-10 flex flex-col items-center gap-0.5">
+                <span className="flex items-center gap-2.5 md:gap-3">
+                  <svg
+                    className="h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:rotate-12"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                    />
+                  </svg>
+                  <span className="whitespace-nowrap">ODAKANATOLİA</span>
+                </span>
+                <span className="text-xs md:text-sm font-medium opacity-90">
+                  Hızlı Okuma
+                </span>
+              </span>
+            </a>
+          </div>
 
           {/* Mobil menü butonu - Animated Hamburger */}
           <button
@@ -867,7 +901,7 @@ export default function Header() {
                 Eğitim İçeriğim
               </button>
 
-              {/* Hipnodil Medya - Mobil */}
+              {/* Hipnodil Medya ve ODAKANATOLİA - Mobil */}
               <div
                 className={`mt-4 flex flex-col gap-3 pt-4 border-t-2 border-cyan-200 ${
                   isOpen ? "animate-[slideIn_0.3s_ease-out_0.475s_both]" : ""
@@ -893,6 +927,39 @@ export default function Header() {
                     Hipnodil Medya
                   </span>
                 </Link>
+
+                {/* ODAKANATOLİA Giriş Butonu - Mobil */}
+                <a
+                  href="https://odakanatolia.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 px-5 py-2.5 font-bold text-xl text-white shadow-lg shadow-orange-500/40 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-orange-500/60 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 active:scale-95 border-2 border-white/30"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {/* Parlama efekti */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  <span className="relative z-10 flex flex-col items-center gap-0.5">
+                    <span className="flex items-center justify-center gap-3">
+                      <svg
+                        className="h-6 w-6 transition-transform group-hover:rotate-12"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                        />
+                      </svg>
+                      ODAKANATOLİA GİRİŞ
+                    </span>
+                    <span className="text-xs md:text-sm font-medium opacity-90">
+                      Hızlı Okuma
+                    </span>
+                  </span>
+                </a>
               </div>
 
               <div
