@@ -101,7 +101,7 @@ export default function Header() {
       `}</style>
       <div className="relative mx-auto w-full">
         {/* Üst Satır: Logo + Auth Butonları - Turkuaz */}
-        <div className="flex items-center justify-between px-4 py-3 md:px-6 md:py-4 bg-gradient-to-r from-cyan-500 via-cyan-600 to-teal-500 relative overflow-hidden">
+        <div className="flex items-center justify-between px-2 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-cyan-500 via-cyan-600 to-teal-500 relative overflow-hidden">
           {/* Dekoratif yumuşak parıltı */}
           <div className="pointer-events-none absolute inset-x-0 -top-8 mx-auto h-16 max-w-6xl bg-gradient-to-r from-cyan-400/40 via-white/30 to-teal-400/40 blur-3xl" />
 
@@ -110,15 +110,15 @@ export default function Header() {
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-white/10 backdrop-blur-sm"
           />
-          <div className="flex items-center gap-6 md:gap-8 relative z-10">
-            <Link href="/" className="flex items-center">
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-8 relative z-10 flex-1 min-w-0">
+            <Link href="/" className="flex items-center flex-shrink-0">
               <Image
                 src="/hipnodilakademilogo.png"
                 alt="Hipnodil Akademi"
                 width={220}
                 height={55}
                 priority
-                className="h-12 md:h-14 w-auto transition-transform duration-300 ease-out hover:scale-[1.03]"
+                className="h-10 sm:h-12 md:h-14 w-auto transition-transform duration-300 ease-out hover:scale-[1.03]"
               />
             </Link>
 
@@ -127,14 +127,14 @@ export default function Header() {
               href="https://odakanatolia.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 px-4 py-2 md:px-5 md:py-2.5 text-lg md:text-xl font-bold text-white shadow-lg shadow-orange-500/40 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-orange-500/60 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 active:scale-95 border-2 border-white/30"
+              className="group relative overflow-hidden rounded-lg md:rounded-xl bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 px-2.5 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 text-base sm:text-lg md:text-xl font-bold text-white shadow-lg shadow-orange-500/40 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-orange-500/60 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 active:scale-95 border-2 border-white/30"
             >
               {/* Parlama efekti */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               <span className="relative z-10 flex flex-col items-center gap-0.5">
-                <span className="flex items-center gap-2.5 md:gap-3">
+                <span className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3">
                   <svg
-                    className="h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:rotate-12"
+                    className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 transition-transform group-hover:rotate-12 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -146,9 +146,11 @@ export default function Header() {
                       d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
                     />
                   </svg>
-                  <span className="whitespace-nowrap">ODAKANATOLİA</span>
+                  <span className="whitespace-nowrap text-xs sm:text-base md:text-lg">
+                    ODAKANATOLİA
+                  </span>
                 </span>
-                <span className="text-xs md:text-sm font-medium opacity-90">
+                <span className="text-[10px] sm:text-xs md:text-sm font-medium opacity-90 whitespace-nowrap">
                   Hızlı Okuma
                 </span>
               </span>
@@ -163,31 +165,31 @@ export default function Header() {
             aria-controls="mobile-menu"
             aria-expanded={isOpen}
             onClick={() => setIsOpen((v) => !v)}
-            className="md:hidden relative z-10 inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/50 bg-white px-3 py-2 text-cyan-700 font-bold shadow-lg shadow-white/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-white/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70"
+            className="md:hidden relative z-10 inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-lg border-2 border-white/50 bg-white px-2 sm:px-3 py-1.5 sm:py-2 text-cyan-700 font-bold shadow-lg shadow-white/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-white/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/70 flex-shrink-0"
           >
             {/* Animated Hamburger Icon */}
-            <div className="w-6 h-5 flex flex-col justify-center items-center">
+            <div className="w-5 sm:w-6 h-4 sm:h-5 flex flex-col justify-center items-center">
               <span
-                className={`w-6 h-0.5 bg-cyan-700 rounded-full transition-all duration-300 ease-in-out ${
+                className={`w-5 sm:w-6 h-0.5 bg-cyan-700 rounded-full transition-all duration-300 ease-in-out ${
                   isOpen
-                    ? "rotate-45 translate-y-[4px]"
+                    ? "rotate-45 translate-y-[3px] sm:translate-y-[4px]"
                     : "rotate-0 translate-y-0"
                 }`}
               />
               <span
-                className={`w-6 h-0.5 bg-cyan-700 rounded-full my-1 transition-all duration-300 ease-in-out ${
+                className={`w-5 sm:w-6 h-0.5 bg-cyan-700 rounded-full my-0.5 sm:my-1 transition-all duration-300 ease-in-out ${
                   isOpen ? "opacity-0 scale-0" : "opacity-100 scale-100"
                 }`}
               />
               <span
-                className={`w-6 h-0.5 bg-cyan-700 rounded-full transition-all duration-300 ease-in-out ${
+                className={`w-5 sm:w-6 h-0.5 bg-cyan-700 rounded-full transition-all duration-300 ease-in-out ${
                   isOpen
-                    ? "-rotate-45 -translate-y-[4px]"
+                    ? "-rotate-45 -translate-y-[3px] sm:-translate-y-[4px]"
                     : "rotate-0 translate-y-0"
                 }`}
               />
             </div>
-            <span className="text-sm font-semibold">
+            <span className="text-xs sm:text-sm font-semibold">
               {isOpen ? "Kapat" : "Menü"}
             </span>
           </button>
@@ -933,15 +935,15 @@ export default function Header() {
                   href="https://odakanatolia.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 px-5 py-2.5 font-bold text-xl text-white shadow-lg shadow-orange-500/40 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-orange-500/60 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 active:scale-95 border-2 border-white/30"
+                  className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 px-4 py-3 font-bold text-lg text-white shadow-lg shadow-orange-500/40 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-orange-500/60 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 active:scale-95 border-2 border-white/30"
                   onClick={() => setIsOpen(false)}
                 >
                   {/* Parlama efekti */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                  <span className="relative z-10 flex flex-col items-center gap-0.5">
-                    <span className="flex items-center justify-center gap-3">
+                  <span className="relative z-10 flex flex-col items-center gap-1">
+                    <span className="flex items-center justify-center gap-2.5">
                       <svg
-                        className="h-6 w-6 transition-transform group-hover:rotate-12"
+                        className="h-5 w-5 flex-shrink-0 transition-transform group-hover:rotate-12"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -953,9 +955,9 @@ export default function Header() {
                           d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
                         />
                       </svg>
-                      ODAKANATOLİA GİRİŞ
+                      <span className="whitespace-nowrap">ODAKANATOLİA</span>
                     </span>
-                    <span className="text-xs md:text-sm font-medium opacity-90">
+                    <span className="text-xs font-medium opacity-90 whitespace-nowrap">
                       Hızlı Okuma
                     </span>
                   </span>
