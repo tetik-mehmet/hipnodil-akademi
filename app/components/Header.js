@@ -147,7 +147,7 @@ export default function Header() {
                     />
                   </svg>
                   <span className="whitespace-nowrap text-xs sm:text-base md:text-lg">
-                    ODAKANATOLİA
+                    ODAK ANATOLİA
                   </span>
                 </span>
                 <span className="text-[10px] sm:text-xs md:text-sm font-medium opacity-90 whitespace-nowrap">
