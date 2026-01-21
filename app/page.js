@@ -316,10 +316,10 @@ export default function Home() {
         <div className="rounded-3xl border border-gray-200 md:border-white/20 bg-white md:bg-white/10 md:backdrop-blur-md p-6 sm:p-12 shadow-[0_8px_32px_rgba(31,38,135,0.37)]">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
             {[
-              { src: "/referanslar/cz1.png", name: "Referans 1" },
-              { src: "/referanslar/cz2.png", name: "Referans 2" },
               { src: "/referanslar/cz3.png", name: "Referans 3" },
               { src: "/referanslar/cz4.png", name: "Referans 4" },
+              { src: "/referanslar/net_logo.png", name: "Net Logo" },
+              { src: "/referanslar/speed_mind.png", name: "Speed Mind" },
             ].map((r) => (
               <div
                 key={r.src}
