@@ -42,7 +42,7 @@ function ProgramCard({ title, description, imageSrc = "/merve.png", href }) {
 
 export default function Home() {
   const router = useRouter();
-  const slides = ["/slider/bir.png", "/slider/iki.png", "/slider/uc.png"];
+  const slides = ["/slider/bir.png", "/slider/iki_yeni.png", "/slider/uc_yeni.png"];
 
   const handleShare = async () => {
     const url = window.location.href;
