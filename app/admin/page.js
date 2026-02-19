@@ -3828,7 +3828,9 @@ function exportCsv(rows) {
   a.download = "kullanicilar.csv";
   document.body.appendChild(a);
   a.click();
-  document.body.removeChild(a);
+  if (a.parentNode) {
+    a.parentNode.removeChild(a);
+  }
   URL.revokeObjectURL(url);
 }
 

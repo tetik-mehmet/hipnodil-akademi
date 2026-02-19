@@ -64,13 +64,15 @@ export default function Home() {
         await navigator.clipboard.writeText(url);
         alert("Link panoya kopyalandı!");
       } catch (err) {
-        // Fallback: textarea ile kopyala
+        // Fallback: textarea ile kopyala (güvenli remove)
         const textArea = document.createElement("textarea");
         textArea.value = url;
         document.body.appendChild(textArea);
         textArea.select();
         document.execCommand("copy");
-        document.body.removeChild(textArea);
+        if (textArea.parentNode) {
+          textArea.parentNode.removeChild(textArea);
+        }
         alert("Link panoya kopyalandı!");
       }
     }

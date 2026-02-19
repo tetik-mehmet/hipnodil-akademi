@@ -360,19 +360,34 @@ export default function Page() {
       iframeTitle:
         "MYK Koçluk Seviye 6 Eğitimi - CANLI YAYIN 1. DERS 2. OTURUM - MYK'NIN GÖREVLERİ NELERDİR _",
     },
+    {
+      src: "https://player.vimeo.com/video/1166381749?h=792e5575e3&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Mentörluk 18 Şubat 3. Oturum",
+      iframeTitle: "MYK Koç Seviye 6 Mentorluk - 18 Şubat 3. Oturum",
+    },
+    {
+      src: "https://player.vimeo.com/video/1166379348?h=b37fe017f3&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Mentörluk 18 Şubat 1. Oturum",
+      iframeTitle: "MYK Koç Seviye 6 Mentorluk - 18 Şubat 1. Oturum",
+    },
+    {
+      src: "https://player.vimeo.com/video/1166377545?h=1e722fa2d9&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Mentörluk 18 Şubat 2. Oturum",
+      iframeTitle: "MYK Koç Seviye 6 Mentorluk - 18 Şubat 2. Oturum",
+    },
   ];
 
   // "PERFORMANS DERSİ" ve "T2 AÇIK UÇLU SORU ÇEŞİDİ" videolarını derslerden çıkar
   const performanceVideos = lessonVideos.filter((v) =>
-    v.title?.toUpperCase().includes("PERFORMANS DERSİ")
+    v.title?.toUpperCase().includes("PERFORMANS DERSİ"),
   );
   const t2Videos = lessonVideos.filter((v) =>
-    v.title?.toUpperCase().startsWith("T2 AÇIK UÇLU SORU ÇEŞİDİ")
+    v.title?.toUpperCase().startsWith("T2 AÇIK UÇLU SORU ÇEŞİDİ"),
   );
   const lessonVideosFiltered = lessonVideos.filter(
     (v) =>
       !v.title?.toUpperCase().includes("PERFORMANS DERSİ") &&
-      !v.title?.toUpperCase().startsWith("T2 AÇIK UÇLU SORU ÇEŞİDİ")
+      !v.title?.toUpperCase().startsWith("T2 AÇIK UÇLU SORU ÇEŞİDİ"),
   );
 
   // Önce canlı listesine performans videolarını ekle ve mevcut kurala göre sırala
@@ -380,7 +395,10 @@ export default function Page() {
 
   // Her grubu kendi içinde sırala
   const sortedLessonVideos = [...lessonVideosFiltered].sort((a, b) =>
-    a.title.localeCompare(b.title, "tr", { numeric: true, sensitivity: "base" })
+    a.title.localeCompare(b.title, "tr", {
+      numeric: true,
+      sensitivity: "base",
+    }),
   );
 
   // Belirli canlı yayınları listenin başına almak için öncelik tanımla
@@ -393,6 +411,18 @@ export default function Page() {
     const aPriority = livePriority.has(a.title) ? 0 : 1;
     const bPriority = livePriority.has(b.title) ? 0 : 1;
     if (aPriority !== bPriority) return aPriority - bPriority;
+
+    // Mentörluk 18 Şubat videoları için normal sıralama: 1, 2, 3
+    const aIsMentorluk18 = a.title?.includes("Mentörluk 18 Şubat");
+    const bIsMentorluk18 = b.title?.includes("Mentörluk 18 Şubat");
+
+    if (aIsMentorluk18 && bIsMentorluk18) {
+      // Normal sıralama: 1, 2, 3
+      const aOturum = parseInt(a.title.match(/(\d+)\. Oturum/)?.[1] || "0");
+      const bOturum = parseInt(b.title.match(/(\d+)\. Oturum/)?.[1] || "0");
+      if (aOturum !== bOturum) return aOturum - bOturum;
+    }
+
     return a.title.localeCompare(b.title, "tr", {
       numeric: true,
       sensitivity: "base",
@@ -404,13 +434,13 @@ export default function Page() {
     const result = [...baseSortedLive];
     if (t2Videos.length === 0) return result;
     const anchorIndex = result.findIndex(
-      (v) => v.title === "1. PERFORMANS DERSİ 2. OTURUM"
+      (v) => v.title === "1. PERFORMANS DERSİ 2. OTURUM",
     );
     const t2Sorted = [...t2Videos].sort((a, b) =>
       a.title.localeCompare(b.title, "tr", {
         numeric: true,
         sensitivity: "base",
-      })
+      }),
     );
     if (anchorIndex === -1) {
       return [...result, ...t2Sorted];
@@ -470,7 +500,7 @@ export default function Page() {
             </svg>
             ~
             {Math.round(
-              (lessonVideosFiltered.length + sortedLiveVideos.length) * 1.5
+              (lessonVideosFiltered.length + sortedLiveVideos.length) * 1.5,
             )}{" "}
             Saat Eğitim
           </div>
@@ -636,7 +666,7 @@ function AutoFullscreenBinder() {
     // Mevcut iframe'leri bağla
     const setupExistingIframes = () => {
       const iframes = Array.from(
-        document.querySelectorAll('iframe[src*="player.vimeo.com"]')
+        document.querySelectorAll('iframe[src*="player.vimeo.com"]'),
       );
       iframes.forEach(setupPlayer);
     };
