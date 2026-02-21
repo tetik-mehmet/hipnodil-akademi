@@ -21,6 +21,13 @@ export default function AdminLandingPage() {
       icon: "/file.svg",
       bg: "from-emerald-500 to-emerald-600",
     },
+    {
+      title: "Video İstatistikleri",
+      description: "İzlenme ve tamamlanma verilerini gör",
+      action: () => router.push("/admin/video-istatistikleri"),
+      icon: "/globe.svg",
+      bg: "from-purple-500 to-purple-600",
+    },
   ];
 
   return (

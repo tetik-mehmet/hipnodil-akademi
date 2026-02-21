@@ -40,9 +40,18 @@ const VideoProgressSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  watchDates: {
+    type: [String],
+    default: [],
+  },
 });
 
 VideoProgressSchema.index({ userId: 1, videoId: 1 }, { unique: true });
+
+// Development'ta hot-reload sırasında eski (watchDates'siz) schema cache'i temizle
+if (process.env.NODE_ENV !== "production" && mongoose.models.VideoProgress) {
+  delete mongoose.models.VideoProgress;
+}
 
 export default mongoose.models.VideoProgress ||
   mongoose.model("VideoProgress", VideoProgressSchema);

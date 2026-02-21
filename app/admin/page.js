@@ -4585,51 +4585,73 @@ function VideoStatsPanel() {
                   <th className="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-400">İzleyici</th>
                   <th className="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-400">Toplam Süre</th>
                   <th className="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-400">Tamamlayan</th>
+                  <th className="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-400">İzleme Günü</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-gray-700 bg-white dark:bg-gray-800">
-                {filteredVideoStats.map((v) => (
-                  <tr key={v._id} className="hover:bg-gray-50 dark:hover:bg-gray-700/40 transition-colors">
-                    <td className="px-4 py-3 whitespace-nowrap">
-                      <CourseBadge name={v.courseName} />
-                    </td>
-                    <td className="px-4 py-3 text-gray-700 dark:text-gray-300 max-w-xs truncate" title={v.videoTitle?.trim() || v._id || ""}>
-                      {v.videoTitle?.trim() || `Video (${v._id})`}
-                    </td>
-                    <td className="px-4 py-3 text-gray-700 dark:text-gray-300 max-w-[200px]">
-                      {Array.isArray(v.viewerNames) && v.viewerNames.filter(Boolean).length > 0 ? (
-                        <div className="flex flex-wrap gap-1">
-                          {v.viewerNames.filter(Boolean).map((name) => {
-                            const isActive = viewerFilter && name.toLowerCase().includes(viewerFilter.toLowerCase());
-                            return (
-                              <button
-                                key={name}
-                                onClick={() => setViewerFilter(name)}
-                                className={`rounded px-1.5 py-0.5 text-xs transition-colors ${
-                                  isActive
-                                    ? "bg-purple-200 text-purple-900 dark:bg-purple-800 dark:text-purple-100"
-                                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
-                                }`}
+                {filteredVideoStats.map((v) => {
+                  const sortedDates = Array.isArray(v.watchDates)
+                    ? [...v.watchDates].sort((a, b) => b.localeCompare(a))
+                    : [];
+                  return (
+                    <tr key={v._id} className="hover:bg-gray-50 dark:hover:bg-gray-700/40 transition-colors">
+                      <td className="px-4 py-3 whitespace-nowrap">
+                        <CourseBadge name={v.courseName} />
+                      </td>
+                      <td className="px-4 py-3 text-gray-700 dark:text-gray-300 max-w-xs truncate" title={v.videoTitle?.trim() || v._id || ""}>
+                        {v.videoTitle?.trim() || `Video (${v._id})`}
+                      </td>
+                      <td className="px-4 py-3 text-gray-700 dark:text-gray-300 max-w-[200px]">
+                        {Array.isArray(v.viewerNames) && v.viewerNames.filter(Boolean).length > 0 ? (
+                          <div className="flex flex-wrap gap-1">
+                            {v.viewerNames.filter(Boolean).map((name) => {
+                              const isActive = viewerFilter && name.toLowerCase().includes(viewerFilter.toLowerCase());
+                              return (
+                                <button
+                                  key={name}
+                                  onClick={() => setViewerFilter(name)}
+                                  className={`rounded px-1.5 py-0.5 text-xs transition-colors ${
+                                    isActive
+                                      ? "bg-purple-200 text-purple-900 dark:bg-purple-800 dark:text-purple-100"
+                                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                                  }`}
+                                >
+                                  {name}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        ) : (
+                          <span className="text-gray-400">—</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 text-right text-gray-700 dark:text-gray-300">
+                        {formatDuration(v.totalWatchTime)}
+                      </td>
+                      <td className="px-4 py-3 text-right">
+                        <span className="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-800 dark:text-green-400">
+                          {v.completedCount}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3">
+                        {sortedDates.length > 0 ? (
+                          <div className="flex flex-wrap gap-1">
+                            {sortedDates.map((d) => (
+                              <span
+                                key={d}
+                                className="inline-flex items-center rounded-md bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 text-xs font-medium text-indigo-700 dark:text-indigo-300 ring-1 ring-inset ring-indigo-200 dark:ring-indigo-700"
                               >
-                                {name}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      ) : (
-                        <span className="text-gray-400">—</span>
-                      )}
-                    </td>
-                    <td className="px-4 py-3 text-right text-gray-700 dark:text-gray-300">
-                      {formatDuration(v.totalWatchTime)}
-                    </td>
-                    <td className="px-4 py-3 text-right">
-                      <span className="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-800 dark:text-green-400">
-                        {v.completedCount}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+                                {d}
+                              </span>
+                            ))}
+                          </div>
+                        ) : (
+                          <span className="text-gray-400 text-xs">—</span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
