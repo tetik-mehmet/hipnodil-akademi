@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
+import VideoProgressTracker, { extractVimeoId } from "@/app/components/VideoProgressTracker";
 
 export default function Page() {
   const router = useRouter();
@@ -459,6 +460,8 @@ export default function Page() {
       />
       {/* Vimeo oynatıcıları play olduğunda otomatik tam ekrana geçirme */}
       {isVimeoReady && <AutoFullscreenBinder />}
+      {/* Video izleme takibi */}
+      {isVimeoReady && <VideoProgressTracker />}
       <header className="mb-8 text-center">
         <h1 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
           MYK Koç Seviye 6 Mentorluk Eğitimi
@@ -518,28 +521,33 @@ export default function Page() {
           </p>
         </header>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {sortedLessonVideos.map((v, idx) => (
-            <article
-              key={v.src}
-              className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md"
-            >
-              <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-                <iframe
-                  src={v.src}
-                  className="absolute inset-0 h-full w-full"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  title={v.iframeTitle}
-                  allowFullScreen
-                />
-              </div>
-              <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-                {v.title}
-              </h3>
-              <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-            </article>
-          ))}
+          {sortedLessonVideos.map((v) => {
+            const vid = extractVimeoId(v.src);
+            return (
+              <article
+                key={v.src}
+                className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md"
+              >
+                <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+                  <iframe
+                    id={vid ? `vimeo-${vid}` : undefined}
+                    data-video-title={v.title}
+                    src={v.src}
+                    className="absolute inset-0 h-full w-full"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    title={v.iframeTitle}
+                    allowFullScreen
+                  />
+                </div>
+                <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+                  {v.title}
+                </h3>
+                <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+              </article>
+            );
+          })}
         </div>
       </section>
 
@@ -554,28 +562,33 @@ export default function Page() {
           </p>
         </header>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {sortedLiveVideos.map((v, idx) => (
-            <article
-              key={v.src}
-              className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md"
-            >
-              <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
-                <iframe
-                  src={v.src}
-                  className="absolute inset-0 h-full w-full"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  title={v.iframeTitle}
-                  allowFullScreen
-                />
-              </div>
-              <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
-                {v.title}
-              </h3>
-              <p className="mt-1 text-xs text-gray-500">Süre: —</p>
-            </article>
-          ))}
+          {sortedLiveVideos.map((v) => {
+            const vid = extractVimeoId(v.src);
+            return (
+              <article
+                key={v.src}
+                className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md"
+              >
+                <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
+                  <iframe
+                    id={vid ? `vimeo-${vid}` : undefined}
+                    data-video-title={v.title}
+                    src={v.src}
+                    className="absolute inset-0 h-full w-full"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    title={v.iframeTitle}
+                    allowFullScreen
+                  />
+                </div>
+                <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
+                  {v.title}
+                </h3>
+                <p className="mt-1 text-xs text-gray-500">Süre: —</p>
+              </article>
+            );
+          })}
         </div>
       </section>
 

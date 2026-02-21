@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
+import VideoProgressTracker, { extractVimeoId } from "@/app/components/VideoProgressTracker";
 
 export default function Page() {
   const router = useRouter();
@@ -64,6 +65,8 @@ export default function Page() {
       />
       {/* Vimeo oynatıcıları play olduğunda otomatik tam ekrana geçirme */}
       {isVimeoReady && <AutoFullscreenBinder />}
+      {/* Video izleme takibi */}
+      {isVimeoReady && <VideoProgressTracker />}
       <header className="mb-8 text-center">
         <h1 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
           MYK Koçluk Seviye 6 Eğitimi – Ders Videoları
@@ -100,6 +103,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 1: Simgeler, Terimler ve Kısaltmalar"
               src="https://player.vimeo.com/video/1014780792?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -119,6 +123,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 2: Koç Ulusal Yeterliliğine Giriş"
               src="https://player.vimeo.com/video/1015148357?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -138,6 +143,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 3: Ulusal Yeterlilik Birimi - 1"
               src="https://player.vimeo.com/video/1015153841?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -157,6 +163,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 4: Ulusal Yeterlilik Birimi - 2"
               src="https://player.vimeo.com/video/1015157127?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -176,6 +183,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 5: Ulusal Yeterlilik Birimi - 3"
               src="https://player.vimeo.com/video/1015157595?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -195,6 +203,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 7: Ulusal Yeterlilik Birimi - 5"
               src="https://player.vimeo.com/video/1015160408?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -214,6 +223,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 9: Ulusal Yeterlilik Birimi - 7"
               src="https://player.vimeo.com/video/1015162916?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -233,6 +243,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 11: Koçluk Sürecini Yapılandırma 1"
               src="https://player.vimeo.com/video/1015165011?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -252,6 +263,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 12: Koçluk Sürecini Yapılandırma 2"
               src="https://player.vimeo.com/video/1015165684?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -271,6 +283,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 13: Koçluk Sürecini Yapılandırma 3"
               src="https://player.vimeo.com/video/1015179539?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -290,6 +303,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 14: Koçluk Sürecini Yapılandırma 4"
               src="https://player.vimeo.com/video/1015194733?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -309,6 +323,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 16: Koçluk Sürecini Yapılandırma 6"
               src="https://player.vimeo.com/video/1015200790?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -328,6 +343,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Ders 18: Teorik T2 Açık Uçlu Soru Anlatımı"
               src="https://player.vimeo.com/video/1015226101?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -347,6 +363,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 1: Giriş"
               src="https://player.vimeo.com/video/1016483327?h=ce75d29d33&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -366,6 +383,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 2: Koçluğun Tanımı ve Temel
+            Kavramlar"
               src="https://player.vimeo.com/video/1016480899?h=87aa77f0bf&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -386,6 +405,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 3: Temel Kavramlar ve Meslek Tanımı"
               src="https://player.vimeo.com/video/1016482253?h=bc6f2e2140&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -405,6 +425,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 4: Koçluk Tanımı ve Tarihçesi"
               src="https://player.vimeo.com/video/1016482775?h=26f7c4b85f&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -424,6 +445,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 5: Koçluk İlişkisi (Haritası)"
               src="https://player.vimeo.com/video/1016480107?h=079c6973af&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -443,6 +465,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 6: Yetkinlikler"
               src="https://player.vimeo.com/video/1016480329?h=176c5a4e30&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -462,6 +485,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 7: Koçluk Faydaları"
               src="https://player.vimeo.com/video/1016480688?h=66468adf92&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -481,6 +505,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 8: Koçluk Duruşu ve Etik Kurallar"
               src="https://player.vimeo.com/video/1016479724?h=5b8a5bba1f&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -500,6 +525,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 9: Görüşmelerin Temel İlkeleri"
               src="https://player.vimeo.com/video/1016479871?h=da3e33a13f&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -519,6 +545,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 10: Tanışma ve Koçluk Becerileri"
               src="https://player.vimeo.com/video/1016479572?h=86f2239123&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -538,6 +565,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 11: İletişim Becerileri ve Dinleme
+            Evreleri"
               src="https://player.vimeo.com/video/1016479212?h=7bfbfbb188&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -558,6 +587,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 12: Beden Dili ve Görüşmenin
+            Aşamaları 1"
               src="https://player.vimeo.com/video/1017492252?h=48f760cfe5&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -578,6 +609,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 13: Görüşmenin Aşamaları 2"
               src="https://player.vimeo.com/video/1017492515?h=66b733589c&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -597,6 +629,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 14: Görüşmenin Aşamaları - Dinleme"
               src="https://player.vimeo.com/video/1017492839?h=2e0fa03d0b&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -616,6 +649,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 15: İletişim Engelleri"
               src="https://player.vimeo.com/video/1017493140?h=d6936ea4ab&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -635,6 +669,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 16: Yansıtma ve Pekiştirme"
               src="https://player.vimeo.com/video/1017491273?h=05115bb4c9&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -654,6 +689,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 17: Yorumlama ve Birlikte Hareket
+            Etme"
               src="https://player.vimeo.com/video/1017491617?h=f010a2a724&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -674,6 +711,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 18: Koçlukta Soru Türleri"
               src="https://player.vimeo.com/video/1017491947?h=ac89ea73c9&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -693,6 +731,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 19: Koçlukta Soru Türleri 2"
               src="https://player.vimeo.com/video/1017490926?h=8867074f07&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -712,6 +751,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 20: Soru Sorma Teknikleri ve
+            Görüşme Ortamı"
               src="https://player.vimeo.com/video/1025017034?h=b4e3db88a8&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -732,6 +773,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 21: Talep Edilecek Ücret, Koçluk
+            Sözleşmesi ve Kurallar"
               src="https://player.vimeo.com/video/1025021298?h=d06990df7b&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -752,6 +795,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 22: Kuralların Hatırlatılması ve
+            Uzmana Yönlendirme"
               src="https://player.vimeo.com/video/1025020971?h=9f2a741fe6&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -772,6 +817,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 23: Süpervizyon Nedir, NLP&apos;ye
+            Giriş"
               src="https://player.vimeo.com/video/1026136367?h=3f1062b9e6&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -792,6 +839,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 24: NLP Tarihçesi ve NLP 4 Temel
+            İlkesi"
               src="https://player.vimeo.com/video/1026135937?h=2ade96a0c8&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -812,6 +861,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 25: Hedefe Yaklaşım Analiz
+            Unsurları"
               src="https://player.vimeo.com/video/1026135626?h=a0d3dd0377&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -832,6 +883,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 26: Sosyal İletişim ve Yeterli
+            Esneklik Sahip Olmak"
               src="https://player.vimeo.com/video/1027273204?h=70351ed35c&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -852,6 +905,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 27: Sağ Beyin ve Sol Beyin
+            Özellikleri"
               src="https://player.vimeo.com/video/1027272809?h=0f4821b732&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -872,6 +927,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 28: Bilinçli Zihin ve Bilinçaltı
+            Zihin"
               src="https://player.vimeo.com/video/1027272513?h=b8d34649d7&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -892,6 +949,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 29: Hedeflere Ulaşmak İçin İyi
+            Biçimlenmiş Koşullar"
               src="https://player.vimeo.com/video/1027272246?h=54fa9cb3f9&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -912,6 +971,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 30: Hedefi Bağlama Yerleştirmek"
               src="https://player.vimeo.com/video/1027271457?h=2f11f5b28a&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -931,6 +991,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 31: Hedefi Net Bağlama Dayandırmak
+            ve Olumlu Yanlarını Korumak"
               src="https://player.vimeo.com/video/1027271979?h=3bf8a8d654&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -951,6 +1013,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 32: Arzulanan Hedef, Mevcut Durumun
+            Olumlu Yanlarını Korumak"
               src="https://player.vimeo.com/video/1027271722?h=d425d19723&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -971,6 +1035,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 33: İyi Tasarlanmış Hedefler, Hedef
+            Durum Karşılaştırması"
               src="https://player.vimeo.com/video/1033441176?h=860c72e0a7&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -991,6 +1057,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 34: TOTE Modeli"
               src="https://player.vimeo.com/video/1033441001?h=8aff7ced52&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1010,6 +1077,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 35: İyi Tasarımlanmış Sonuç İçin
+            Kontrol Listesi"
               src="https://player.vimeo.com/video/1033440605?h=64e7cb1519&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1030,6 +1099,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 36: NLP&apos;nin Temel Kuralları ve
+            İlkeleri"
               src="https://player.vimeo.com/video/1033441781?h=309a296b3c&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1050,6 +1121,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 37: Vizyon ve Öğrenme Stilleri"
               src="https://player.vimeo.com/video/1033442217?h=ecca836366&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1069,6 +1141,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 38: Dilde Duyusal Tercihler ve
+            Kırmızı Kişilik Tipi"
               src="https://player.vimeo.com/video/1039102142?h=d60ee7ecb9&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1089,6 +1163,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 39: Kişilik Tipleri Sarı Yeşil Mavi"
               src="https://player.vimeo.com/video/1039101607?h=c58b3ee1df&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1108,6 +1183,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 40: Gerçeklik Haritaları"
               src="https://player.vimeo.com/video/1039101105?h=ab28934643&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1127,6 +1203,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 41: Çerçeveleme ve Meta Model"
               src="https://player.vimeo.com/video/1039100808?h=a49e0cfab7&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1146,6 +1223,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 42: İmgeleme, Canlandırma ve
+            Olumlama"
               src="https://player.vimeo.com/video/1039100340?h=26453e0a9d&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1166,6 +1245,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 43: Gözle Erişim İpuçları ve Peşin
+            Hükümler"
               src="https://player.vimeo.com/video/1039098107?h=61d73868bf&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1186,6 +1267,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 44: Ölçeklendirme ve Çapa Atma"
               src="https://player.vimeo.com/video/1039099942?h=8e1b4dcfd8&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1205,6 +1287,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 45: Meta Programlar 1"
               src="https://player.vimeo.com/video/1045320001?h=a520c57395&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1224,6 +1307,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 46: Meta Programlar 2"
               src="https://player.vimeo.com/video/1045319667?h=ba290ad75e&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1243,6 +1327,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 47: Koçluk Teknikleri"
               src="https://player.vimeo.com/video/1045319203?h=4837e6e582&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1262,6 +1347,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 48: Harekete Geçirme ve Dikkat
+            Edilmesi Gerekenler"
               src="https://player.vimeo.com/video/1045318800?h=8b1de31891&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1282,6 +1369,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 49: Yargılarımız ve Güçlü Sorular"
               src="https://player.vimeo.com/video/1045318381?h=78717c16ff&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1301,6 +1389,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 50: Güçlü Sorular SMART Model ve
+            GROW Model"
               src="https://player.vimeo.com/video/1045317647?h=042685201d&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1321,6 +1411,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 51: GROW Model"
               src="https://player.vimeo.com/video/1045317302?h=32d14aa8f7&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1340,6 +1431,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 52: Etkin Geri Bildirim ve Güçlü
+            Ricalar"
               src="https://player.vimeo.com/video/1045316936?h=ef0acb4811&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1360,6 +1453,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 53: Koçluk Süreci ve Koçluk
+            Modelleri"
               src="https://player.vimeo.com/video/1045316586?h=43e4c94c40&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1380,6 +1475,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 54: Koçluk Modelleri"
               src="https://player.vimeo.com/video/1045320529?h=709285bc46&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1399,6 +1495,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Özlem İsa ile MYK Temel Koçluk – 55: İlk Görüşme ve Görüşme İpuçları"
               src="https://player.vimeo.com/video/1045320297?h=5fecf25e5e&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1418,6 +1515,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 1: Temel Koçluğa
+            Giriş"
               src="https://player.vimeo.com/video/1016992464?h=6cd5f3e892&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1438,6 +1537,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 2: Koçluk Becerileri
+            ve Sorumlulukları"
               src="https://player.vimeo.com/video/1016990709?h=c62453d179&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1458,6 +1559,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 3: Güçlü Sorular ve
+            Süreç Yönetimi"
               src="https://player.vimeo.com/video/1017004129?h=8766d022cc&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1478,6 +1581,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 4: Koç Neleri
+            Yapmalı / Yapmamalı?"
               src="https://player.vimeo.com/video/1017012349?h=066e46ff8b&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1498,6 +1603,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 5: Hedef - Plan ve
+            Strateji Oluşturma"
               src="https://player.vimeo.com/video/1017024764?h=caa4600996&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1518,6 +1625,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 6: Koçlukta İletişim
+            ve Seans Süreci"
               src="https://player.vimeo.com/video/1016117189?h=8669a9514e&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1538,6 +1647,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 7: Öğrenme Biçimleri"
               src="https://player.vimeo.com/video/1016117036?h=42be36be2e&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1557,6 +1667,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 8: Kişilik Tipleri
+            Sarı ve Kırmızı"
               src="https://player.vimeo.com/video/1016115350?h=489d512421&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1577,6 +1689,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 9: Kişilik Tipleri
+            Mavi ve Yeşil"
               src="https://player.vimeo.com/video/1016116104?h=8850a9fb63&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1597,6 +1711,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 10: İnançlar ve
+            Kalıp Yargılar"
               src="https://player.vimeo.com/video/1016115880?h=13419a66c3&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1617,6 +1733,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 11: Koçlukta
+            Değerler ve Hayal Kavramı"
               src="https://player.vimeo.com/video/1016116770?h=fe9a6814a0&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1637,6 +1755,7 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 12: Hedef Kavramı"
               src="https://player.vimeo.com/video/1016114795?h=d3c820e34f&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1656,6 +1775,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 13: Koçlukta
+            Canlandırma Nedir"
               src="https://player.vimeo.com/video/1016115138?h=e4b749b287&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
@@ -1676,6 +1797,8 @@ export default function Page() {
         <article className="group rounded-xl border-2 border-blue-900 bg-white p-3 shadow-sm transition hover:shadow-md">
           <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
             <iframe
+              data-video-title="Merve Öcüt Çelik - MYK Temel Yaşam Koçluğu Ders 14: Müşteriyi
+            Harekete Geçirme"
               src="https://player.vimeo.com/video/1016116526?h=df07f72639&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 h-full w-full"
               frameBorder="0"
