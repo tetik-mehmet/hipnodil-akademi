@@ -4381,6 +4381,8 @@ function VideoStatsPanel() {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState("");
   const [viewerFilter, setViewerFilter] = React.useState("");
+  const [videoPageSize, setVideoPageSize] = React.useState(20);
+  const [videoPage, setVideoPage] = React.useState(1);
 
   const fetchStats = React.useCallback(async () => {
     try {
@@ -4425,6 +4427,15 @@ function VideoStatsPanel() {
     if (!q) return viewerStats;
     return viewerStats.filter((v) => v.name && v.name.toLowerCase().includes(q));
   }, [viewerStats, viewerFilter]);
+
+  const totalVideoRows = filteredVideoStats.length;
+  const totalVideoPages = Math.max(1, Math.ceil(totalVideoRows / videoPageSize));
+  const paginatedVideoStats = React.useMemo(() => {
+    const start = (videoPage - 1) * videoPageSize;
+    return filteredVideoStats.slice(start, start + videoPageSize);
+  }, [filteredVideoStats, videoPage, videoPageSize]);
+
+  React.useEffect(() => { setVideoPage(1); }, [viewerFilter, videoPageSize]);
 
   const CourseBadge = ({ name }) => {
     if (!name) return <span className="text-xs text-gray-400">—</span>;
@@ -4532,6 +4543,7 @@ function VideoStatsPanel() {
                 <tr className="bg-gray-50 dark:bg-gray-800/60 border-b border-gray-200 dark:border-gray-700">
                   <th className="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-400">İzleyici</th>
                   <th className="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-400">Toplam İzleme</th>
+                  <th className="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-400">Kategori Bazlı Süre</th>
                   <th className="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-400">Tamamlanan</th>
                   <th className="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-400">İzlenen Video</th>
                 </tr>
@@ -4548,6 +4560,36 @@ function VideoStatsPanel() {
                     </td>
                     <td className="px-4 py-3 text-right text-purple-700 dark:text-purple-400 font-semibold">
                       {formatDuration(v.totalWatchTime)}
+                    </td>
+                    <td className="px-4 py-3">
+                      {v.categoryWatchTime && Object.keys(v.categoryWatchTime).length > 0 ? (
+                        <div className="flex flex-wrap gap-1.5">
+                          {["Mentörlük", "MYK Koç Seviye 6", "Eğitim Uzmanlığı"].map((cat) => {
+                            const sec = v.categoryWatchTime[cat] || 0;
+                            if (sec <= 0) return null;
+                            const label = cat === "MYK Koç Seviye 6" ? "Koç Sev. 6" : cat;
+                            return (
+                              <span
+                                key={cat}
+                                className="inline-flex items-center rounded-md bg-gray-100 dark:bg-gray-700/60 px-2 py-0.5 text-xs font-medium text-gray-700 dark:text-gray-300"
+                                title={`${cat}: ${formatDuration(sec)}`}
+                              >
+                                {label}: {formatDuration(sec)}
+                              </span>
+                            );
+                          })}
+                          {(v.categoryWatchTime["Diğer"] || 0) > 0 && (
+                            <span
+                              className="inline-flex items-center rounded-md bg-gray-100 dark:bg-gray-700/60 px-2 py-0.5 text-xs font-medium text-gray-500 dark:text-gray-400"
+                              title={`Diğer: ${formatDuration(v.categoryWatchTime["Diğer"])}`}
+                            >
+                              Diğer: {formatDuration(v.categoryWatchTime["Diğer"])}
+                            </span>
+                          )}
+                        </div>
+                      ) : (
+                        <span className="text-gray-400 text-xs">—</span>
+                      )}
                     </td>
                     <td className="px-4 py-3 text-right">
                       <span className="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-800 dark:text-green-400">
@@ -4568,14 +4610,51 @@ function VideoStatsPanel() {
       {/* Video Bazlı İstatistikler */}
       {filteredVideoStats.length > 0 && (
         <div>
-          <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 mb-3">
-            Video Bazlı İstatistikler
-            {viewerFilter && (
-              <span className="ml-2 text-sm font-normal text-gray-500 dark:text-gray-400">
-                — &ldquo;{viewerFilter}&rdquo; izleyenlerin videoları ({filteredVideoStats.length})
-              </span>
-            )}
-          </h3>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
+            <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100">
+              Video Bazlı İstatistikler
+              {viewerFilter && (
+                <span className="ml-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+                  — &ldquo;{viewerFilter}&rdquo; izleyenlerin videoları ({filteredVideoStats.length})
+                </span>
+              )}
+            </h3>
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <span className="whitespace-nowrap">Sayfa başına:</span>
+                <select
+                  value={videoPageSize}
+                  onChange={(e) => setVideoPageSize(Number(e.target.value))}
+                  className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-1.5 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                >
+                  <option value={10}>10</option>
+                  <option value={20}>20</option>
+                  <option value={50}>50</option>
+                </select>
+              </label>
+              {totalVideoPages > 1 && (
+                <div className="flex items-center gap-1 text-sm">
+                  <button
+                    onClick={() => setVideoPage((p) => Math.max(1, p - 1))}
+                    disabled={videoPage <= 1}
+                    className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-2 py-1.5 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  >
+                    ← Önceki
+                  </button>
+                  <span className="px-2 py-1.5 text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                    {((videoPage - 1) * videoPageSize) + 1} – {Math.min(videoPage * videoPageSize, totalVideoRows)} / {totalVideoRows}
+                  </span>
+                  <button
+                    onClick={() => setVideoPage((p) => Math.min(totalVideoPages, p + 1))}
+                    disabled={videoPage >= totalVideoPages}
+                    className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-2 py-1.5 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  >
+                    Sonraki →
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
           <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
             <table className="w-full text-sm">
               <thead>
@@ -4589,7 +4668,7 @@ function VideoStatsPanel() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-gray-700 bg-white dark:bg-gray-800">
-                {filteredVideoStats.map((v) => {
+                {paginatedVideoStats.map((v) => {
                   const sortedDates = Array.isArray(v.watchDates)
                     ? [...v.watchDates].sort((a, b) => b.localeCompare(a))
                     : [];

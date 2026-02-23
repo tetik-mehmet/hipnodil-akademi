@@ -5,6 +5,7 @@ import {
   getAdminStats,
   getVideoStats,
   getViewerStats,
+  getCategoryTotals,
   backfillVideoTitles,
 } from "@/lib/services/videoProgressService";
 
@@ -28,13 +29,14 @@ export async function GET() {
   }
 
   try {
-    const [summary, videoStats, viewerStats] = await Promise.all([
+    const [summary, videoStats, viewerStats, categoryTotals] = await Promise.all([
       getAdminStats(),
       getVideoStats(),
       getViewerStats(),
+      getCategoryTotals(),
     ]);
 
-    return NextResponse.json({ summary, videoStats, viewerStats });
+    return NextResponse.json({ summary, videoStats, viewerStats, categoryTotals });
   } catch (err) {
     console.error("/api/admin/video-stats GET error:", err);
     return NextResponse.json({ message: "Sunucu hatası" }, { status: 500 });
