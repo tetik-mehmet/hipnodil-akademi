@@ -362,24 +362,14 @@ export default function Page() {
         "MYK Koçluk Seviye 6 Eğitimi - CANLI YAYIN 1. DERS 2. OTURUM - MYK'NIN GÖREVLERİ NELERDİR _",
     },
     {
-      src: "https://player.vimeo.com/video/1166381749?h=792e5575e3&badge=0&autopause=0&player_id=0&app_id=58479",
-      title: "Mentörluk 18 Şubat 3. Oturum",
-      iframeTitle: "MYK Koç Seviye 6 Mentorluk - 18 Şubat 3. Oturum",
-    },
-    {
-      src: "https://player.vimeo.com/video/1166379348?h=b37fe017f3&badge=0&autopause=0&player_id=0&app_id=58479",
-      title: "Mentörluk 18 Şubat 1. Oturum",
-      iframeTitle: "MYK Koç Seviye 6 Mentorluk - 18 Şubat 1. Oturum",
-    },
-    {
-      src: "https://player.vimeo.com/video/1166377545?h=1e722fa2d9&badge=0&autopause=0&player_id=0&app_id=58479",
-      title: "Mentörluk 18 Şubat 2. Oturum",
-      iframeTitle: "MYK Koç Seviye 6 Mentorluk - 18 Şubat 2. Oturum",
-    },
-    {
       src: "https://player.vimeo.com/video/1169090515?badge=0&autopause=0&player_id=0&app_id=58479",
       title: "24 Şubat Canlı Yayın",
       iframeTitle: "MYK Koç Seviye 6 Mentorluk - 24 Şubat Canlı Yayın",
+    },
+    {
+      src: "https://player.vimeo.com/video/1169129455?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "18 Şubat Canlı Yayın",
+      iframeTitle: "MYK Koç Seviye 6 Mentorluk - 18 Şubat Canlı Yayın",
     },
   ];
 
