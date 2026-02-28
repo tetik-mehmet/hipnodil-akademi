@@ -3861,8 +3861,9 @@ function exportCsv(rows) {
   a.download = "kullanicilar.csv";
   document.body.appendChild(a);
   a.click();
-  if (a.parentNode) {
-    a.parentNode.removeChild(a);
+  const parent = a.parentNode;
+  if (parent && parent.contains(a)) {
+    parent.removeChild(a);
   }
   URL.revokeObjectURL(url);
 }

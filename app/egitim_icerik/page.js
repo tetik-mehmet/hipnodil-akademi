@@ -136,36 +136,70 @@ export default function EgitimIcerikPage() {
     return null;
   }
   return (
-    <div className="min-h-[calc(100vh-6rem)] w-full bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6 lg:px-8 py-10">
+    <div className="min-h-[calc(100vh-6rem)] w-full bg-gradient-to-b from-slate-50 via-slate-100 to-white px-4 sm:px-6 lg:px-8 py-10">
       <div className="max-w-7xl mx-auto">
         <header className="mb-8 sm:mb-10">
-          <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 rounded-3xl p-8 sm:p-10 mb-6 shadow-2xl">
-            {/* Dekoratif arka plan efektleri */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl transform translate-x-32 -translate-y-32"></div>
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/20 rounded-full blur-2xl transform -translate-x-24 translate-y-24"></div>
+          <div className="relative rounded-3xl border border-slate-200/80 bg-white/90 bg-clip-padding p-6 sm:p-8 lg:p-10 mb-6 shadow-[0_18px_40px_rgba(15,23,42,0.20)] backdrop-blur-xl overflow-hidden">
+            {/* Dekoratif cam efektleri */}
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute -top-20 -right-10 h-56 w-56 rounded-full bg-gradient-to-br from-teal-400/40 via-cyan-400/30 to-sky-300/30 blur-3xl" />
+              <div className="absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-gradient-to-tr from-teal-500/35 via-cyan-400/25 to-sky-400/25 blur-3xl" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.16),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.75),_transparent_55%)]" />
+            </div>
 
             {/* İçerik */}
-            <div className="relative z-10">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2 drop-shadow-lg">
-                Hoşgeldiniz, {user?.firstName} {user?.lastName}! 👋
-              </h1>
-              <p className="text-blue-100 text-base sm:text-lg font-medium">
-                Eğitim içeriklerinize erişmek için hazırsınız
-              </p>
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-10">
+              <div>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold sm:font-bold mb-3 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500">
+                  Hoş geldiniz, {user?.firstName} {user?.lastName}
+                </h1>
+                <p className="text-sm sm:text-base lg:text-lg max-w-xl text-black">
+                  Tüm eğitim içeriklerinizi tek bir yerden takip edebilir ve
+                  profil bilgilerinizi kolayca yönetebilirsiniz.
+                </p>
+              </div>
+              <div className="flex-1 flex justify-end">
+                <div className="relative h-32 w-32 sm:h-40 sm:w-40 lg:h-44 lg:w-44">
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-emerald-400/40 via-cyan-300/30 to-sky-400/40 opacity-80 blur-2xl" />
+                  <div className="relative flex h-full w-full items-center justify-center rounded-3xl border border-white/15 bg-slate-900/40 backdrop-blur-xl overflow-hidden">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.12),_transparent_60%)]" />
+                    <div className="relative flex flex-col items-center justify-center gap-1">
+                      <div className="flex items-center gap-2">
+                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400/10 border border-emerald-300/40 text-[10px] font-semibold tracking-wide text-emerald-100">
+                          {user?.firstName?.[0]}
+                          {user?.lastName?.[0]}
+                        </span>
+                      </div>
+                      <span className="mt-1 text-xs text-slate-300/85">
+                        Eğitimlere erişim hazır.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </header>
         <section className="max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-6">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-6">
               <div>
+                <p className="inline-flex items-center rounded-full bg-blue-50 text-blue-600 px-3 py-1 text-xs font-semibold mb-3">
+                  Hesap &amp; Profil
+                </p>
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
                   Profil Bilgileriniz
                 </h2>
-                <p className="text-gray-500 text-sm sm:text-base">
-                  E-posta telefon numaranızı ve doğum tarihinizi
-                  güncelleyebilirsiniz.
+                <p className="text-gray-500 text-sm sm:text-base mt-1">
+                  E-posta, telefon numarası ve doğum tarihinizi güncel tutarak
+                  size en doğru bildirimleri iletebiliriz.
                 </p>
+              </div>
+              <div className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] lg:w-[240px] lg:h-[240px] flex-shrink-0">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-blue-500/20 via-indigo-500/10 to-purple-500/30 blur-2xl" />
+                <div className="relative w-full h-full">
+                  <Lottie animationData={animationData} loop={true} />
+                </div>
               </div>
             </div>
             {saveMessage && (
@@ -178,101 +212,124 @@ export default function EgitimIcerikPage() {
                 {saveError}
               </div>
             )}
-            {/* Form içi dekoratif/ipuçları görseli */}
-            <div className="sm:col-span-2 mb-4">
-              <div className="w-full flex justify-end">
-                <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px]">
-                  <Lottie animationData={animationData} loop={true} />
+            <div className="border-t border-gray-100 pt-4 sm:pt-6">
+              <form
+                onSubmit={handleSaveProfile}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
+              >
+                <div className="sm:col-span-2">
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1">
+                    Temel Bilgiler
+                  </h3>
+                  <p className="text-xs text-gray-500">
+                    Ad ve soyadınız kayıt esnasında belirlenmiştir ve sistem
+                    tarafından yönetilmektedir.
+                  </p>
                 </div>
-              </div>
+                <div className="sm:col-span-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Ad
+                  </label>
+                  <input
+                    disabled
+                    value={user?.firstName || ""}
+                    className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-gray-700 focus:outline-none cursor-not-allowed"
+                  />
+                </div>
+                <div className="sm:col-span-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Soyad
+                  </label>
+                  <input
+                    disabled
+                    value={user?.lastName || ""}
+                    className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-gray-700 focus:outline-none cursor-not-allowed"
+                  />
+                </div>
+
+                <div className="sm:col-span-2 pt-2">
+                  <h3 className="text-sm font-semibold text-gray-900 mb-1">
+                    İletişim Bilgileri
+                  </h3>
+                  <p className="text-xs text-gray-500">
+                    Eğitimlerinizle ilgili duyuru ve bilgilendirmeleri bu
+                    kanallar üzerinden yapacağız.
+                  </p>
+                </div>
+                <div className="sm:col-span-1">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    E-posta
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    value={profileEmail}
+                    onChange={(e) => setProfileEmail(e.target.value)}
+                    className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="ornek@mail.com"
+                    required
+                  />
+                  <p className="mt-1 text-xs text-gray-500">
+                    Giriş ve bildirimler için kullanılır.
+                  </p>
+                </div>
+                <div className="sm:col-span-1">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Telefon
+                  </label>
+                  <input
+                    id="phone"
+                    type="tel"
+                    inputMode="numeric"
+                    value={profilePhone}
+                    onChange={(e) => setProfilePhone(e.target.value)}
+                    className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="5xx xxx xx xx"
+                  />
+                  <p className="mt-1 text-xs text-gray-500">
+                    Sadece eğitim süreçleriyle ilgili iletişim için
+                    kullanılacaktır.
+                  </p>
+                </div>
+                <div className="sm:col-span-1">
+                  <label
+                    htmlFor="birthDate"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Doğum Tarihi
+                  </label>
+                  <input
+                    id="birthDate"
+                    type="date"
+                    value={birthDate}
+                    onChange={(e) => setBirthDate(e.target.value)}
+                    className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  <p className="mt-1 text-xs text-gray-500">
+                    İsteğe bağlıdır; istatistiksel amaçlarla kullanılır.
+                  </p>
+                </div>
+                <div className="sm:col-span-2 flex justify-end pt-2">
+                  <button
+                    type="submit"
+                    disabled={isSaving}
+                    className={`inline-flex items-center rounded-lg px-5 py-2.5 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors ${
+                      isSaving
+                        ? "bg-gray-300 text-gray-600 cursor-not-allowed"
+                        : "bg-green-600 text-white hover:bg-green-700 focus:ring-green-500"
+                    }`}
+                  >
+                    {isSaving ? "Kaydediliyor..." : "Kaydet"}
+                  </button>
+                </div>
+              </form>
             </div>
-            <form
-              onSubmit={handleSaveProfile}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
-            >
-              <div className="sm:col-span-1">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Ad
-                </label>
-                <input
-                  disabled
-                  value={user?.firstName || ""}
-                  className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-gray-700 focus:outline-none"
-                />
-              </div>
-              <div className="sm:col-span-1">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Soyad
-                </label>
-                <input
-                  disabled
-                  value={user?.lastName || ""}
-                  className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-gray-700 focus:outline-none"
-                />
-              </div>
-              <div className="sm:col-span-1">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  E-posta
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={profileEmail}
-                  onChange={(e) => setProfileEmail(e.target.value)}
-                  className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="ornek@mail.com"
-                  required
-                />
-              </div>
-              <div className="sm:col-span-1">
-                <label
-                  htmlFor="phone"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Telefon
-                </label>
-                <input
-                  id="phone"
-                  type="tel"
-                  inputMode="numeric"
-                  value={profilePhone}
-                  onChange={(e) => setProfilePhone(e.target.value)}
-                  className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="5xx xxx xx xx"
-                />
-              </div>
-              <div className="sm:col-span-1">
-                <label
-                  htmlFor="birthDate"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Doğum Tarihi
-                </label>
-                <input
-                  id="birthDate"
-                  type="date"
-                  value={birthDate}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                  className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-              <div className="sm:col-span-2 flex justify-end">
-                <button
-                  type="submit"
-                  disabled={isSaving}
-                  className={`inline-flex items-center rounded-lg px-5 py-2.5 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors ${
-                    isSaving
-                      ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-                      : "bg-green-600 text-white hover:bg-green-700 focus:ring-green-500"
-                  }`}
-                >
-                  {isSaving ? "Kaydediliyor..." : "Kaydet"}
-                </button>
-              </div>
-            </form>
           </div>
 
           {/* Eğitimler başlığı */}

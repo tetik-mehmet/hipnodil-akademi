@@ -376,6 +376,11 @@ export default function Page() {
       title: "Mentörluk 18 Şubat 2. Oturum",
       iframeTitle: "MYK Koç Seviye 6 Mentorluk - 18 Şubat 2. Oturum",
     },
+    {
+      src: "https://player.vimeo.com/video/1169090515?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "24 Şubat Canlı Yayın",
+      iframeTitle: "MYK Koç Seviye 6 Mentorluk - 24 Şubat Canlı Yayın",
+    },
   ];
 
   // "PERFORMANS DERSİ" ve "T2 AÇIK UÇLU SORU ÇEŞİDİ" videolarını derslerden çıkar
@@ -416,6 +421,14 @@ export default function Page() {
     // Mentörluk 18 Şubat videoları için normal sıralama: 1, 2, 3
     const aIsMentorluk18 = a.title?.includes("Mentörluk 18 Şubat");
     const bIsMentorluk18 = b.title?.includes("Mentörluk 18 Şubat");
+
+    // 24 Şubat canlı yayınının tüm 18 Şubat oturumlarından sonra gelmesini sağla
+    const aIs24Subat = a.title === "24 Şubat Canlı Yayın";
+    const bIs24Subat = b.title === "24 Şubat Canlı Yayın";
+
+    // 18 Şubat oturumları her zaman 24 Şubat videosundan önce gelsin
+    if (aIs24Subat && bIsMentorluk18) return 1;
+    if (bIs24Subat && aIsMentorluk18) return -1;
 
     if (aIsMentorluk18 && bIsMentorluk18) {
       // Normal sıralama: 1, 2, 3

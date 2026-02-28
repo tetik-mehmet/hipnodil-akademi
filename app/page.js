@@ -70,8 +70,9 @@ export default function Home() {
         document.body.appendChild(textArea);
         textArea.select();
         document.execCommand("copy");
-        if (textArea.parentNode) {
-          textArea.parentNode.removeChild(textArea);
+        const parent = textArea.parentNode;
+        if (parent && parent.contains(textArea)) {
+          parent.removeChild(textArea);
         }
         alert("Link panoya kopyalandı!");
       }
