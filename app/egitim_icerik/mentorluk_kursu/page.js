@@ -371,6 +371,51 @@ export default function Page() {
       title: "18 Şubat Canlı Yayın",
       iframeTitle: "MYK Koç Seviye 6 Mentorluk - 18 Şubat Canlı Yayın",
     },
+    {
+      src: "https://player.vimeo.com/video/1180976642?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Canlı Yayın Bölüm 1",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - Canlı Yayın Bölüm 1",
+    },
+    {
+      src: "https://player.vimeo.com/video/1180978085?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Canlı Yayın Bölüm 2",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - Canlı Yayın Bölüm 2",
+    },
+    {
+      src: "https://player.vimeo.com/video/1180977735?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Canlı Yayın Bölüm 3",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - Canlı Yayın Bölüm 3",
+    },
+    {
+      src: "https://player.vimeo.com/video/1180981820?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Canlı Yayın Bölüm 4",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - Canlı Yayın Bölüm 4",
+    },
+    {
+      src: "https://player.vimeo.com/video/1180982827?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Canlı Yayın Bölüm 5",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - Canlı Yayın Bölüm 5",
+    },
+    {
+      src: "https://player.vimeo.com/video/1180978910?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Canlı Yayın Bölüm 6",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - Canlı Yayın Bölüm 6",
+    },
+    {
+      src: "https://player.vimeo.com/video/1180981181?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Canlı Yayın Bölüm 7",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - Canlı Yayın Bölüm 7",
+    },
+    {
+      src: "https://player.vimeo.com/video/1180980225?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Canlı Yayın Bölüm 8",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - Canlı Yayın Bölüm 8",
+    },
+    {
+      src: "https://player.vimeo.com/video/1180979289?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Canlı Yayın Bölüm 9",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - Canlı Yayın Bölüm 9",
+    },
   ];
 
   // "PERFORMANS DERSİ" ve "T2 AÇIK UÇLU SORU ÇEŞİDİ" videolarını derslerden çıkar
