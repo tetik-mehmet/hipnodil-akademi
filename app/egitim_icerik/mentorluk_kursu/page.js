@@ -416,6 +416,11 @@ export default function Page() {
       title: "Canlı Yayın Bölüm 9",
       iframeTitle: "MYK KOÇ SEVİYE 6 - Canlı Yayın Bölüm 9",
     },
+    {
+      src: "https://player.vimeo.com/video/1182349147?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "10 Nisan Canlı Yayın",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - 10 Nisan Canlı Yayın",
+    },
   ];
 
   // "PERFORMANS DERSİ" ve "T2 AÇIK UÇLU SORU ÇEŞİDİ" videolarını derslerden çıkar
@@ -431,8 +436,12 @@ export default function Page() {
       !v.title?.toUpperCase().startsWith("T2 AÇIK UÇLU SORU ÇEŞİDİ"),
   );
 
+  // "10 Nisan Canlı Yayın" videosunu ayrı tut, "Canlı Yayın Bölüm 9"dan sonra eklenecek
+  const onNisanVideo = liveVideos.find((v) => v.title === "10 Nisan Canlı Yayın");
+  const liveVideosFiltered = liveVideos.filter((v) => v.title !== "10 Nisan Canlı Yayın");
+
   // Önce canlı listesine performans videolarını ekle ve mevcut kurala göre sırala
-  const baseLive = [...liveVideos, ...performanceVideos];
+  const baseLive = [...liveVideosFiltered, ...performanceVideos];
 
   // Her grubu kendi içinde sırala
   const sortedLessonVideos = [...lessonVideosFiltered].sort((a, b) =>
@@ -479,24 +488,49 @@ export default function Page() {
   });
 
   // T2 videolarını "1. PERFORMANS DERSİ 2. OTURUM"dan hemen sonra yerleştir
+  // "10 Nisan Canlı Yayın" videosunu "Canlı Yayın Bölüm 9"dan hemen sonra yerleştir
   const sortedLiveVideos = (() => {
-    const result = [...baseSortedLive];
-    if (t2Videos.length === 0) return result;
-    const anchorIndex = result.findIndex(
-      (v) => v.title === "1. PERFORMANS DERSİ 2. OTURUM",
-    );
-    const t2Sorted = [...t2Videos].sort((a, b) =>
-      a.title.localeCompare(b.title, "tr", {
-        numeric: true,
-        sensitivity: "base",
-      }),
-    );
-    if (anchorIndex === -1) {
-      return [...result, ...t2Sorted];
+    let result = [...baseSortedLive];
+
+    // T2 videolarını ekle
+    if (t2Videos.length > 0) {
+      const anchorIndex = result.findIndex(
+        (v) => v.title === "1. PERFORMANS DERSİ 2. OTURUM",
+      );
+      const t2Sorted = [...t2Videos].sort((a, b) =>
+        a.title.localeCompare(b.title, "tr", {
+          numeric: true,
+          sensitivity: "base",
+        }),
+      );
+      if (anchorIndex === -1) {
+        result = [...result, ...t2Sorted];
+      } else {
+        result = [
+          ...result.slice(0, anchorIndex + 1),
+          ...t2Sorted,
+          ...result.slice(anchorIndex + 1),
+        ];
+      }
     }
-    const before = result.slice(0, anchorIndex + 1);
-    const after = result.slice(anchorIndex + 1);
-    return [...before, ...t2Sorted, ...after];
+
+    // "10 Nisan Canlı Yayın" videosunu "Canlı Yayın Bölüm 9"dan hemen sonra ekle
+    if (onNisanVideo) {
+      const bolum9Index = result.findIndex(
+        (v) => v.title === "Canlı Yayın Bölüm 9",
+      );
+      if (bolum9Index === -1) {
+        result = [...result, onNisanVideo];
+      } else {
+        result = [
+          ...result.slice(0, bolum9Index + 1),
+          onNisanVideo,
+          ...result.slice(bolum9Index + 1),
+        ];
+      }
+    }
+
+    return result;
   })();
 
   return (
@@ -612,10 +646,11 @@ export default function Page() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {sortedLiveVideos.map((v) => {
             const vid = extractVimeoId(v.src);
+            const isNew = v.title === "10 Nisan Canlı Yayın";
             return (
               <article
                 key={v.src}
-                className="group rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md"
+                className={`group rounded-xl border bg-white p-3 shadow-sm transition hover:shadow-md ${isNew ? "border-orange-400 ring-2 ring-orange-300" : "border-gray-200"}`}
               >
                 <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
                   <iframe
@@ -633,6 +668,14 @@ export default function Page() {
                 <h3 className="mt-3 line-clamp-2 text-sm font-medium text-gray-900">
                   {v.title}
                 </h3>
+                {isNew && (
+                  <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-orange-500 px-2.5 py-0.5 text-xs font-semibold text-white animate-pulse">
+                    <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    Yeni Eklendi
+                  </span>
+                )}
                 <p className="mt-1 text-xs text-gray-500">Süre: —</p>
               </article>
             );
