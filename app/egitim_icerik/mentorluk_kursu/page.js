@@ -421,6 +421,16 @@ export default function Page() {
       title: "10 Nisan Canlı Yayın",
       iframeTitle: "MYK KOÇ SEVİYE 6 - 10 Nisan Canlı Yayın",
     },
+    {
+      src: "https://player.vimeo.com/video/1185294152?h=f387a29a04&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Nisan Sonu Canlı Yayın 1",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - Nisan Sonu Canlı Yayın 1",
+    },
+    {
+      src: "https://player.vimeo.com/video/1185294631?h=053ff79e61&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Nisan Sonu Canlı Yayın 2",
+      iframeTitle: "MYK KOÇ SEVİYE 6 - Nisan Sonu Canlı Yayın 2",
+    },
   ];
 
   // "PERFORMANS DERSİ" ve "T2 AÇIK UÇLU SORU ÇEŞİDİ" videolarını derslerden çıkar
@@ -438,7 +448,16 @@ export default function Page() {
 
   // "10 Nisan Canlı Yayın" videosunu ayrı tut, "Canlı Yayın Bölüm 9"dan sonra eklenecek
   const onNisanVideo = liveVideos.find((v) => v.title === "10 Nisan Canlı Yayın");
-  const liveVideosFiltered = liveVideos.filter((v) => v.title !== "10 Nisan Canlı Yayın");
+  // Nisan sonu videolarını ayrı tut, "10 Nisan Canlı Yayın"dan sonra eklenecek
+  const nisanSonuVideos = liveVideos.filter(
+    (v) => v.title === "Nisan Sonu Canlı Yayın 1" || v.title === "Nisan Sonu Canlı Yayın 2",
+  );
+  const liveVideosFiltered = liveVideos.filter(
+    (v) =>
+      v.title !== "10 Nisan Canlı Yayın" &&
+      v.title !== "Nisan Sonu Canlı Yayın 1" &&
+      v.title !== "Nisan Sonu Canlı Yayın 2",
+  );
 
   // Önce canlı listesine performans videolarını ekle ve mevcut kurala göre sırala
   const baseLive = [...liveVideosFiltered, ...performanceVideos];
@@ -526,6 +545,22 @@ export default function Page() {
           ...result.slice(0, bolum9Index + 1),
           onNisanVideo,
           ...result.slice(bolum9Index + 1),
+        ];
+      }
+    }
+
+    // "Nisan Sonu Canlı Yayın" videolarını "10 Nisan Canlı Yayın"dan hemen sonra ekle
+    if (nisanSonuVideos.length > 0) {
+      const onNisanIndex = result.findIndex(
+        (v) => v.title === "10 Nisan Canlı Yayın",
+      );
+      if (onNisanIndex === -1) {
+        result = [...result, ...nisanSonuVideos];
+      } else {
+        result = [
+          ...result.slice(0, onNisanIndex + 1),
+          ...nisanSonuVideos,
+          ...result.slice(onNisanIndex + 1),
         ];
       }
     }
@@ -646,7 +681,9 @@ export default function Page() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {sortedLiveVideos.map((v) => {
             const vid = extractVimeoId(v.src);
-            const isNew = v.title === "10 Nisan Canlı Yayın";
+            const isNew =
+              v.title === "Nisan Sonu Canlı Yayın 1" ||
+              v.title === "Nisan Sonu Canlı Yayın 2";
             return (
               <article
                 key={v.src}
