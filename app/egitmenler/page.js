@@ -170,10 +170,10 @@ export default function Page() {
               heading: "Eğitim & Kariyer",
               type: "list",
               items: [
-                "Kıbrıs'ta eğitimini tamamladı",
+                
                 "İstanbul Marmara Üniversitesi Güzel Sanatlar Fakültesi'nden onur derecesi ile mezun",
                 "Üst düzey yönetici olarak çalıştı, kendi teknoloji şirketini kurdu",
-                "Yurtiçinde çeşitli kişisel gelişim eğitimleri aldı",
+                "Yurtiçinde ve yurtdışındaçeşitli kişisel gelişim eğitimleri aldı",
               ],
             },
             {
@@ -199,7 +199,10 @@ export default function Page() {
                 { label: "Gönül Gözü", color: "fuchsia" },
                 { label: "Kendini Ertelemekten Vazgeç", color: "cyan" },
                 { label: "Yüreği ile Konuşanlar", color: "lime" },
-                { label: "İtikâf, Karma ve Hak Ediş", color: "emerald" },
+                { label: "Soyağacını Şifalandırma Rehberi", color: "emerald" },
+                { label: "21 Günde Düşünce Detoksu", color: "lime" },
+                { label: "Kalbe Gelen Davet", color: "indigo" },
+                { label: "İlişkiler Karma Ve Hakediş", color: "emerald" },
                 { label: "Dört Sınav", color: "rose" },
               ],
             },

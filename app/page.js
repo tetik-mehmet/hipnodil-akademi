@@ -321,7 +321,7 @@ export default function Home() {
             {[
               { src: "/referanslar/cz3.png", name: "Referans 3" },
               { src: "/referanslar/cz4.png", name: "Referans 4" },
-              { src: "/referanslar/net_logo.png", name: "Net Logo" },
+              
               { src: "/referanslar/speed_mind.png", name: "Speed Mind" },
             ].map((r) => (
               <div
