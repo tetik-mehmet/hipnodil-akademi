@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
-import VideoProgressTracker, { extractVimeoId } from "@/app/components/VideoProgressTracker";
+import VideoProgressTracker, {
+  extractVimeoId,
+} from "@/app/components/VideoProgressTracker";
 
 export default function Page() {
   const router = useRouter();
@@ -431,6 +433,26 @@ export default function Page() {
       title: "Nisan Sonu Canlı Yayın 2",
       iframeTitle: "MYK KOÇ SEVİYE 6 - Nisan Sonu Canlı Yayın 2",
     },
+    {
+      src: "https://player.vimeo.com/video/1216603253?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Ağustos 1",
+      iframeTitle: "agustos_1",
+    },
+    {
+      src: "https://player.vimeo.com/video/1216603763?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Ağustos 2",
+      iframeTitle: "agustos_2",
+    },
+    {
+      src: "https://player.vimeo.com/video/1216606109?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Ağustos 3",
+      iframeTitle: "agustos_3",
+    },
+    {
+      src: "https://player.vimeo.com/video/1216606450?badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Ağustos 4",
+      iframeTitle: "agustos_4",
+    },
   ];
 
   // "PERFORMANS DERSİ" ve "T2 AÇIK UÇLU SORU ÇEŞİDİ" videolarını derslerden çıkar
@@ -447,10 +469,14 @@ export default function Page() {
   );
 
   // "10 Nisan Canlı Yayın" videosunu ayrı tut, "Canlı Yayın Bölüm 9"dan sonra eklenecek
-  const onNisanVideo = liveVideos.find((v) => v.title === "10 Nisan Canlı Yayın");
+  const onNisanVideo = liveVideos.find(
+    (v) => v.title === "10 Nisan Canlı Yayın",
+  );
   // Nisan sonu videolarını ayrı tut, "10 Nisan Canlı Yayın"dan sonra eklenecek
   const nisanSonuVideos = liveVideos.filter(
-    (v) => v.title === "Nisan Sonu Canlı Yayın 1" || v.title === "Nisan Sonu Canlı Yayın 2",
+    (v) =>
+      v.title === "Nisan Sonu Canlı Yayın 1" ||
+      v.title === "Nisan Sonu Canlı Yayın 2",
   );
   const liveVideosFiltered = liveVideos.filter(
     (v) =>
@@ -707,7 +733,11 @@ export default function Page() {
                 </h3>
                 {isNew && (
                   <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-orange-500 px-2.5 py-0.5 text-xs font-semibold text-white animate-pulse">
-                    <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
+                    <svg
+                      className="h-3 w-3"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                     Yeni Eklendi
