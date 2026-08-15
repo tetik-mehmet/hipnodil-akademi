@@ -453,6 +453,26 @@ export default function Page() {
       title: "Ağustos 4",
       iframeTitle: "agustos_4",
     },
+    {
+      src: "https://player.vimeo.com/video/1218496192?h=66ca879fbc&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Ağustos 13",
+      iframeTitle: "13_agustos",
+    },
+    {
+      src: "https://player.vimeo.com/video/1218496191?h=a98d3c0c93&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Ağustos 13 - 2",
+      iframeTitle: "13_agustos2",
+    },
+    {
+      src: "https://player.vimeo.com/video/1218496190?h=6071772bbe&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Ağustos 13 - 3",
+      iframeTitle: "13_agustos3",
+    },
+    {
+      src: "https://player.vimeo.com/video/1218496193?h=11e2057b65&badge=0&autopause=0&player_id=0&app_id=58479",
+      title: "Ağustos 13 - 4",
+      iframeTitle: "13_agustos4",
+    },
   ];
 
   // "PERFORMANS DERSİ" ve "T2 AÇIK UÇLU SORU ÇEŞİDİ" videolarını derslerden çıkar
@@ -478,11 +498,23 @@ export default function Page() {
       v.title === "Nisan Sonu Canlı Yayın 1" ||
       v.title === "Nisan Sonu Canlı Yayın 2",
   );
+
+  // Ağustos 1-4 ve 13 Ağustos videolarını alfabetik sıralamadan ayrı tut.
+  // Ağustos 1-4 videoları, yeni eklenen 13 Ağustos videolarının hemen önünde yer alacak.
+  const isAgustosSerisiVideo = (video) =>
+    /^agustos_[1-4]$/.test(video.iframeTitle || "");
+  const isAgustos13Video = (video) =>
+    video.iframeTitle?.startsWith("13_agustos");
+  const agustosSerisiVideos = liveVideos.filter(isAgustosSerisiVideo);
+  const agustos13Videos = liveVideos.filter(isAgustos13Video);
+
   const liveVideosFiltered = liveVideos.filter(
     (v) =>
       v.title !== "10 Nisan Canlı Yayın" &&
       v.title !== "Nisan Sonu Canlı Yayın 1" &&
-      v.title !== "Nisan Sonu Canlı Yayın 2",
+      v.title !== "Nisan Sonu Canlı Yayın 2" &&
+      !isAgustosSerisiVideo(v) &&
+      !isAgustos13Video(v),
   );
 
   // Önce canlı listesine performans videolarını ekle ve mevcut kurala göre sırala
@@ -591,7 +623,9 @@ export default function Page() {
       }
     }
 
-    return result;
+    // Ağustos 1-4 videolarını son gruba al; 13 Ağustos videoları en sonda kalsın.
+    // "Yeni eklendi" işaretleri yalnızca 13 Ağustos videolarında gösterilir.
+    return [...result, ...agustosSerisiVideos, ...agustos13Videos];
   })();
 
   return (
@@ -707,14 +741,17 @@ export default function Page() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {sortedLiveVideos.map((v) => {
             const vid = extractVimeoId(v.src);
-            const isNew =
-              v.title === "Nisan Sonu Canlı Yayın 1" ||
-              v.title === "Nisan Sonu Canlı Yayın 2";
+            const isNew = isAgustos13Video(v);
             return (
               <article
                 key={v.src}
-                className={`group rounded-xl border bg-white p-3 shadow-sm transition hover:shadow-md ${isNew ? "border-orange-400 ring-2 ring-orange-300" : "border-gray-200"}`}
+                className={`group relative rounded-xl border bg-white p-3 shadow-sm transition hover:shadow-md ${isNew ? "border-orange-400 ring-2 ring-orange-300" : "border-gray-200"}`}
               >
+                {isNew && (
+                  <span className="absolute right-1 top-1 z-10 rounded-full bg-red-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-md">
+                    En Son Eklenen
+                  </span>
+                )}
                 <div className="relative w-full overflow-hidden rounded-lg bg-black pt-[56.25%]">
                   <iframe
                     id={vid ? `vimeo-${vid}` : undefined}
